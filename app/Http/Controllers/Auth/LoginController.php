@@ -39,23 +39,23 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
-        $this->middleware('guest:employee')->except('logout');
+        $this->middleware('guest:admin')->except('logout');
     }
 
-    public function showEmployeeLoginForm()
+    public function showAdminLoginForm()
     {
-        return view('auth.employee.login');
+        return view('auth.admin.login');
     }
 
-    public function employeeLogin(Request $request)
+    public function adminLogin(Request $request)
     {
         $this->validate($request, [
             'email'   => 'required|email',
             'password' => 'required|min:6'
         ]);
 
-        if (Auth::guard('employee')->attempt($request->only(['email','password']), $request->get('remember'))){
-            return redirect()->intended('/employee/home');
+        if (Auth::guard('admin')->attempt($request->only(['email','password']), $request->get('remember'))){
+            return redirect()->intended('/admin/home');
         }
 
         return back()->withInput($request->only('email', 'remember'));

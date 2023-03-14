@@ -1,67 +1,72 @@
-<aside id="sidebar" class="sidebar">
-
-    <ul class="sidebar-nav" id="sidebar-nav">
-
-      <li class="nav-item">
-        <a class="nav-link {{Request::is('employee/home') || Request::is('employee/profile')? '' : 'collapsed'}}" href="{{route('employee.home')}}">
-          <i class="bi bi-house-door"></i>
-          <span>Home</span>
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link {{Route::is('employee.order.edit', 'employee.order.index', 'employee.order.show')? '' : 'collapsed'}}" href="{{route('employee.order.index')}}">
-          <i class="bi bi-journal-text"></i>
-          <span>Order</span>
-        </a>
-      </li>
-      
-      @if(role('admin'))
-      <li class="nav-item">
-        <a class="nav-link {{Route::is('employee.architect.*')? '' : 'collapsed'}}" href="{{route('employee.architect.index')}}">
-          <i class="bi bi-people"></i>
-          <span>Architect</span>
-        </a>
-      </li>
-
-    <li class="nav-item">
-        <a class="nav-link {{Route::is('employee.styleInterior.*', 'employee.typeInterior.*', 'employee.portfolio.*', 'employee.company.*')? '' : 'collapsed'}}"
-            data-bs-target="#components-nav" data-bs-toggle="collapse" href="#" aria-expanded="false">
-            <i class="bi bi-menu-button-wide"></i><span>Landing Page</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="components-nav" class="nav-content collapse {{Route::is('employee.styleInterior.*', 'employee.typeInterior.*', 'employee.portfolio.*', 'employee.company.*')? 'show' : ''}}" data-bs-parent="#sidebar-nav" style="">
-          <li class="nav-item">
-            <a class="nav-link {{Route::is('employee.styleInterior.*')? '' : 'collapsed'}}" href="{{route('employee.styleInterior.index')}}">
-              <i class="bi bi-circle"></i>
-              <span>Style Interior</span>
+<aside class="left-sidebar sidebar-dark" id="left-sidebar">
+  <div id="sidebar" class="sidebar sidebar-with-footer">
+    <!-- Aplication Brand -->
+    <div class="app-brand">
+      <a href="/index.html">
+        <img src="images/logo.png" alt="Mono">
+        <span class="brand-name">MONO</span>
+      </a>
+    </div>
+    <!-- begin sidebar scrollbar -->
+    <div class="sidebar-left" data-simplebar style="height: 100%;">
+      <!-- sidebar menu -->
+      <ul class="nav sidebar-inner" id="sidebar-menu">
+          <li class="active">
+            <a class="sidenav-item-link" href="index.html">
+              <i class="mdi mdi-briefcase-account-outline"></i>
+              <span class="nav-text">Business Dashboard</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link {{Route::is('employee.typeInterior.*')? '' : 'collapsed'}}" href="{{route('employee.typeInterior.index')}}">
-              <i class="bi bi-circle"></i>
-              <span>Tipe Interior</span>
+          <li>
+            <a class="sidenav-item-link" href="analytics.html">
+              <i class="mdi mdi-chart-line"></i>
+              <span class="nav-text">Analytics Dashboard</span>
             </a>
           </li>
-  
-          <li class="nav-item">
-            <a class="nav-link {{Route::is('employee.portfolio.*')? '' : 'collapsed'}}" href="{{route('employee.portfolio.index')}}">
-              <i class="bi bi-circle"></i>
-              <span>Portfolio</span>
+          <li  class="has-sub" >
+            <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#email"
+              aria-expanded="false" aria-controls="email">
+              <i class="mdi mdi-email"></i>
+              <span class="nav-text">email</span> <b class="caret"></b>
             </a>
+            <ul  class="collapse"  id="email"
+              data-parent="#sidebar-menu">
+              <div class="sub-menu">
+                    <li >
+                      <a class="sidenav-item-link" href="email-inbox.html">
+                        <span class="nav-text">Email Inbox</span>
+                        
+                      </a>
+                    </li>
+                    <li>
+                      <a class="sidenav-item-link" href="email-details.html">
+                        <span class="nav-text">Email Details</span>
+                        
+                      </a>
+                    </li>
+                    <li>
+                      <a class="sidenav-item-link" href="email-compose.html">
+                        <span class="nav-text">Email Compose</span>
+                        
+                      </a>
+                    </li>
+              </div>
+            </ul>
           </li>
-  
-          <li class="nav-item">
-            <a class="nav-link {{Route::is('employee.company.*')? '' : 'collapsed'}}" href="{{route('employee.company.index')}}">
-              <i class="bi bi-circle"></i>
-              <span>Company</span>
-            </a>
-          </li>
+      </ul>
 
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-footer-content">
+        <ul class="d-flex">
+          <li>
+            <a href="user-account-settings.html" data-toggle="tooltip" title="Profile settings"><i class="mdi mdi-settings"></i></a></li>
+          <li>
+            <a href="#" data-toggle="tooltip" title="No chat messages"><i class="mdi mdi-chat-processing"></i></a>
+          </li>
         </ul>
-      </li>
-
-      @endif
-
-    </ul>
-
-  </aside><!-- End Sidebar-->
+      </div>
+    </div>
+  </div>
+</aside>

@@ -14,19 +14,3 @@
     </script>
 @endif
 
-@if(session('auth') === 'warning')
-    <script>
-        Swal.fire({        
-            icon: 'warning',
-            title: '{{session()->get('message')}}',
-            showConfirmButton: false,
-            timer: 3000
-        }).then(function(dismiss){
-            if(dismiss.isDismissed === true){
-                return {{session()->forget(['auth','message'])}}
-            }
-        })
-    </script>
-@endif
-
-

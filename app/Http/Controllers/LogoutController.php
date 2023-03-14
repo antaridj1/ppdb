@@ -7,13 +7,13 @@ use Illuminate\Support\Facades\Auth;
 
 class LogoutController extends Controller
 {
-    public function employeeLogout(Request $request){
+    public function adminLogout(Request $request){
 
-        Auth::guard('employee')->logout();
+        Auth::guard('admin')->logout();
         
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/employee/login');
+        return redirect('/admin/login');
     }
 }
