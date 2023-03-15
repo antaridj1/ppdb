@@ -14,13 +14,19 @@
           <li class="active">
             <a class="sidenav-item-link" href="index.html">
               <i class="mdi mdi-briefcase-account-outline"></i>
-              <span class="nav-text">Business Dashboard</span>
+              <span class="nav-text">Beranda</span>
             </a>
           </li>
           <li>
             <a class="sidenav-item-link" href="analytics.html">
               <i class="mdi mdi-chart-line"></i>
-              <span class="nav-text">Analytics Dashboard</span>
+              <span class="nav-text">Calon Peserta Didik</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidenav-item-link" href="analytics.html">
+              <i class="mdi mdi-chart-line"></i>
+              <span class="nav-text">Wali Peserta Didik</span>
             </a>
           </li>
           <li  class="has-sub" >
