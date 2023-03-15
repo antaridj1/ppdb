@@ -1,80 +1,41 @@
-@extends('layout.user.app')
+@extends('layout.auth')
+@section('title','Login | PPDB')
 
 @section('content')
+    <div class="card-body px-5 pb-5 pt-0">
+        <h4 class="text-dark text-center mb-5">Sign Up</h4>
+        <form action="/index.html">
+            <div class="row">
+                <div class="form-group col-md-12 mb-4">
+                <input type="text" class="form-control input-lg" id="name" aria-describedby="nameHelp" placeholder="Name">
+                </div>
+                <div class="form-group col-md-12 mb-4">
+                <input type="email" class="form-control input-lg" id="email" aria-describedby="emailHelp" placeholder="Username">
+                </div>
+                <div class="form-group col-md-12 ">
+                <input type="password" class="form-control input-lg" id="password" placeholder="Password">
+                </div>
+                <div class="form-group col-md-12 ">
+                <input type="password" class="form-control input-lg" id="cpassword" placeholder="Confirm Password">
+                </div>
+                <div class="col-md-12">
+                <div class="d-flex justify-content-between mb-3">
 
-    @include('layout.user.header')
-
-    <main id="main">
-        <section id="contact" class="contact">
-            <div class="container">
-                <div class="row d-flex justify-content-center" data-aos="fade-up">
-                    <div class="col-lg-6">
-                        <form method="POST" action="{{ route('register') }}" role="form" class="php-email-form">
-                            @csrf
-                            <h2 class="text-center">Registrasi</h2>
-                            <div class="form-group mt-3">
-                                <label for="name" class="form-label">Nama</label>
-                                <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" id="name" required>
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="form-group mt-3">
-                                <label for="yourEmail" class="form-label">Email</label>
-                                <input type="text" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" id="yourEmail" required>
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="form-group mt-3">
-                                <label for="yourEmail" class="form-label">No Telp</label>
-                                <input type="text" name="phone_number" class="form-control @error('phone_number') is-invalid @enderror" value="{{ old('phone_number') }}" id="yourphone_number" required>
-                                @error('phone_number')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="form-group mt-3">
-                                <label for="yourPassword" class="form-label">Password</label>
-                                <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="yourPassword" required>
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="form-group mt-3">
-                                <label for="password_confirmation" class="form-label">Konfirmasi Password</label>
-                                <input type="password" name="password_confirmation" class="form-control @error('password') is-invalid @enderror" id="password_confirmation" required>
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="col-12 my-5">
-                                <button class="btn btn-primary w-100" type="submit">Registrasi</button>
-                            </div>
-                            <div class="form-group my-3 d-flex justify-content-center">
-                                <a class="small text-end" href="{{ route('login') }}">
-                                    Sudah memiliki akun? Klik disini
-                                </a>
-                            </div>
-                        </form>
+                    <div class="custom-control custom-checkbox mr-3 mb-3">
+                    <input type="checkbox" class="custom-control-input" id="customCheck2">
+                    <label class="custom-control-label" for="customCheck2">I Agree the terms and conditions.</label>
                     </div>
-        
+
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-pill mb-4">Sign Up</button>
+
+                <p>Already have an account?
+                    <a class="text-blue" href="sign-in.html">Sign in</a>
+                </p>
                 </div>
             </div>
-        </section>
-
-        @include('layout.user.footer')
-    </main>
-
-
+        </form>
+    </div>
 @endsection
     

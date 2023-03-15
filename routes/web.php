@@ -27,43 +27,39 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', [HomeController::class, 'landingPage']);
-Route::get('/', function(){
-    view('home');
+Route::get('/', [HomeController::class, 'landingPage']);
+
+Auth::routes();
+
+Route::middleware('auth:web')->group(function(){
+    Route::get('profile-user', [ProfileController::class, 'editUser'])->name('profile.editUser');
+    Route::patch('profile-user', [ProfileController::class, 'updateUser'])->name('profile.updateUser');
 });
 
-// Auth::routes();
+Route::prefix('admin')->name('admin.')->group(function(){
+    Route::get('login', [LoginController::class, 'showAdminLoginForm']);
+    Route::post('login', [LoginController::class, 'adminLogin'])->name('login');
 
-// Route::middleware('auth:web')->group(function(){
-       
-//     Route::get('profile-user', [ProfileController::class, 'editUser'])->name('profile.editUser');
-//     Route::patch('profile-user', [ProfileController::class, 'updateUser'])->name('profile.updateUser');
-// });
+    Route::middleware('auth:admin')->group(function(){
+        Route::get('home', [HomeController::class, 'index'])->name('home');
+        Route::get('profile', [ProfileController::class, 'editAdmin'])->name('profile.editAdmin');
+        Route::patch('profile', [ProfileController::class, 'updateAdmin'])->name('profile.updateAdmin');
 
-// Route::prefix('admin')->name('admin.')->group(function(){
-//     Route::get('login', [LoginController::class, 'showAdminLoginForm']);
-//     Route::post('login', [LoginController::class, 'adminLogin'])->name('login');
+        Route::group(['prefix' => 'operator', 'as' => 'operator.'],function () {
+            Route::resource('/', OperatorController::class)->parameters([
+                '' => 'operator'
+            ]);
+            Route::patch('/{operator}/update-status', [OperatorController::class, 'update_status'])->name('updateStatus');
+        });
 
-//     Route::middleware('auth:admin')->group(function(){
-//         Route::get('home', [HomeController::class, 'index'])->name('home');
-//         Route::get('profile', [ProfileController::class, 'editAdmin'])->name('profile.editAdmin');
-//         Route::patch('profile', [ProfileController::class, 'updateAdmin'])->name('profile.updateAdmin');
+        Route::group(['prefix' => 'user', 'as' => 'user.'],function () {
+            Route::resource('/', UserController::class)->parameters([
+                '' => 'user'
+            ]);
+            Route::patch('/{user}/update-status', [UserController::class, 'update_status'])->name('updateStatus');
+        });
 
-//         Route::group(['prefix' => 'operator', 'as' => 'operator.'],function () {
-//             Route::resource('/', OperatorController::class)->parameters([
-//                 '' => 'operator'
-//             ]);
-//             Route::patch('/{operator}/update-status', [OperatorController::class, 'update_status'])->name('updateStatus');
-//         });
-
-//         Route::group(['prefix' => 'user', 'as' => 'user.'],function () {
-//             Route::resource('/', UserController::class)->parameters([
-//                 '' => 'user'
-//             ]);
-//             Route::patch('/{user}/update-status', [UserController::class, 'update_status'])->name('updateStatus');
-//         });
-
-//         Route::post('logout', [LogoutController::class, 'adminLogout'])->name('logout');
+        Route::post('logout', [LogoutController::class, 'adminLogout'])->name('logout');
    
-//     });
-// });
+    });
+});
