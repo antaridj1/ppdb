@@ -30,11 +30,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if(roleController('admin')){
+        // if(roleController('admin')){
+        //     return view('home');
+        // } else {
             return view('home');
-        } else {
-            return view('home');
-        }
+        // }
     }
 
     public function landingPage(){
