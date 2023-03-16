@@ -33,12 +33,12 @@ Route::get('/chat', function(){
 });
 Auth::routes();
 
-Route::middleware('auth:web')->group(function(){
+Route::middleware('auth:web')->group(function () {
     Route::get('profile-user', [ProfileController::class, 'editUser'])->name('profile.editUser');
     Route::patch('profile-user', [ProfileController::class, 'updateUser'])->name('profile.updateUser');
 });
 
-Route::prefix('admin')->name('admin.')->group(function(){
+Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('login', [LoginController::class, 'showAdminLoginForm']);
     Route::post('login', [LoginController::class, 'adminLogin'])->name('login');
 
@@ -47,14 +47,14 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::get('profile', [ProfileController::class, 'editAdmin'])->name('profile.editAdmin');
         Route::patch('profile', [ProfileController::class, 'updateAdmin'])->name('profile.updateAdmin');
 
-        Route::group(['prefix' => 'operator', 'as' => 'operator.'],function () {
+        Route::group(['prefix' => 'operator', 'as' => 'operator.'], function () {
             Route::resource('/', OperatorController::class)->parameters([
                 '' => 'operator'
             ]);
             Route::patch('/{operator}/update-status', [OperatorController::class, 'update_status'])->name('updateStatus');
         });
 
-        Route::group(['prefix' => 'user', 'as' => 'user.'],function () {
+        Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
             Route::resource('/', UserController::class)->parameters([
                 '' => 'user'
             ]);
@@ -62,6 +62,21 @@ Route::prefix('admin')->name('admin.')->group(function(){
         });
 
         Route::post('logout', [LogoutController::class, 'adminLogout'])->name('logout');
-   
     });
+});
+
+Route::prefix('ppdb')->group(function () {
+    Route::get('/', function () {
+        return view('student.pages.landingpage');
+    });
+    Route::get('/login', [LoginController::class, 'showSchoolLoginForm']);
+
+    Route::prefix('sdn-01-gianyar')->group(function () { //ini akan jadi params
+        Route::get('/dashboard', function(){
+            return view('student.pages.dashboard');
+        });
+    });
+
+    // Masih blm bisaa
+    Route::get('/{sd}', [LandingPageSchool::class, 'landingPage']);
 });
