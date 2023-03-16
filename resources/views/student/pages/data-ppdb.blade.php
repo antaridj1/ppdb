@@ -388,84 +388,396 @@
 
                     <div class="row">
                         <div class="col-xl-12">
-                            <!-- Form Square -->
+                            <!-- Form Data Pribadi -->
                             <div class="card card-default">
-                            <div class="card-header">
-                                <h2>Data Probadi</h2>
-                                <a class="btn mdi mdi-code-tags" data-toggle="collapse" href="#collapse-input-square" role="button"
-                                aria-expanded="false" aria-controls="collapse-input-square"> </a>
-
-
-                            </div>
-                            <div class="card-body">
-                                <form>
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput44">Nama Lengkap</label>
-                                    <input type="email" class="form-control rounded-0" id="exampleFormControlInput4" placeholder="Enter Email">
-                                    {{-- <span class="mt-2 d-block">We'll never share your email with anyone else.</span> --}}
+                                <div class="card-header">
+                                    <h1>Data Pribadi</h1>
+                                    <a class="btn mdi mdi-code-tags" data-toggle="collapse" href="#collapse-input-square" role="button"
+                                    aria-expanded="false" aria-controls="collapse-input-square"> </a>
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput44">Jenis Kelamin</label> <br>
-                                    <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                                        <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
-                                        <label class="custom-control-label" for="customRadio2">Laki-Laki</label>
-                                        <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
-                                        <label class="custom-control-label" for="customRadio2">Perempuan</label>
+                                <div class="card-body">
+                                    <form>
+                                        @csrf
+                                    <div class="form-group">
+                                        <label for="exampleFormControlInput44">Nama Lengkap</label>
+                                        <input type="text" name="nama_lengkap" class="form-control rounded-0" id="exampleFormControlInput4">
+                                        {{-- <span class="mt-2 d-block">We'll never share your email with anyone else.</span> --}}
                                     </div>
-                                    {{-- <span class="mt-2 d-block">We'll never share your email with anyone else.</span> --}}
+                                    <div class="form-group">
+                                        <label for="exampleFormControlInput44">Jenis Kelamin</label> <br>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="laki-laki" name="gender" class="custom-control-input" value="laki-laki">
+                                            <label class="custom-control-label" for="laki-laki">Laki-Laki</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="perempuan" name="gender" class="custom-control-input" value="perempuan">
+                                            <label class="custom-control-label" for="perempuan">Perempuan</label>
+                                        </div>
+                                        {{-- <span class="mt-2 d-block">We'll never share your email with anyone else.</span> --}}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlInput44">NISN</label>
+                                        <input type="number" class="form-control rounded-0" id="exampleFormControlInput4" maxlength="10">
+                                        {{-- <span class="mt-2 d-block">We'll never share your email with anyone else.</span> --}}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlInput44">NIK/No. KITAS (Untuk WNA)</label>
+                                        <input type="number" name="nik" class="form-control rounded-0" id="exampleFormControlInput4" maxlength="16">
+                                        {{-- <span class="mt-2 d-block">We'll never share your email with anyone else.</span> --}}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlInput44">No. KK</label>
+                                        <input type="number" name="kk" class="form-control rounded-0" id="exampleFormControlInput4">
+                                        {{-- <span class="mt-2 d-block">We'll never share your email with anyone else.</span> --}}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlInput44">Tempat Lahir</label>
+                                        <input type="text" name="tempat_lahir" class="form-control rounded-0" id="exampleFormControlInput4">
+                                        {{-- <span class="mt-2 d-block">We'll never share your email with anyone else.</span> --}}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlInput44">Tgl. Lahir</label>
+                                        <input type="date" name="tgl_lahir" class="form-control rounded-0" id="exampleFormControlInput4">
+                                        {{-- <span class="mt-2 d-block">We'll never share your email with anyone else.</span> --}}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlInput44">No. Registrasi Akta Kelahiran</label>
+                                        <input type="number" name="no_regis_akta" class="form-control rounded-0" id="exampleFormControlInput4">
+                                        <div id="calendar"></div>
+                                        {{-- <span class="mt-2 d-block">We'll never share your email with anyone else.</span> --}}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlInput44">Agama dan Kepercayaan</label> <br>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="islam" name="agama" class="custom-control-input" value="islam">
+                                            <label class="custom-control-label" for="islam">Islam</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="kristen" name="agama" class="custom-control-input" value="kristen/protestan">
+                                            <label class="custom-control-label" for="kristen">Kristen/Protestan</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="khatolik" name="agama" class="custom-control-input" value="khatolik">
+                                            <label class="custom-control-label" for="khatolik">Khatolik</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="hindu" name="agama" class="custom-control-input" value="hindu">
+                                            <label class="custom-control-label" for="hindu">Hindu</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="budha" name="agama" class="custom-control-input" value="budha">
+                                            <label class="custom-control-label" for="budha">Budha</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="konghucu" name="agama" class="custom-control-input" value="konghucu">
+                                            <label class="custom-control-label" for="konghucu">Konghucu</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="yme" name="agama" class="custom-control-input" value="percaya kepada tuhan yme">
+                                            <label class="custom-control-label" for="yme">Percaya Kepada Tuhan YME</label>
+                                        </div>
+                                        {{-- <span class="mt-2 d-block">We'll never share your email with anyone else.</span> --}}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlInput44">Kewarganegaraan</label> <br>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="customRadio2" name="kewarganegaraan" class="custom-control-input" value="wni">
+                                            <label class="custom-control-label" for="customRadio2">Indonesia (WNI)</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="customRadio3" name="kewarganegaraan" class="custom-control-input" value="wna">
+                                            <label class="custom-control-label" for="customRadio3">Asing (WNA)</label>
+                                        </div>
+                                        <input type="text" class="form-control rounded-0" name="negara" id="exampleFormControlInput4" placeholder="Negara" value="">
+                                        <span class="mt-2 d-block"><span style="color:red;">*</span>Isi apabila WNA</span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlInput44">Berkebutuhan Khusus</label> <br>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="tidak" name="berkebutuhan_khusus" class="custom-control-input" value="tidak">
+                                            <label class="custom-control-label" for="tidak">Tidak</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="netra" name="berkebutuhan_khusus" class="custom-control-input" value="netra">
+                                            <label class="custom-control-label" for="netra">Netra (A)</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="rungu" name="berkebutuhan_khusus" class="custom-control-input" value="rungu">
+                                            <label class="custom-control-label" for="rungu">Rungu (B)</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="grahitar" name="berkebutuhan_khusus" class="custom-control-input" value="grahita ringan">
+                                            <label class="custom-control-label" for="grahitar">Grahita Ringan (C)</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="grahitas" name="berkebutuhan_khusus" class="custom-control-input" value="grahita sedang">
+                                            <label class="custom-control-label" for="grahitas">Grahita Sedang (C1)</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="daksar" name="berkebutuhan_khusus" class="custom-control-input" value="daksa ringan">
+                                            <label class="custom-control-label" for="daksar">Daksa Ringan (D)</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="daksas" name="berkebutuhan_khusus" class="custom-control-input" value="daksa sedang">
+                                            <label class="custom-control-label" for="daksas">Daksa Sedang (D1)</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="laras" name="berkebutuhan_khusus" class="custom-control-input" value="laras">
+                                            <label class="custom-control-label" for="laras">Laras (E)</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="wicara" name="berkebutuhan_khusus" class="custom-control-input" value="wicara">
+                                            <label class="custom-control-label" for="wicara">Wicara (F)</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="tuna" name="berkebutuhan_khusus" class="custom-control-input" value="tuna ganda">
+                                            <label class="custom-control-label" for="tuna">Tuna Ganda (G)</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="hiper" name="berkebutuhan_khusus" class="custom-control-input" value="hiper aktif">
+                                            <label class="custom-control-label" for="hiper">Hiper Aktif (H)</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="cerdas" name="berkebutuhan_khusus" class="custom-control-input" value="cerdas istimewa">
+                                            <label class="custom-control-label" for="cerdas">Cerdas Istimewa (I)</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="bakat" name="berkebutuhan_khusus" class="custom-control-input" value="bakat istimewa">
+                                            <label class="custom-control-label" for="bakat">Bakat Istimewa (J)</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="kesulitan" name="berkebutuhan_khusus" class="custom-control-input" value="kesulitan belajar">
+                                            <label class="custom-control-label" for="kesulitan">Kesulitan Belajar (K)</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="narkoba" name="berkebutuhan_khusus" class="custom-control-input" value="narkoba">
+                                            <label class="custom-control-label" for="narkoba">Narkoba (K)</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="indigo" name="berkebutuhan_khusus" class="custom-control-input" value="indigo">
+                                            <label class="custom-control-label" for="indigo">Indigo (O)</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="down" name="berkebutuhan_khusus" class="custom-control-input" value="down sindrome">
+                                            <label class="custom-control-label" for="down">Down Sindrome (P)</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="autis" name="berkebutuhan_khusus" class="custom-control-input" value="autis">
+                                            <label class="custom-control-label" for="autis">Autis (Q)</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlTextarea1">Alamat</label>
+                                        <textarea class="form-control" name="alamat" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlPasswor3">RT</label>
+                                        <input type="number" class="form-control rounded-0" name="rt" maxlength="3" id="exampleFormControlPasswor3">
+                                        <span class="mt-2 d-block"><span style="color:red;">*</span>masukan 3 digit angka, misal 001</span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlPasswor3">RW</label>
+                                        <input type="number" class="form-control rounded-0" name="rw" maxlength="3" id="exampleFormControlPasswor3">
+                                        <span class="mt-2 d-block"><span style="color:red;">*</span>masukan 3 digit angka, misal 001</span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlPasswor3">Dusun</label>
+                                        <input type="text" class="form-control rounded-0" name="dusun" id="exampleFormControlPasswor3">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlPasswor3">Kelurahan/Desa</label>
+                                        <input type="text" class="form-control rounded-0" name="desa" id="exampleFormControlPasswor3">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlPasswor3">Kecamatan</label>
+                                        <input type="text" class="form-control rounded-0" name="kecamatan" id="exampleFormControlPasswor3">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlPasswor3">Kode Pos</label>
+                                        <input type="number" class="form-control rounded-0" name="kode_pos" id="exampleFormControlPasswor3">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlPasswor3">lintan</label>
+                                        <input type="text" class="form-control rounded-0" name="lintang" id="exampleFormControlPasswor3">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlPasswor3">Bujur</label>
+                                        <input type="text" class="form-control rounded-0" name="bujur" id="exampleFormControlPasswor3">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlPasswor3">Tempat Tinggal</label> <br>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="ortu" name="tempat_tinggal" class="custom-control-input" value="bersama orang tua">
+                                            <label class="custom-control-label" for="ortu">Bersama orang tua</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="wali" name="tempat_tinggal" class="custom-control-input" value="wali">
+                                            <label class="custom-control-label" for="wali">Wali</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="kos" name="tempat_tinggal" class="custom-control-input" value="kos">
+                                            <label class="custom-control-label" for="kos">Kos</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="asrama" name="tempat_tinggal" class="custom-control-input" value="asrama">
+                                            <label class="custom-control-label" for="asrama">Asrama</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="panti" name="tempat_tinggal" class="custom-control-input" value="panti asuhan">
+                                            <label class="custom-control-label" for="panti">Panti asuhan</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlPasswor3">Moda Transportasi</label><br>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="jalan" name="transportasi" class="custom-control-input" value="jalan kaki">
+                                            <label class="custom-control-label" for="jalan">Jalan kaki</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="kendaraan" name="transportasi" class="custom-control-input" value="kendaraan pribadi">
+                                            <label class="custom-control-label" for="kendaraan">Kendaraan pribadi</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="umum" name="transportasi" class="custom-control-input" value="kendaraan umum">
+                                            <label class="custom-control-label" for="umum">Kendaraan umum</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="jemput" name="transportasi" class="custom-control-input" value="jemputan sekolah">
+                                            <label class="custom-control-label" for="jemput">Jemputan sekolah</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="kereta" name="transportasi" class="custom-control-input" value="kereta api">
+                                            <label class="custom-control-label" for="kereta">Kereta api</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="ojek" name="transportasi" class="custom-control-input" value="ojek">
+                                            <label class="custom-control-label" for="ojek">Ojek</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="becak" name="transportasi" class="custom-control-input" value="becak">
+                                            <label class="custom-control-label" for="becak">Becak</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="penyebrangan" name="transportasi" class="custom-control-input" value="perahu penyebrangan">
+                                            <label class="custom-control-label" for="penyebrangan">Perahu penyebrangan</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="lainnya" name="transportasi" class="custom-control-input" value="lainnya">
+                                            <label class="custom-control-label" for="lainnya">lainnya</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlPasswor3">Anak keberapa</label>
+                                        <input type="number" class="form-control rounded-0" id="exampleFormControlPasswor3" name="anak_ke" placeholder="Password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlPasswor3">Memiliki KIP</label><br>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="ojek" name="kip" class="custom-control-input" value="iya">
+                                            <label class="custom-control-label" for="ojek">Iya</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="ojek" name="kip" class="custom-control-input" value="tidak">
+                                            <label class="custom-control-label" for="ojek">Tidak</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlPasswor3">Apakah peserta didik tetap menerima KIP</label><br>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="ojek" name="menerima_kip" class="custom-control-input" value="iya">
+                                            <label class="custom-control-label" for="ojek">Iya</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="ojek" name="menerima_kip" class="custom-control-input" value="tidak">
+                                            <label class="custom-control-label" for="ojek">Tidak</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlPasswor3">Alasan menolak PIP</label><br>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="ojek" name="menolak_pip" class="custom-control-input" value="dilarang pemda">
+                                            <label class="custom-control-label" for="ojek">Dilarang pemda karena menerima bantuan serupa</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="ojek" name="menolak_pip" class="custom-control-input" value="menolak">
+                                            <label class="custom-control-label" for="ojek">Menolak</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="ojek" name="menolak_pip" class="custom-control-input" value="mampu">
+                                            <label class="custom-control-label" for="ojek">Sudah mampu</label>
+                                        </div>
+                                    </div>
+                                    </form>
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput44">NISN</label>
-                                    <input type="email" class="form-control rounded-0" id="exampleFormControlInput4" placeholder="Enter Email">
-                                    {{-- <span class="mt-2 d-block">We'll never share your email with anyone else.</span> --}}
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput44">NIK/No. KITAS (Untuk WNA)</label>
-                                    <input type="email" class="form-control rounded-0" id="exampleFormControlInput4" placeholder="Enter Email">
-                                    {{-- <span class="mt-2 d-block">We'll never share your email with anyone else.</span> --}}
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput44">No. KK</label>
-                                    <input type="email" class="form-control rounded-0" id="exampleFormControlInput4" placeholder="Enter Email">
-                                    {{-- <span class="mt-2 d-block">We'll never share your email with anyone else.</span> --}}
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput44">Tempat Lahir</label>
-                                    <input type="email" class="form-control rounded-0" id="exampleFormControlInput4" placeholder="Enter Email">
-                                    {{-- <span class="mt-2 d-block">We'll never share your email with anyone else.</span> --}}
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput44">Tgl. Lahir</label>
-                                    <input type="email" class="form-control rounded-0" id="exampleFormControlInput4" placeholder="Enter Email">
-                                    <div id="calendar"></div>
-                                    {{-- <span class="mt-2 d-block">We'll never share your email with anyone else.</span> --}}
-                                </div>
-
-
-
-
-                                <div class="form-group">
-                                    <label for="exampleFormControlPasswor3">Password</label>
-                                    <input type="password" class="form-control rounded-0" id="exampleFormControlPasswor3" placeholder="Password">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlSelect14">Example select</label>
-                                    <select class="form-control rounded-0" id="exampleFormControlSelect14">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                    </select>
-                                </div>
-                                <div class="form-footer">
-                                    <button type="submit" class="btn btn-secondary btn-pill">Submit</button>
-                                    <button type="submit" class="btn btn-light btn-pill">Cancel</button>
-                                </div>
-
-                                </form>
-
                             </div>
+
+                            <!-- Form Data Ayah Kandung -->
+                            <div class="card card-default">
+                                <div class="card-header">
+                                    <h1>Data Ayah Kandung</h1>
+                                    <a class="btn mdi mdi-code-tags" data-toggle="collapse" href="#collapse-input-square" role="button"
+                                    aria-expanded="false" aria-controls="collapse-input-square"> </a>
+                                </div>
+                                <div class="card-body">
+                                    <form>
+                                        @csrf
+                                        <div class="form-group">
+                                            <label for="exampleFormControlPasswor3">Nama Ayah</label>
+                                            <input type="text" class="form-control rounded-0" id="exampleFormControlPasswor3" name="nama_ayah">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleFormControlPasswor3">NIK</label>
+                                            <input type="number" class="form-control rounded-0" id="exampleFormControlPasswor3" name="nik_ayah">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleFormControlPasswor3">Tahun Lahir</label>
+                                            <input type="number" class="form-control rounded-0" id="exampleFormControlPasswor3" maxlength="4" name="tahun">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleFormControlPasswor3">Pendidikan</label><br>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="tidak_sekolah" name="pendidikan" class="custom-control-input" value="tidak_sekolah">
+                                                <label class="custom-control-label" for="tidak_sekolah">Sudah mampu</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="ojek" name="pendidikan" class="custom-control-input" value="mampu">
+                                                <label class="custom-control-label" for="ojek">Sudah mampu</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="ojek" name="pendidikan" class="custom-control-input" value="mampu">
+                                                <label class="custom-control-label" for="ojek">Sudah mampu</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="ojek" name="pendidikan" class="custom-control-input" value="mampu">
+                                                <label class="custom-control-label" for="ojek">Sudah mampu</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="ojek" name="pendidikan" class="custom-control-input" value="mampu">
+                                                <label class="custom-control-label" for="ojek">Sudah mampu</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="ojek" name="pendidikan" class="custom-control-input" value="mampu">
+                                                <label class="custom-control-label" for="ojek">Sudah mampu</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="ojek" name="pendidikan" class="custom-control-input" value="mampu">
+                                                <label class="custom-control-label" for="ojek">Sudah mampu</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="ojek" name="pendidikan" class="custom-control-input" value="mampu">
+                                                <label class="custom-control-label" for="ojek">Sudah mampu</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="ojek" name="pendidikan" class="custom-control-input" value="mampu">
+                                                <label class="custom-control-label" for="ojek">Sudah mampu</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="ojek" name="pendidikan" class="custom-control-input" value="mampu">
+                                                <label class="custom-control-label" for="ojek">Sudah mampu</label>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
