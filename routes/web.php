@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArchitectController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LogoutController;
@@ -28,9 +29,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'landingPage']);
-Route::get('/chat', function(){
-    return view('chat');
-});
+Route::get('chat', [ChatController::class, 'index'])->name('chat.index');
+Route::get('chat/create', [ChatController::class, 'create'])->name('chat.create');
+Route::post('chat/create', [ChatController::class, 'store'])->name('chat.store');
 Auth::routes();
 
 Route::middleware('auth:web')->group(function () {

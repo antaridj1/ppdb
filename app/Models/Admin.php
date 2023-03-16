@@ -31,4 +31,9 @@ class Admin extends Authenticatable
         'deleted_at'
     ];
 
+    public function chats()
+    {
+        return $this->hasMany(Chat::class, 'user_id');
+    }
+
 }
