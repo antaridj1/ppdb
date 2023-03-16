@@ -47,6 +47,11 @@ class LoginController extends Controller
         return view('auth.admin.login');
     }
 
+    public function showSchoolLoginForm()
+    {
+        return view('student.pages.login');
+    }
+
     public function adminLogin(Request $request)
     {
         $this->validate($request, [

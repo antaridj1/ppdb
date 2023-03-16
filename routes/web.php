@@ -67,4 +67,14 @@ Route::prefix('ppdb')->group(function () {
     Route::get('/', function () {
         return view('student.pages.landingpage');
     });
+    Route::get('/login', [LoginController::class, 'showSchoolLoginForm']);
+
+    Route::prefix('sdn-01-gianyar')->group(function () { //ini akan jadi params
+        Route::get('/dashboard', function(){
+            return view('student.pages.dashboard');
+        });
+    });
+
+    // Masih blm bisaa
+    Route::get('/{sd}', [LandingPageSchool::class, 'landingPage']);
 });

@@ -36,22 +36,13 @@
           <li><a class="nav-link scrollto" href="#team">Team</a></li> --}}
           <li class="dropdown"><a href="#"><span>Pendaftaran Peserta Didik</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">SDN 1 Gianyar</a></li>
-              {{-- <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li> --}}
-              <li><a href="#">SDN 2 Gianyar</a></li>
-              <li><a href="#">SDN 3 Gianyar</a></li>
-              <li><a href="#">SDN 4 Gianyar</a></li>
-              <li><a href="#">SDN 5 Gianyar</a></li>
-              <li><a href="#">SDN 6 Gianyar</a></li>
-              <li><a href="#">SDN 7 Gianyar</a></li>
+              <li><a href="{{ url('ppdb/sdn-01-gianyar') }}">SDN 1 Gianyar</a></li>
+              <li><a href="{{ url('ppdb/sdn-02-gianyar') }}">SDN 2 Gianyar</a></li>
+              <li><a href="{{ url('ppdb/sdn-03-gianyar') }}">SDN 3 Gianyar</a></li>
+              <li><a href="{{ url('ppdb/sdn-04-gianyar') }}">SDN 4 Gianyar</a></li>
+              <li><a href="{{ url('ppdb/sdn-05-gianyar') }}">SDN 5 Gianyar</a></li>
+              <li><a href="{{ url('ppdb/sdn-06-gianyar') }}">SDN 6 Gianyar</a></li>
+              <li><a href="{{ url('ppdb/sdn-07-gianyar') }}">SDN 7 Gianyar</a></li>
             </ul>
           </li>
 
