@@ -3,7 +3,7 @@
 
 @section('content')  
 
-<div class="content">
+<div class="content" data-url-create="{{route('chat.create')}}">
     <div class="row no-gutters">
         <div class="col-lg-5 col-xxl-4">
             <div class="card card-default chat-left-sidebar">
@@ -112,7 +112,7 @@
             </div>
 
             <div class="chat-footer">
-                <form>
+                <form data-url="{{route('chat.store')}}">
                     <div class="input-group input-group-chat">
                         <div class="input-group-prepend">
                         <span class="emoticon-icon mdi mdi-emoticon-happy-outline"></span>
@@ -125,4 +125,16 @@
     </div>
 </div>
 </div>
+
+<script src="{{asset('assets/plugins/jquery/jquery.min.js')}}"></script>
+<script>
+    $.ajax({
+        url: $('.content').data('url-create'),
+        method: "GET",
+        success: function(response){
+            console.log(response)
+        }
+    })
+</script>
+
 @endsection
