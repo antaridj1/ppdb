@@ -28,7 +28,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'landingPage']);
-Route::get('home', [HomeController::class, 'index'])->name('home');
+Route::get('/chat', function(){
+    return view('chat');
+});
 Auth::routes();
 
 Route::middleware('auth:web')->group(function(){
@@ -41,7 +43,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
     Route::post('login', [LoginController::class, 'adminLogin'])->name('login');
 
     Route::middleware('auth:admin')->group(function(){
-        
+        Route::get('home', [HomeController::class, 'index'])->name('home');
         Route::get('profile', [ProfileController::class, 'editAdmin'])->name('profile.editAdmin');
         Route::patch('profile', [ProfileController::class, 'updateAdmin'])->name('profile.updateAdmin');
 
