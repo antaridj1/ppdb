@@ -16,22 +16,15 @@ class AdminSeeder extends Seeder
     {
        $admins =  [
             [
-                'name' => 'Arsitek A',
-                'email' => 'arsitek1@gmail.com',
-                'password' => bcrypt('12345678'),
-                'phone_number'  => '089765456765',
-                'isAdmin' => false
-            ],
-            [
-                'name' => 'Arsitek B',
-                'email' => 'arsitek2@gmail.com',
+                'name' => 'Operator',
+                'email' => 'operator@gmail.com',
                 'password' => bcrypt('12345678'),
                 'phone_number'  => '089765456765',
                 'isAdmin' => false
             ],
             [
                 'name' => 'Admin',
-                'email' => 'admin@gmail.com',
+                'email' => 'superadmin@gmail.com',
                 'password' => bcrypt('12345678'),
                 'phone_number'  => '089765456765',
                 'isAdmin' => true

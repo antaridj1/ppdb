@@ -65,7 +65,7 @@
             <div class="col-12">
                 <div class="card card-default">
                     <div class="card-header">
-                        <h2>Products Inventory</h2>
+                        <h2>Pendaftaran Hari Ini</h2>
                         <div class="dropdown">
                             <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false"> Yearly Chart
