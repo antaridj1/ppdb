@@ -16,7 +16,7 @@ class CreateDataWaliTable extends Migration
         Schema::create('data_wali', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->integer('nik');
+            $table->string('nik');
             $table->integer('tahun');
             $table->set('pendidikan', ['Tidak Sekolah', 'Putus SD', 'SD Sederajat', 'SMP Sederajat', 'SMA Sederajat', 'D1', 'D2', 'D3', 'S1', 'S2']);
             $table->set('pekerjaan', ['Tidak Bekerja', 'Nelayan', 'Petani', 'Peternak', 'PNS/TNI/POLRI', 'Karyawan Swasta', 'Pedagang Kecil', 'Pedangan Besar', 'Wiraswasta', 'Wirausaha', 'Buruh', 'Pensiun']);
