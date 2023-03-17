@@ -15,11 +15,11 @@ class CreatePesertaDidikTable extends Migration
     {
         Schema::create('peserta_didik', function (Blueprint $table) {
             $table->id();
-            $table->foreign('data_pribadi_id')->references('id')->on('data_pribadi');
-            $table->foreign('data_ayah_id')->references('id')->on('data_ayah');
-            $table->foreign('data_ibu_id')->references('id')->on('data_ibu');
-            $table->foreign('data_wali')->references('id')->on('data_wali');
-            $table->foreign('kontak_id')->references('id')->on('kontak');
+            $table->integer('data_pribadi_id');
+            $table->integer('data_ayah_id');
+            $table->integer('data_ibu_id');
+            $table->integer('data_wali');
+            $table->integer('kontak_id');
             $table->timestamps();
             $table->softDeletes();
         });

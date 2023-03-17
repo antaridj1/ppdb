@@ -15,7 +15,6 @@ class CreateDataWaliTable extends Migration
     {
         Schema::create('data_wali', function (Blueprint $table) {
             $table->id();
-            $table->id();
             $table->string('nama');
             $table->integer('nik');
             $table->integer('tahun');

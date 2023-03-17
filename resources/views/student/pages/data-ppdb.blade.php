@@ -736,44 +736,122 @@
                                         <div class="form-group">
                                             <label for="exampleFormControlPasswor3">Pendidikan</label><br>
                                             <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                                                <input type="radio" id="tidak_sekolah" name="pendidikan" class="custom-control-input" value="tidak_sekolah">
-                                                <label class="custom-control-label" for="tidak_sekolah">Sudah mampu</label>
+                                                <input type="radio" id="tidak_sekolah" name="pendidikan" class="custom-control-input" value="Tidak Sekolah">
+                                                <label class="custom-control-label" for="tidak_sekolah">Tidak Sekolah</label>
                                             </div>
                                             <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                                                <input type="radio" id="ojek" name="pendidikan" class="custom-control-input" value="mampu">
-                                                <label class="custom-control-label" for="ojek">Sudah mampu</label>
+                                                <input type="radio" id="putus-sd" name="pendidikan" class="custom-control-input" value="Putus SD">
+                                                <label class="custom-control-label" for="putus-sd">Putus SD</label>
                                             </div>
                                             <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                                                <input type="radio" id="ojek" name="pendidikan" class="custom-control-input" value="mampu">
-                                                <label class="custom-control-label" for="ojek">Sudah mampu</label>
+                                                <input type="radio" id="sd" name="pendidikan" class="custom-control-input" value="SD Sederajat">
+                                                <label class="custom-control-label" for="sd">SD Sederajat</label>
                                             </div>
                                             <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                                                <input type="radio" id="ojek" name="pendidikan" class="custom-control-input" value="mampu">
-                                                <label class="custom-control-label" for="ojek">Sudah mampu</label>
+                                                <input type="radio" id="smp" name="pendidikan" class="custom-control-input" value="SMP Sederajat">
+                                                <label class="custom-control-label" for="smp">SMP Sederajat</label>
                                             </div>
                                             <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                                                <input type="radio" id="ojek" name="pendidikan" class="custom-control-input" value="mampu">
-                                                <label class="custom-control-label" for="ojek">Sudah mampu</label>
+                                                <input type="radio" id="sma" name="pendidikan" class="custom-control-input" value="SMA Sederajat">
+                                                <label class="custom-control-label" for="sma">SMA Sederajat</label>
                                             </div>
                                             <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                                                <input type="radio" id="ojek" name="pendidikan" class="custom-control-input" value="mampu">
-                                                <label class="custom-control-label" for="ojek">Sudah mampu</label>
+                                                <input type="radio" id="d1" name="pendidikan" class="custom-control-input" value="D1">
+                                                <label class="custom-control-label" for="d1">D1</label>
                                             </div>
                                             <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                                                <input type="radio" id="ojek" name="pendidikan" class="custom-control-input" value="mampu">
-                                                <label class="custom-control-label" for="ojek">Sudah mampu</label>
+                                                <input type="radio" id="d2" name="pendidikan" class="custom-control-input" value="D2">
+                                                <label class="custom-control-label" for="d2">D2</label>
                                             </div>
                                             <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                                                <input type="radio" id="ojek" name="pendidikan" class="custom-control-input" value="mampu">
-                                                <label class="custom-control-label" for="ojek">Sudah mampu</label>
+                                                <input type="radio" id="d3" name="pendidikan" class="custom-control-input" value="D3">
+                                                <label class="custom-control-label" for="d3">D3</label>
                                             </div>
                                             <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                                                <input type="radio" id="ojek" name="pendidikan" class="custom-control-input" value="mampu">
-                                                <label class="custom-control-label" for="ojek">Sudah mampu</label>
+                                                <input type="radio" id="s1" name="pendidikan" class="custom-control-input" value="S1">
+                                                <label class="custom-control-label" for="s1">S1</label>
                                             </div>
                                             <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                                                <input type="radio" id="ojek" name="pendidikan" class="custom-control-input" value="mampu">
-                                                <label class="custom-control-label" for="ojek">Sudah mampu</label>
+                                                <input type="radio" id="s2" name="pendidikan" class="custom-control-input" value="S2">
+                                                <label class="custom-control-label" for="s2">S2</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleFormControlPasswor3">Pekerjaan</label><br>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="tidak" name="pekerjaan" class="custom-control-input" value="Tidak Bekerja">
+                                                <label class="custom-control-label" for="tidak">Tidak Bekerja</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="nelayan" name="pekerjaan" class="custom-control-input" value="Nelayan">
+                                                <label class="custom-control-label" for="nelayan">Nelayan</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="petani" name="pekerjaan" class="custom-control-input" value="Petani">
+                                                <label class="custom-control-label" for="petani">Petani</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="peternak" name="pekerjaan" class="custom-control-input" value="Peternak">
+                                                <label class="custom-control-label" for="peternak">Peternak</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="pns" name="pekerjaan" class="custom-control-input" value="PNS/TNI/POLRI">
+                                                <label class="custom-control-label" for="pns">PNS/TNI/POLRI</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="karyawan" name="pekerjaan" class="custom-control-input" value="Karyawan Swasta">
+                                                <label class="custom-control-label" for="karyawan">Karyawan Swasta</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="pedagangk" name="pekerjaan" class="custom-control-input" value="Pedagang Kecil">
+                                                <label class="custom-control-label" for="pedagangk">Pedagang Kecil</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="pedagangb" name="pekerjaan" class="custom-control-input" value="Pedagang Besar">
+                                                <label class="custom-control-label" for="pedagangb">Pedagang Besar</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="wiraswasta" name="pekerjaan" class="custom-control-input" value="Wiraswasta">
+                                                <label class="custom-control-label" for="wiraswasta">Wiraswasta</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="wirausaha" name="pekerjaan" class="custom-control-input" value="Wirausaha">
+                                                <label class="custom-control-label" for="wirausaha">Wirausaha</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="buruh" name="pekerjaan" class="custom-control-input" value="buruh">
+                                                <label class="custom-control-label" for="buruh">Buruh</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="pensiun" name="pekerjaan" class="custom-control-input" value="pensiun">
+                                                <label class="custom-control-label" for="pensiun">Pensiun</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleFormControlPasswor3">Penghasilan Bulanan</label><br>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="kecil" name="penghasilan" class="custom-control-input" value="< Rp 500.000">
+                                                <label class="custom-control-label" for="kecil">< Rp 500.000</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="sedang" name="penghasilan" class="custom-control-input" value="Rp 500.000 - Rp 999.999">
+                                                <label class="custom-control-label" for="sedang">Rp 500.000 - Rp 999.999</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="lumayan" name="penghasilan" class="custom-control-input" value="Rp 1.000.000 - Rp 1.999.999">
+                                                <label class="custom-control-label" for="lumayan">Rp 1.000.000 - Rp 1.999.999</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="menengah" name="penghasilan" class="custom-control-input" value="Rp 2.000.000 - Rp 4.999.999">
+                                                <label class="custom-control-label" for="menengah">Rp 2.000.000 - Rp 4.999.999</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="atas" name="penghasilan" class="custom-control-input" value="Rp 5.000.000 - Rp 20.000.000">
+                                                <label class="custom-control-label" for="atas">Rp 5.000.000 - Rp 20.000.000</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="lebih" name="penghasilan" class="custom-control-input" value="> Rp 20.000.000">
+                                                <label class="custom-control-label" for="lebih">> Rp 20.000.000</label>
                                             </div>
                                         </div>
                                     </form>

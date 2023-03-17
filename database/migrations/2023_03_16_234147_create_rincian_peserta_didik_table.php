@@ -15,10 +15,10 @@ class CreateRincianPesertaDidikTable extends Migration
     {
         Schema::create('rincian_peserta_didik', function (Blueprint $table) {
             $table->id();
-            $table->foreign('data_periodik_id')->references('id')->on('data_periodik');
+            $table->integer('data_periodik_id');
             $table->string('prestasi_id');
             $table->string('beasiswa_id');
-            $table->foreign('kesejahteraan')->references('id')->on('kesejahteraan');
+            $table->integer('kesejahteraan');
             $table->timestamps();
             $table->softDeletes();
         });
