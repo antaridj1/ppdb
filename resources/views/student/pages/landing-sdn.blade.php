@@ -45,10 +45,10 @@
 <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
     <div class="container" data-aos="zoom-out" data-aos-delay="100">
-      <h1>Selamat datang di <span>PPDB</span></h1>
+      <h1>SDN 01 Gianyar</h1>
       <h2>Pendaftaran Peserta Didik Baru secara Online</h2>
       <div class="d-flex">
-        <a href="#services" class="btn-get-started scrollto">Daftar Sekolah</a>
+        <a href="http://127.0.0.1:8000/ppdb/login" class="btn-get-started scrollto">Daftar Sekolah</a>
         {{-- <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a> --}}
       </div>
     </div>

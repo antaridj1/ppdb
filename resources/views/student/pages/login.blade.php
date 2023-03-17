@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+
+<!--
+ // WEBSITE: https://themefisher.com
+ // TWITTER: https://twitter.com/themefisher
+ // FACEBOOK: https://www.facebook.com/themefisher
+ // GITHUB: https://github.com/themefisher/
+-->
+
 <html lang="en">
 <head>
   <head>
@@ -10,31 +18,7 @@
 
   <!-- GOOGLE FONTS -->
   <link href="https://fonts.googleapis.com/css?family=Karla:400,700|Roboto" rel="stylesheet">
-  <link href="{{ asset('assets/plugins/material/css/materialdesignicons.min.css') }}" rel="stylesheet" />
-  <link href="{{ asset('assets/plugins/simplebar/simplebar.css') }}" rel="stylesheet" />
-
-  <!-- PLUGINS CSS STYLE -->
-  <link href="{{ asset('assets/plugins/nprogress/nprogress.css') }}" rel="stylesheet" />
-
-  <!-- MONO CSS -->
-  <link id="main-css-href" rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
-
-
-
-
-  <!-- FAVICON -->
-  <link href="{{ asset('assets/images/favicon.png') }}" rel="shortcut icon" />
-
-  <!--
-    HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
-  -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
-  @include('student.components.css')
-  <script src="{{ asset('assets/plugins/nprogress/nprogress.js') }}"></script>
+    @include('student.components.cssadmin')
 </head>
 
 </head>
@@ -44,17 +28,15 @@
             <div class="row justify-content-center">
               <div class="col-lg-6 col-md-10">
                 <div class="card card-default mb-0">
-                  {{-- <div class="card-header pb-0">
-                    <div class="app-brand w-100 d-flex justify-content-center border-bottom-0">
-                      <a class="w-auto pl-0" href="/index.html">
-                        <img src="{{ asset('assets/images/logo.png') }}" alt="Mono">
-                        <h1 class="logo">PPDB<span>.</span><span class="brand-name text-dark">MONO</span></h1>
-                      </a>
+                  <div class="card-header pb-0">
+                    <div class="w-100 d-flex justify-content-center border-bottom-0">
+                        {{-- <img src="images/logo.png" alt="Mono"> --}}
+                        <h3 class="brand-name text-dark font-weight-bold">Login</h3>
                     </div>
-                  </div> --}}
-                  <div class="card-body px-5 pb-5 pt-5">
+                  </div>
+                  <div class="card-body px-5 pb-5 pt-0 mt-3">
 
-                    <h4 class="text-dark mb-6 mt-3 text-center">Login</h4>
+                    {{-- <h4 class="text-dark mb-6 text-center">Login</h4> --}}
 
                     <form action="/index.html">
                       <div class="row">
@@ -67,7 +49,7 @@
                         </div>
                         <div class="col-md-12">
 
-                          <div class="d-flex justify-content-end mb-3">
+                          <div class="d-flex justify-content-end mb-5">
 
                             {{-- <div class="custom-control custom-checkbox mr-3 mb-3">
                               <input type="checkbox" class="custom-control-input" id="customCheck2">
@@ -77,12 +59,11 @@
                             <a class="text-color" href="#"> Forgot password? </a>
 
                           </div>
-                          <div class="col text-center">
-                            <button type="submit" class="btn btn-primary btn-pill mb-4 text-center" style="text-align: center;">Login</button>
-                          </div>
 
-                          <p style="text-align: center;">Belum memiliki akun?
-                            <a class="text-blue" href="sign-up.html">Buat akun</a>
+                          <button type="submit" class="btn btn-primary btn-pill mt-3 mb-4 btn-block">Sign In</button>
+
+                          <p class="text-center">Don't have an account yet ?
+                            <a class="text-blue" href="sign-up.html">Sign Up</a>
                           </p>
                         </div>
                       </div>
@@ -93,6 +74,6 @@
             </div>
           </div>
         </div>
-    @include('student.components.js')
+
 </body>
 </html>

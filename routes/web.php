@@ -76,6 +76,9 @@ Route::prefix('ppdb')->group(function () {
     });
     //siswa login di sini
     Route::get('/login', [LoginController::class, 'showSchoolLoginForm']);
+    Route::get('/sdn-01-gianyar', function () {
+        return view('student.pages.landing-sdn');
+    });
 
     //cek siswa termasuk di akun sekolah yang mana, nanti masuknya ke sini
     Route::prefix('sdn-01-gianyar')->group(function () { //ini akan jadi params
@@ -93,6 +96,6 @@ Route::prefix('ppdb')->group(function () {
         });
     });
 
-    // Masih blm bisaa
     Route::get('/{sd}', [LandingPageSchool::class, 'landingPage']);
+
 });
