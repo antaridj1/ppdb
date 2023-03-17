@@ -17,13 +17,13 @@ class CreateDataPribadiTable extends Migration
             $table->id();
             $table->string('nama_lengkap', 100);
             $table->set('gender', ['laki-laki', 'perempuan']);
-            $table->integer('nisn');
-            $table->integer('nik');
-            $table->integer('kk');
+            $table->string('nisn');
+            $table->string('nik');
+            $table->string('kk');
             $table->string('tempat_lahir', 100);
             $table->date('tgl_lahir');
-            $table->integer('akta_kelahiran');
-            $table->set('gender', ['islam', 'kristen/protestan', 'khatolik', 'hindu', 'budha', 'konghucu', 'kepercayaan kepada tuhan yme']);
+            $table->string('akta_kelahiran');
+            $table->set('agama', ['islam', 'kristen/protestan', 'khatolik', 'hindu', 'budha', 'konghucu', 'kepercayaan kepada tuhan yme']);
             $table->set('kewarganegaraan', ['wni', 'wna']);
             $table->string('negara')->default('indonesia');
             $table->set('berkebutuhan_khusus', ['tidak', 'netra', 'rungu', 'grahita ringan', 'grahita sedang', 'daksa ringan', 'daksa sedang', 'laras','wicara', 'tuna jganda', 'hiper aktif', 'cerdas aktif', 'bakat istimewa', 'kesulitan belajar', 'narkoba', 'indigo', 'down sindrome', 'autis']);

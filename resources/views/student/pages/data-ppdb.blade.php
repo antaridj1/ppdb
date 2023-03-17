@@ -853,6 +853,81 @@
                                                 <input type="radio" id="lebih" name="penghasilan" class="custom-control-input" value="> Rp 20.000.000">
                                                 <label class="custom-control-label" for="lebih">> Rp 20.000.000</label>
                                             </div>
+                                            <div class="form-group">
+                                        <label for="exampleFormControlInput44">Berkebutuhan Khusus</label> <br>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="tidak" name="berkebutuhan_khusus" class="custom-control-input" value="tidak">
+                                            <label class="custom-control-label" for="tidak">Tidak</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="netra" name="berkebutuhan_khusus" class="custom-control-input" value="netra">
+                                            <label class="custom-control-label" for="netra">Netra (A)</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="rungu" name="berkebutuhan_khusus" class="custom-control-input" value="rungu">
+                                            <label class="custom-control-label" for="rungu">Rungu (B)</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="grahitar" name="berkebutuhan_khusus" class="custom-control-input" value="grahita ringan">
+                                            <label class="custom-control-label" for="grahitar">Grahita Ringan (C)</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="grahitas" name="berkebutuhan_khusus" class="custom-control-input" value="grahita sedang">
+                                            <label class="custom-control-label" for="grahitas">Grahita Sedang (C1)</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="daksar" name="berkebutuhan_khusus" class="custom-control-input" value="daksa ringan">
+                                            <label class="custom-control-label" for="daksar">Daksa Ringan (D)</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="daksas" name="berkebutuhan_khusus" class="custom-control-input" value="daksa sedang">
+                                            <label class="custom-control-label" for="daksas">Daksa Sedang (D1)</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="laras" name="berkebutuhan_khusus" class="custom-control-input" value="laras">
+                                            <label class="custom-control-label" for="laras">Laras (E)</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="wicara" name="berkebutuhan_khusus" class="custom-control-input" value="wicara">
+                                            <label class="custom-control-label" for="wicara">Wicara (F)</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="tuna" name="berkebutuhan_khusus" class="custom-control-input" value="tuna ganda">
+                                            <label class="custom-control-label" for="tuna">Tuna Ganda (G)</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="hiper" name="berkebutuhan_khusus" class="custom-control-input" value="hiper aktif">
+                                            <label class="custom-control-label" for="hiper">Hiper Aktif (H)</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="cerdas" name="berkebutuhan_khusus" class="custom-control-input" value="cerdas istimewa">
+                                            <label class="custom-control-label" for="cerdas">Cerdas Istimewa (I)</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="bakat" name="berkebutuhan_khusus" class="custom-control-input" value="bakat istimewa">
+                                            <label class="custom-control-label" for="bakat">Bakat Istimewa (J)</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="kesulitan" name="berkebutuhan_khusus" class="custom-control-input" value="kesulitan belajar">
+                                            <label class="custom-control-label" for="kesulitan">Kesulitan Belajar (K)</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="narkoba" name="berkebutuhan_khusus" class="custom-control-input" value="narkoba">
+                                            <label class="custom-control-label" for="narkoba">Narkoba (K)</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="indigo" name="berkebutuhan_khusus" class="custom-control-input" value="indigo">
+                                            <label class="custom-control-label" for="indigo">Indigo (O)</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="down" name="berkebutuhan_khusus" class="custom-control-input" value="down sindrome">
+                                            <label class="custom-control-label" for="down">Down Sindrome (P)</label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                            <input type="radio" id="autis" name="berkebutuhan_khusus" class="custom-control-input" value="autis">
+                                            <label class="custom-control-label" for="autis">Autis (Q)</label>
+                                        </div>
+                                    </div>
                                         </div>
                                     </form>
                                 </div>
