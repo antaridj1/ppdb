@@ -30,6 +30,10 @@ class RedirectIfAuthenticated
             if ($guard == "web" && Auth::guard($guard)->check()) {
                 return redirect(RouteServiceProvider::HOME);
             }
+
+            if ($guard == "siswa" && Auth::guard($guard)->check()) {
+                return redirect(RouteServiceProvider::HOME);
+            }
         }
         return $next($request);
     }

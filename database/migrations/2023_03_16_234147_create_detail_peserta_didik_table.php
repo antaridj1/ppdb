@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRincianPesertaDidikTable extends Migration
+class CreateDetailPesertaDidikTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateRincianPesertaDidikTable extends Migration
      */
     public function up()
     {
-        Schema::create('rincian_peserta_didik', function (Blueprint $table) {
+        Schema::create('detail_peserta_didik', function (Blueprint $table) {
             $table->id();
             $table->integer('data_periodik_id');
             $table->string('prestasi_id');
             $table->string('beasiswa_id');
-            $table->integer('kesejahteraan');
+            $table->integer('kesejahteraan_id');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -31,6 +31,6 @@ class CreateRincianPesertaDidikTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rincian_peserta_didik');
+        Schema::dropIfExists('detail_peserta_didik');
     }
 }

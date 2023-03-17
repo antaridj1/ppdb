@@ -1,0 +1,27 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class DataWali extends Model
+{
+    use HasFactory;
+    use SoftDeletes;
+
+    protected $fillable = [
+        'nama_wali',
+        'nik_wali',
+        'tahun_wali',
+        'pendidikan_wali',
+        'pekerjaan_wali',
+        'penghasilan_wali',
+        'berkebutuhan_khusus_wali',
+    ];
+
+    public function pesertaDidik()
+    {
+        return $this->belongsTo(PesertaDidik::class, 'data_wali_id');
+    }
+}

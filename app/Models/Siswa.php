@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Siswa extends Authenticatable
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $guard= 'siswa';
 
@@ -22,4 +23,9 @@ class Siswa extends Authenticatable
     protected $hidden = [
         'password'
     ];
+
+    public function pesertaDidik()
+    {
+        return $this->belongsTo(PesertaDidik::class, 'siswa_id');
+    }
 }

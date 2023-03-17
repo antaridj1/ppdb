@@ -8,6 +8,8 @@ class SekolahController extends Controller
 {
     public function landingPageSekolah()
     {
-        Sekolah::where('id', request('id'))->get();
+        $data = Sekolah::where('id', request('id'))->get();
+
+        return view('student.pages.landing-sdn', $data);
     }
 }
