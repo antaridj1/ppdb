@@ -14964,7 +14964,6 @@ table.dataTable thead .sorting {
 }
 .input-group-chat .form-control {
   border-color: #e5e9f2;
-  border-left-color: transparent;
   height: 3.125rem;
 }
 .input-group-chat .form-control:focus {
@@ -17448,3 +17447,15 @@ html[dir=rtl] .sidebar li > a .caret:before {
   font-weight: 500;
 }
 /*# sourceMappingURL=style.css.map */
+.chatroom{
+  border-bottom: 1px solid #9ec1ef46;
+}
+.chatroom:hover{
+  background-color: #9ec1ef46;
+}
+.chatroom-active {
+  background-color: #9ec1ef46;
+}
+.icon-burger-mini:before{
+  color: white;
+}

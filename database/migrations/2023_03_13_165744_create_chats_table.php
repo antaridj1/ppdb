@@ -19,6 +19,7 @@ class CreateChatsTable extends Migration
             $table->unsignedBigInteger('admin_id');
             $table->boolean('isViewed')->default(false);
             $table->text('messages');
+            $table->string('from');
             $table->timestamps();
         });
     }

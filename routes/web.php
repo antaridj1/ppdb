@@ -29,9 +29,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'landingPage']);
-Route::get('chat', [ChatController::class, 'index'])->name('chat.index');
-Route::get('chat/create', [ChatController::class, 'create'])->name('chat.create');
-Route::post('chat/create', [ChatController::class, 'store'])->name('chat.store');
+
 Auth::routes();
 
 Route::middleware('auth:web')->group(function () {
@@ -60,6 +58,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
                 '' => 'user'
             ]);
             Route::patch('/{user}/update-status', [UserController::class, 'update_status'])->name('updateStatus');
+        });
+
+        Route::group(['prefix' => 'chat', 'as' => 'chat.'], function () {
+            Route::get('/', [ChatController::class, 'index'])->name('index');
+            Route::get('create/{user}', [ChatController::class, 'create'])->name('create');
+            Route::post('create/{user}', [ChatController::class, 'store'])->name('store');
         });
 
         Route::post('logout', [LogoutController::class, 'adminLogout'])->name('logout');

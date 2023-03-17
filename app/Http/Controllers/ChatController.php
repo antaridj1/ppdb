@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Chat;
+use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class ChatController extends Controller
 {
@@ -13,9 +16,13 @@ class ChatController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('chat');
+        $chatrooms = Chat::selectRaw('user_id, admin_id, messages, created_at, COUNT(CASE WHEN isViewed = false AND from = "web" THEN 1 ELSE NULL END) as unread_count')
+            ->groupBy('user_id')
+            ->get();
+
+        return view('chat.index', compact('chatrooms'));
     }
 
     /**
@@ -23,20 +30,34 @@ class ChatController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(User $user)
     {
-        $chat = Chat::where('admin_id', Auth::id());
-        if($chat){
-             $chats = $chat->orderBy('created_at','DESC')->get();
-        } else {
-            $chats = null;
+        try 
+        {
+            $chatroom = Chat::selectRaw('user_id, admin_id, messages, created_at')->groupBy('user_id')->get();
+
+            $chat = Chat::where('user_id', $user->id);
+
+            if($chat){
+                $chats = $chat->get();
+            } else {
+                $chats = null;
+            }
+
+            $response = []; 
+            $response['status'] = 'success';
+            $response['data'] = $chats;
+            $response['user_id'] = $user->id;
+
+            return response()->json($response, 200);
+        } catch (Exception $e) {
+            Log::error($e->getMessage());
+            return response()->json([
+                'data' => [],
+                'message' => trans('api.message.order.failed_store'),
+            ], 500);
         }
        
-        $response = []; 
-        $response['status'] = 'success';
-        $response['data'] = $chats;
-
-        return response()->json($response, 200);
     }
 
     /**
@@ -47,7 +68,24 @@ class ChatController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        try {
+            $data = Chat::create([
+                'user_id' => 1,
+                'admin_id' => Auth::id(),
+                'messages' => $request->chat,
+                'from' => Auth::getDefaultDriver()
+            ]);
+
+            return response()->json([
+                'status' => 'success',
+                'data' => $data
+            ], 200);
+        } catch (Exception $e) {
+            Log::error($e->getMessage());
+            return response()->json([
+                'message' => 'failed',
+            ], 500);
+        }
     }
 
     /**
