@@ -79,6 +79,9 @@ Route::prefix('ppdb')->group(function () {
         Route::get('/data-peserta-didik', function(){
             return view('student.pages.data-ppdb');
         });
+        Route::get('/profile', function(){
+            return view('student.pages.data-ppdb');
+        });
     });
 
     // Masih blm bisaa
