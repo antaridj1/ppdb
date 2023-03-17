@@ -36,13 +36,13 @@
           <li><a class="nav-link scrollto" href="#team">Team</a></li> --}}
           <li class="dropdown"><a href="#"><span>Pendaftaran Peserta Didik</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="{{ url('ppdb/sdn-01-gianyar') }}">SDN 1 Gianyar</a></li>
-              <li><a href="{{ url('ppdb/sdn-02-gianyar') }}">SDN 2 Gianyar</a></li>
-              <li><a href="{{ url('ppdb/sdn-03-gianyar') }}">SDN 3 Gianyar</a></li>
-              <li><a href="{{ url('ppdb/sdn-04-gianyar') }}">SDN 4 Gianyar</a></li>
-              <li><a href="{{ url('ppdb/sdn-05-gianyar') }}">SDN 5 Gianyar</a></li>
-              <li><a href="{{ url('ppdb/sdn-06-gianyar') }}">SDN 6 Gianyar</a></li>
-              <li><a href="{{ url('ppdb/sdn-07-gianyar') }}">SDN 7 Gianyar</a></li>
+              <li><a href="{{ url('ppdb/sdn/1') }}">SDN 1 Gianyar</a></li>
+              <li><a href="{{ url('ppdb/sdn/2') }}">SDN 2 Gianyar</a></li>
+              <li><a href="{{ url('ppdb/sdn/3') }}">SDN 3 Gianyar</a></li>
+              <li><a href="{{ url('ppdb/sdn/4') }}">SDN 4 Gianyar</a></li>
+              <li><a href="{{ url('ppdb/sdn/5') }}">SDN 5 Gianyar</a></li>
+              <li><a href="{{ url('ppdb/sdn/6') }}">SDN 6 Gianyar</a></li>
+              <li><a href="{{ url('ppdb/sdn/7') }}">SDN 7 Gianyar</a></li>
             </ul>
           </li>
 

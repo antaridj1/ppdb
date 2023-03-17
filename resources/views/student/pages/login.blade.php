@@ -30,43 +30,31 @@
                 <div class="card card-default mb-0">
                   <div class="card-header pb-0">
                     <div class="w-100 d-flex justify-content-center border-bottom-0">
-                        {{-- <img src="images/logo.png" alt="Mono"> --}}
                         <h3 class="brand-name text-dark font-weight-bold">Login</h3>
                     </div>
                   </div>
                   <div class="card-body px-5 pb-5 pt-0 mt-3">
-
-                    {{-- <h4 class="text-dark mb-6 text-center">Login</h4> --}}
-
-                    <form action="/index.html">
-                      <div class="row">
-                        <div class="form-group col-md-12 mb-4">
-                          <input type="email" class="form-control input-lg" id="email" aria-describedby="emailHelp"
-                            placeholder="email">
+                    <form action="{{ route('login.siswa') }}" method="POST">
+                        @csrf
+                        <div class="row">
+                            <input type="hidden" name="id" value="{{ request()->route('id') }}">
+                            <div class="form-group col-md-12 mb-4">
+                            <input type="email" class="form-control input-lg" id="email" aria-describedby="emailHelp"
+                                placeholder="email">
+                            </div>
+                            <div class="form-group col-md-12 ">
+                            <input type="password" class="form-control input-lg" id="password" placeholder="Password">
+                            </div>
+                            <div class="col-md-12">
+                            <div class="d-flex justify-content-end mb-5">
+                                <a class="text-color" href="#"> Forgot password? </a>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-pill mt-3 mb-4 btn-block">Sign In</button>
+                            <p class="text-center">Belum punya akun ?
+                                <a class="text-blue" href="sign-up.html">Buat Akun</a>
+                            </p>
+                            </div>
                         </div>
-                        <div class="form-group col-md-12 ">
-                          <input type="password" class="form-control input-lg" id="password" placeholder="Password">
-                        </div>
-                        <div class="col-md-12">
-
-                          <div class="d-flex justify-content-end mb-5">
-
-                            {{-- <div class="custom-control custom-checkbox mr-3 mb-3">
-                              <input type="checkbox" class="custom-control-input" id="customCheck2">
-                              <label class="custom-control-label" for="customCheck2">Remember me</label>
-                            </div> --}}
-
-                            <a class="text-color" href="#"> Forgot password? </a>
-
-                          </div>
-
-                          <button type="submit" class="btn btn-primary btn-pill mt-3 mb-4 btn-block">Sign In</button>
-
-                          <p class="text-center">Belum punya akun ?
-                            <a class="text-blue" href="sign-up.html">Buat Akun</a>
-                          </p>
-                        </div>
-                      </div>
                     </form>
                   </div>
                 </div>

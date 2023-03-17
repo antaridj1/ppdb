@@ -39,6 +39,7 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+        $this->middleware('guest:siswa');
     }
 
     /**
@@ -71,7 +72,25 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'phone_number' => $data['phone_number']
         ]);
+    }
 
-        
+    public function showSiswaRegisterForm()
+    {
+        return view('student.pages.register');
+    }
+
+    public function createSiswa(Request $request)
+    {
+        $this->validator::make($siswa, [
+            'no_tlp' => $request->no_tlp,
+            'no_hp' => $request->no_hp,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'sekolah_id' => $request->id
+        ]);
+
+        Siswa::create($siswa);
+
+        return redirect()->intended('/ppdb/sdn/' . $request->id . '/dashboard ');
     }
 }
