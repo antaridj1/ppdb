@@ -70,8 +70,10 @@ Route::prefix('ppdb')->group(function () {
     Route::get('/', function () {
         return view('student.pages.landingpage');
     });
+    //siswa login di sini
     Route::get('/login', [LoginController::class, 'showSchoolLoginForm']);
 
+    //cek siswa termasuk di akun sekolah yang mana, nanti masuknya ke sini
     Route::prefix('sdn-01-gianyar')->group(function () { //ini akan jadi params
         Route::get('/dashboard', function(){
             return view('student.pages.dashboard');
@@ -80,7 +82,10 @@ Route::prefix('ppdb')->group(function () {
             return view('student.pages.data-ppdb');
         });
         Route::get('/profile', function(){
-            return view('student.pages.data-ppdb');
+            return view('student.pages.profile-siswa-ppdb');
+        });
+        Route::get('/pesan', function(){
+            return view('student.pages.chat');
         });
     });
 
