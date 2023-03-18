@@ -67,8 +67,6 @@ class LoginController extends Controller
                 ->with('status', 'error')
                 ->with('message', 'Wrong email or password');
         }
-
-
     }
 
     public function siswaLogin(Request $request)
@@ -79,7 +77,7 @@ class LoginController extends Controller
         ]);
 
         if (Auth::guard('siswa')->attempt($request->only(['email','password']), $request->get('remember'))){
-            return redirect()->intended("/ppdb/sdn/".$request>id."/dashboard");
+            return redirect()->intended("/ppdb/sdn/".$request('id')."/dashboard");
         } else {
             return back()
                 ->with('status', 'error')
