@@ -61,8 +61,6 @@ class LoginController extends Controller
                 ->with('status', 'error')
                 ->with('message', 'Wrong email or password');
         }
-
-
     }
 
 }
