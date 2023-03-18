@@ -14,6 +14,7 @@ class PPDB extends Model
         'sekolah_id',
         'peserta_didik_id',
         'detail_peserta_didik_id',
+        'file_id',
     ];
 
     public function sekolah()
@@ -29,5 +30,10 @@ class PPDB extends Model
     public function detailPesertaDidik()
     {
         return $this->hasMany(DetailPesertaDidik::class, 'detail_peserta_didik_id');
+    }
+
+    public function file()
+    {
+        return $this->hasMany(File::class, 'file_id');
     }
 }

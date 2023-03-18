@@ -18,6 +18,7 @@ class CreatePPDBTable extends Migration
             $table->integer('sekolah_id');
             $table->integer('peserta_didik_id');
             $table->integer('detail_peserta_didik_id');
+            $table->integer('file_id');
             $table->timestamps();
             $table->softDeletes();
         });
