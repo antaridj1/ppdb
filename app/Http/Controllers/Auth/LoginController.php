@@ -40,17 +40,11 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
         $this->middleware('guest:admin')->except('logout');
-        $this->middleware('guest:siswa')->except('logout');
     }
 
     public function showAdminLoginForm()
     {
         return view('auth.admin.login');
-    }
-
-    public function showSiswaLoginForm()
-    {
-        return view('student.pages.login');
     }
 
     public function adminLogin(Request $request)
@@ -71,21 +65,4 @@ class LoginController extends Controller
 
     }
 
-    public function siswaLogin(Request $request)
-    {
-        $this->validate($request, [
-            'email'   => 'required|email',
-            'password' => 'required|min:6'
-        ]);
-
-        if (Auth::guard('siswa')->attempt($request->only(['email','password']), $request->get('remember'))){
-            return redirect()->intended("/ppdb/sdn/".$request>id."/dashboard");
-        } else {
-            return back()
-                ->with('status', 'error')
-                ->with('message', 'Wrong email or password');
-        }
-
-
-    }
 }

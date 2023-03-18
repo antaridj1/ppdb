@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArchitectController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\HomeController;
@@ -11,11 +12,14 @@ use App\Http\Controllers\OrderUserController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\SekolahController;
 use App\Http\Controllers\StyleInteriorController;
 use App\Http\Controllers\TypeInteriorController;
 use App\Http\Controllers\UserController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\URL;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,8 +33,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'landingPage']);
-
-Auth::routes();
 
 Route::middleware('auth:web')->group(function () {
     Route::get('profile-user', [ProfileController::class, 'editUser'])->name('profile.editUser');
@@ -74,17 +76,23 @@ Route::prefix('ppdb')->group(function () {
     Route::get('/', function () {
         return view('student.pages.landingpage');
     });
-    //siswa login di sini
 
-    //cek siswa termasuk di akun sekolah yang mana, nanti masuknya ke sini
-    Route::prefix('sdn/{id}')->group(function () { //ini akan jadi params
-        // Route::get('/sdn-01-gianyar', function () {
-        //     return view('student.pages.landing-sdn');
-        // });
+    // Get the SDN id
+    $url_sdn_id = null;
+    $current_url = URL::current();
+    $path_segments = explode('/', parse_url($current_url, PHP_URL_PATH));
+    if(count($path_segments) > 3) {
+        $url_sdn_id = $path_segments[3];
+    }
+
+    Route::group(['prefix' => 'sdn/'.$url_sdn_id], function () {
+
         Route::get('/', [SekolahController::class, 'landingPageSekolah']);
 
-        Route::get('/login', [LoginController::class, 'showSiswaLoginForm']);
-        Route::post('/login', [LoginController::class, 'siswaLogin'])->name('login.siswa');
+        Route::get('/login', [LoginController::class, 'showLoginForm'])->name('getLogin');
+        Route::post('/login', [LoginController::class, 'login'])->name('login');
+        Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('getRegister');
+        Route::post('/register', [RegisterController::class, 'register'])->name('register');
 
         Route::middleware('auth:admin')->group(function(){
             Route::get('/dashboard', function(){
@@ -101,6 +109,7 @@ Route::prefix('ppdb')->group(function () {
             });
         });
     });
+    
 
     Route::get('/{sd}', [LandingPageSchool::class, 'landingPage']);
 

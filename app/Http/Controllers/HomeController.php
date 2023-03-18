@@ -38,6 +38,6 @@ class HomeController extends Controller
     }
 
     public function landingPage(){
-        return view('landing-page');
+        return view('student.pages.landingpage');
     }
 }

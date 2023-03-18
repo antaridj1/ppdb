@@ -17,20 +17,16 @@
 
     <body class="bg-light-gray" id="body">
         <div class="container d-flex align-items-center justify-content-center" style="min-height: 100vh">
-            <div class="d-flex flex-column justify-content-between">
-                <div class="row justify-content-center">
-                    <div class="col-8">
-                        <div class="card card-default mb-0">
-                            <div class="card-header pb-0">
-                                <div class="app-brand w-100 d-flex justify-content-center border-bottom-0">
-                                <a class="w-auto pl-0" href="/index.html">
-                                    <img src="images/logo.png" alt="Mono">
-                                    <span class="brand-name text-dark">PPDB</span>
-                                </a>
-                            </div>
-                            @yield('content')
-                        </div>
+            <div class="{{ Route::is('getLogin') ? 'col-8' : 'col-12'}}">
+                <div class="card card-default mb-0">
+                    <div class="card-header pb-0">
+                        <div class="app-brand w-100 d-flex justify-content-center border-bottom-0">
+                        <a class="w-auto pl-0" href="/index.html">
+                            <img src="images/logo.png" alt="Mono">
+                            <span class="brand-name text-dark">PPDB</span>
+                        </a>
                     </div>
+                    @yield('content')
                 </div>
             </div>
         </div>

@@ -39,58 +39,28 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
-        $this->middleware('guest:siswa');
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
     protected function validator(array $data)
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'phone_number' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'no_hp' => ['required', 'string', 'min:8','max:255'],
         ]);
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\Models\User
-     */
-    protected function create(array $data)
+    protected function create(array $data, $id)
     {
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'phone_number' => $data['phone_number']
+            'no_tlp' => $data['no_tlp'],
+            'no_hp' => $data['no_hp'],
+            'sekolah_id' => $id
         ]);
     }
 
-    public function showSiswaRegisterForm()
-    {
-        return view('student.pages.register');
-    }
-
-    public function createSiswa(Request $request)
-    {
-        $this->validator::make($siswa, [
-            'no_tlp' => $request->no_tlp,
-            'no_hp' => $request->no_hp,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'sekolah_id' => $request->id
-        ]);
-
-        Siswa::create($siswa);
-
-        return redirect()->intended('/ppdb/sdn/' . $request->id . '/dashboard ');
-    }
 }
