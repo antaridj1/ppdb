@@ -14,7 +14,7 @@ class Chat extends Model
         'admin_id',
         'messages',
         'isViewed',
-        'from'
+        'dari'
     ];
 
     public function user()

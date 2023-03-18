@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class PesertaDidik extends Model
 {
     use HasFactory;
-    use softDeletes;
 
     protected $fillable = [
         'data_pribadi_id',

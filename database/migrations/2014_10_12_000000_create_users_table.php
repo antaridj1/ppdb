@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('no_hp');
             $table->string('no_tlp')->nullable();
             $table->boolean('status')->default(true);
+            $table->unsignedBigInteger('sekolah_id');
             $table->rememberToken();
             $table->timestamps();
         });

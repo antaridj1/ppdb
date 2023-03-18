@@ -94,20 +94,20 @@ Route::prefix('ppdb')->group(function () {
         Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('getRegister');
         Route::post('/register', [RegisterController::class, 'register'])->name('register');
 
-        Route::middleware('auth:admin')->group(function(){
-            Route::get('/dashboard', function(){
-                return view('student.pages.dashboard');
-            });
-            Route::get('/data-peserta-didik', function(){
-                return view('student.pages.data-ppdb');
-            });
-            Route::get('/profile', function(){
-                return view('student.pages.profile-siswa-ppdb');
-            });
-            Route::get('/pesan', function(){
-                return view('student.pages.chat');
-            });
-        });
+        // Route::middleware('auth:web')->group(function(){
+        //     Route::get('/dashboard', function(){
+        //         return view('student.pages.dashboard');
+        //     });
+        //     Route::get('/data-peserta-didik', function(){
+        //         return view('student.pages.data-ppdb');
+        //     });
+        //     Route::get('/profile', function(){
+        //         return view('student.pages.profile-siswa-ppdb');
+        //     });
+        //     Route::get('/pesan', function(){
+        //         return view('student.pages.chat');
+        //     });
+        // });
     });
     
 

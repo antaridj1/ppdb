@@ -5,18 +5,18 @@
 
 <div class="content">
     <div class="row no-gutters">
-        <div class="col-lg-5 col-xxl-4">
-            <div class="card card-default chat-left-sidebar">
+        <div class="col-12 col-md-5 col-xxl-4">
+            <div class="card card-default chat-left-sidebar h-100">
                 <form class="card-header px-0">
                     <div class="input-group px-5">
                         <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Search...">
                     </div>
                 </form>
 
-                <ul class="card-body px-0" data-simplebar style="height: 630px;">
+                <ul class="card-body px-0" data-simplebar>
                     @foreach ($chatrooms as $chatroom)
-                        <li class="mb-4 px-5 py-2 chatroom" data-url-create="{{url('admin/chat')}}/{{$chatroom->user_id}}">
-                            <a href="javascript:void(0)" class="media media-message">
+                        <li class="mb-4 px-5 py-2 chatroom" data-url-create="{{url('admin/chat/create')}}/{{$chatroom->user_id}}">
+                            <a class="media media-message">
                                 <div class="position-relative mr-3">
                                 <img class="rounded-circle" src="{{asset('assets/images/user/user-sm-02.jpg')}}" alt="User Image">
                                 </div>
@@ -27,7 +27,9 @@
                                     <span class="username text-dark">{{$chatroom->user->name}}</span>
                                     <span class="">
                                         <span class="state text-smoke"><em>{{$chatroom->created_at->diffForHumans()}}</em></span>
-                                        <span class="badge badge-primary">{{$chatroom->unread_count}}</span>
+                                        @if($chatroom->unread_count > 0)
+                                            <span class="badge badge-primary">{{$chatroom->unread_count}}</span>
+                                        @endif
                                     </span>
                                     </span>
                                     
@@ -41,9 +43,9 @@
             </div>
         </div>
 
-        <div class="col-lg-7 col-xxl-8">
+        <div class="col-12 col-md-7 col-xxl-8">
             <!-- Chat -->
-            <div class="card card-default chat-right-sidebar" data>
+            <div class="card h-100 card-default chat-right-sidebar" data>
                 <div class="card-header">
                     <h2></h2>
 
@@ -60,7 +62,7 @@
                     </div>
                 </div>
 
-                <div class="card-body pb-0" data-simplebar style="height: 545px;" id="chatroom">
+                <div class="card-body" data-simplebar id="chatroom">
                 </div>
 
                 <div class="chat-footer">
@@ -91,7 +93,7 @@
 
                 chats.forEach(chat => {
                     results = '';
-                    if(chat.from == chat.user_id){
+                    if(chat.dari == chat.user_id){
                         results += 
                         `<div class="media media-chat">
                             <div class="media-body">

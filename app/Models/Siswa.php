@@ -9,9 +9,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Siswa extends Authenticatable
 {
     use HasFactory;
-    use SoftDeletes;
 
-    protected $guard= 'siswa';
+    protected $table = 'siswa';
 
     protected $fillable = [
         'no_tlp',

@@ -44,10 +44,6 @@ return [
             'driver' => 'session',
             'provider' => 'admins',
         ],
-        'admin' => [
-            'driver' => 'session',
-            'provider' => 'siswas',
-        ],
     ],
 
     /*
@@ -75,10 +71,6 @@ return [
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
-        ],
-        'siswas' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Siswa::class,
         ],
 
         // 'users' => [
@@ -112,12 +104,6 @@ return [
 
         'admins' => [
             'provider' => 'admins',
-            'table' => 'password_resets',
-            'expire' => 60,
-            'throttle' => 60,
-        ],
-        'siswas' => [
-            'provider' => 'siswas',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

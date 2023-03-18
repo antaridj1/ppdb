@@ -18,10 +18,10 @@ class ChatController extends Controller
      */
     public function index(Request $request)
     {
-        $chatrooms = Chat::selectRaw('user_id, admin_id, messages, created_at, COUNT(CASE WHEN isViewed = false AND from = "web" THEN 1 ELSE NULL END) as unread_count')
+        $chatrooms = Chat::selectRaw('user_id, admin_id, messages, created_at, COUNT(CASE WHEN isViewed = false AND dari = "web" THEN 1 ELSE NULL END) as unread_count')
             ->groupBy('user_id')
             ->get();
-
+        
         return view('chat.index', compact('chatrooms'));
     }
 
@@ -73,7 +73,7 @@ class ChatController extends Controller
                 'user_id' => 1,
                 'admin_id' => Auth::id(),
                 'messages' => $request->chat,
-                'from' => Auth::getDefaultDriver()
+                'dari' => Auth::getDefaultDriver()
             ]);
 
             return response()->json([
