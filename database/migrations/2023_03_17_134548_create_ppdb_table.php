@@ -31,6 +31,6 @@ class CreatePPDBTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('p_p_d_b_s');
+        Schema::dropIfExists('ppdb');
     }
 }
