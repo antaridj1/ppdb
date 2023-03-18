@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class SekolahSeeder extends Seeder
 {
@@ -13,12 +15,56 @@ class SekolahSeeder extends Seeder
      */
     public function run()
     {
-        Sekolah::create([
-            'nama_sekolah' => 'SDN 01 Gianyar',
+        DB::table('sekolah')->insert(
+            [
+                'nama_sekolah' => 'SDN 01 Gianyar',
                 'alamat_sekolah' => 'Gianyar',
-                'email'=>'sdn01gianyar@gmail.com',
-                'tlp_sekolah' => mt_rand(1000000000, 9999999999),
+                'email' => 'sdn01@gmail.com',
+                'tlp_sekolah' => '098762635261',
                 'password' => Hash::make('password'),
-        ]);
+            ],
+            [
+                'nama_sekolah' => 'SDN 02 Gianyar',
+                'alamat_sekolah' => 'Gianyar',
+                'email' => 'sdn02@gmail.com',
+                'tlp_sekolah' => '098762635262',
+                'password' => Hash::make('password'),
+            ],
+            [
+                'nama_sekolah' => 'SDN 03 Gianyar',
+                'alamat_sekolah' => 'Gianyar',
+                'email' => 'sdn03@gmail.com',
+                'tlp_sekolah' => '098762635263',
+                'password' => Hash::make('password'),
+            ],
+            [
+                'nama_sekolah' => 'SDN 04 Gianyar',
+                'alamat_sekolah' => 'Gianyar',
+                'email' => 'sdn04@gmail.com',
+                'tlp_sekolah' => '098762635263',
+                'password' => Hash::make('password'),
+            ],
+            [
+                'nama_sekolah' => 'SDN 05 Gianyar',
+                'alamat_sekolah' => 'Gianyar',
+                'email' => 'sdn05@gmail.com',
+                'tlp_sekolah' => '098762635263',
+                'password' => Hash::make('password'),
+            ],
+            [
+                'nama_sekolah' => 'SDN 06 Gianyar',
+                'alamat_sekolah' => 'Gianyar',
+                'email' => 'sdn06@gmail.com',
+                'tlp_sekolah' => '098762635263',
+                'password' => Hash::make('password'),
+            ],
+            [
+                'nama_sekolah' => 'SDN 07 Gianyar',
+                'alamat_sekolah' => 'Gianyar',
+                'email' => 'sdn07@gmail.com',
+                'tlp_sekolah' => '098762635263',
+                'password' => Hash::make('password'),
+            ],
+        );
     }
 }
