@@ -8,7 +8,8 @@
             @csrf
             <div class="row">
                 <div class="form-group col-md-12 mb-4">
-                    <input type="email" class="form-control input-lg @error('email') is-invalid @enderror" name="email" id="email" aria-describedby="emailHelp" placeholder="email">
+                    <label for="yourEmail" class="form-label">Email</label>
+                    <input type="email" class="form-control input-lg @error('email') is-invalid @enderror" name="email" id="email" aria-describedby="emailHelp">
                     @error('email')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -16,7 +17,8 @@
                     @enderror
                 </div>
                 <div class="form-group col-md-12 ">
-                    <input type="password" class="form-control input-lg @error('password') is-invalid @enderror" name="password" id="password" placeholder="Password">
+                    <label for="yourEmail" class="form-label">Password</label>
+                    <input type="password" class="form-control input-lg @error('password') is-invalid @enderror" name="password" id="password">
                     @error('password')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

@@ -40,7 +40,7 @@ Route::middleware('auth:web')->group(function () {
 });
 
 Route::prefix('admin')->name('admin.')->group(function () {
-    Route::get('login', [LoginController::class, 'showAdminLoginForm']);
+    Route::get('login', [LoginController::class, 'showAdminLoginForm'])->name('getLogin');
     Route::post('login', [LoginController::class, 'adminLogin'])->name('login');
 
     Route::middleware('auth:admin')->group(function(){
