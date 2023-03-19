@@ -65,7 +65,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::group(['prefix' => 'chat', 'as' => 'chat.'], function () {
             Route::get('/', [ChatController::class, 'index'])->name('index');
             Route::get('create/{user}', [ChatController::class, 'create'])->name('create');
-            Route::post('create/{user}', [ChatController::class, 'store'])->name('store');
+            Route::post('store/{user}', [ChatController::class, 'store'])->name('store');
         });
 
         Route::post('logout', [LogoutController::class, 'adminLogout'])->name('logout');
@@ -94,20 +94,20 @@ Route::prefix('ppdb')->group(function () {
         Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('getRegister');
         Route::post('/register', [RegisterController::class, 'register'])->name('register');
 
-        // Route::middleware('auth:web')->group(function(){
-        //     Route::get('/dashboard', function(){
-        //         return view('student.pages.dashboard');
-        //     });
-        //     Route::get('/data-peserta-didik', function(){
-        //         return view('student.pages.data-ppdb');
-        //     });
-        //     Route::get('/profile', function(){
-        //         return view('student.pages.profile-siswa-ppdb');
-        //     });
-        //     Route::get('/pesan', function(){
-        //         return view('student.pages.chat');
-        //     });
-        // });
+        Route::middleware('auth:web')->group(function(){
+            Route::get('/dashboard', function(){
+                return view('student.pages.dashboard');
+            });
+            Route::get('/data-peserta-didik', function(){
+                return view('student.pages.data-ppdb');
+            });
+            Route::get('/profile', function(){
+                return view('student.pages.profile-siswa-ppdb');
+            });
+            Route::get('/pesan', function(){
+                return view('student.pages.chat');
+            });
+        });
     });
     
 

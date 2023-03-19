@@ -34,7 +34,7 @@ class ChatController extends Controller
     {
         try 
         {
-            $chatroom = Chat::selectRaw('user_id, admin_id, messages, created_at')->groupBy('user_id')->get();
+            // $chatroom = Chat::selectRaw('user_id, admin_id, messages, created_at')->groupBy('user_id')->get();
 
             $chat = Chat::where('user_id', $user->id);
 
@@ -48,13 +48,14 @@ class ChatController extends Controller
             $response['status'] = 'success';
             $response['data'] = $chats;
             $response['user_id'] = $user->id;
+            $response['user_name'] = $user->name;
 
             return response()->json($response, 200);
         } catch (Exception $e) {
             Log::error($e->getMessage());
             return response()->json([
                 'data' => [],
-                'message' => trans('api.message.order.failed_store'),
+                'message' => 'failed',
             ], 500);
         }
        
