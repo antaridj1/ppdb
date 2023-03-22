@@ -104,9 +104,9 @@ Route::prefix('ppdb')->group(function () {
             Route::get('/profile', function(){
                 return view('student.pages.profile-siswa-ppdb');
             });
-            Route::get('/pesan', function(){
-                return view('student.pages.chat');
-            });
+            Route::get('/chat', [ChatController::class, 'indexUser'])->name('indexUser');
+            Route::get('/chat/create', [ChatController::class, 'createUser'])->name('createUser');
+            Route::post('/chat/create', [ChatController::class, 'storeUser'])->name('storeUser');
         });
     });
     

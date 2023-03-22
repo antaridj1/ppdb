@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
 use App\Models\Chat;
 use App\Models\User;
 use Exception;
@@ -11,11 +12,6 @@ use Illuminate\Support\Facades\Log;
 
 class ChatController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Request $request)
     {
         $chatrooms = Chat::selectRaw('user_id, admin_id, messages, created_at, COUNT(CASE WHEN isViewed = false AND dari = "web" THEN 1 ELSE NULL END) as unread_count')
@@ -25,11 +21,6 @@ class ChatController extends Controller
         return view('chat.index', compact('chatrooms'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create(User $user)
     {
         try 
@@ -61,17 +52,11 @@ class ChatController extends Controller
        
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(Request $request, $user)
     {
         try {
             $data = Chat::create([
-                'user_id' => 1,
+                'user_id' => $user,
                 'admin_id' => Auth::id(),
                 'messages' => $request->chat,
                 'dari' => Auth::getDefaultDriver()
@@ -89,48 +74,44 @@ class ChatController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Chat  $chat
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Chat $chat)
-    {
-        //
+    public function indexUser(){
+        return view('student.pages.chat');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Chat  $chat
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Chat $chat)
-    {
-        //
+    public function createUser(){
+        try {
+            $chats = Chat::where('user_id', Auth::id())->get();
+            return response()->json($chats, 200);
+        } catch (Exception $e) {
+            Log::error($e->getMessage());
+            return response()->json([
+                'message' => 'failed',
+            ], 500);
+        }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Chat  $chat
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Chat $chat)
+    public function storeUser(Request $request)
     {
-        //
-    }
+        $admin_id = Admin::where('isAdmin',true)->value('id');
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Chat  $chat
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Chat $chat)
-    {
-        //
+        try {
+            $data = Chat::create([
+                'user_id' => Auth::id(),
+                'admin_id' => $admin_id,
+                'messages' => $request->chat,
+                'dari' => Auth::getDefaultDriver()
+            ]);
+
+            return response()->json([
+                'status' => 'success',
+                'data' => $data
+            ], 200);
+        } catch (Exception $e) {
+            Log::error($e->getMessage());
+            return response()->json([
+                'message' => 'failed',
+            ], 500);
+        }
     }
+    
 }

@@ -104,7 +104,7 @@
                     $('.chat-right-sidebar').find('h2').text(response.user_name)
                     results = '';
                     chats.forEach(chat => {
-                        if(chat.dari == chat.user_id){
+                        if(chat.dari == 'admin'){
                             results += 
                             `<div class="media media-chat">
                                 <div class="media-body">
