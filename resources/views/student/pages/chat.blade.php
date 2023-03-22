@@ -37,122 +37,32 @@
             <div class="content-wrapper">
                 <div class="content">
                     <div class="row no-gutters">
+                        <div class="col-lg-12 col-xxl-12">
+                            <!-- Chat -->
+                            <div class="card card-default chat-right-sidebar">
+                                <div class="card-header">
+                                    <h2>Chat Admin</h2>
+                                </div>
 
-                    <div class="col-lg-12 col-xxl-12">
-                        <!-- Chat -->
-                        <div class="card card-default chat-right-sidebar">
-                        <div class="card-header">
-                            <h2>Pesan Dengan Admin</h2>
+                                <div class="card-body pb-0" data-simplebar style="height: 545px;">
+                                    <div id="chatroom" style="overflow-y: auto ">
+    
+                                    </div>
+                                </div>
 
-                            {{-- <div class="dropdown">
-                            <div class="dropdown">
-                                <a class="dropdown-toggle icon-burger-mini" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" href="user-profile-settings.html">Profile</a>
-                                <a class="dropdown-item" href="javascript:void(0)">Logout</a>
+                                <div class="chat-footer">
+                                    <form method="post" id="send_messages" data-url-store="{{route('storeUser')}}" data-url-create="{{route('createUser')}}">
+                                        @csrf
+                                        <div class="input-group input-group-chat">
+                                            <input type="text" class="form-control" placeholder="Tuliskan pesan" id="chat" name="chat" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                            <div class="input-group-append" id="send" style="cursor: pointer;">
+                                                <span class="input-group-text mdi mdi-send" id="basic-addon2"></span>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
-                            </div> --}}
                         </div>
-
-                        <div class="card-body pb-0" data-simplebar style="height: 545px;">
-                            <!-- Media Chat Left -->
-                            <div class="media media-chat">
-                            <img src="{{ asset('assets-ppdb/images/user/user-sm-01.jpg') }}" class="rounded-circle" alt="Avata Image">
-                            <div class="media-body">
-                                <div class="text-content">
-                                <span class="message">Hello my name is anna.</span>
-                                <time class="time">5 mins ago</time>
-                                </div>
-                            </div>
-                            </div>
-
-                            <!-- Media Chat Right -->
-                            <div class="media media-chat media-chat-right">
-                            <div class="media-body">
-                                <div class="text-content">
-                                <span class="message">Hello i am Riman.</span>
-                                <time class="time">4 mins ago</time>
-                                </div>
-
-                                <div class="text-content">
-                                <span class="message">I want to know about yourself</span>
-                                <time class="time">3 mins ago</time>
-                                </div>
-                            </div>
-                            <img src="{{ asset('assets-ppdb/images/user/user-sm-01.jpg') }}" class="rounded-circle" alt="Avata Image">
-                            </div>
-
-                            <!-- Media Chat Left -->
-                            <div class="media media-chat">
-                            <img src="{{ asset('assets-ppdb/images/user/user-sm-01.jpg') }}" class="rounded-circle" alt="Avata Image">
-                            <div class="media-body">
-                                <div class="text-content">
-                                <span class="message">Its had resolving otherwise she contented therefore.</span>
-                                <time class="time">1 mins ago</time>
-                                </div>
-                            </div>
-                            </div>
-
-                            <!-- Media Chat Right -->
-                            <div class="media media-chat media-chat-right">
-                            <div class="media-body">
-                                <div class="text-content">
-                                <span class="message">Hello i am Riman.</span>
-                                <time class="time">4 mins ago</time>
-                                </div>
-
-                                <div class="text-content">
-                                <span class="message">I want to know about yourself</span>
-                                <time class="time">3 mins ago</time>
-                                </div>
-                            </div>
-                            <img src="{{ asset('assets-ppdb/images/user/user-sm-01.jpg') }}" class="rounded-circle" alt="Avata Image">
-                            </div>
-
-                            <!-- Media Chat Left -->
-                            <div class="media media-chat">
-                            <img src="{{ asset('assets-ppdb/images/user/user-sm-01.jpg') }}" class="rounded-circle" alt="Avata Image">
-                            <div class="media-body">
-                                <div class="text-content">
-                                <span class="message">Its had resolving otherwise she contented therefore.</span>
-                                <time class="time">1 mins ago</time>
-                                </div>
-                            </div>
-                            </div>
-
-                            <!-- Media Chat Right -->
-                            <div class="media media-chat media-chat-right">
-                            <div class="media-body">
-                                <div class="text-content">
-                                <span class="message">Hello i am Riman.</span>
-                                <time class="time">4 mins ago</time>
-                                </div>
-
-                                <div class="text-content">
-                                <span class="message">I want to know about yourself</span>
-                                <time class="time">3 mins ago</time>
-                                </div>
-                            </div>
-                            <img src="{{ asset('assets-ppdb/images/user/user-sm-01.jpg') }}" class="rounded-circle" alt="Avata Image">
-                            </div>
-
-                        </div>
-
-                        <div class="chat-footer">
-                            <form>
-                            <div class="input-group input-group-chat">
-                                <div class="input-group-prepend">
-                                <span class="emoticon-icon mdi mdi-emoticon-happy-outline"></span>
-                                </div>
-                                <input type="text" class="form-control" aria-label="Text input with dropdown button">
-                            </div>
-                            </form>
-                        </div>
-                        </div>
-                    </div>
                     </div>
                 </div>
             </div>
@@ -161,17 +71,67 @@
 
         </div>
     </div>
+    @include('student.components.jsadmin')
+    
+    <script src="{{asset('assets/plugins/jquery/jquery.min.js')}}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script>
+            var urlPost = $('#send_messages').data('url-store');
+            var urlCreate = $('#send_messages').data('url-create');
 
-
-
-
-                   @include('student.components.jsadmin')
-                    <script src="https://unpkg.com/hotkeys-js/dist/hotkeys.min.js"></script>
-
-
-
-
-                    <!--  -->
+            function renderChat(urlCreate){
+                $.ajax({
+                    url: `${urlCreate}?`+ new Date().getTime(),
+                    method: "GET",
+                    success: function(response){
+                        console.log(response)
+                        results = '';
+                        response.forEach(chat => {
+                            if(chat.dari !== 'admin'){
+                                results += 
+                                `<div class="media media-chat media-chat-right">
+                                    <div class="media-body">
+                                        <div class="text-content">
+                                            <span class="message">${chat.messages}</span>
+                                            <time class="time">5 mins ago</time>
+                                        </div>
+                                    </div>
+                                </div>`;
+                            } else {
+                                results += 
+                                `<div class="media media-chat">
+                                    <div class="media-body">
+                                        <div class="text-content">
+                                            <span class="message">${chat.messages}</span>
+                                            <time class="time">4 mins ago</time>
+                                        </div>
+                                    </div>
+                                </div>`;
+                            }
+                        });
+    
+                        $('#chatroom').html(results);
+                    }
+                })
+            }
+    
+            renderChat(urlCreate);
+    
+            $('#send').on('click', function(){
+                $.ajax({
+                    url: urlPost,
+                    method: "POST",
+                
+                    data: { 
+                        "_token": "{{ csrf_token() }}",
+                        chat : $('#chat').val()
+                    }
+                }).done(function(response) {
+                    $('#send_messages').find('input').val('');
+                    renderChat(urlCreate);
+                });
+            })
+    </script>
 
 
   </body>
