@@ -45,7 +45,7 @@
 <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
     <div class="container" data-aos="zoom-out" data-aos-delay="100">
-      <h1>SDN 01 Gianyar</h1>
+      <h1>{{ $data['nama_sekolah'] }}</h1>
       <h2>Pendaftaran Peserta Didik Baru secara Online</h2>
       <div class="d-flex">
         <a href="http://127.0.0.1:8000/ppdb/login" class="btn-get-started scrollto">Daftar Sekolah</a>

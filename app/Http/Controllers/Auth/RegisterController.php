@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Siswa;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -39,15 +41,17 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+        $this->middleware('guest:siswa');
     }
 
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'no_hp' => ['required', 'string', 'min:8','max:255'],
+            'no_hp' => ['nullable', 'string', 'min:8','max:255'],
+            'no_tlp' => ['nullable', 'string', 'min:8','max:255'],
+            'id' => ['required']
         ]);
     }
 
@@ -62,5 +66,28 @@ class RegisterController extends Controller
             'sekolah_id' => $id
         ]);
     }
+
+    protected function registerSiswa(Request $request)
+    {
+        $data = $request->validate([
+            'email' => 'required|string|email|max:255|unique:siswa,email',
+            'password' => 'required|string|min:8|confirmed',
+            'no_hp' => 'nullable|string|min:8','max:255',
+            'no_tlp' => 'nullable|string|min:8','max:255',
+            'sekolah_id' => 'required'
+        ]);
+
+        Siswa::create([
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'no_hp' => $request->no_hp,
+            'no_tlp' => $request->no_tlp,
+            'sekolah_id' => $request->sekolah_id,
+        ]);
+
+        return redirect()->route('login.siswa');
+    }
+
+
 
 }

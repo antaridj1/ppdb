@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="card-body px-5 pb-5 pt-0">
-        <h4 class="text-dark mb-5 text-center">Login</h4>
+        <h4 class="text-dark mb-5 text-center mt-5" style="font-weight:bold;">Login</h4>
         <form action="{{route('login')}}" method="post">
             @csrf
             <div class="row">
@@ -16,15 +16,8 @@
                     <input type="password" class="form-control input-lg" name="password" id="password">
                 </div>
                 <div class="col-md-12">
-                    {{-- <div class="d-flex justify-content-between mb-3">
-                        <div class="custom-control custom-checkbox mr-3 mb-3">
-                            <input type="checkbox" class="custom-control-input" id="customCheck2">
-                            <label class="custom-control-label" for="customCheck2">Remember me</label>
-                        </div>
-                        <a class="text-color" href="#"> Forgot password? </a>
-                    </div> --}}
-                    <button type="submit" class="btn btn-primary btn-pill mb-4">Sign In</button>
-                    <p>Belum memiliki akun?
+                    <button type="submit" class="btn btn-primary btn-pill mb-4 btn-block">Login</button>
+                    <p style="text-align: center;">Belum memiliki akun?
                         <a class="text-blue" href="{{route('register')}}">Registrasi</a>
                     </p>
                 </div>
@@ -36,6 +29,6 @@
         @include('layout.components.alert')
     @endif
 @endsection
-    
 
-    
+
+

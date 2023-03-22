@@ -16,6 +16,7 @@ use App\Http\Controllers\SekolahController;
 use App\Http\Controllers\StyleInteriorController;
 use App\Http\Controllers\TypeInteriorController;
 use App\Http\Controllers\UserController;
+use App\Models\Sekolah;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -85,31 +86,46 @@ Route::prefix('ppdb')->group(function () {
         $url_sdn_id = $path_segments[3];
     }
 
-    Route::group(['prefix' => 'sdn/'.$url_sdn_id], function () {
+    Route::group(['prefix' => 'sdn/'.$url_sdn_id], function () use ($url_sdn_id) {
+        Route::get('/', function() use ($url_sdn_id){
+            $data = Sekolah::where('id', $url_sdn_id )->first();
+            return view('student.pages.landing-sdn', ['data' => $data]);
+        });
 
-        Route::get('/', [SekolahController::class, 'landingPageSekolah']);
+        // Route::get('/login', [LoginController::class, 'showLoginForm'])->name('getLogin');
+        Route::get('login', function() use ($url_sdn_id) {
+            return view('student.pages.login', ['id'=> $url_sdn_id]);
+        })->name('login.form.siswa');
+        Route::post('login', [LoginController::class, 'siswaLogin'])->name('login.siswa');
+        // Route::post('/login', [LoginController::class, 'login'])->name('login');
 
-        Route::get('/login', [LoginController::class, 'showLoginForm'])->name('getLogin');
-        Route::post('/login', [LoginController::class, 'login'])->name('login');
-        Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('getRegister');
-        Route::post('/register', [RegisterController::class, 'register'])->name('register');
+        Route::get('/register', function() use ($url_sdn_id) {
+            return view('student.pages.register', ['id'=> $url_sdn_id]);
+        });
+        // Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('getRegister');
+        Route::post('/register', [RegisterController::class, 'registerSiswa'])->name('register.siswa');
+        // Route::post('/register', [RegisterController::class, 'register'])->name('register');
 
-        Route::middleware('auth:web')->group(function(){
+        Route::middleware('auth:siswa')->group(function(){
+        // Route::middleware('auth:web')->group(function(){
             Route::get('/dashboard', function(){
                 return view('student.pages.dashboard');
-            });
+            })->name('dashboard.siswa');
             Route::get('/data-peserta-didik', function(){
                 return view('student.pages.data-ppdb');
-            });
+            })->name('data.siswa');
             Route::get('/profile', function(){
                 return view('student.pages.profile-siswa-ppdb');
-            });
+            })->name('profile.siswa');
             Route::get('/pesan', function(){
                 return view('student.pages.chat');
             });
+
+            Route::post('logout', [LogoutController::class, 'siswaLogout'])->name('logout.siswa');
+
         });
     });
-    
+
 
     Route::get('/{sd}', [LandingPageSchool::class, 'landingPage']);
 

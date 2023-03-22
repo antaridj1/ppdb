@@ -27,4 +27,9 @@ class Sekolah extends Model
     {
         return $this->belongsTo(PPDB::class, 'sekolah_id');
     }
+
+    public function siswa()
+    {
+        return $this->hasMany(Siswa::class, 'sekolah_id');
+    }
 }

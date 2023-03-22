@@ -37,19 +37,25 @@
                     <form action="{{ route('login.siswa') }}" method="POST">
                         @csrf
                         <div class="row">
-                            <input type="hidden" name="id" value="{{ request()->route('id') }}">
+                            <input type="hidden" name="id" value="{{ $id }}">
                             <div class="form-group col-md-12 mb-4">
-                            <input type="email" class="form-control input-lg" id="email" aria-describedby="emailHelp"
-                                placeholder="email">
+                                <input type="email" class="form-control input-lg" id="email" aria-describedby="emailHelp"
+                                placeholder="email" name="email" required value="{{ old('email') }}">
+                                @error('email')
+                                    <strong>{{ $message }}</strong>
+                                @enderror
                             </div>
                             <div class="form-group col-md-12 ">
-                            <input type="password" class="form-control input-lg" id="password" placeholder="Password">
+                                <input type="password" class="form-control input-lg" name="password" id="password" placeholder="Password" required>
+                                @error('password')
+                                    <strong>{{ $message }}</strong>
+                                @enderror
                             </div>
                             <div class="col-md-12">
                             <div class="d-flex justify-content-end mb-5">
                                 <a class="text-color" href="#"> Forgot password? </a>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-pill mt-3 mb-4 btn-block">Sign In</button>
+                            <button type="submit" class="btn btn-primary btn-pill mt-3 mb-4 btn-block">Login</button>
                             <p class="text-center">Belum punya akun ?
                                 <a class="text-blue" href="sign-up.html">Buat Akun</a>
                             </p>
