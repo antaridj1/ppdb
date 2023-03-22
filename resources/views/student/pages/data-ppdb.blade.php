@@ -1121,7 +1121,558 @@
                                     </div>
                                 </div>
 
+                                <!-- Data Periodik -->
+                                <div class="card card-default">
+                                    <div class="card-header">
+                                        <h1>Data Periodik</h1> <br>
+                                    </div>
+                                    <div class="card-body">
+                                        {{-- tinggi badan --}}
+                                        <div class="form-group">
+                                            <label for="tinggibdn">Tinggi Badan</label>
+                                            <input type="number" class="form-control rounded-0" id="tinggibdn" name="tinggi_badan" value="{{ old('tinggi_badan') }}"><span>Cm</span>
+                                            @error('pendidikan_wali')
+                                                <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        {{-- Berat Badan --}}
+                                        <div class="form-group">
+                                            <label for="bb">Berat Badan</label>
+                                            <input type="number" class="form-control rounded-0" id="bb" name="berat_badan" value="{{ old('berat_badan') }}"><span>Kg</span>
+                                            @error('pendidikan_wali')
+                                                <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        {{-- Lingkar Kepala --}}
+                                        <div class="form-group">
+                                            <label for="lingkar">Lingkar Kepala</label>
+                                            <input type="number" class="form-control rounded-0" id="lingkar" maxlength="4" name="lingkar_kepala" value="{{ old('lingkar_kepala') }}"><span>Cm</span>
+                                            @error('pendidikan_wali')
+                                                <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        {{-- jarak tempat tingal --}}
+                                        <div class="form-group">
+                                            <label for=>Jarak Tempat Tinggal</label><br>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="kurang1" name="jarak" class="custom-control-input" value="Kurang dari 1 Km" @if(old('jarak') == 'Kurang dari 1 Km') checked @endif>
+                                                <label class="custom-control-label" for="kurang1">Kurang dari 1 Km</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="lebih1" name="jarak" class="custom-control-input" value="Lebih dari 1 Km" @if(old('jarak') == 'Lebih dari 1 Km') checked @endif>
+                                                <label class="custom-control-label" for="lebih1">Lebih dari 1 Km</label>
+                                            </div>
+                                            @error('jarak')
+                                                <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        {{-- jarak dalam Km --}}
+                                        <div class="form-group">
+                                            <label for="km">Jarak</label><br>
+                                            <input type="number" class="form-control rounded-0" id="km" name="km" value="{{ old('km') }}"><span>Km</span>
+                                            <span>*<span><span>Masukan angka jarak dari rumah ke sekolah</span>
+                                            @error('km')
+                                                <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        {{-- waktu tempuh --}}
+                                        <div class="form-group">
+                                            <label for="waktu">Waktu Tempuh</label><br>
+                                            <input type="number" class="form-control rounded-0 w-25" id="waktu" name="waktu_tempuh_jam" value="{{ old('waktu_tempuh_jam') }}"><span>Jam</span>
+                                            <input type="number" class="form-control rounded-0 w-25" id="waktu" name="waktu_tempuh_menit" value="{{ old('waktu_tempuh_menit') }}"><span>Menit</span>
+                                            @error('waktu_tempuh_jam')
+                                                <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
+                                            @enderror
+                                            @error('waktu_tempuh_menit')
+                                                <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        {{-- jumlah saudara --}}
+                                        <div class="form-group">
+                                            <label for="saudara">Jumlah Saudara Kandung</label><br>
+                                            <input type="number" class="form-control rounded-0" id="saudara" name="jumlah_saudara" value="{{ old('jumlah_saudara') }}">
+                                            @error('jumlah_saudara')
+                                                <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
 
+                                <!-- Prestasi -->
+                                <div class="card card-default">
+                                    <div class="card-header">
+                                        <h1>Prestasi</h1> <br>
+                                    </div>
+                                    <div class="card-body">
+                                        {{-- prestasi 1 --}}
+                                        <h4>Prestasi 1</h6> <br>
+                                        {{-- jenis --}}
+                                        <div class="form-group">
+                                            <label>Jenis Prestasi</label><br>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="sains" name="jenis_prestasi_1" class="custom-control-input" value="sains" @if(old('jenis_prestasi_1') == 'sains') checked @endif>
+                                                <label class="custom-control-label" for="sains">Sains</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="seni" name="jenis_prestasi_1" class="custom-control-input" value="seni" @if(old('jenis_prestasi_1') == 'seni') checked @endif>
+                                                <label class="custom-control-label" for="seni">Seni</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="olah raga" name="jenis_prestasi_1" class="custom-control-input" value="olah raga" @if(old('jenis_prestasi_1') == 'olah raga') checked @endif>
+                                                <label class="custom-control-label" for="olah raga">Olah Raga</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="lain" name="jenis_prestasi_1" class="custom-control-input" value="lain-lain" @if(old('jenis_prestasi_1') == 'lain-lain') checked @endif>
+                                                <label class="custom-control-label" for="lain">Lain-lain</label>
+                                            </div>
+                                            @error('jenis_prestasi_1')
+                                                <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                            {{-- tingkat --}}
+                                        <div class="form-group">
+                                            <label for="exampleFormControlPasswor3">Tingkat prestasi</label><br>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="kecamatan" name="tingkat_1" class="custom-control-input" value="kecamatan" @if(old('tingkat_1') == 'kecamatan') checked @endif>
+                                                <label class="custom-control-label" for="kecamatan">Kecamatan</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="kabupaten" name="tingkat_1" class="custom-control-input" value="kabupaten" @if(old('tingkat_1') == 'kabupaten') checked @endif>
+                                                <label class="custom-control-label" for="kabupaten">Kabupaten</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="provinsi" name="tingkat_1" class="custom-control-input" value="provinsi" @if(old('tingkat_1') == 'provinsi') checked @endif>
+                                                <label class="custom-control-label" for="provinsi">Provinsi</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="nasional" name="tingkat_1" class="custom-control-input" value="nasional" @if(old('tingkat_1') == 'nasional') checked @endif>
+                                                <label class="custom-control-label" for="nasional">Nasional</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="internasional" name="tingkat_1" class="custom-control-input" value="internasional" @if(old('tingkat_1') == 'internasional') checked @endif>
+                                                <label class="custom-control-label" for="internasional">Internasional</label>
+                                            </div>
+                                            @error('tingkat_1')
+                                                <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        {{-- nama prestasi --}}
+                                        <div class="form-group">
+                                            <label for="namap1">Nama Prestasi</label>
+                                            <input type="text" class="form-control rounded-0" id="namap1" name="nama_prestasi_1" value="{{ old('nama_prestasi_1') }}">
+                                            @error('nama_prestasi_1')
+                                                <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        {{-- tahun prestasi --}}
+                                        <div class="form-group">
+                                            <label for="tahunp1">Tahun Prestasi</label>
+                                            <input type="number" class="form-control rounded-0" id="tahunp1" maxlength="4" name="tahun_1" value="{{ old('tahun_1') }}">
+                                            @error('tahun_1')
+                                                <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        {{-- nama prestasi --}}
+                                        <div class="form-group">
+                                            <label for="exampleFormControlPasswor3">Nama Penyelenggara</label>
+                                            <input type="text" class="form-control rounded-0" id="exampleFormControlPasswor3" name="penyelenggara_1" value="{{ old('penyelenggara_1') }}">
+                                            @error('penyelenggara_1')
+                                                <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <br>
+                                        {{-- prestasi 2 --}}
+                                        <h4>Prestasi 2</h6> <br>
+                                        {{-- jenis --}}
+                                        <div class="form-group">
+                                            <label>Jenis Prestasi</label><br>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="sains" name="jenis_prestasi_2" class="custom-control-input" value="sains" @if(old('jenis_prestasi_2') == 'sains') checked @endif>
+                                                <label class="custom-control-label" for="sains">Sains</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="seni" name="jenis_prestasi_2" class="custom-control-input" value="seni" @if(old('jenis_prestasi_2') == 'seni') checked @endif>
+                                                <label class="custom-control-label" for="seni">Seni</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="olah raga" name="jenis_prestasi_2" class="custom-control-input" value="olah raga" @if(old('jenis_prestasi_2') == 'olah raga') checked @endif>
+                                                <label class="custom-control-label" for="olah raga">Olah Raga</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="lain" name="jenis_prestasi_2" class="custom-control-input" value="lain-lain" @if(old('jenis_prestasi_2') == 'lain-lain') checked @endif>
+                                                <label class="custom-control-label" for="lain">Lain-lain</label>
+                                            </div>
+                                            @error('jenis_prestasi_2')
+                                                <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        {{-- tingkat --}}
+                                        <div class="form-group">
+                                            <label for="exampleFormControlPasswor3">Tingkat prestasi</label><br>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="kecamatan" name="tingkat_2" class="custom-control-input" value="kecamatan" @if(old('tingkat_2') == 'kecamatan') checked @endif>
+                                                <label class="custom-control-label" for="kecamatan">Kecamatan</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="kabupaten" name="tingkat_2" class="custom-control-input" value="kabupaten" @if(old('tingkat_2') == 'kabupaten') checked @endif>
+                                                <label class="custom-control-label" for="kabupaten">Kabupaten</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="provinsi" name="tingkat_2" class="custom-control-input" value="provinsi" @if(old('tingkat_2') == 'provinsi') checked @endif>
+                                                <label class="custom-control-label" for="provinsi">Provinsi</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="nasional" name="tingkat_2" class="custom-control-input" value="nasional" @if(old('tingkat_2') == 'nasional') checked @endif>
+                                                <label class="custom-control-label" for="nasional">Nasional</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="internasional" name="tingkat_2" class="custom-control-input" value="internasional" @if(old('tingkat_2') == 'internasional') checked @endif>
+                                                <label class="custom-control-label" for="internasional">Internasional</label>
+                                            </div>
+                                            @error('tingkat_2')
+                                                <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        {{-- nama prestasi --}}
+                                        <div class="form-group">
+                                            <label for="namap2">Nama Prestasi</label>
+                                            <input type="text" class="form-control rounded-0" id="namap2" name="nama_prestasi_2" value="{{ old('nama_prestasi_2') }}">
+                                            @error('nama_prestasi_2')
+                                                <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        {{-- tahun prestasi --}}
+                                        <div class="form-group">
+                                            <label for="tahunp2">Tahun Prestasi</label>
+                                            <input type="number" class="form-control rounded-0" id="tahunp2" maxlength="4" name="tahun_2" value="{{ old('tahun_2') }}">
+                                            @error('tahun_2')
+                                                <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        {{-- nama prestasi --}}
+                                        <div class="form-group">
+                                            <label for="penyelenggara2">Nama Penyelenggara</label>
+                                            <input type="text" class="form-control rounded-0" id="penyelenggara2" name="penyelenggara_2" value="{{ old('penyelenggara_2') }}">
+                                            @error('penyelenggara_2')
+                                                <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <br>
+                                        {{-- prestasi 3 --}}
+                                        <h4>Prestasi 3</h6> <br>
+                                        {{-- jenis --}}
+                                        <div class="form-group">
+                                            <label>Jenis Prestasi</label><br>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="sains" name="jenis_prestasi_3" class="custom-control-input" value="sains" @if(old('jenis_prestasi_3') == 'sains') checked @endif>
+                                                <label class="custom-control-label" for="sains">Sains</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="seni" name="jenis_prestasi_3" class="custom-control-input" value="seni" @if(old('jenis_prestasi_3') == 'seni') checked @endif>
+                                                <label class="custom-control-label" for="seni">Seni</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="olah raga" name="jenis_prestasi_3" class="custom-control-input" value="olah raga" @if(old('jenis_prestasi_3') == 'olah raga') checked @endif>
+                                                <label class="custom-control-label" for="olah raga">Olah Raga</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="lain" name="jenis_prestasi_3" class="custom-control-input" value="lain-lain" @if(old('jenis_prestasi_3') == 'lain-lain') checked @endif>
+                                                <label class="custom-control-label" for="lain">Lain-lain</label>
+                                            </div>
+                                            @error('jenis_prestasi_3')
+                                                <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        {{-- tingkat --}}
+                                        <div class="form-group">
+                                            <label for="exampleFormControlPasswor3">Tingkat prestasi</label><br>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="kecamatan" name="tingkat_3" class="custom-control-input" value="kecamatan" @if(old('tingkat_3') == 'kecamatan') checked @endif>
+                                                <label class="custom-control-label" for="kecamatan">Kecamatan</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="kabupaten" name="tingkat_3" class="custom-control-input" value="kabupaten" @if(old('tingkat_3') == 'kabupaten') checked @endif>
+                                                <label class="custom-control-label" for="kabupaten">Kabupaten</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="provinsi" name="tingkat_3" class="custom-control-input" value="provinsi" @if(old('tingkat_3') == 'provinsi') checked @endif>
+                                                <label class="custom-control-label" for="provinsi">Provinsi</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="nasional" name="tingkat_3" class="custom-control-input" value="nasional" @if(old('tingkat_3') == 'nasional') checked @endif>
+                                                <label class="custom-control-label" for="nasional">Nasional</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="internasional" name="tingkat_3" class="custom-control-input" value="internasional" @if(old('tingkat_3') == 'internasional') checked @endif>
+                                                <label class="custom-control-label" for="internasional">Internasional</label>
+                                            </div>
+                                            @error('tingkat_3')
+                                                <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        {{-- nama prestasi --}}
+                                        <div class="form-group">
+                                            <label for="namap3">Nama Prestasi</label>
+                                            <input type="text" class="form-control rounded-0" id="namap3" name="nama_prestasi_3" value="{{ old('nama_prestasi_3') }}">
+                                            @error('nama_prestasi_3')
+                                                <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        {{-- tahun prestasi --}}
+                                        <div class="form-group">
+                                            <label for="tahunp3">Tahun Prestasi</label>
+                                            <input type="number" class="form-control rounded-0" id="tahunp3" maxlength="4" name="tahun_3" value="{{ old('tahun_3') }}">
+                                            @error('tahun_3')
+                                                <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        {{-- nama prestasi --}}
+                                        <div class="form-group">
+                                            <label for="penyelenggara3">Nama Penyelenggara</label>
+                                            <input type="text" class="form-control rounded-0" id="penyelenggara3" name="penyelenggara_3" value="{{ old('penyelenggara_3') }}">
+                                            @error('penyelenggara_3')
+                                                <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Beasiswa -->
+                                <div class="card card-default">
+                                    <div class="card-header">
+                                        <h1>Beasiswa</h1> <br>
+                                    </div>
+                                    <div class="card-body">
+                                        {{-- beasiswa 1 --}}
+                                        <h4>Beasiswa 1</h6> <br>
+                                        {{-- jenis --}}
+                                        <div class="form-group">
+                                            <label>Jenis Beasiswa</label><br>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="anak_miskin" name="jenis_anak_berprestasi_1" class="custom-control-input" value="anak miskin" @if(old('jenis_anak_berprestasi_1') == 'anak miskin') checked @endif>
+                                                <label class="custom-control-label" for="anak_miskin">Anak miskin</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="pendidikanb" name="jenis_anak_berprestasi_1" class="custom-control-input" value="pendidikan" @if(old('jenis_anak_berprestasi_1') == 'pendidikan') checked @endif>
+                                                <label class="custom-control-label" for="pendidikanb">Pendidikan</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="unggulan" name="jenis_anak_berprestasi_1" class="custom-control-input" value="unggulan" @if(old('jenis_anak_berprestasi_1') == 'unggulan') checked @endif>
+                                                <label class="custom-control-label" for="unggulan">Unggulan</label>
+                                            </div>
+                                            @error('jenis_anak_berprestasi_1')
+                                                <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                            {{-- nama beasiswa --}}
+                                        <div class="form-group">
+                                            <label for="beasiswa1">Nama Beasiswa</label><br>
+                                            <input type="text" class="form-control rounded-0" id="beasiswa1" name="keterangan_1" value="{{ old('keterangan_1') }}">
+                                            @error('keterangan_1')
+                                                <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                            {{-- tahun mulai --}}
+                                        <div class="form-group">
+                                            <label for="tahunm1">Tahun Mulai</label><br>
+                                            <input type="text" class="form-control rounded-0" id="tahunm1" name="tahun_mulai_1" value="{{ old('tahun_mulai_1') }}">
+                                            @error('tahun_mulai_1')
+                                                <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                            {{-- tahun berakhir --}}
+                                        <div class="form-group">
+                                            <label for="tahuns1">Tahun Selesai</label><br>
+                                            <input type="text" class="form-control rounded-0" id="tahuns1" name="tahun_selesai_1" value="{{ old('tahun_selesai_1') }}">
+                                            @error('tahun_selesai_1')
+                                                <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <br>
+                                        {{-- beasiswa 2 --}}
+                                        <h4>Beasiswa 2</h6> <br>
+                                        {{-- jenis --}}
+                                        <div class="form-group">
+                                            <label>Jenis Beasiswa</label><br>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="anak_miskin" name="jenis_anak_berprestasi_2" class="custom-control-input" value="anak miskin" @if(old('jenis_anak_berprestasi_2') == 'anak miskin') checked @endif>
+                                                <label class="custom-control-label" for="anak_miskin">Anak miskin</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="pendidikanb" name="jenis_anak_berprestasi_2" class="custom-control-input" value="pendidikan" @if(old('jenis_anak_berprestasi_2') == 'pendidikan') checked @endif>
+                                                <label class="custom-control-label" for="pendidikanb">Pendidikan</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="unggulan" name="jenis_anak_berprestasi_2" class="custom-control-input" value="unggulan" @if(old('jenis_anak_berprestasi_2') == 'unggulan') checked @endif>
+                                                <label class="custom-control-label" for="unggulan">Unggulan</label>
+                                            </div>
+                                            @error('jenis_anak_berprestasi_2')
+                                                <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                            {{-- nama beasiswa --}}
+                                        <div class="form-group">
+                                            <label for="beasiswa2">Nama Beasiswa</label><br>
+                                            <input type="text" class="form-control rounded-0" id="beasiswa2" name="keterangan_2" value="{{ old('keterangan_2') }}">
+                                            @error('keterangan_2')
+                                                <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                            {{-- tahun mulai --}}
+                                        <div class="form-group">
+                                            <label for="tahunm2">Tahun Mulai</label><br>
+                                            <input type="text" class="form-control rounded-0" id="tahunm2" name="tahun_mulai_2" value="{{ old('tahun_mulai_2') }}">
+                                            @error('tahun_mulai_2')
+                                                <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                            {{-- tahun berakhir --}}
+                                        <div class="form-group">
+                                            <label for="tahuns2">Tahun Selesai</label><br>
+                                            <input type="text" class="form-control rounded-0" id="tahuns2" name="tahun_selesai_2" value="{{ old('tahun_selesai_2') }}">
+                                            @error('tahun_selesai_2')
+                                                <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <br>
+                                        {{-- beasiswa 3 --}}
+                                        <h4>Beasiswa 3</h6> <br>
+                                        {{-- jenis --}}
+                                        <div class="form-group">
+                                            <label>Jenis Beasiswa</label><br>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="anak_miskin" name="jenis_anak_berprestasi_3" class="custom-control-input" value="anak miskin" @if(old('jenis_anak_berprestasi_3') == 'anak miskin') checked @endif>
+                                                <label class="custom-control-label" for="anak_miskin">Anak miskin</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="pendidikanb" name="jenis_anak_berprestasi_3" class="custom-control-input" value="pendidikan" @if(old('jenis_anak_berprestasi_3') == 'anak miskin') checked @endif>
+                                                <label class="custom-control-label" for="pendidikanb">Pendidikan</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="unggulan" name="jenis_anak_berprestasi_3" class="custom-control-input" value="unggulan" @if(old('jenis_anak_berprestasi_3') == 'unggulan') checked @endif>
+                                                <label class="custom-control-label" for="unggulan">Unggulan</label>
+                                            </div>
+                                            @error('jenis_anak_berprestasi_3')
+                                                <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                            {{-- nama beasiswa --}}
+                                        <div class="form-group">
+                                            <label for="beasiswa3">Nama Beasiswa</label><br>
+                                            <input type="text" class="form-control rounded-0" id="beasiswa3" name="keterangan_3" value="{{ old('keterangan_3') }}">
+                                            @error('keterangan_3')
+                                                <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                            {{-- tahun mulai --}}
+                                        <div class="form-group">
+                                            <label for="tahunm3">Tahun Mulai</label><br>
+                                            <input type="text" class="form-control rounded-0" id="tahunm3" name="tahun_mulai_3" value="{{ old('tahun_mulai_3') }}">
+                                            @error('tahun_mulai_3')
+                                                <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                            {{-- tahun berakhir --}}
+                                        <div class="form-group">
+                                            <label for="tahuns3">Tahun Selesai</label><br>
+                                            <input type="text" class="form-control rounded-0" id="tahuns3" name="tahun_selesai_3" value="{{ old('tahun_selesai_3') }}">
+                                            @error('tahun_selesai_3')
+                                                <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <br>
+                                    </div>
+                                </div>
+
+                                <!-- kesejahteraan -->
+                                <div class="card card-default">
+                                    <div class="card-header">
+                                        <h1>Kesejahteraan Peserta Didik</h1> <br>
+                                    </div>
+                                    <div class="card-body">
+                                        {{-- jenis kesejahteraan --}}
+                                        <div class="form-group">
+                                            <label for="exampleFormControlPasswor3">Jenis Kesejahteraan</label><br>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="pkh" name="jenis_kesejahteraan" class="custom-control-input" value="PKH" @if(old('jenis_kesejahteraan') == 'PKH') checked @endif>
+                                                <label class="custom-control-label" for="pkh">PKH</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="kps" name="jenis_kesejahteraan" class="custom-control-input" value="Kartu Perlindungan Sosial" @if(old('jenis_kesejahteraan') == 'Kartu Perlindungan Sosial') checked @endif>
+                                                <label class="custom-control-label" for="kps">Kartu Perlindungan Sosial</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="kks" name="jenis_kesejahteraan" class="custom-control-input" value="Kartu Keluarg Sehat" @if(old('jenis_kesejahteraan') == 'Kartu Keluarg Sehat') checked @endif>
+                                                <label class="custom-control-label" for="kks">Kartu Keluarg Sehat</label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                                                <input type="radio" id="kkes" name="jenis_kesejahteraan" class="custom-control-input" value="Kartu Kesehatan" @if(old('jenis_kesejahteraan') == 'Kartu Kesehatan') checked @endif>
+                                                <label class="custom-control-label" for="kkes">Kartu Kesehatan</label>
+                                            </div>
+                                            @error('jenis_kesejahteraan')
+                                                <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        {{-- No Kartu --}}
+                                        <div class="form-group">
+                                            <label for="no_kartuKkes">No. Kartu</label>
+                                            <input type="number" class="form-control rounded-0" id="no_kartuKkes" name="no_kartu" value="{{ old('no_kartu') }}">
+                                            @error('no_kartu')
+                                                <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        {{-- Nama kartu --}}
+                                        <div class="form-group">
+                                            <label for="nama_kartuKes">Nama Kartu</label>
+                                            <input type="text" class="form-control rounded-0" id="nama_kartuKes" name="nama_kartu" value="{{ old('nama_kartu') }}">
+                                            @error('nama_kartu')
+                                                <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {{-- upload berkas --}}
+                                <div class="card card-default">
+                                    <div class="card-header">
+                                        <h1>Upload Berkas</h1> <br>
+                                    </div>
+                                    <div class="card-body">
+                                        {{-- file kk --}}
+                                        <div class="form-group">
+                                            <label for="scan_kk">Scan Kartu Keluarga</label>
+                                            <input type="file" class="form-control-file" id="scan_kk" name="file_kk" value="{{ old('file_kk') }}">
+                                            @error('file_kk')
+                                                <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        {{-- file akta --}}
+                                        <div class="form-group">
+                                            <label for="scan_akta">Scan Kartu Akta Kelahiran</label>
+                                            <input type="file" class="form-control-file" id="scan_akta" name="file_akta_kelahiran" value="{{ old('file_akta_kelahiran') }}">
+                                            @error('file_akta_kelahiran')
+                                                <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        {{-- file ktp ortu --}}
+                                        <div class="form-group">
+                                            <label for="scan_ktp">Scan Kartu Akta Kelahiran</label>
+                                            <input type="file" class="form-control-file" id="scan_ktp" name="file_ktp_ortu" value="{{ old('file_ktp_ortu') }}">
+                                            @error('file_ktp_ortu')
+                                                <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        {{-- file ijazah tk --}}
+                                        <div class="form-group">
+                                            <label for="scan_ijazah">Scan Ijazah TK</label>
+                                            <input type="file" class="form-control-file" id="scan_ijazah" name="file_ijazah_tk" value="{{ old('file_ijazah_tk') }}">
+                                            @error('file_ijazah_tk')
+                                                <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary btn-lg btn-block">Kirim Data Siswa</button>
                             </form>
                         </div>
                     </div>
