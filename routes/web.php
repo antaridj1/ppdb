@@ -101,7 +101,7 @@ Route::prefix('ppdb')->group(function () {
 
         Route::get('/register', function() use ($url_sdn_id) {
             return view('student.pages.register', ['id'=> $url_sdn_id]);
-        });
+        })->name("register.form.siswa");
         // Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('getRegister');
         Route::post('/register', [RegisterController::class, 'registerSiswa'])->name('register.siswa');
         // Route::post('/register', [RegisterController::class, 'register'])->name('register');

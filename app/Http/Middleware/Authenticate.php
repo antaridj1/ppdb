@@ -20,6 +20,11 @@ class Authenticate extends Middleware
             } else {
                 return route('login');
             }
+            if ($request->route()->named('siswa.*')) {
+                return route('employee.login');
+            } else {
+                return route('login');
+            }
         }
     }
 }

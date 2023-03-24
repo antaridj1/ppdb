@@ -84,7 +84,7 @@
                                     <button type="submit" class="btn btn-primary btn-pill mb-4 btn-block">Daftar</button>
 
                                     <p class="text-center">Sudah memiliki akun?
-                                        <a class="text-blue" href="sign-in.html">Login</a>
+                                        <a class="text-blue" href="{{ route('login.form.siswa') }}">Login</a>
                                     </p>
                                 </div>
                             </div>

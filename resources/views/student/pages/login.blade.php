@@ -57,7 +57,7 @@
                             </div>
                             <button type="submit" class="btn btn-primary btn-pill mt-3 mb-4 btn-block">Login</button>
                             <p class="text-center">Belum punya akun ?
-                                <a class="text-blue" href="sign-up.html">Buat Akun</a>
+                                <a class="text-blue" href="{{ route('register.form.siswa') }}">Buat Akun</a>
                             </p>
                             </div>
                         </div>
