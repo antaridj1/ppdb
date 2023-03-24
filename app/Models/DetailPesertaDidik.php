@@ -14,11 +14,17 @@ class DetailPesertaDidik extends Model
         'prestasi_id',
         'beasiswa_id',
         'kesejahteraan_id',
+        'siswa_id',
     ];
 
     public function dataPeriodik()
     {
         return $this->hasMany(DataPeriodik::class, 'data_periodik_id');
+    }
+
+    public function siswa()
+    {
+        return $this->hasMany(Siswa::class, 'siswa_id');
     }
 
     public function prestasi()

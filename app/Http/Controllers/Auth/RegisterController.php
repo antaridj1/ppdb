@@ -77,7 +77,7 @@ class RegisterController extends Controller
             'sekolah_id' => 'required'
         ]);
 
-        Siswa::create([
+        $dataSiswa = Siswa::create([
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'no_hp' => $request->no_hp,

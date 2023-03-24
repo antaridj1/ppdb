@@ -15,6 +15,7 @@ class CreateFileTable extends Migration
     {
         Schema::create('file', function (Blueprint $table) {
             $table->id();
+            $table->integer('siswa_id');
             $table->string('file_kk');
             $table->string('file_akta_kelahiran');
             $table->string('file_ktp_ortu');

@@ -34,7 +34,12 @@ class PesertaDidik extends Model
 
     public function dataPribadi()
     {
-        return $this->hasMany(DataPribadi::class, 'siswa_id');
+        return $this->hasMany(DataPribadi::class, 'data_pribadi_id');
+    }
+
+    public function siswa()
+    {
+        return $this->hasMany(Siswa::class, 'siswa_id');
     }
 
     public function ppdb()

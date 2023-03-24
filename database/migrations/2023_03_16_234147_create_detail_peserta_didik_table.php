@@ -16,9 +16,10 @@ class CreateDetailPesertaDidikTable extends Migration
         Schema::create('detail_peserta_didik', function (Blueprint $table) {
             $table->id();
             $table->integer('data_periodik_id');
-            $table->string('prestasi_id');
-            $table->string('beasiswa_id');
-            $table->integer('kesejahteraan_id');
+            $table->string('prestasi_id')->nullable();
+            $table->string('beasiswa_id')->nullable();
+            $table->integer('kesejahteraan_id')->nullable();
+            $table->integer('siswa_id');
             $table->timestamps();
             $table->softDeletes();
         });

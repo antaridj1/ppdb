@@ -35,4 +35,10 @@ class Siswa extends Authenticatable
     {
         return $this->belongsTo(PesertaDidik::class, 'siswa_id');
     }
+
+    public function detailPesertaDidik()
+    {
+        return $this->belongsTo(DetailPesertaDidik::class, 'siswa_id');
+
+    }
 }

@@ -18,8 +18,8 @@ class CreatePesertaDidikTable extends Migration
             $table->integer('data_pribadi_id');
             $table->integer('data_ayah_id');
             $table->integer('data_ibu_id');
-            $table->integer('data_wali');
-            $table->integer('kontak_id');
+            $table->integer('data_wali')->nullable();
+            $table->integer('siswa_id');
             $table->timestamps();
             $table->softDeletes();
         });

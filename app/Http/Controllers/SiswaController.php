@@ -3,6 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Siswa;
+use App\Models\DataPeriodik;
+use App\Models\DataPribadi;
+use App\Models\DataAyah;
+use App\Models\DataIbu;
+use App\Models\DataWali;
+use App\Models\DataIbu;
+use App\Models\Prestasi;
+use App\Models\Kesejahteraan;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreDataPribadi as DataPribadi;
 
@@ -36,96 +44,280 @@ class SiswaController extends Controller
      */
     public function store(Request $request)
     {
-        $validateDataPribadi = $request->validate([
-            'nama_lengkap' => 'required',
-            'gender' => 'required',
-            'nisn' => 'required|min:10|max:10',
-            'nik' => 'required|min:16|max:16',
-            'kk' => 'required',
-            'tempat_lahir' => 'required',
-            'tgl_lahir' => 'required',
-            'akta_kelahiran' => 'required',
-            'agama' => 'required',
-            'kewarganegaraan' => 'required',
-            'negara' => 'required',
-            'berkebutuhan_khusus' => 'required',
-            'alamat' => 'required',
-            'rt' => 'required|min:3|max:3',
-            'rw' => 'required|min:3|max:3',
-            'dusun' => 'required',
-            'kelurahan' => 'required',
-            'kecamatan' => 'required',
-            'kode_pos' => 'required',
-            'lintang' => 'required',
-            'bujur' => 'required',
-            'tempat_tinggal' => 'required',
-            'moda_tranportasi' => 'required',
-            'anak_ke' => 'required',
-            'kip' => 'required',
-            'menerima_kip' => 'required',
-            'pip' => 'required',
-        ]);
+        try {
+            $rules = array_merge([
+                //data pribadi
+                'nama_lengkap' => 'required',
+                'gender' => 'required',
+                'nisn' => 'required|min:10|max:10',
+                'nik' => 'required|min:16|max:16',
+                'kk' => 'required',
+                'tempat_lahir' => 'required',
+                'tgl_lahir' => 'required',
+                'akta_kelahiran' => 'required',
+                'agama' => 'required',
+                'kewarganegaraan' => 'required',
+                'negara' => 'required',
+                'berkebutuhan_khusus' => 'required',
+                'alamat' => 'required',
+                'rt' => 'required|min:3|max:3',
+                'rw' => 'required|min:3|max:3',
+                'dusun' => 'required',
+                'kelurahan' => 'required',
+                'kecamatan' => 'required',
+                'kode_pos' => 'required',
+                'lintang' => 'required',
+                'bujur' => 'required',
+                'tempat_tinggal' => 'required',
+                'moda_tranportasi' => 'required',
+                'anak_ke' => 'required',
+                'kip' => 'required',
+                'menerima_kip' => 'required',
+                'pip' => 'required',
+            ], [
+                //data periodik
+                'tinggi_badan' => 'required',
+                'berat_badan' => 'required',
+                'lingkar_kepala' => 'required',
+                'jarak' => 'required',
+                'km' => 'required',
+                'waktu_tempuh' => 'required',
+                'jumlah_saudara' => 'required',
+            ], [
+                //data ayah
+                'nama_ayah' => 'required',
+                'nik_ayah' => 'required',
+                'tahun_ayah' => 'required',
+                'pendidikan_ayah' => 'required',
+                'pekerjaan_ayah' => 'required',
+                'penghasilan_ayah' => 'required',
+                'berkebutuhan_khusus_ayah' => 'required',
+            ], [
+                //data ibu
+                'nama_ibu' => 'required',
+                'nik_ibu' => 'required',
+                'tahun_ibu' => 'required',
+                'pendidikan_ibu' => 'required',
+                'pekerjaan_ibu' => 'required',
+                'penghasilan_ibu' => 'required',
+                'berkebutuhan_khusus_ibu' => 'required',
+            ], [
+                //cata wali
+                'nama_wali' => 'nullable',
+                'nik_wali' => 'nullable',
+                'tahun_wali' => 'nullable',
+                'pendidikan_wali' => 'nullable',
+                'pekerjaan_wali' => 'nullable',
+                'penghasilan_wali' => 'nullable',
+                'berkebutuhan_khusus_wali' => 'nullable',
+            ], [
+                //data beasiswa
+                'jenis_anak_berprestasi*' => 'nullable',
+                'keterangan*' => 'nullable',
+                'tahun_mulai*' => 'nullable',
+                'tahun_selesai*' => 'nullable',
+            ],[
+                //data prestasi
+                'nama_prestasi_.*' => 'nullable',
+                'tahun*' => 'nullable',
+                'penyelenggara*' => 'nullable',
+                'jenis_prestasi*' => 'nullable',
+                'tingkat*' => 'nullable',
+            ], [
+                //data kesejahteraan
+                'jenis_kesejahteraan' => 'nullable',
+                'no_kartu' => 'nullable',
+                'nama' => 'nullable',
+            ]);
 
-        $validatePeriodik = $request->validate([
-            'tinggi_badan' => 'required',
-            'berat_badan' => 'required',
-            'lingkar_kepala' => 'required',
-            'jarak' => 'required',
-            'km' => 'required',
-            'waktu_tempuh' => 'required',
-            'jumlah_saudara' => 'required',
-        ]);
+        $validator = Validator::make($request->all(), $rules);
 
-        $validateDataAyah = $request->validate([
-            'nama_ayah' => 'required',
-            'nik_ayah' => 'required',
-            'tahun_ayah' => 'required',
-            'pendidikan_ayah' => 'required',
-            'pekerjaan_ayah' => 'required',
-            'penghasilan_ayah' => 'required',
-            'berkebutuhan_khusus_ayah' => 'required',
-        ]);
+        } catch (\Exception $e) {
+            Log::error('eror message: ' . $e->getMessage() . 'in line: ' . $e->getLine());
+        }
 
-        $validateDataIbu = $request->validate([
-            'nama_ibu' => 'required',
-            'nik_ibu' => 'required',
-            'tahun_ibu' => 'required',
-            'pendidikan_ibu' => 'required',
-            'pekerjaan_ibu' => 'required',
-            'penghasilan_ibu' => 'required',
-            'berkebutuhan_khusus_ibu' => 'required',
-        ]);
 
-        $validateDataWali = $request->validate([
-            'nama_wali' => 'nullable',
-            'nik_wali' => 'nullable',
-            'tahun_wali' => 'nullable',
-            'pendidikan_wali' => 'nullable',
-            'pekerjaan_wali' => 'nullable',
-            'penghasilan_wali' => 'nullable',
-            'berkebutuhan_khusus_wali' => 'nullable',
-        ]);
+        try {
+            $dataProbadi = DataPribadi::create([
+                'nama_lengkap' => $request->nama_lengkap,
+                'gender' => $request->gender,
+                'nisn' => $request->nisn,
+                'nik' => $request->nik,
+                'kk' => $request->kk,
+                'tempat_lahir' => $request->tenpat_lahir,
+                'tgl_lahir' => $request->tgl_lahir,
+                'akta_kelahiran' => $request->akta_kelahiran,
+                'agama' => $request->agama,
+                'kewarganegaraan' => $request->kewarganegaraan,
+                'negara' => $request->negara,
+                'berkebutuhan_khusus' => $request->berkebutuhan_khusus,
+                'alamat' => $request->alamat,
+                'rt' => $request->rt,
+                'rw' => $request->rw,
+                'dusun' => $request->dusun,
+                'kelurahan' => $request->kelurahan,
+                'kecamatan' => $request->kecamatan,
+                'kode_pos' => $request->kode_pos,
+                'lintang' => $request->lintang,
+                'bujur' => $request->bujur,
+                'tempat_tinggal' => $request->tempat_tinggal,
+                'moda_tranportasi' => $request->moda_transport,
+                'anak_ke' => $request->anak_ke,
+                'kip' => $request->kip,
+                'menerima_kip' => $request->menerima_kip,
+                'pip' => $request->pip,
+            ]);
 
-        $validateBeasiswa = $request->validate([
-            'jenis_anak_berprestasi' => 'nullable',
-            'keterangan' => 'nullable',
-            'tahun_mulai' => 'nullable',
-            'tahun_selesai' => 'nullable',
-        ]);
+            $id_datapribadi = $dataPribadi->id;
+        } catch (\Exception $e) {
+            Log::error('eror message: ' . $e->getMessage() . 'in line: ' . $e->getLine());
+        }
 
-        $validateKesejahteraan = $request->validate([
-            'jenis_kesejahteraan' => 'nullable',
-            'no_kartu' => 'nullable',
-            'nama' => 'nullable',
-        ]);
+        try{
+            $dataPeriodik = DataPeriodik::create([
+                'tinggi_badan' => $request->tinggi_badan,
+                'berat_badan' => $request->berat_badan,
+                'lingkar_kepala' => $request->lingkar_kepala,
+                'jarak' => $request->jarak,
+                'km' => $request->km,
+                'waktu_tempuh' => $request->waktu_tempuh,
+                'jumlah_saudara' => $request->jumlah_saudara,
+            ]);
 
-        $validateKesejahteraan = $request->validate([
-            'nama_prestasi' => 'nullable',
-            'tahun' => 'nullable',
-            'penyelenggara' => 'nullable',
-            'jenis_prestasi' => 'nullable',
-            'tingkat' => 'nullable',
-        ]);
+            $id_dataperiodik = $dataPeriodi->id;
+        } catch (\Exception $e) {
+            Log::error('eror message: ' . $e->getMessage() . 'in line: ' . $e->getLine());
+        }
+
+
+        try{
+            $dataAyah = DataAyah::create([
+                'nama_ayah' => $request->nama_ayah,
+                'nik_ayah' => $request->nik_ayah,
+                'tahun_ayah' => $request->tahun_ayah,
+                'pendidikan_ayah' => $request->pendidikan_ayah,
+                'pekerjaan_ayah' => $request->pekerjaan_ayah,
+                'penghasilan_ayah' => $request->penghasilan_ayah,
+                'berkebutuhan_khusus_ayah' => $request->berkebutuhan_khusus_ayah
+            ]);
+
+            $id_dataayah = $dataAyah->id;
+        } catch (\Exception $e) {
+            Log::error('eror message: ' . $e->getMessage() . 'in line: ' . $e->getLine());
+        }
+
+
+        try{
+            $dataIbu= DataIbu::create([
+                'nama_ibu' => $request->nama_ibu,
+                'nik_ibu' => $request->nik_ibu,
+                'tahun_ibu' => $request->tahun_ibu,
+                'pendidikan_ibu' => $request->pendidikan_ibu,
+                'pekerjaan_ibu' => $request->pekerjaan_ibu,
+                'penghasilan_ibu' => $request->penghasilan_ibu,
+                'berkebutuhan_khusus_ibu' => $request->berkebutuhan_khusus_ibu
+            ]);
+
+            $id_dataibu = $dataIbu->id;
+        } catch (\Exception $e) {
+            Log::error('eror message: ' . $e->getMessage() . 'in line: ' . $e->getLine());
+        }
+
+
+        try{
+            $dataWali= DataWali::create([
+                'nama_wali' => $request->nama_wali,
+                'nik_wali' => $request->nik_wali,
+                'tahun_wali' => $request->tahun_wali,
+                'pendidikan_wali' => $request->pendidikan_wali,
+                'pekerjaan_wali' => $request->pekerjaan_wali,
+                'penghasilan_wali' => $request->penghasilan_wali,
+                'berkebutuhan_khusus_wali' => $request->berkebutuhan_khusus_wali
+            ]);
+
+            $id_datawali = $dataWali->id;
+        } catch (\Exception $e) {
+            Log::error('eror message: ' . $e->getMessage() . 'in line: ' . $e->getLine());
+        }
+
+
+        try{
+            $dataBeasiswa = Beasiswa::create([
+                'jenis_anak_berprestasi' => $request->jenis_anak_berprestasi,
+                'keterangan' => $request->keterangan,
+                'tahun_mulai' => $request->tahun_mulai,
+                'tahun_selesai' => $request->tahun_selesai
+            ]);
+
+            $id_databeasiswa = $dataBeasiswa->id;
+        } catch (\Exception $e) {
+            Log::error('eror message: ' . $e->getMessage() . 'in line: ' . $e->getLine());
+        }
+
+
+        try{
+            $dataPrestasi = Prestasi::create([
+                'nama_prestasi' => $request->nama_prestasi,
+                'tahun' => $request->tahun,
+                'penyelenggara' => $request->penyelenggara,
+                'jenis_prestasi' => $request->jenis_prestasi,
+                'tingkat' => $request->tingkat,
+            ]);
+
+            $id_dataprestasi = $dataPrestasi->id;
+        } catch (\Exception $e) {
+            Log::error('eror message: ' . $e->getMessage() . 'in line: ' . $e->getLine());
+        }
+
+
+        try{
+            $dataKesejahteraan = Kesejahteraan::create([
+                'jenis_kesejahteraan' => $request->jenis_kesejahteraan,
+                'no_kartu' => $request->no_kartu,
+                'nama' => $request->nama,
+            ]);
+
+            $id_datakesejahteraan = $dataKesejahteraan->id;
+        } catch (\Exception $e) {
+            Log::error('eror message: ' . $e->getMessage() . 'in line: ' . $e->getLine());
+        }
+
+        try{
+            $dataPesertaDidik = PesertaDidik::create([
+                'data_pribadi_id' => $id_datapribadi,
+                'data_ayah_id' => $id_dataayah,
+                'data_ibu_id' => $id_dataibu,
+                'data_wali' => $id_datawali,
+                'siswa_id' => auth()->guard('siswa')->id()
+            ]);
+
+            $id_pesertadidik = $dataPesertaDidik;
+        } catch (\Exception $e) {
+            Log::error('eror message: ' . $e->getMessage() . 'in line: ' . $e->getLine());
+        }
+
+        try{
+            $dataDetailPesertaDidik = DetailPesertaDidik::create([
+                'data_periodik_id'=> $id_dataperiodik,
+                'prestasi_id' => $id_dataprestasi,
+                'beasiswa_id' => $id_databeasiswa,
+                'kesejahteraan_id' => $id_datakesejahteraan,
+                'siswa_id' => auth()->guard('siswa')->id()
+            ]);
+
+            $id_detailpesertadidik = $dataDetailPesertaDidik;
+        } catch (\Exception $e) {
+            Log::error('eror message: ' . $e->getMessage() . 'in line: ' . $e->getLine());
+        }
+
+        try{
+            $file = File::create([
+
+            ]);
+        } catch (\Exception $e) {
+            Log::error('eror message: ' . $e->getMessage() . 'in line: ' . $e->getLine());
+        }
+
 
     }
 
