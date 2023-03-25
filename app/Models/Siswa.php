@@ -20,6 +20,7 @@ class Siswa extends Authenticatable
         'email',
         'sekolah_id',
         'password',
+        'daftar',
     ];
 
     protected $hidden = [

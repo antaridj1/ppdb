@@ -20,6 +20,7 @@ class CreateSiswaTable extends Migration
             $table->string('password');
             $table->string('no_tlp')->nullable();
             $table->string('no_hp')->nullable();
+            $table->tinyInteger('daftar')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

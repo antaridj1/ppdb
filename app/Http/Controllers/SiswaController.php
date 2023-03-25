@@ -3,16 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\Siswa;
-use App\Models\DataPeriodik;
-use App\Models\DataPribadi;
+use App\Models\DataIbu;
 use App\Models\DataAyah;
-use App\Models\DataIbu;
 use App\Models\DataWali;
-use App\Models\DataIbu;
+use App\Models\PesertaDidik;
+use App\Models\File;
+use App\Models\PPDB;
+use App\Models\DetailPesertaDidik;
 use App\Models\Prestasi;
-use App\Models\Kesejahteraan;
+use App\Models\DataPribadi;
+use App\Models\DataPeriodik;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreDataPribadi as DataPribadi;
+use App\Models\Kesejahteraan;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Routing\Controller;
 
 class SiswaController extends Controller
 {
@@ -23,7 +28,11 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        //
+        if(auth()->guard('siswa')->daftar() == 0) {
+           return view('student.pages.data-ppdb', ['id' => auth()->guard('siswa')->sekolah_id()]);
+        } else {
+            $dataPribadi = DataPribadi::where('siswa_id', auth()->guard('siswa')->id())->
+        }
     }
 
     /**
@@ -128,6 +137,12 @@ class SiswaController extends Controller
                 'jenis_kesejahteraan' => 'nullable',
                 'no_kartu' => 'nullable',
                 'nama' => 'nullable',
+            ], [
+                //file
+                'file_kk' => 'required|mimes:pdf|max:5120',
+                'file_akta_kelahiran' => 'required|mimes:pdf|max:5120',
+                'file_ktp_ortu' => 'required|mimes:pdf|max:5120',
+                'file_ijazah_tk' => 'required|mimes:pdf|max:5120',
             ]);
 
         $validator = Validator::make($request->all(), $rules);
@@ -138,7 +153,7 @@ class SiswaController extends Controller
 
 
         try {
-            $dataProbadi = DataPribadi::create([
+            $dataPribadi = DataPribadi::create([
                 'nama_lengkap' => $request->nama_lengkap,
                 'gender' => $request->gender,
                 'nisn' => $request->nisn,
@@ -184,11 +199,10 @@ class SiswaController extends Controller
                 'jumlah_saudara' => $request->jumlah_saudara,
             ]);
 
-            $id_dataperiodik = $dataPeriodi->id;
+            $id_dataperiodik = $dataPeriodik->id;
         } catch (\Exception $e) {
             Log::error('eror message: ' . $e->getMessage() . 'in line: ' . $e->getLine());
         }
-
 
         try{
             $dataAyah = DataAyah::create([
@@ -206,7 +220,6 @@ class SiswaController extends Controller
             Log::error('eror message: ' . $e->getMessage() . 'in line: ' . $e->getLine());
         }
 
-
         try{
             $dataIbu= DataIbu::create([
                 'nama_ibu' => $request->nama_ibu,
@@ -223,7 +236,7 @@ class SiswaController extends Controller
             Log::error('eror message: ' . $e->getMessage() . 'in line: ' . $e->getLine());
         }
 
-
+        //data wali
         try{
             $dataWali= DataWali::create([
                 'nama_wali' => $request->nama_wali,
@@ -240,36 +253,45 @@ class SiswaController extends Controller
             Log::error('eror message: ' . $e->getMessage() . 'in line: ' . $e->getLine());
         }
 
-
+        //beasiswa
         try{
-            $dataBeasiswa = Beasiswa::create([
-                'jenis_anak_berprestasi' => $request->jenis_anak_berprestasi,
-                'keterangan' => $request->keterangan,
-                'tahun_mulai' => $request->tahun_mulai,
-                'tahun_selesai' => $request->tahun_selesai
-            ]);
+            if($request->beasiswa){
+                $id_databeasiswa = array();
+                foreach($request->beasiswa as $beasiswa){
+                    $dataBeasiswa = Beasiswa::create([
+                        'jenis_anak_berprestasi' => $request->jenis_anak_berprestasi,
+                        'keterangan' => $request->keterangan,
+                        'tahun_mulai' => $request->tahun_mulai,
+                        'tahun_selesai' => $request->tahun_selesai
+                    ]);
+                $id_databeasiswa[] = $dataBeasiswa->id;
+                }
+            }
 
-            $id_databeasiswa = $dataBeasiswa->id;
         } catch (\Exception $e) {
             Log::error('eror message: ' . $e->getMessage() . 'in line: ' . $e->getLine());
         }
 
-
+        //prestasi
         try{
-            $dataPrestasi = Prestasi::create([
-                'nama_prestasi' => $request->nama_prestasi,
-                'tahun' => $request->tahun,
-                'penyelenggara' => $request->penyelenggara,
-                'jenis_prestasi' => $request->jenis_prestasi,
-                'tingkat' => $request->tingkat,
-            ]);
-
-            $id_dataprestasi = $dataPrestasi->id;
+            if($request->prestasi){
+                $id_dataprestasi = array();
+                foreach($request->prestasi as $prestasi){
+                    $dataPrestasi = Prestasi::create([
+                        'nama_prestasi' => $prestasi['nama_prestasi'],
+                        'tahun' => $prestasi['tahun'],
+                        'penyelenggara' => $prestasi['penyelenggara'],
+                        'jenis_prestasi' => $prestasi['jenis_prestasi'],
+                        'tingkat' => $prestasi['tingkat'],
+                    ]);
+                    $id_dataprestasi[] = $dataPrestasi->id;
+                }
+            }
         } catch (\Exception $e) {
             Log::error('eror message: ' . $e->getMessage() . 'in line: ' . $e->getLine());
         }
 
-
+        //kesejahteraan
         try{
             $dataKesejahteraan = Kesejahteraan::create([
                 'jenis_kesejahteraan' => $request->jenis_kesejahteraan,
@@ -282,6 +304,7 @@ class SiswaController extends Controller
             Log::error('eror message: ' . $e->getMessage() . 'in line: ' . $e->getLine());
         }
 
+        //peserta didik
         try{
             $dataPesertaDidik = PesertaDidik::create([
                 'data_pribadi_id' => $id_datapribadi,
@@ -296,6 +319,7 @@ class SiswaController extends Controller
             Log::error('eror message: ' . $e->getMessage() . 'in line: ' . $e->getLine());
         }
 
+        //detail peserta didik
         try{
             $dataDetailPesertaDidik = DetailPesertaDidik::create([
                 'data_periodik_id'=> $id_dataperiodik,
@@ -311,14 +335,53 @@ class SiswaController extends Controller
         }
 
         try{
-            $file = File::create([
+            if($request->hasFile('file_kk')){
+                $pdf_kk = $request->file('file_kk');
+                $name_kk = uniqid() . '.' . $pdf_kk->getClientOriginalExtension();
+            }
+            if($request->hasFile('file_akta_kelahiran')){
+                $pdf_akta = $request->file('file_akta_kelahiran');
+                $name_akta = uniqid() . '.' . $pdf_akta->getClientOriginalExtension();
+            }
+            if($request->hasFile('file_ktp_ortu')){
+                $pdf_ktp = $request->file('file_ktp_ortu');
+                $name_ktp = uniqid() . '.' . $pdf_ktp->getClientOriginalExtension();
+            }
+            if($request->hasFile('file_ktp_ortu')){
+                $pdf_ijazah = $request->file('file_ijazah_tk');
+                $name_ijazah = uniqid() . '.' . $pdf_ijazah->getClientOriginalExtension();
+            }
 
+            $file = File::create([
+                'file_kk' => $name_kk,
+                'file_akta_kelahiran' => $name_akta,
+                'file_ktp_ortu' => $name_ktp,
+                'file_ijazah_tk' => $name_ijazah,
+                'siswa_id' => auth()->guard('siswa')->id()
+            ]);
+
+            $pdf_kk->storeAs('public/file/kk', $name_kk);
+            $pdf_akta->storeAs('public/file/akta', $name_akta);
+            $pdf_ktp->storeAs('public/file/ktp', $name_ktp);
+            $pdf_ijazah->storeAs('public/file/ijazah', $name_ijazah);
+
+            $id_file = $file->id;
+        } catch (\Exception $e) {
+            Log::error('eror message: ' . $e->getMessage() . 'in line: ' . $e->getLine());
+        }
+
+        try{
+            PPDB::create([
+                'sekolah_id' => $request->sekolah_id,
+                'peserta_didik_id' => $id_pesertadidik,
+                'detail_peserta_didik_id' => $id_detailpesertadidik,
+                'file_id' => $id_file,
             ]);
         } catch (\Exception $e) {
             Log::error('eror message: ' . $e->getMessage() . 'in line: ' . $e->getLine());
         }
 
-
+        Siswa::where('id', auth()->guard('siswa')->id())->update(['daftar' => 1]);
     }
 
     /**

@@ -2,7 +2,7 @@
     <div id="sidebar" class="sidebar sidebar-with-footer">
         <!-- Aplication Brand -->
         <div class="app-brand">
-            <a href="{{ route('dashboard.siswa') }}">
+            <a href="{{ route('siswa.dashboard') }}">
             <span class="brand-name">PPDB SDN 01 Gianyar</span>
             </a>
         </div>
@@ -13,21 +13,21 @@
                 <li
                 class="active"
                 >
-                <a class="sidenav-item-link" href="{{ route('dashboard.siswa') }}">
+                <a class="sidenav-item-link" href="{{ route('siswa.dashboard') }}">
                     <i class="mdi mdi-apple-safari"></i>
                     <span class="nav-text">Dashboard</span>
                 </a>
                 </li>
                 <li
                 >
-                <a class="sidenav-item-link" href="{{ route('data.siswa') }}">
+                <a class="sidenav-item-link" href="{{ route('siswa.data') }}">
                     <i class="mdi mdi-file"></i>
                     <span class="nav-text">Data Peserta Didik</span>
                 </a>
                 </li>
                 <li
                 >
-                <a class="sidenav-item-link" href="{{ route('profile.siswa') }}">
+                <a class="sidenav-item-link" href="{{ route('siswa.profile') }}">
                     <i class="mdi mdi-account"></i>
                     <span class="nav-text">Profile Setting</span>
                 </a>
@@ -45,7 +45,7 @@
             <div class="sidebar-footer-content">
                 <ul class="d-flex">
                     <li>
-                        <form action="{{ route('logout.siswa') }}" method="POST">
+                        <form action="{{ route('siswa.logout') }}" method="POST">
                             @csrf
                             <button type="submit" class="btn btn-link btn-block" data-toggle="tooltip" title="Logout" style="color:white">
                                 <i class="mdi mdi-power" style="font-size: 30px;"></i>
@@ -53,7 +53,7 @@
                         </form>
                     </li>
                     <li>
-                        <form action="http://127.0.0.1:8000/ppdb/sdn/1/pesan">
+                        <form action="{{ route('siswa.indexUser') }}">
                             <button type="submit" class="btn btn-link btn-block" data-toggle="tooltip" title="Logout" style="color:white; padding-top:12px;">
                                 <i class="mdi mdi-message-outline" style="font-size: 28px;"></i>
                             </button>

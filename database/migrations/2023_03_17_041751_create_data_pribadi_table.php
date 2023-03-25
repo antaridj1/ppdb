@@ -28,8 +28,8 @@ class CreateDataPribadiTable extends Migration
             $table->string('negara')->default('Indonesia');
             $table->set('berkebutuhan_khusus', ['Tidak', 'Netra', 'Rungu', 'Grahita Ringan', 'Grahita Sedang', 'Daksa Ringan', 'Daksa Sedang', 'Laras','Wicara', 'Tuna Ganda', 'Hiper Aktif', 'Cerdas Aktif', 'Bakat Istimewa', 'Kesulitan Belajar', 'Narkoba', 'Indigo', 'Down Sindrome', 'Autis']);
             $table->text('alamat');
-            $table->string('rt');
-            $table->string('rw');
+            $table->string('rt', 3);
+            $table->string('rw', 3);
             $table->string('dusun');
             $table->string('kelurahan');
             $table->string('kecamatan');
