@@ -28,10 +28,16 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        if(auth()->guard('siswa')->daftar() == 0) {
-           return view('student.pages.data-ppdb', ['id' => auth()->guard('siswa')->sekolah_id()]);
+        $id = auth()->guard('siswa')->id();
+        $siswa = Siswa::find($id);
+        if( $siswa->daftar == 0) {
+           return view('student.pages.data-ppdb', ['id' => $siswa->sekolah_id, 'daftar' => 0]);
         } else {
-            $dataPribadi = DataPribadi::where('siswa_id', auth()->guard('siswa')->id())->
+            $pesertaDidik = PesertaDidik::where('siswa_id', auth()->guard('siswa')->id())->first();
+            $detailPesertaDidik = DetailPesertaDidik::where('siswa_id', auth()->guard('siswa')->id())->first();
+            $file = File::where('siswa_id', auth()->guard('siswa')->id())->first();
+
+            return view('student.pages.data-ppdb', ['pesertaDidik' => $pesertaDidik, 'detailPesertaDidik' => $detailPesertaDidik, 'file' => $file, 'daftar' => 1]);
         }
     }
 
@@ -53,6 +59,8 @@ class SiswaController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->input());
+        $siswa = Siswa::find(auth()->guard('siswa')->id());
         try {
             $rules = array_merge([
                 //data pribadi
@@ -90,7 +98,8 @@ class SiswaController extends Controller
                 'lingkar_kepala' => 'required',
                 'jarak' => 'required',
                 'km' => 'required',
-                'waktu_tempuh' => 'required',
+                'waktu_tempuh_jam' => 'required',
+                'waktu_tempuh_menit' => 'required',
                 'jumlah_saudara' => 'required',
             ], [
                 //data ayah
@@ -154,33 +163,33 @@ class SiswaController extends Controller
 
         try {
             $dataPribadi = DataPribadi::create([
-                'nama_lengkap' => $request->nama_lengkap,
-                'gender' => $request->gender,
-                'nisn' => $request->nisn,
-                'nik' => $request->nik,
-                'kk' => $request->kk,
-                'tempat_lahir' => $request->tenpat_lahir,
-                'tgl_lahir' => $request->tgl_lahir,
-                'akta_kelahiran' => $request->akta_kelahiran,
-                'agama' => $request->agama,
-                'kewarganegaraan' => $request->kewarganegaraan,
-                'negara' => $request->negara,
-                'berkebutuhan_khusus' => $request->berkebutuhan_khusus,
-                'alamat' => $request->alamat,
-                'rt' => $request->rt,
-                'rw' => $request->rw,
-                'dusun' => $request->dusun,
-                'kelurahan' => $request->kelurahan,
-                'kecamatan' => $request->kecamatan,
-                'kode_pos' => $request->kode_pos,
-                'lintang' => $request->lintang,
-                'bujur' => $request->bujur,
-                'tempat_tinggal' => $request->tempat_tinggal,
-                'moda_tranportasi' => $request->moda_transport,
-                'anak_ke' => $request->anak_ke,
-                'kip' => $request->kip,
-                'menerima_kip' => $request->menerima_kip,
-                'pip' => $request->pip,
+                'nama_lengkap' => $request->input('nama_lengkap'),
+                'gender' => $request->input('gender'),
+                'nisn' => $request->input('nisn'),
+                'nik' => $request->input('nik'),
+                'kk' => $request->input('kk'),
+                'tempat_lahir' => $request->input('tenpat_lahir'),
+                'tgl_lahir' => $request->input('tgl_lahir'),
+                'akta_kelahiran' => $request->input('akta_kelahiran'),
+                'agama' => $request->input('agama'),
+                'kewarganegaraan' => $request->input('kewarganegaraan'),
+                'negara' => $request->input('negara'),
+                'berkebutuhan_khusus' => $request->input('berkebutuhan_khusus'),
+                'alamat' => $request->input('alamat'),
+                'rt' => $request->input('rt'),
+                'rw' => $request->input('rw'),
+                'dusun' => $request->input('dusun'),
+                'kelurahan' => $request->input('kelurahan'),
+                'kecamatan' => $request->input('kecamatan'),
+                'kode_pos' => $request->input('kode_pos'),
+                'lintang' => $request->input('lintang'),
+                'bujur' => $request->input('bujur'),
+                'tempat_tinggal' => $request->input('tempat_tinggal'),
+                'moda_tranportasi' => $request->input('moda_transport'),
+                'anak_ke' => $request->input('anak_ke'),
+                'kip' => $request->input('kip'),
+                'menerima_kip' => $request->input('menerima_kip'),
+                'pip' => $request->input('pip'),
             ]);
 
             $id_datapribadi = $dataPribadi->id;
@@ -190,13 +199,13 @@ class SiswaController extends Controller
 
         try{
             $dataPeriodik = DataPeriodik::create([
-                'tinggi_badan' => $request->tinggi_badan,
-                'berat_badan' => $request->berat_badan,
-                'lingkar_kepala' => $request->lingkar_kepala,
-                'jarak' => $request->jarak,
-                'km' => $request->km,
-                'waktu_tempuh' => $request->waktu_tempuh,
-                'jumlah_saudara' => $request->jumlah_saudara,
+                'tinggi_badan' => $request->input('tinggi_badan'),
+                'berat_badan' => $request->input('berat_badan'),
+                'lingkar_kepala' => $request->input('lingkar_kepala'),
+                'jarak' => $request->input('jarak'),
+                'km' => $request->input('km'),
+                'waktu_tempuh' => $request->input('waktu_tempuh_jam') ." jam ". $request->input('waktu_tempuh_menit') . " menit",
+                'jumlah_saudara' => $request->input('jumlah_saudara'),
             ]);
 
             $id_dataperiodik = $dataPeriodik->id;
@@ -206,13 +215,13 @@ class SiswaController extends Controller
 
         try{
             $dataAyah = DataAyah::create([
-                'nama_ayah' => $request->nama_ayah,
-                'nik_ayah' => $request->nik_ayah,
-                'tahun_ayah' => $request->tahun_ayah,
-                'pendidikan_ayah' => $request->pendidikan_ayah,
-                'pekerjaan_ayah' => $request->pekerjaan_ayah,
-                'penghasilan_ayah' => $request->penghasilan_ayah,
-                'berkebutuhan_khusus_ayah' => $request->berkebutuhan_khusus_ayah
+                'nama_ayah' => $request->input('nama_ayah'),
+                'nik_ayah' => $request->input('nik_ayah'),
+                'tahun_ayah' => $request->input('tahun_ayah'),
+                'pendidikan_ayah' => $request->input('pendidikan_ayah'),
+                'pekerjaan_ayah' => $request->input('pekerjaan_ayah'),
+                'penghasilan_ayah' => $request->input('penghasilan_ayah'),
+                'berkebutuhan_khusus_ayah' => $request->input('berkebutuhan_khusus_ayah')
             ]);
 
             $id_dataayah = $dataAyah->id;
@@ -222,13 +231,13 @@ class SiswaController extends Controller
 
         try{
             $dataIbu= DataIbu::create([
-                'nama_ibu' => $request->nama_ibu,
-                'nik_ibu' => $request->nik_ibu,
-                'tahun_ibu' => $request->tahun_ibu,
-                'pendidikan_ibu' => $request->pendidikan_ibu,
-                'pekerjaan_ibu' => $request->pekerjaan_ibu,
-                'penghasilan_ibu' => $request->penghasilan_ibu,
-                'berkebutuhan_khusus_ibu' => $request->berkebutuhan_khusus_ibu
+                'nama_ibu' => $request->input('nama_ibu'),
+                'nik_ibu' => $request->input('nik_ibu'),
+                'tahun_ibu' => $request->input('tahun_ibu'),
+                'pendidikan_ibu' => $request->input('pendidikan_ibu'),
+                'pekerjaan_ibu' => $request->input('pekerjaan_ibu'),
+                'penghasilan_ibu' => $request->input('penghasilan_ibu'),
+                'berkebutuhan_khusus_ibu' => $request->input('berkebutuhan_khusus_ibu')
             ]);
 
             $id_dataibu = $dataIbu->id;
@@ -239,13 +248,13 @@ class SiswaController extends Controller
         //data wali
         try{
             $dataWali= DataWali::create([
-                'nama_wali' => $request->nama_wali,
-                'nik_wali' => $request->nik_wali,
-                'tahun_wali' => $request->tahun_wali,
-                'pendidikan_wali' => $request->pendidikan_wali,
-                'pekerjaan_wali' => $request->pekerjaan_wali,
-                'penghasilan_wali' => $request->penghasilan_wali,
-                'berkebutuhan_khusus_wali' => $request->berkebutuhan_khusus_wali
+                'nama_wali' => $request->input('nama_wali'),
+                'nik_wali' => $request->input('nik_wali'),
+                'tahun_wali' => $request->input('tahun_wali'),
+                'pendidikan_wali' => $request->input('pendidikan_wali'),
+                'pekerjaan_wali' => $request->input('pekerjaan_wali'),
+                'penghasilan_wali' => $request->input('penghasilan_wali'),
+                'berkebutuhan_khusus_wali' => $request->input('berkebutuhan_khusus_wali')
             ]);
 
             $id_datawali = $dataWali->id;
@@ -255,14 +264,14 @@ class SiswaController extends Controller
 
         //beasiswa
         try{
-            if($request->beasiswa){
+            if($request->input('beasiswa')){
                 $id_databeasiswa = array();
-                foreach($request->beasiswa as $beasiswa){
+                foreach($request->input('beasiswa') as $beasiswa){
                     $dataBeasiswa = Beasiswa::create([
-                        'jenis_anak_berprestasi' => $request->jenis_anak_berprestasi,
-                        'keterangan' => $request->keterangan,
-                        'tahun_mulai' => $request->tahun_mulai,
-                        'tahun_selesai' => $request->tahun_selesai
+                        'jenis_anak_berprestasi' => $beasiswa['jenis_anak_berprestasi'],
+                        'keterangan' => $beasiswa['keterangan'],
+                        'tahun_mulai' => $beasiswa['tahun_mulai'],
+                        'tahun_selesai' => $beasiswa['tahun_selesai']
                     ]);
                 $id_databeasiswa[] = $dataBeasiswa->id;
                 }
@@ -274,7 +283,7 @@ class SiswaController extends Controller
 
         //prestasi
         try{
-            if($request->prestasi){
+            if($request->input('prestasi')){
                 $id_dataprestasi = array();
                 foreach($request->prestasi as $prestasi){
                     $dataPrestasi = Prestasi::create([
@@ -294,9 +303,9 @@ class SiswaController extends Controller
         //kesejahteraan
         try{
             $dataKesejahteraan = Kesejahteraan::create([
-                'jenis_kesejahteraan' => $request->jenis_kesejahteraan,
-                'no_kartu' => $request->no_kartu,
-                'nama' => $request->nama,
+                'jenis_kesejahteraan' => $request->input('jenis_kesejahteraan'),
+                'no_kartu' => $request->input('no_kartu'),
+                'nama' => $request->input('nama'),
             ]);
 
             $id_datakesejahteraan = $dataKesejahteraan->id;
@@ -372,7 +381,7 @@ class SiswaController extends Controller
 
         try{
             PPDB::create([
-                'sekolah_id' => $request->sekolah_id,
+                'sekolah_id' => $request->input('sekolah_id'),
                 'peserta_didik_id' => $id_pesertadidik,
                 'detail_peserta_didik_id' => $id_detailpesertadidik,
                 'file_id' => $id_file,
@@ -381,7 +390,9 @@ class SiswaController extends Controller
             Log::error('eror message: ' . $e->getMessage() . 'in line: ' . $e->getLine());
         }
 
-        Siswa::where('id', auth()->guard('siswa')->id())->update(['daftar' => 1]);
+        Siswa::where('id', $siswa->id)->update(['daftar' => 1]);
+
+        return view('student.pages.data-ppdb');
     }
 
     /**

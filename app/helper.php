@@ -8,16 +8,7 @@ function role($role){
     } else {
         return auth()->guard('admin')->user()->isAdmin == false;
     }
-    
-}
 
-function roleController($role){
-    if ($role === 'admin'){
-        return Auth::guard('admin')->user()->isAdmin == true;
-    } else {
-        return Auth::guard('admin')->user()->isAdmin == false;
-    }
-    
 }
 
 
