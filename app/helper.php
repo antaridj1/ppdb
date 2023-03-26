@@ -11,6 +11,13 @@ function role($role){
 
 }
 
-
+function roleController($role){
+    if ($role === 'admin'){
+        return Auth::guard('admin')->user()->isAdmin == true;
+    } else {
+        return Auth::guard('admin')->user()->isAdmin == false;
+    }
+    
+}
 
 ?>

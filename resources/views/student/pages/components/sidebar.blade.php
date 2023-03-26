@@ -54,7 +54,7 @@
                     </li>
                     <li>
                         <form action="{{ route('siswa.indexUser') }}">
-                            <button type="submit" class="btn btn-link btn-block" data-toggle="tooltip" title="Logout" style="color:white; padding-top:12px;">
+                            <button type="submit" class="btn btn-link btn-block" data-toggle="tooltip" title="Chat Admin" style="color:white; padding-top:12px;">
                                 <i class="mdi mdi-message-outline" style="font-size: 28px;"></i>
                             </button>
                         </form>

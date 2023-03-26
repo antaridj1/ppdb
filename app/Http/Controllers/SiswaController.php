@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Beasiswa;
 use App\Models\Siswa;
 use App\Models\DataIbu;
 use App\Models\DataAyah;
@@ -18,6 +19,7 @@ use App\Models\Kesejahteraan;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class SiswaController extends Controller
 {
@@ -28,17 +30,33 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        $id = auth()->guard('siswa')->id();
-        $siswa = Siswa::find($id);
-        if( $siswa->daftar == 0) {
-           return view('student.pages.data-ppdb', ['id' => $siswa->sekolah_id, 'daftar' => 0]);
-        } else {
-            $pesertaDidik = PesertaDidik::where('siswa_id', auth()->guard('siswa')->id())->first();
-            $detailPesertaDidik = DetailPesertaDidik::where('siswa_id', auth()->guard('siswa')->id())->first();
-            $file = File::where('siswa_id', auth()->guard('siswa')->id())->first();
+        if(Auth::getDefaultDriver() !== 'admin'){
+            // Untuk Wali
+            $id = auth()->guard('siswa')->id();
+            $siswa = Siswa::find($id);
+            if( $siswa->daftar == 0) {
+                return view('student.pages.data-ppdb', ['id' => $siswa->sekolah_id, 'daftar' => 0]);
+            } else {
+                $pesertaDidik = PesertaDidik::where('siswa_id', auth()->guard('siswa')->id())->first();
+                $detailPesertaDidik = DetailPesertaDidik::where('siswa_id', auth()->guard('siswa')->id())->first();
+                $file = File::where('siswa_id', auth()->guard('siswa')->id())->first();
 
-            return view('student.pages.data-ppdb', ['pesertaDidik' => $pesertaDidik, 'detailPesertaDidik' => $detailPesertaDidik, 'file' => $file, 'daftar' => 1]);
+                return view('student.pages.data-ppdb', ['pesertaDidik' => $pesertaDidik, 'detailPesertaDidik' => $detailPesertaDidik, 'file' => $file, 'daftar' => 1]);
+            }
+        } else {
+            if(roleController('admin')){
+                 // Untuk admin
+                $siswas = PesertaDidik::all();
+            } else {
+                // Untuk Sekolah
+                $siswas = PesertaDidik::whereHas('siswa', function($q){
+                    $q->where('sekolah_id', Auth::id());
+                })->get();
+            }
+           
+            return view('peserta-didik.index', compact('siswas'));
         }
+       
     }
 
     /**

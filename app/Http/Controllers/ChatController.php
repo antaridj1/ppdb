@@ -14,7 +14,7 @@ class ChatController extends Controller
 {
     public function index(Request $request)
     {
-        $chatrooms = Chat::selectRaw('user_id, admin_id, messages, created_at, COUNT(CASE WHEN isViewed = false AND dari = "web" THEN 1 ELSE NULL END) as unread_count')
+        $chatrooms = Chat::selectRaw('user_id, admin_id, messages, created_at, COUNT(CASE WHEN isViewed = false AND dari = "siswa" THEN 1 ELSE NULL END) as unread_count')
             ->groupBy('user_id')
             ->get();
         
@@ -35,11 +35,18 @@ class ChatController extends Controller
                 $chats = null;
             }
 
+            $chat->update([
+                'isViewed' => true
+            ]);
+
+            $unread = $chat->where('isViewed', false)->count();
+
             $response = []; 
             $response['status'] = 'success';
             $response['data'] = $chats;
             $response['user_id'] = $user->id;
             $response['user_name'] = $user->name;
+            $response['unread'] = $unread;
 
             return response()->json($response, 200);
         } catch (Exception $e) {

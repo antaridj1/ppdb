@@ -28,7 +28,7 @@
                                     <span class="">
                                         <span class="state text-smoke"><em>{{$chatroom->created_at->diffForHumans()}}</em></span>
                                         @if($chatroom->unread_count > 0)
-                                            <span class="badge badge-primary">{{$chatroom->unread_count}}</span>
+                                            <span class="badge badge-primary unread">{{$chatroom->unread_count}}</span>
                                         @endif
                                     </span>
                                     </span>
@@ -90,6 +90,7 @@
 <script>
     $('.chatroom').on('click', function(){
         var user_id = $(this).data('user-id');
+        $(this).find('.unread').remove();
         var urlPost = $('#send_messages').data('url-store');
         var urlCreate = $(this).data('url-create');
         $(this).addClass('chatroom-active');

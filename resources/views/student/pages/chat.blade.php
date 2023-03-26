@@ -51,7 +51,7 @@
                                 </div>
 
                                 <div class="chat-footer">
-                                    <form method="post" id="send_messages" data-url-store="{{route('storeUser')}}" data-url-create="{{route('createUser')}}">
+                                    <form method="post" id="send_messages" data-url-store="{{route('siswa.storeUser')}}" data-url-create="{{route('siswa.createUser')}}">
                                         @csrf
                                         <div class="input-group input-group-chat">
                                             <input type="text" class="form-control" placeholder="Tuliskan pesan" id="chat" name="chat" aria-label="Recipient's username" aria-describedby="basic-addon2">

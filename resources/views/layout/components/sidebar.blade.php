@@ -13,13 +13,13 @@
       <ul class="nav sidebar-inner" id="sidebar-menu">
           <li class="active">
             <a class="sidenav-item-link" href="index.html">
-              <i class="mdi mdi-briefcase-account-outline"></i>
+              <i class="mdi mdi-home"></i>
               <span class="nav-text">Beranda</span>
             </a>
           </li>
           <li>
-            <a class="sidenav-item-link" href="analytics.html">
-              <i class="mdi mdi-chart-line"></i>
+            <a class="sidenav-item-link" href="{{route('admin.siswa.index')}}">
+              <i class="mdi mdi-briefcase-account-outline"></i>
               <span class="nav-text">Calon Peserta Didik</span>
             </a>
           </li>

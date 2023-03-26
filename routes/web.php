@@ -70,6 +70,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::post('store/{user}', [ChatController::class, 'store'])->name('store');
         });
 
+        Route::group(['prefix' => 'siswa', 'as' => 'siswa.'], function () {
+            Route::resource('/', SiswaController::class)->parameters([
+                '' => 'siswa'
+            ]);
+            Route::patch('/{siswa}/update-status', [SiswaController::class, 'update_status'])->name('updateStatus');
+        });
+
         Route::post('logout', [LogoutController::class, 'adminLogout'])->name('logout');
     });
 });
