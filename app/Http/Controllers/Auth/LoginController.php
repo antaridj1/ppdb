@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\Models\Siswa;
 
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -78,9 +79,17 @@ class LoginController extends Controller
             'password' => 'required|min:6'
         ]);
 
+        $validation = Siswa::where('sekolah_id', $request->id)->where('email', $request->email)->exists();
+
+        if(!$validation){
+            return redirect()->back()->with('error', 'Email atau password salah');
+        }
+
         if (Auth::guard('siswa')->attempt($request->only(['email','password']), $request->get('remember'))){
             return redirect('ppdb/sdn/' .$request->id. '/dashboard');
-        } else {
+        }
+        else {
+            return redirect()->back()->with('error', 'Email atau password salah');
             return back()
                 ->with('status', 'error')
                 ->with('message', 'Wrong email or password');

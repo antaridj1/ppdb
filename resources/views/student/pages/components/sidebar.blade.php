@@ -53,9 +53,6 @@
                                 <i class="mdi mdi-message-outline" style="font-size: 28px;"></i>
                             </button>
                         </form>
-                        {{-- <a href="http://127.0.0.1:8000/ppdb/sdn-01-gianyar/pesan" data-toggle="tooltip" title="Chat">
-                            <i class="mdi mdi-message-outline"></i>
-                        </a> --}}
                     </li>
                 </ul>
             </div>
