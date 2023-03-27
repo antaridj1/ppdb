@@ -424,10 +424,15 @@ class SiswaController extends Controller
      */
     public function show(Siswa $siswa)
     {
-        $id = auth()->guard('siswa')->id();
+        if(Auth::getDefaultDriver() !== 'admin'){
+            // untuk wali
+            $id = auth()->guard('siswa')->id();
 
-        $profile = Siswa::find($id);
-        return view('student.pages.profile-siswa-ppdb', ['profile' => $profile]);
+            $profile = Siswa::find($id);
+            return view('student.pages.profile-siswa-ppdb', ['profile' => $profile]);
+        }else {
+            return view('peserta-didik.show', compact('siswa'));
+        }
     }
 
     /**

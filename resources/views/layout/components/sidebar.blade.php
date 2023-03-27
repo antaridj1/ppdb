@@ -13,7 +13,7 @@
       <ul class="nav sidebar-inner" id="sidebar-menu">
           <li  class="{{Route::is('admin.home')? 'active' : ''}}">
             <a class="sidenav-item-link" href="{{route('admin.home')}}">
-              <i class="mdi mdi-home"></i>
+              <i class="mdi mdi-home-outline"></i>
               <span class="nav-text">Beranda</span>
             </a>
           </li>
@@ -25,21 +25,21 @@
           </li>
           <li>
             <a class="sidenav-item-link" href="analytics.html">
-              <i class="mdi mdi-chart-line"></i>
+              <i class="mdi mdi-account-group-outline"></i>
               <span class="nav-text">Wali Peserta Didik</span>
             </a>
           </li>
           <li class="{{Route::is('admin.sekolah.*')? 'active' : ''}}">
             <a class="sidenav-item-link"  href="{{route('admin.sekolah.index')}}">
-              <i class="mdi mdi-chart-line"></i>
+              <i class="mdi mdi-school"></i>
               <span class="nav-text">Sekolah</span>
             </a>
           </li>
           <li  class="has-sub" >
             <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#email"
               aria-expanded="false" aria-controls="email">
-              <i class="mdi mdi-email"></i>
-              <span class="nav-text">email</span> <b class="caret"></b>
+              <i class="mdi mdi-image-filter"></i>
+              <span class="nav-text">Landing Page</span> <b class="caret"></b>
             </a>
             <ul  class="collapse"  id="email"
               data-parent="#sidebar-menu">
