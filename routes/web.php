@@ -50,11 +50,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('profile', [ProfileController::class, 'editAdmin'])->name('profile.editAdmin');
         Route::patch('profile', [ProfileController::class, 'updateAdmin'])->name('profile.updateAdmin');
 
-        Route::group(['prefix' => 'operator', 'as' => 'operator.'], function () {
-            Route::resource('/', OperatorController::class)->parameters([
-                '' => 'operator'
+        Route::group(['prefix' => 'sekolah', 'as' => 'sekolah.'], function () {
+            Route::resource('/', SekolahController::class)->parameters([
+                '' => 'sekolah'
             ]);
-            Route::patch('/{operator}/update-status', [OperatorController::class, 'update_status'])->name('updateStatus');
+            Route::patch('/{sekolah}/update-status', [SekolahController::class, 'update_status'])->name('updateStatus');
         });
 
         Route::group(['prefix' => 'user', 'as' => 'user.'], function () {

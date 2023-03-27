@@ -13,4 +13,10 @@ class SekolahController extends Controller
 
         return view('student.pages.landing-sdn', $data);
     }
+
+    public function index(){
+        $sekolahs = Sekolah::all();
+
+        return view('sekolah.index', compact('sekolahs'));
+    }
 }

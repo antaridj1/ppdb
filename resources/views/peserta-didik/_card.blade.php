@@ -1,0 +1,1 @@
+{{-- pake template page user-activities.html --}}
