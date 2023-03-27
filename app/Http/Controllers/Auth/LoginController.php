@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Siswa;
 use App\Providers\RouteServiceProvider;
 
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -78,7 +79,12 @@ class LoginController extends Controller
             'password' => 'required|min:6'
         ]);
 
-        if (Auth::guard('siswa')->attempt($request->only(['email','password']), $request->get('remember'))){
+        if (Auth::guard('siswa')->attempt([
+            'email' => $request->email,
+            'password' => $request->password,
+            'sekolah_id' => $request->id
+            ]
+        )){
             return redirect('ppdb/sdn/' .$request->id. '/dashboard');
         } else {
             return back()
