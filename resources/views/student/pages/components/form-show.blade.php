@@ -1,6 +1,5 @@
 <form method="POST" enctype="multipart/form-data" action={{ route('siswa.store') }}>
     <fieldset disabled>
-    <input type="hidden" value="{{ $id }}" name="sekolah_id">
     {{-- Data Pribadi Siswa --}}
     <div class="card card-default">
         <div class="card-header">
@@ -315,7 +314,7 @@
                 <label for="exampleFormControlPasswor3">Pekerjaan</label><br>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="pensiunw" name="pekerjaan_wali" class="custom-control-input" value="Pensiun" checked>
-                    <label class="custom-control-label" for="pensiunw">{{ $pesertaDidik->dataWali->->pekerjaan_wali }}</label>
+                    <label class="custom-control-label" for="pensiunw">{{ $pesertaDidik->dataWali->pekerjaan_wali }}</label>
                 </div>
             </div>
             {{-- penghasilan --}}

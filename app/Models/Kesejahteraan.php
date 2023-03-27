@@ -9,12 +9,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Kesejahteraan extends Model
 {
     use HasFactory;
-    use softDeletes;
+    use SoftDeletes;
+
+    protected $table = 'kesejahteraan';
 
     protected $fillable = [
         'jenis_kesejahteraan',
         'no_kartu',
-        'nama',
+        'nama_sejahtera',
     ];
 
     public function detailPesertaDidik()

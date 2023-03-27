@@ -17,7 +17,7 @@ class CreateKesejahteraanTable extends Migration
             $table->id();
             $table->set('jenis_kesejahteraan', ['PKH', 'PIP', 'Kartu Perlindungan Sosial', 'Kartu Kesehatan']);
             $table->string('no_kartu');
-            $table->string('nama');
+            $table->string('nama_sejahtera');
             $table->timestamps();
             $table->softDeletes();
         });

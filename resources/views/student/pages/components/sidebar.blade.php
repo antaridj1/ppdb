@@ -11,7 +11,7 @@
             <!-- sidebar menu -->
             <ul class="nav sidebar-inner" id="sidebar-menu">
                 <li
-                class="active"
+                class="{{ request()->routeIs('siswa.dashboard') ? 'active' : '' }}"
                 >
                 <a class="sidenav-item-link" href="{{ route('siswa.dashboard') }}">
                     <i class="mdi mdi-apple-safari"></i>
@@ -19,6 +19,7 @@
                 </a>
                 </li>
                 <li
+                class="{{ request()->routeIs('siswa.data') ? 'active' : '' }}"
                 >
                 <a class="sidenav-item-link" href="{{ route('siswa.data') }}">
                     <i class="mdi mdi-file"></i>
@@ -26,19 +27,13 @@
                 </a>
                 </li>
                 <li
+                class="{{ request()->routeIs('siswa.profile') ? 'active' : '' }}"
                 >
                 <a class="sidenav-item-link" href="{{ route('siswa.profile') }}">
                     <i class="mdi mdi-account"></i>
                     <span class="nav-text">Profile Setting</span>
                 </a>
                 </li>
-                {{-- <li
-                >
-                <a class="sidenav-item-link" href="getting-started.html">
-                    <i class="mdi mdi-airplane"></i>
-                    <span class="nav-text">Pesan</span>
-                </a>
-                </li> --}}
             </ul>
         </div>
         <div class="sidebar-footer">

@@ -11,6 +11,8 @@ class DataWali extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $table = 'data_wali';
+
     protected $fillable = [
         'nama_wali',
         'nik_wali',

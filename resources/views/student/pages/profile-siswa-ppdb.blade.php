@@ -42,23 +42,39 @@
                                     <h1>Edit Profile</h1>
                                 </div>
                                 <div class="card-body">
-                                    <form method="POST" enctype="multipart/form-data">
+                                    @if(session('error'))
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                            <strong>Error!</strong> {{ session('error') }}
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                        </div>
+                                    @endif
+                                    <form method="POST" enctype="multipart/form-data" action="">
+                                        @csrf
+                                        <input type="hidden" name="id" value="{{ $profile->id }}">
+                                        <input type="hidden" name="sekolah_id" value="{{ $profile->sekolah_id }}">
                                         <div class="form-group">
                                             <label for="email">Email</label>
-                                            <input type="email" class="form-control rounded-0" name="email" id="email">
+                                            <input type="email" class="form-control rounded-0" name="email" id="email" value="{{ $profile->email }}" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="password">Password</label>
-                                            <input type="password" class="form-control rounded-0" name="password" id="password">
+                                            <input type="password" class="form-control rounded-0" name="password" id="password" value="">
+                                            <input type="checkbox" id="showPassword"> <span for="showPassword">Show Password</span><br>
+                                            @error('password')
+                                                <span class="mt-2 d-block">{{ $message }}</span>
+                                            @enderror
                                             <span>Kosongkan bila tidak mengganti password</span>
+
                                         </div>
                                         <div class="form-group">
-                                            <label for="tlp_rumah">Tlp. Rumah</label>
-                                            <input type="number" class="form-control rounded-0" name="tlp_rumah" id="tlp_rumah">
+                                            <label for="no_tlp">Tlp. Rumah</label>
+                                            <input type="number" class="form-control rounded-0" name="no_tlp" id="no_tlp" value="{{ $profile->no_tlp }}">
                                         </div>
                                         <div class="form-group">
                                             <label for="no_hp">No. HP</label>
-                                            <input type="number" class="form-control rounded-0" name="no_hp" id="no_hp">
+                                            <input type="number" class="form-control rounded-0" name="no_hp" id="no_hp" value="{{ $profile->no_hp }}">
                                         </div>
                                         <button type="submit" class="btn btn-square btn-primary">Simpan perubahan</button>
                                     </form>
@@ -73,7 +89,19 @@
 
         </div>
     </div>
-                   @include('student.components.jsadmin')
-                    <script src="https://unpkg.com/hotkeys-js/dist/hotkeys.min.js"></script>
+        @include('student.components.jsadmin')
+        <script src="https://unpkg.com/hotkeys-js/dist/hotkeys.min.js"></script>
+        <script>
+            const passwordInput = document.getElementById("password");
+            const passwordInputc = document.getElementById("passwordc");
+
+            showPassword.addEventListener("change", function(){
+                if(showPassword.checked){
+                    passwordInput.type = "text"
+                } else {
+                    passwordInput.type = "password"
+                }
+            })
+        </script>
   </body>
 </html>

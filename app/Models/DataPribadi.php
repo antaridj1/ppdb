@@ -9,7 +9,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class DataPribadi extends Model
 {
     use HasFactory;
-    use softDeletes;
+    use SoftDeletes;
+
+    protected $table = 'data_pribadi';
 
     protected $fillable = [
         'nama_lengkap',

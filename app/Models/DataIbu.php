@@ -11,6 +11,8 @@ class DataIbu extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $table = 'data_ibu';
+
     protected $fillable = [
         'nama_ibu',
         'nik_ibu',

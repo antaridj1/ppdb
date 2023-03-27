@@ -9,7 +9,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class DataPeriodik extends Model
 {
     use HasFactory;
-    use softDeletes;
+    use SoftDeletes;
+
+    protected $table = 'data_periodik';
 
     protected $fillable = [
         'tinggi_badan',
