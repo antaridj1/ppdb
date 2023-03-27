@@ -11,6 +11,8 @@ class DataAyah extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $table = 'data_ayah';
+
     protected $fillable = [
         'nama_ayah',
         'nik_ayah',

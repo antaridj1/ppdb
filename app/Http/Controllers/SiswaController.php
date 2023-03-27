@@ -16,6 +16,7 @@ use App\Models\DataPribadi;
 use App\Models\DataPeriodik;
 use Illuminate\Http\Request;
 use App\Models\Kesejahteraan;
+use Illuminate\Support\Facades\Hash;
 use App\Models\Sekolah;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
@@ -38,11 +39,13 @@ class SiswaController extends Controller
             if( $siswa->daftar == 0) {
                 return view('student.pages.data-ppdb', ['id' => $siswa->sekolah_id, 'daftar' => 0]);
             } else {
-                $pesertaDidik = PesertaDidik::where('siswa_id', auth()->guard('siswa')->id())->first();
-                $detailPesertaDidik = DetailPesertaDidik::where('siswa_id', auth()->guard('siswa')->id())->first();
-                $file = File::where('siswa_id', auth()->guard('siswa')->id())->first();
+                $pesertaDidik = PesertaDidik::where('siswa_id', $id)->first();
+                $detailPesertaDidik = DetailPesertaDidik::where('siswa_id', $id)->first();
+                $file = File::where('siswa_id', $id)->first();
 
-                return view('student.pages.data-ppdb', ['pesertaDidik' => $pesertaDidik, 'detailPesertaDidik' => $detailPesertaDidik, 'file' => $file, 'daftar' => 1]);
+                return view('student.pages.data-ppdb',
+                    ['pesertaDidik' => $pesertaDidik, 'detailPesertaDidik' => $detailPesertaDidik, 'file' => $file, 'daftar' => '1']
+                );
             }
         } else {
             $sekolahs = null;
@@ -67,7 +70,7 @@ class SiswaController extends Controller
            
             return view('peserta-didik.index', compact('siswas', 'sekolahs'));
         }
-       
+
     }
 
     /**
@@ -88,7 +91,6 @@ class SiswaController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->input());
         $siswa = Siswa::find(auth()->guard('siswa')->id());
         try {
             $rules = array_merge([
@@ -156,7 +158,6 @@ class SiswaController extends Controller
                 'pendidikan_wali' => 'nullable',
                 'pekerjaan_wali' => 'nullable',
                 'penghasilan_wali' => 'nullable',
-                'berkebutuhan_khusus_wali' => 'nullable',
             ], [
                 //data beasiswa
                 'jenis_anak_berprestasi*' => 'nullable',
@@ -165,7 +166,7 @@ class SiswaController extends Controller
                 'tahun_selesai*' => 'nullable',
             ],[
                 //data prestasi
-                'nama_prestasi_.*' => 'nullable',
+                'prestasi_.*._nama_prestasi_' => 'nullable',
                 'tahun*' => 'nullable',
                 'penyelenggara*' => 'nullable',
                 'jenis_prestasi*' => 'nullable',
@@ -174,7 +175,7 @@ class SiswaController extends Controller
                 //data kesejahteraan
                 'jenis_kesejahteraan' => 'nullable',
                 'no_kartu' => 'nullable',
-                'nama' => 'nullable',
+                'nama_sejahtera' => 'nullable',
             ], [
                 //file
                 'file_kk' => 'required|mimes:pdf|max:5120',
@@ -197,7 +198,7 @@ class SiswaController extends Controller
                 'nisn' => $request->input('nisn'),
                 'nik' => $request->input('nik'),
                 'kk' => $request->input('kk'),
-                'tempat_lahir' => $request->input('tenpat_lahir'),
+                'tempat_lahir' => $request->input('tempat_lahir'),
                 'tgl_lahir' => $request->input('tgl_lahir'),
                 'akta_kelahiran' => $request->input('akta_kelahiran'),
                 'agama' => $request->input('agama'),
@@ -214,7 +215,7 @@ class SiswaController extends Controller
                 'lintang' => $request->input('lintang'),
                 'bujur' => $request->input('bujur'),
                 'tempat_tinggal' => $request->input('tempat_tinggal'),
-                'moda_tranportasi' => $request->input('moda_transport'),
+                'moda_tranportasi' => $request->input('moda_transportasi'),
                 'anak_ke' => $request->input('anak_ke'),
                 'kip' => $request->input('kip'),
                 'menerima_kip' => $request->input('menerima_kip'),
@@ -222,11 +223,10 @@ class SiswaController extends Controller
             ]);
 
             $id_datapribadi = $dataPribadi->id;
-        } catch (\Exception $e) {
-            Log::error('eror message: ' . $e->getMessage() . 'in line: ' . $e->getLine());
-        }
 
-        try{
+            /**
+             * Data periodik
+             */
             $dataPeriodik = DataPeriodik::create([
                 'tinggi_badan' => $request->input('tinggi_badan'),
                 'berat_badan' => $request->input('berat_badan'),
@@ -238,12 +238,12 @@ class SiswaController extends Controller
             ]);
 
             $id_dataperiodik = $dataPeriodik->id;
-        } catch (\Exception $e) {
-            Log::error('eror message: ' . $e->getMessage() . 'in line: ' . $e->getLine());
-        }
 
-        try{
-            $dataAyah = DataAyah::create([
+            /**
+             * Data Ayah
+             */
+
+             $dataAyah = DataAyah::create([
                 'nama_ayah' => $request->input('nama_ayah'),
                 'nik_ayah' => $request->input('nik_ayah'),
                 'tahun_ayah' => $request->input('tahun_ayah'),
@@ -254,11 +254,11 @@ class SiswaController extends Controller
             ]);
 
             $id_dataayah = $dataAyah->id;
-        } catch (\Exception $e) {
-            Log::error('eror message: ' . $e->getMessage() . 'in line: ' . $e->getLine());
-        }
 
-        try{
+            /**
+             * Data Ibu
+             */
+
             $dataIbu= DataIbu::create([
                 'nama_ibu' => $request->input('nama_ibu'),
                 'nik_ibu' => $request->input('nik_ibu'),
@@ -270,29 +270,26 @@ class SiswaController extends Controller
             ]);
 
             $id_dataibu = $dataIbu->id;
-        } catch (\Exception $e) {
-            Log::error('eror message: ' . $e->getMessage() . 'in line: ' . $e->getLine());
-        }
 
-        //data wali
-        try{
-            $dataWali= DataWali::create([
+            /**
+             * Data Wali
+             */
+
+             $dataWali= DataWali::create([
                 'nama_wali' => $request->input('nama_wali'),
                 'nik_wali' => $request->input('nik_wali'),
                 'tahun_wali' => $request->input('tahun_wali'),
                 'pendidikan_wali' => $request->input('pendidikan_wali'),
                 'pekerjaan_wali' => $request->input('pekerjaan_wali'),
                 'penghasilan_wali' => $request->input('penghasilan_wali'),
-                'berkebutuhan_khusus_wali' => $request->input('berkebutuhan_khusus_wali')
             ]);
 
             $id_datawali = $dataWali->id;
-        } catch (\Exception $e) {
-            Log::error('eror message: ' . $e->getMessage() . 'in line: ' . $e->getLine());
-        }
 
-        //beasiswa
-        try{
+            /**
+             * Beasiswa
+             */
+            $id_databeasiswa = null;
             if($request->input('beasiswa')){
                 $id_databeasiswa = array();
                 foreach($request->input('beasiswa') as $beasiswa){
@@ -306,13 +303,12 @@ class SiswaController extends Controller
                 }
             }
 
-        } catch (\Exception $e) {
-            Log::error('eror message: ' . $e->getMessage() . 'in line: ' . $e->getLine());
-        }
+            /**
+             * Prestasi
+             */
 
-        //prestasi
-        try{
-            if($request->input('prestasi')){
+             $id_dataprestasi = null;
+             if($request->input('prestasi')){
                 $id_dataprestasi = array();
                 foreach($request->prestasi as $prestasi){
                     $dataPrestasi = Prestasi::create([
@@ -325,54 +321,23 @@ class SiswaController extends Controller
                     $id_dataprestasi[] = $dataPrestasi->id;
                 }
             }
-        } catch (\Exception $e) {
-            Log::error('eror message: ' . $e->getMessage() . 'in line: ' . $e->getLine());
-        }
 
-        //kesejahteraan
-        try{
-            $dataKesejahteraan = Kesejahteraan::create([
+            /**
+             * Kesejahteraan
+             */
+
+             $dataKesejahteraan = Kesejahteraan::create([
                 'jenis_kesejahteraan' => $request->input('jenis_kesejahteraan'),
                 'no_kartu' => $request->input('no_kartu'),
-                'nama' => $request->input('nama'),
+                'nama_sejahtera' => $request->input('nama_sejahtera'),
             ]);
 
             $id_datakesejahteraan = $dataKesejahteraan->id;
-        } catch (\Exception $e) {
-            Log::error('eror message: ' . $e->getMessage() . 'in line: ' . $e->getLine());
-        }
 
-        //peserta didik
-        try{
-            $dataPesertaDidik = PesertaDidik::create([
-                'data_pribadi_id' => $id_datapribadi,
-                'data_ayah_id' => $id_dataayah,
-                'data_ibu_id' => $id_dataibu,
-                'data_wali' => $id_datawali,
-                'siswa_id' => auth()->guard('siswa')->id()
-            ]);
 
-            $id_pesertadidik = $dataPesertaDidik;
-        } catch (\Exception $e) {
-            Log::error('eror message: ' . $e->getMessage() . 'in line: ' . $e->getLine());
-        }
-
-        //detail peserta didik
-        try{
-            $dataDetailPesertaDidik = DetailPesertaDidik::create([
-                'data_periodik_id'=> $id_dataperiodik,
-                'prestasi_id' => $id_dataprestasi,
-                'beasiswa_id' => $id_databeasiswa,
-                'kesejahteraan_id' => $id_datakesejahteraan,
-                'siswa_id' => auth()->guard('siswa')->id()
-            ]);
-
-            $id_detailpesertadidik = $dataDetailPesertaDidik;
-        } catch (\Exception $e) {
-            Log::error('eror message: ' . $e->getMessage() . 'in line: ' . $e->getLine());
-        }
-
-        try{
+            /**
+             * File
+             */
             if($request->hasFile('file_kk')){
                 $pdf_kk = $request->file('file_kk');
                 $name_kk = uniqid() . '.' . $pdf_kk->getClientOriginalExtension();
@@ -404,24 +369,51 @@ class SiswaController extends Controller
             $pdf_ijazah->storeAs('public/file/ijazah', $name_ijazah);
 
             $id_file = $file->id;
-        } catch (\Exception $e) {
-            Log::error('eror message: ' . $e->getMessage() . 'in line: ' . $e->getLine());
-        }
 
-        try{
+            /**
+             * Peserta Didik
+             */
+
+             $dataPesertaDidik = PesertaDidik::create([
+                'data_pribadi_id' => $id_datapribadi,
+                'data_ayah_id' => $id_dataayah,
+                'data_ibu_id' => $id_dataibu,
+                'data_wali' => $id_datawali,
+                'siswa_id' => auth()->guard('siswa')->id()
+            ]);
+
+            $id_pesertadidik = $dataPesertaDidik;
+
+            /**
+             * Detail Peserta Didik
+             */
+
+             $dataDetailPesertaDidik = DetailPesertaDidik::create([
+                'data_periodik_id'=> $id_dataperiodik,
+                'prestasi_id' => $id_dataprestasi,
+                'beasiswa_id' => $id_databeasiswa,
+                'kesejahteraan_id' => $id_datakesejahteraan,
+                'siswa_id' => auth()->guard('siswa')->id()
+            ]);
+
+            $id_detailpesertadidik = $dataDetailPesertaDidik;
+
+            /**
+             * PPDB
+             */
             PPDB::create([
                 'sekolah_id' => $request->input('sekolah_id'),
                 'peserta_didik_id' => $id_pesertadidik,
                 'detail_peserta_didik_id' => $id_detailpesertadidik,
                 'file_id' => $id_file,
             ]);
+
+            Siswa::where('id', $siswa->id)->update(['daftar' => 1]);
+
+        return view('student.pages.data-ppdb');
         } catch (\Exception $e) {
             Log::error('eror message: ' . $e->getMessage() . 'in line: ' . $e->getLine());
         }
-
-        Siswa::where('id', $siswa->id)->update(['daftar' => 1]);
-
-        return view('student.pages.data-ppdb');
     }
 
     /**
@@ -432,7 +424,10 @@ class SiswaController extends Controller
      */
     public function show(Siswa $siswa)
     {
-        //
+        $id = auth()->guard('siswa')->id();
+
+        $profile = Siswa::find($id);
+        return view('student.pages.profile-siswa-ppdb', ['profile' => $profile]);
     }
 
     /**
@@ -455,7 +450,48 @@ class SiswaController extends Controller
      */
     public function update(Request $request, Siswa $siswa)
     {
-        //
+        $profile = array();
+        $siswa = Siswa::where('id', $request->id)->first();
+
+        // Check if the email has been updated
+        if ($request->email === $siswa->email) {
+            if($request->no_tlp){
+                $profile['no_tlp'] = $request->no_tlp;
+            }
+            if($request->no_hp){
+                $profile['no_hp'] = $request->no_hp;
+            }
+            if($request->password){
+                $profile['password'] = Hash::make($request->password);
+            }
+
+            Siswa::where('id', $request->id)->update($profile);
+
+            return view('student.pages.profile-siswa-ppdb', ['profile' => $profile]);
+
+        } else {
+            $count = Siswa::where('sekolah_id', $request->sekolah_id)->where('email', $request->email)->count();
+            if($count > 0) {
+                return redirect()->back()->with('error', 'Terdapat email yang sama. Daftarkan dengan emil lain');
+            } else {
+                if($request->no_tlp){
+                    $profile['no_tlp'] = $request->no_tlp;
+                }
+                if($request->no_hp){
+                    $profile['no_hp'] = $request->no_hp;
+                }
+                if($request->email){
+                    $profile['email'] = $request->email;
+                }
+                if($request->password){
+                    $profile['password'] = Hash::make($request->password);
+                }
+
+                Siswa::where('id', $request->id)->update($profile);
+
+                return view('student.pages.profile-siswa-ppdb', ['profile' => $profile]);
+            }
+        }
     }
 
     /**

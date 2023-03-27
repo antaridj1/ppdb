@@ -9,7 +9,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class PPDB extends Model
 {
     use HasFactory;
-    use softDeletes;
+    use SoftDeletes;
+
+    protected $table = 'ppdb';
 
     protected $fillable = [
         'sekolah_id',

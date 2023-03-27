@@ -10,7 +10,7 @@
             {{-- nama lengkap ppdb --}}
             <div class="form-group">
                 <label for="nama_lengkap">Nama Lengkap</label>
-                <input type="text" name="nama_lengkap" class="form-control rounded-0" id="nama_lengkap" value="{{ old('nama_lengkap') }}">
+                <input type="text" name="nama_lengkap" class="form-control rounded-0" id="nama_lengkap" value="{{ old('nama_lengkap') }}" required>
                 @error('nama_lengkap')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -19,7 +19,7 @@
             <div class="form-group">
                 <label>Jenis Kelamin</label> <br>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                    <input type="radio" id="laki-laki" name="gender" class="custom-control-input" value="laki-laki" @if(old('gender') == 'laki-laki') checked @endif>
+                    <input type="radio" id="laki-laki" name="gender" class="custom-control-input" checked value="laki-laki" @if(old('gender') == 'laki-laki') checked @endif>
                     <label class="custom-control-label" for="laki-laki">Laki-Laki</label>
                 </div>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
@@ -33,7 +33,7 @@
             {{-- nisn --}}
             <div class="form-group">
                 <label for="nisn">NISN</label>
-                <input type="text" name="nisn" class="form-control rounded-0" id="nisn" maxlength="10" value="{{ old('nisn') }}">
+                <input type="text" name="nisn" class="form-control rounded-0" id="nisn" maxlength="10" value="{{ old('nisn') }}" required>
                 <span class="mt-2 d-block"><span style="color:red;">*</span>masukan 10 digit NISN</span>
                 @error('nisn')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
@@ -42,7 +42,7 @@
             {{-- nik --}}
             <div class="form-group">
                 <label for="nik">NIK/No. KITAS (Untuk WNA)</label>
-                <input type="text" name="nik" class="form-control rounded-0" id="nik" maxlength="16" value="{{ old('nik') }}">
+                <input type="text" name="nik" class="form-control rounded-0" id="nik" maxlength="16" value="{{ old('nik') }}" required>
                 <span class="mt-2 d-block"><span style="color:red;">*</span>masukan 16 digit NIK</span>
                 @error('nik')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
@@ -51,7 +51,7 @@
             {{-- kk --}}
             <div class="form-group">
                 <label for="kk">No. KK</label>
-                <input type="text" name="kk" class="form-control rounded-0" id="kk" value="{{ old('kk') }}">
+                <input type="text" name="kk" class="form-control rounded-0" id="kk" value="{{ old('kk') }}" required>
                 @error('kk')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -59,7 +59,7 @@
             {{-- tempat lahir --}}
             <div class="form-group">
                 <label for="tempat_lahir">Tempat Lahir</label>
-                <input type="text" name="tempat_lahir" class="form-control rounded-0" id="tempat_lahir" value="{{ old('tempat_lahir') }}">
+                <input type="text" name="tempat_lahir" class="form-control rounded-0" id="tempat_lahir" value="{{ old('tempat_lahir') }}" required>
                 @error('tempat_lahir')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -67,7 +67,7 @@
             {{-- tgl. lahir --}}
             <div class="form-group">
                 <label for="tgl_lahir">Tgl. Lahir</label>
-                <input type="date" name="tgl_lahir" class="form-control rounded-0" id="tgl_lahir" value="{{ old('tgl_lahir') }}">
+                <input type="date" name="tgl_lahir" class="form-control rounded-0" id="tgl_lahir" value="{{ old('tgl_lahir') }}" required>
                 @error('tgl_lahir')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -75,7 +75,7 @@
             {{-- akta kelahiran --}}
             <div class="form-group">
                 <label for="akta_kelahiran">No. Registrasi Akta Kelahiran</label>
-                <input type="string" name="akta_kelahiran" class="form-control rounded-0" id="akta_kelahiran" value="{{ old('akta_kelahiran') }}">
+                <input type="string" name="akta_kelahiran" class="form-control rounded-0" id="akta_kelahiran" value="{{ old('akta_kelahiran') }}" required>
                 @error('akta_kelahiran')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -84,7 +84,7 @@
             <div class="form-group">
                 <label>Agama dan Kepercayaan</label> <br>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                    <input type="radio" id="islam" name="agama" class="custom-control-input" value="Islam" @if(old('agama') == 'Islam') checked @endif>
+                    <input type="radio" id="islam" name="agama" class="custom-control-input" checked value="Islam" @if(old('agama') == 'Islam') checked @endif>
                     <label class="custom-control-label" for="islam">Islam</label>
                 </div>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
@@ -119,7 +119,7 @@
             <div class="form-group">
                 <label>Kewarganegaraan</label> <br>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                    <input type="radio" id="wni" name="kewarganegaraan" class="custom-control-input" value="WNI" @if(old('kewarganegaraan') == 'WNI') checked @endif>
+                    <input type="radio" id="wni" name="kewarganegaraan" class="custom-control-input" checked value="WNI" @if(old('kewarganegaraan') == 'WNI') checked @endif>
                     <label class="custom-control-label" for="wni">Indonesia (WNI)</label>
                 </div>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
@@ -139,7 +139,7 @@
             <div class="form-group">
                 <label for="exampleFormControlInput44">Berkebutuhan Khusus</label> <br>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                    <input type="radio" id="tidak" name="berkebutuhan_khusus" class="custom-control-input" value="Tidak" @if(old('berkebutuhan_khusus') == 'Tidak') checked @endif>
+                    <input type="radio" id="tidak" name="berkebutuhan_khusus" class="custom-control-input" checked value="Tidak" @if(old('berkebutuhan_khusus') == 'Tidak') checked @endif>
                     <label class="custom-control-label" for="tidak">Tidak</label>
                 </div>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
@@ -217,7 +217,7 @@
             {{-- alamat --}}
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Alamat</label>
-                <textarea class="form-control" name="alamat" id="exampleFormControlTextarea1" rows="3" value="{{ old('alamat') }}"></textarea>
+                <textarea class="form-control" name="alamat" id="exampleFormControlTextarea1" rows="3" value="{{ old('alamat') }}" required></textarea>
                 @error('alamat')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -225,7 +225,7 @@
             {{-- RT --}}
             <div class="form-group">
                 <label for="rt">RT</label>
-                <input type="text" class="form-control rounded-0" name="rt" maxlength="3" id="rt" value="{{ old('rt') }}">
+                <input type="text" class="form-control rounded-0" name="rt" maxlength="3" id="rt" value="{{ old('rt') }}" required>
                 <span class="mt-2 d-block"><span style="color:red;">*</span>masukan 3 digit angka, misal 001</span>
                 @error('rt')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
@@ -234,7 +234,7 @@
             {{-- RW --}}
             <div class="form-group">
                 <label for="rw">RW</label>
-                <input type="text" class="form-control rounded-0" name="rw" maxlength="3" id="rw" value="{{ old('rw') }}">
+                <input type="text" class="form-control rounded-0" name="rw" maxlength="3" id="rw" value="{{ old('rw') }}" required>
                 <span class="mt-2 d-block"><span style="color:red;">*</span>masukan 3 digit angka, misal 001</span>
                 @error('rw')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
@@ -243,7 +243,7 @@
             {{-- dusun --}}
             <div class="form-group">
                 <label for="dusun">Dusun</label>
-                <input type="text" class="form-control rounded-0" name="dusun" id="dusun" value="{{ old('dusun') }}">
+                <input type="text" class="form-control rounded-0" name="dusun" id="dusun" value="{{ old('dusun') }}" required>
                 @error('dusun')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -251,7 +251,7 @@
             {{-- kelurahan --}}
             <div class="form-group">
                 <label for="kelurahan">Kelurahan/Desa</label>
-                <input type="text" class="form-control rounded-0" name="kelurahan" id="kelurahan" value="{{ old('kelurahan') }}">
+                <input type="text" class="form-control rounded-0" name="kelurahan" id="kelurahan" value="{{ old('kelurahan') }}" required>
                 @error('kelurahan')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -259,7 +259,7 @@
             {{-- kecamatan --}}
             <div class="form-group">
                 <label for="kecamatan">Kecamatan</label>
-                <input type="text" class="form-control rounded-0" name="kecamatan" id="kecamatan" value="{{ old('kecamatan') }}">
+                <input type="text" class="form-control rounded-0" name="kecamatan" id="kecamatan" value="{{ old('kecamatan') }}" required>
                 @error('kecamatan')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -267,7 +267,7 @@
             {{-- kode pos --}}
             <div class="form-group">
                 <label for="kode_pos">Kode Pos</label>
-                <input type="number" class="form-control rounded-0" name="kode_pos" id="kode_pos" value="{{ old('kode_pos') }}">
+                <input type="number" class="form-control rounded-0" name="kode_pos" id="kode_pos" value="{{ old('kode_pos') }}" required>
                 @error('kode_pos')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -275,7 +275,7 @@
             {{-- lintang --}}
             <div class="form-group">
                 <label for="lintang">lintan</label>
-                <input type="text" class="form-control rounded-0" name="lintang" id="lintang" value="{{ old('lintang') }}">
+                <input type="text" class="form-control rounded-0" name="lintang" id="lintang" value="{{ old('lintang') }}" required>
                 @error('lintang')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -283,7 +283,7 @@
             {{-- bujur --}}
             <div class="form-group">
                 <label for="bujur">Bujur</label>
-                <input type="text" class="form-control rounded-0" name="bujur" id="bujur" value="{{ old('bujur') }}">
+                <input type="text" class="form-control rounded-0" name="bujur" id="bujur" value="{{ old('bujur') }}" required>
                 @error('bujur')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -292,7 +292,7 @@
             <div class="form-group">
                 <label>Tempat Tinggal</label> <br>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                    <input type="radio" id="ortu" name="tempat_tinggal" class="custom-control-input" value="ersama orang tua" @if(old('ersama orang tua') == 'Autis') checked @endif>
+                    <input type="radio" id="ortu" name="tempat_tinggal" class="custom-control-input" checked value="ersama orang tua" @if(old('ersama orang tua') == 'Autis') checked @endif>
                     <label class="custom-control-label" for="ortu">Bersama orang tua</label>
                 </div>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
@@ -319,7 +319,7 @@
             <div class="form-group">
                 <label for="exampleFormControlPasswor3">Moda Transportasi</label><br>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                    <input type="radio" id="jalan" name="moda_transportasi" class="custom-control-input" value="Jalan kaki" @if(old('moda_transportasi') == 'Jalan kaki') checked @endif>
+                    <input type="radio" id="jalan" name="moda_transportasi" class="custom-control-input" checked value="Jalan kaki" @if(old('moda_transportasi') == 'Jalan kaki') checked @endif>
                     <label class="custom-control-label" for="jalan">Jalan kaki</label>
                 </div>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
@@ -361,7 +361,7 @@
             {{-- anak ke --}}
             <div class="form-group">
                 <label for="anak-ke">Anak keberapa</label>
-                <input type="number" class="form-control rounded-0" id="anak-ke" name="anak_ke" value="{{ old('anak_ke') }}">
+                <input type="number" class="form-control rounded-0" id="anak-ke" name="anak_ke" value="{{ old('anak_ke') }}" required>
                 @error('anak_ke')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -370,7 +370,7 @@
             <div class="form-group">
                 <label>Memiliki KIP</label><br>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                    <input type="radio" id="oke" name="kip" class="custom-control-input" value="iya" @if(old('kip') == 'iya') checked @endif>
+                    <input type="radio" id="oke" name="kip" class="custom-control-input" checked value="iya" @if(old('kip') == 'iya') checked @endif>
                     <label class="custom-control-label" for="oke">Iya</label>
                 </div>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
@@ -385,7 +385,7 @@
             <div class="form-group">
                 <label>Apakah peserta didik tetap menerima KIP</label><br>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                    <input type="radio" id="kip-y" name="menerima_kip" class="custom-control-input" value="iya" @if(old('menerima_kip') == 'iya') checked @endif>
+                    <input type="radio" id="kip-y" name="menerima_kip" class="custom-control-input" checked value="iya" @if(old('menerima_kip') == 'iya') checked @endif>
                     <label class="custom-control-label" for="kip-y">Iya</label>
                 </div>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
@@ -400,7 +400,7 @@
             <div class="form-group">
                 <label>Alasan menolak PIP</label><br>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                    <input type="radio" id="dilarang-pemda" name="pip" class="custom-control-input" value="Menerima bantuan serupa" @if(old('pip') == 'Menerima bantuan serupa') checked @endif>
+                    <input type="radio" id="dilarang-pemda" name="pip" class="custom-control-input" checked value="Menerima bantuan serupa" @if(old('pip') == 'Menerima bantuan serupa') checked @endif>
                     <label class="custom-control-label" for="dilarang-pemda">Dilarang pemda karena menerima bantuan serupa</label>
                 </div>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
@@ -427,7 +427,7 @@
             {{-- nama --}}
             <div class="form-group">
                 <label for="nama_ayah">Nama Ayah</label>
-                <input type="text" class="form-control rounded-0" id="nama_ayah" name="nama_ayah" value="{{ old('nama_ayah') }}">
+                <input type="text" class="form-control rounded-0" id="nama_ayah" name="nama_ayah" value="{{ old('nama_ayah') }}" required>
                 @error('nama_ayah')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -435,7 +435,7 @@
             {{-- nik ayah --}}
             <div class="form-group">
                 <label for="nik_ayah">NIK</label>
-                <input type="text" class="form-control rounded-0" id="nik_ayah" name="nik_ayah" maxlength="16" value="{{ old('nik_ayah') }}">
+                <input type="text" class="form-control rounded-0" id="nik_ayah" name="nik_ayah" maxlength="16" value="{{ old('nik_ayah') }}" required>
                 @error('nik_ayah')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -443,7 +443,7 @@
             {{-- tahun lahir --}}
             <div class="form-group">
                 <label for="tahun_ayah">Tahun Lahir</label>
-                <input type="text" class="form-control rounded-0" id="tahun_ayah" maxlength="4" name="tahun_ayah" value="{{ old('tahun_ayah') }}">
+                <input type="text" class="form-control rounded-0" id="tahun_ayah" maxlength="4" name="tahun_ayah" value="{{ old('tahun_ayah') }}" required>
                 @error('tahun_ayah')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -452,7 +452,7 @@
             <div class="form-group">
                 <label>Pendidikan</label><br>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                    <input type="radio" id="tidak_sekolah" name="pendidikan_ayah" class="custom-control-input" value="Tidak Sekolah" @if(old('pendidikan_ayah') == 'Tidak Sekolah') checked @endif>
+                    <input type="radio" id="tidak_sekolah" name="pendidikan_ayah" class="custom-control-input" checked value="Tidak Sekolah" @if(old('pendidikan_ayah') == 'Tidak Sekolah') checked @endif>
                     <label class="custom-control-label" for="tidak_sekolah">Tidak Sekolah</label>
                 </div>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
@@ -499,8 +499,8 @@
             <div class="form-group">
                 <label>Pekerjaan</label><br>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                    <input type="radio" id="tidak" name="pekerjaan_ayah" class="custom-control-input" value="Tidak Bekerja" @if(old('pekerjaan_ayah') == 'Tidak Bekerja') checked @endif>
-                    <label class="custom-control-label" for="tidak">Tidak Bekerja</label>
+                    <input type="radio" id="tidakayah" name="pekerjaan_ayah" class="custom-control-input" checked value="Tidak Bekerja" @if(old('pekerjaan_ayah') == 'Tidak Bekerja') checked @endif>
+                    <label class="custom-control-label" for="tidakayah">Tidak Bekerja</label>
                 </div>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="nelayan" name="pekerjaan_ayah" class="custom-control-input" value="Nelayan" @if(old('pekerjaan_ayah') == 'Nelayan') checked @endif>
@@ -554,7 +554,7 @@
             <div class="form-group">
                 <label for="exampleFormControlPasswor3">Penghasilan Bulanan</label><br>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                    <input type="radio" id="kecil" name="penghasilan_ayah" class="custom-control-input" value="< Rp 500.000" @if(old('penghasilan_ayah') == '< Rp 500.000') checked @endif>
+                    <input type="radio" id="kecil" name="penghasilan_ayah" class="custom-control-input" checked value="< Rp 500.000" @if(old('penghasilan_ayah') == '< Rp 500.000') checked @endif>
                     <label class="custom-control-label" for="kecil">< Rp 500.000</label>
                 </div>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
@@ -585,7 +585,7 @@
             <div class="form-group">
                 <label for="exampleFormControlInput44">Berkebutuhan Khusus</label> <br>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                    <input type="radio" id="tidak_ayah" name="berkebutuhan_khusus_ayah" class="custom-control-input" value="Tidak" @if(old('berkebutuhan_khusus_ayah') == 'Tidak') checked @endif>
+                    <input type="radio" id="tidak_ayah" name="berkebutuhan_khusus_ayah" checked class="custom-control-input" value="Tidak" @if(old('berkebutuhan_khusus_ayah') == 'Tidak') checked @endif>
                     <label class="custom-control-label" for="tidak_ayah">Tidak</label>
                 </div>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
@@ -673,7 +673,7 @@
             {{-- nama ibu --}}
             <div class="form-group">
                 <label for="nama_ibu">Nama Ibu</label>
-                <input type="text" class="form-control rounded-0" id="nama_ibu" name="nama_ibu" value="{{ old('nama_ibu') }}">
+                <input type="text" class="form-control rounded-0" id="nama_ibu" name="nama_ibu" value="{{ old('nama_ibu') }}" required>
                 @error('nama_ibu')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -681,7 +681,7 @@
             {{-- nik --}}
             <div class="form-group">
                 <label for="nik-ibu">NIK</label>
-                <input type="text" class="form-control rounded-0" id="nik-ibu" maxlength="16" name="nik_ibu" value="{{ old('nik_ibu') }}">
+                <input type="text" class="form-control rounded-0" id="nik-ibu" maxlength="16" name="nik_ibu" value="{{ old('nik_ibu') }}" required>
                 @error('nik_ibu')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -689,7 +689,7 @@
             {{-- tahun lahir --}}
             <div class="form-group">
                 <label for="tahun-ibu">Tahun Lahir</label>
-                <input type="text" class="form-control rounded-0" id="tahun-ibu" maxlength="4" name="tahun_ibu" value="{{ old('tahun_ibu') }}">
+                <input type="text" class="form-control rounded-0" id="tahun-ibu" maxlength="4" name="tahun_ibu" value="{{ old('tahun_ibu') }}" required>
                 @error('tahun_ibu')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -698,7 +698,7 @@
             <div class="form-group">
                 <label>Pendidikan</label><br>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                    <input type="radio" id="tidak_sekolahibu" name="pendidikan_ibu" class="custom-control-input" value="Tidak Sekolah" @if(old('pendidikan_ibu') == 'Tidak Sekolah') checked @endif>
+                    <input type="radio" id="tidak_sekolahibu" name="pendidikan_ibu" class="custom-control-input" checked value="Tidak Sekolah" @if(old('pendidikan_ibu') == 'Tidak Sekolah') checked @endif>
                     <label class="custom-control-label" for="tidak_sekolahibu">Tidak Sekolah</label>
                 </div>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
@@ -745,7 +745,7 @@
             <div class="form-group">
                 <label for="exampleFormControlPasswor3">Pekerjaan</label><br>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                    <input type="radio" id="tidaki" name="pekerjaan_ibu" class="custom-control-input" value="Tidak Bekerja" @if(old('pekerjaan_ibu') == 'Tidak Bekerja') checked @endif>
+                    <input type="radio" id="tidaki" name="pekerjaan_ibu" class="custom-control-input" checked value="Tidak Bekerja" @if(old('pekerjaan_ibu') == 'Tidak Bekerja') checked @endif>
                     <label class="custom-control-label" for="tidaki">Tidak Bekerja</label>
                 </div>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
@@ -800,7 +800,7 @@
             <div class="form-group">
                 <label for="exampleFormControlPasswor3">Penghasilan Bulanan</label><br>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                    <input type="radio" id="kecili" name="penghasilan_ibu" class="custom-control-input" value="< Rp 500.000"  @if(old('penghasilan_ibu') == 'Pens< Rp 500.000iun') checked @endif>
+                    <input type="radio" id="kecili" name="penghasilan_ibu" class="custom-control-input" checked value="< Rp 500.000"  @if(old('penghasilan_ibu') == 'Pens< Rp 500.000iun') checked @endif>
                     <label class="custom-control-label" for="kecili">< Rp 500.000</label>
                 </div>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
@@ -831,7 +831,7 @@
             <div class="form-group">
                 <label for="exampleFormControlInput44">Berkebutuhan Khusus</label> <br>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                    <input type="radio" id="tidakb" name="berkebutuhan_khusus_ibu" class="custom-control-input" value="Tidak" @if(old('berkebutuhan_khusus_ibu') == 'Tidak') checked @endif>
+                    <input type="radio" id="tidakb" name="berkebutuhan_khusus_ibu" class="custom-control-input" checked value="Tidak" @if(old('berkebutuhan_khusus_ibu') == 'Tidak') checked @endif>
                     <label class="custom-control-label" for="tidakb">Tidak</label>
                 </div>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
@@ -1046,27 +1046,27 @@
             <div class="form-group">
                 <label for="exampleFormControlPasswor3">Penghasilan Bulanan</label><br>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                    <input type="radio" id="kecilw" name="penghasilan_wali" class="custom-control-input" value="< Rp 500.000" @if(old('penghasilan_wali') == '< Rp 500.000') checked @endif>>
+                    <input type="radio" id="kecilw" name="penghasilan_wali" class="custom-control-input" value="< Rp 500.000" @if(old('penghasilan_wali') == '< Rp 500.000') checked @endif>
                     <label class="custom-control-label" for="kecilw">< Rp 500.000</label>
                 </div>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                    <input type="radio" id="sedangw" name="penghasilan_wali" class="custom-control-input" value="Rp 500.000 - Rp 999.999" @if(old('penghasilan_wali') == 'Rp 500.000 - Rp 999.999') checked @endif>>
+                    <input type="radio" id="sedangw" name="penghasilan_wali" class="custom-control-input" value="Rp 500.000 - Rp 999.999" @if(old('penghasilan_wali') == 'Rp 500.000 - Rp 999.999') checked @endif>
                     <label class="custom-control-label" for="sedangw">Rp 500.000 - Rp 999.999</label>
                 </div>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                    <input type="radio" id="lumayanw" name="penghasilan_wali" class="custom-control-input" value="Rp 1.000.000 - Rp 1.999.999" @if(old('penghasilan_wali') == 'Rp 1.000.000 - Rp 1.999.999') checked @endif>>
+                    <input type="radio" id="lumayanw" name="penghasilan_wali" class="custom-control-input" value="Rp 1.000.000 - Rp 1.999.999" @if(old('penghasilan_wali') == 'Rp 1.000.000 - Rp 1.999.999') checked @endif>
                     <label class="custom-control-label" for="lumayanw">Rp 1.000.000 - Rp 1.999.999</label>
                 </div>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                    <input type="radio" id="menengahw" name="penghasilan_wali" class="custom-control-input" value="Rp 2.000.000 - Rp 4.999.999" @if(old('penghasilan_wali') == 'Rp 2.000.000 - Rp 4.999.999') checked @endif>>
+                    <input type="radio" id="menengahw" name="penghasilan_wali" class="custom-control-input" value="Rp 2.000.000 - Rp 4.999.999" @if(old('penghasilan_wali') == 'Rp 2.000.000 - Rp 4.999.999') checked @endif>
                     <label class="custom-control-label" for="menengahw">Rp 2.000.000 - Rp 4.999.999</label>
                 </div>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                    <input type="radio" id="atasw" name="penghasilan_wali" class="custom-control-input" value="Rp 5.000.000 - Rp 20.000.000" @if(old('penghasilan_wali') == 'Rp 5.000.000 - Rp 20.000.000') checked @endif>>
+                    <input type="radio" id="atasw" name="penghasilan_wali" class="custom-control-input" value="Rp 5.000.000 - Rp 20.000.000" @if(old('penghasilan_wali') == 'Rp 5.000.000 - Rp 20.000.000') checked @endif>
                     <label class="custom-control-label" for="atasw">Rp 5.000.000 - Rp 20.000.000</label>
                 </div>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                    <input type="radio" id="lebihw" name="penghasilan_wali" class="custom-control-input" value="> Rp 20.000.000" @if(old('penghasilan_wali') == '> Rp 20.000.000') checked @endif>>
+                    <input type="radio" id="lebihw" name="penghasilan_wali" class="custom-control-input" value="> Rp 20.000.000" @if(old('penghasilan_wali') == '> Rp 20.000.000') checked @endif>
                     <label class="custom-control-label" for="lebihw">> Rp 20.000.000</label>
                 </div>
                 @error('penghasilan_wali')
@@ -1085,7 +1085,12 @@
             {{-- tinggi badan --}}
             <div class="form-group">
                 <label for="tinggibdn">Tinggi Badan</label>
-                <input type="number" class="form-control rounded-0" id="tinggibdn" name="tinggi_badan" value="{{ old('tinggi_badan') }}"><span>Cm</span>
+                <div class="input-group" style="width: 20%;">
+                    <input type="number" class="form-control rounded-0 custom-input" id="tinggibdn" name="tinggi_badan" value="{{ old('tinggi_badan') }}" required>
+                    <div class="input-group-append">
+                        <span class="input-group-text">Cm</span>
+                    </div>
+                </div>
                 @error('pendidikan_wali')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -1093,7 +1098,12 @@
             {{-- Berat Badan --}}
             <div class="form-group">
                 <label for="bb">Berat Badan</label>
-                <input type="number" class="form-control rounded-0" id="bb" name="berat_badan" value="{{ old('berat_badan') }}"><span>Kg</span>
+                <div class="input-group" style="width: 20%;">
+                    <input type="number" class="form-control rounded-0 custom-input" id="bb" name="berat_badan" value="{{ old('berat_badan') }}" required>
+                    <div class="input-group-append">
+                        <span class="input-group-text">Kg</span>
+                    </div>
+                </div>
                 @error('pendidikan_wali')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -1101,7 +1111,12 @@
             {{-- Lingkar Kepala --}}
             <div class="form-group">
                 <label for="lingkar">Lingkar Kepala</label>
-                <input type="number" class="form-control rounded-0" id="lingkar" maxlength="4" name="lingkar_kepala" value="{{ old('lingkar_kepala') }}"><span>Cm</span>
+                <div class="input-group" style="width: 20%;">
+                    <input type="number" class="form-control rounded-0 custom-input" id="lingkar" maxlength="4" name="lingkar_kepala" value="{{ old('lingkar_kepala') }}" required>
+                    <div class="input-group-append">
+                        <span class="input-group-text">Cm</span>
+                    </div>
+                </div>
                 @error('pendidikan_wali')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -1110,7 +1125,7 @@
             <div class="form-group">
                 <label for=>Jarak Tempat Tinggal</label><br>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                    <input type="radio" id="kurang1" name="jarak" class="custom-control-input" value="Kurang dari 1 Km" @if(old('jarak') == 'Kurang dari 1 Km') checked @endif>
+                    <input type="radio" id="kurang1" name="jarak" class="custom-control-input" checked value="Kurang dari 1 Km" @if(old('jarak') == 'Kurang dari 1 Km') checked @endif>
                     <label class="custom-control-label" for="kurang1">Kurang dari 1 Km</label>
                 </div>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
@@ -1124,7 +1139,12 @@
             {{-- jarak dalam Km --}}
             <div class="form-group">
                 <label for="km">Jarak</label><br>
-                <input type="number" class="form-control rounded-0" id="km" name="km" value="{{ old('km') }}"><span>Km</span>
+                <div class="input-group" style="width: 20%;">
+                    <input type="text" class="form-control rounded-0" id="km" name="km" value="{{ old('km') }}" required>
+                    <div class="input-group-append">
+                        <span class="input-group-text">Km</span>
+                    </div>
+                </div>
                 <span>*<span><span>Masukan angka jarak dari rumah ke sekolah</span>
                 @error('km')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
@@ -1133,8 +1153,20 @@
             {{-- waktu tempuh --}}
             <div class="form-group">
                 <label for="waktu">Waktu Tempuh</label><br>
-                <input type="number" class="form-control rounded-0 w-25" id="waktu" name="waktu_tempuh_jam" value="{{ old('waktu_tempuh_jam') }}"><span>Jam</span>
-                <input type="number" class="form-control rounded-0 w-25" id="waktu" name="waktu_tempuh_menit" value="{{ old('waktu_tempuh_menit') }}"><span>Menit</span>
+                <div class="input-group">
+                    <div class="input-group" style="width: 20%; margin-right:5%;">
+                        <input type="number" class="form-control rounded-0 w-25" id="waktu" name="waktu_tempuh_jam" value="{{ old('waktu_tempuh_jam') }}" required>
+                        <div class="input-group-append">
+                            <span class="input-group-text">Jam</span>
+                        </div>
+                    </div>
+                    <div class="input-group" style="width: 20%;">
+                        <input type="number" class="form-control rounded-0 w-25" id="waktu" name="waktu_tempuh_menit" value="{{ old('waktu_tempuh_menit') }}" required>
+                        <div class="input-group-append">
+                            <span class="input-group-text">Menit</span>
+                        </div>
+                    </div>
+                </div>
                 @error('waktu_tempuh_jam')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -1145,7 +1177,7 @@
             {{-- jumlah saudara --}}
             <div class="form-group">
                 <label for="saudara">Jumlah Saudara Kandung</label><br>
-                <input type="number" class="form-control rounded-0" id="saudara" name="jumlah_saudara" value="{{ old('jumlah_saudara') }}">
+                <input type="number" class="form-control rounded-0" id="saudara" name="jumlah_saudara" value="{{ old('jumlah_saudara') }}" required>
                 @error('jumlah_saudara')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -1157,6 +1189,7 @@
     <div class="card card-default">
         <div class="card-header">
             <h1>Prestasi</h1> <br>
+            <span style="color:red">*</span><span>(Optional) Diisi bila memiliki riwayat prestasi</span>
         </div>
         <div class="card-body">
             @for ($i=0; $i<3; $i++)
@@ -1247,6 +1280,7 @@
     <div class="card card-default">
         <div class="card-header">
             <h1>Beasiswa</h1> <br>
+            <span style="color:red">*</span><span>(Optional) Diisi bila memiliki riwayat beasiswa</span>
         </div>
         <div class="card-body">
             @for($i=0; $i<3; $i++)
@@ -1304,6 +1338,7 @@
     <div class="card card-default">
         <div class="card-header">
             <h1>Kesejahteraan Peserta Didik</h1> <br>
+            <span style="color:red">*</span><span>(Optional)</span>
         </div>
         <div class="card-body">
             {{-- jenis kesejahteraan --}}
@@ -1340,7 +1375,7 @@
             {{-- Nama kartu --}}
             <div class="form-group">
                 <label for="nama_kartuKes">Nama Kartu</label>
-                <input type="text" class="form-control rounded-0" id="nama_kartuKes" name="nama_kartu" value="{{ old('nama_kartu') }}">
+                <input type="text" class="form-control rounded-0" id="nama_kartuKes" name="nama_sejahtera" value="{{ old('nama_sejahtera') }}">
                 @error('nama_kartu')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror

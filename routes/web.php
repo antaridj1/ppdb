@@ -117,14 +117,13 @@ Route::prefix('ppdb')->group(function () {
                 })->name('dashboard');
 
                 Route::get('/data-peserta-didik', [SiswaController::class, 'index'])->name('data');
-                // Route::get('/data-peserta-didik', function(){
-                //     return view('student.pages.data-ppdb', ['id' => $url_sdn_id]);
-                // })->name('data');
+
                 Route::post('/data-peserta-didik', [SiswaController::class, 'store'])->name('store');
 
-                Route::get('/profile', function(){
-                    return view('student.pages.profile-siswa-ppdb');
-                })->name('profile');
+                Route::get('/profile', [SiswaController::class, 'show'])->name('profile');
+
+                Route::post('/profile', [SiswaController::class, 'update'])->name('update');
+
 
                 Route::get('/chat', [ChatController::class, 'indexUser'])->name('indexUser');
                 Route::get('/chat/create', [ChatController::class, 'createUser'])->name('createUser');
@@ -133,6 +132,6 @@ Route::prefix('ppdb')->group(function () {
                 Route::post('logout', [LogoutController::class, 'siswaLogout'])->name('logout');
             });
         });
-        Route::get('/{sd}', [LandingPageSchool::class, 'landingPage']);
+        // Route::get('/{sd}', [LandingPageSchool::class, 'landingPage']);
     });
 });

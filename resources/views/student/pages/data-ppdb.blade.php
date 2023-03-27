@@ -42,6 +42,7 @@
                                 <p>Isi formuir Pendaftaran Peserta Didik Baru berikut sesuai dengan data siswa yang akan didaftarkan. Upload berkas-berkas yang diperlukan</p>
                             </div>
                         </div>
+                    @else
                     @endif
                     <div class="row">
                         <div class="col-xl-12">

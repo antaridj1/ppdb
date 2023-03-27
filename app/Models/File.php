@@ -9,7 +9,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class File extends Model
 {
     use HasFactory;
-    use softDeletes;
+    use SoftDeletes;
+
+    protected $table = 'file';
 
     protected $fillable =[
         'file_kk',

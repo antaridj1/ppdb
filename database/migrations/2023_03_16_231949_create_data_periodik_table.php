@@ -19,7 +19,7 @@ class CreateDataPeriodikTable extends Migration
             $table->integer('berat_badan');
             $table->integer('lingkar_kepala');
             $table->set('jarak', ['Kurang dari 1 Km', 'Lebih dari 1 Km']);
-            $table->integer('km');
+            $table->string('km');
             $table->string('waktu_tempuh');
             $table->string('jumlah_saudara');
             $table->timestamps();
