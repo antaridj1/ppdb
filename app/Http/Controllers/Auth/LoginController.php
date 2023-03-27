@@ -5,8 +5,6 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Siswa;
 use App\Providers\RouteServiceProvider;
-use App\Models\Siswa;
-
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -80,12 +78,6 @@ class LoginController extends Controller
             'password' => 'required|min:6'
         ]);
 
-        $validation = Siswa::where('sekolah_id', $request->id)->where('email', $request->email)->exists();
-
-        if(!$validation){
-            return redirect()->back()->with('error', 'Email atau password salah');
-        }
-
         if (Auth::guard('siswa')->attempt([
             'email' => $request->email,
             'password' => $request->password,
@@ -93,12 +85,8 @@ class LoginController extends Controller
             ]
         )){
             return redirect('ppdb/sdn/' .$request->id. '/dashboard');
-        }
-        else {
-            return redirect()->back()->with('error', 'Email atau password salah');
-            return back()
-                ->with('status', 'error')
-                ->with('message', 'Wrong email or password');
+        } else {
+            return redirect()->back()->with('error', 'Email atau password Anda salah');
         }
     }
 

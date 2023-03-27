@@ -1345,7 +1345,7 @@
             <div class="form-group">
                 <label for="exampleFormControlPasswor3">Jenis Kesejahteraan</label><br>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                    <input type="radio" id="pkh" name="jenis_kesejahteraan" class="custom-control-input" value="PKH" @if(old('jenis_kesejahteraan') == 'PKH') checked @endif>
+                    <input type="radio" id="pkh" name="jenis_kesejahteraan" class="custom-control-input" checked value="PKH" @if(old('jenis_kesejahteraan') == 'PKH') checked @endif>
                     <label class="custom-control-label" for="pkh">PKH</label>
                 </div>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
@@ -1367,7 +1367,7 @@
             {{-- No Kartu --}}
             <div class="form-group">
                 <label for="no_kartuKkes">No. Kartu</label>
-                <input type="number" class="form-control rounded-0" id="no_kartuKkes" name="no_kartu" value="{{ old('no_kartu') }}">
+                <input type="number" class="form-control rounded-0" id="no_kartuKkes" name="no_kartu" value="{{ old('no_kartu') }}" required>
                 @error('no_kartu')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -1375,7 +1375,7 @@
             {{-- Nama kartu --}}
             <div class="form-group">
                 <label for="nama_kartuKes">Nama Kartu</label>
-                <input type="text" class="form-control rounded-0" id="nama_kartuKes" name="nama_sejahtera" value="{{ old('nama_sejahtera') }}">
+                <input type="text" class="form-control rounded-0" id="nama_kartuKes" name="nama_sejahtera" value="{{ old('nama_sejahtera') }}" required>
                 @error('nama_kartu')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror

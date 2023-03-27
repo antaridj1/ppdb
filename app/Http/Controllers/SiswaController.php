@@ -56,18 +56,18 @@ class SiswaController extends Controller
                     $siswas = PesertaDidik::whereHas('siswa', function($q) use($request){
                         $q->where('sekolah_id', $request->sdn);
                     })->get();
-                   
+
                 } else {
                     $siswas = PesertaDidik::all();
                 }
-               
+
             } else {
                 // Untuk Sekolah
                 $siswas = PesertaDidik::whereHas('siswa', function($q){
                     $q->where('sekolah_id', Auth::id());
                 })->get();
             }
-           
+
             return view('peserta-didik.index', compact('siswas', 'sekolahs'));
         }
 
@@ -152,30 +152,29 @@ class SiswaController extends Controller
                 'berkebutuhan_khusus_ibu' => 'required',
             ], [
                 //cata wali
-                'nama_wali' => 'nullable',
-                'nik_wali' => 'nullable',
-                'tahun_wali' => 'nullable',
-                'pendidikan_wali' => 'nullable',
-                'pekerjaan_wali' => 'nullable',
-                'penghasilan_wali' => 'nullable',
+                'nama_wali' => 'nullable|required_with:nik_wali,tahun_wali,pendidikan_wali,pekerjaan_wali,penghasilan_wali',
+                'nik_wali' => 'nullable|required_with:nama_wali,tahun_wali,pendidikan_wali,pekerjaan_wali,penghasilan_wali',
+                'tahun_wali' => 'nullable|required_with:nama_wali,nik_wali,pendidikan_wali,pekerjaan_wali,penghasilan_wali',
+                'pendidikan_wali' => 'nullable|required_with:nama_wali,nik_wali,tahun_wali,pekerjaan_wali,penghasilan_wali',
+                'pekerjaan_wali' => 'nullable|required_with:nama_wali,nik_wali,tahun_wali,pendidikan_wali,penghasilan_wali',
+                'penghasilan_wali' => 'nullable|required_with:nama_wali,nik_wali,tahun_wali,pendidikan_wali,pekerjaan_wali',
             ], [
                 //data beasiswa
-                'jenis_anak_berprestasi*' => 'nullable',
-                'keterangan*' => 'nullable',
-                'tahun_mulai*' => 'nullable',
-                'tahun_selesai*' => 'nullable',
+                'beasiswa.*.jenis_anak_berprestasi' => 'nullable|required_with:beasiswa.*.keterangan,beasiswa.*.tahun_mulai,beasiswa.*.tahun_selesai',
+                'beasiswa.*.keterangan' => 'nullable|required_with:beasiswa.*.jenis_anak_berprestasi,beasiswa.*.tahun_mulai,beasiswa.*.tahun_selesai',
+                'beasiswa.*.tahun_mulai' => 'nullable|required_with:beasiswa.*.jenis_anak_berprestasi,beasiswa.*.keterangan,beasiswa.*.tahun_selesai',
+                'beasiswa.*.tahun_selesai' => 'nullable|required_with:beasiswa.*.jenis_anak_berprestasi,beasiswa.*.keterangan,beasiswa.*.tahun_mulai',
             ],[
                 //data prestasi
-                'prestasi_.*._nama_prestasi_' => 'nullable',
-                'tahun*' => 'nullable',
-                'penyelenggara*' => 'nullable',
-                'jenis_prestasi*' => 'nullable',
-                'tingkat*' => 'nullable',
+                'prestasi.*.nama_prestasi' => 'nullable|required_with:prestasi.*.tahun,prestasi.*.penyelenggara,prestasi.*.jenis_prestasi,prestasi.*.jenis_prestasi',
+                'prestasi.*.tahun' => 'nullable|required_with:prestasi.*.nama_prestasi,prestasi.*.penyelenggara,prestasi.*.jenis_prestasi,prestasi.*.jenis_prestasi',
+                'prestasi.*.penyelenggara' => 'nullable|required_with:prestasi.*.nama_prestasi,prestasi.*.tahun,prestasi.*.jenis_prestasi,prestasi.*.jenis_prestasi',
+                'prestasi.*.jenis_prestasi' => 'nullable|required_with:prestasi.*.nama_prestasi,prestasi.*.tahun,prestasi.*.penyelenggara,prestasi.*.jenis_prestasi',
             ], [
                 //data kesejahteraan
-                'jenis_kesejahteraan' => 'nullable',
-                'no_kartu' => 'nullable',
-                'nama_sejahtera' => 'nullable',
+                'jenis_kesejahteraan' => 'required',
+                'no_kartu' => 'required',
+                'nama_sejahtera' => 'required',
             ], [
                 //file
                 'file_kk' => 'required|mimes:pdf|max:5120',
@@ -274,8 +273,8 @@ class SiswaController extends Controller
             /**
              * Data Wali
              */
-
-             $dataWali= DataWali::create([
+            if($request->input('nama_wali')){
+                $dataWali= DataWali::create([
                 'nama_wali' => $request->input('nama_wali'),
                 'nik_wali' => $request->input('nik_wali'),
                 'tahun_wali' => $request->input('tahun_wali'),
@@ -283,6 +282,7 @@ class SiswaController extends Controller
                 'pekerjaan_wali' => $request->input('pekerjaan_wali'),
                 'penghasilan_wali' => $request->input('penghasilan_wali'),
             ]);
+            }
 
             $id_datawali = $dataWali->id;
 
