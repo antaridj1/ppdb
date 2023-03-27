@@ -10,16 +10,16 @@ class Chat extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
+        'siswa_id',
         'admin_id',
         'messages',
         'isViewed',
         'dari'
     ];
 
-    public function user()
+    public function siswa()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(Siswa::class, 'siswa_id');
     }
 
     public function admin()

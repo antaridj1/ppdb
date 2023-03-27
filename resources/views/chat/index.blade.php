@@ -15,7 +15,7 @@
 
                 <ul class="card-body px-0" data-simplebar style="height: 630px;">
                     @foreach ($chatrooms as $chatroom)
-                        <li class="mb-4 px-5 py-2 chatroom" data-url-create="{{url('admin/chat/create')}}/{{$chatroom->user_id}}" data-user-id="{{$chatroom->user_id}}">
+                        <li class="mb-4 px-5 py-2 chatroom" data-url-create="{{url('admin/chat/create')}}/{{$chatroom->siswa_id}}" data-user-id="{{$chatroom->siswa_id}}">
                             <a class="media media-message">
                                 <div class="position-relative mr-3">
                                 <img class="rounded-circle" src="{{asset('assets/images/user/user-sm-02.jpg')}}" alt="User Image">
@@ -24,7 +24,7 @@
                                 <div class="media-body">
                                 <div class="message-contents">
                                     <span class="d-flex justify-content-between align-items-center mb-1">
-                                    <span class="username text-dark">{{$chatroom->user->name}}</span>
+                                    <span class="username text-dark">{{$chatroom->siswa->name}}</span>
                                     <span class="">
                                         <span class="state text-smoke"><em>{{$chatroom->created_at->diffForHumans()}}</em></span>
                                         @if($chatroom->unread_count > 0)
@@ -94,15 +94,13 @@
         var urlPost = $('#send_messages').data('url-store');
         var urlCreate = $(this).data('url-create');
         $(this).addClass('chatroom-active');
-        console.log(urlPost)
         function renderChat(urlCreate){
             $.ajax({
                 url: `${urlCreate}?`+ new Date().getTime(),
                 method: "GET",
                 success: function(response){
                     chats = response.data;
-                    console.log(response)
-                    $('.chat-right-sidebar').find('h2').text(response.user_name)
+                    $('.chat-right-sidebar').find('h2').text(response.siswa_name)
                     results = '';
                     chats.forEach(chat => {
                         if(chat.dari == 'admin'){

@@ -16,6 +16,7 @@ use App\Models\DataPribadi;
 use App\Models\DataPeriodik;
 use Illuminate\Http\Request;
 use App\Models\Kesejahteraan;
+use App\Models\Sekolah;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Routing\Controller;
@@ -28,7 +29,7 @@ class SiswaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         if(Auth::getDefaultDriver() !== 'admin'){
             // Untuk Wali
@@ -44,9 +45,19 @@ class SiswaController extends Controller
                 return view('student.pages.data-ppdb', ['pesertaDidik' => $pesertaDidik, 'detailPesertaDidik' => $detailPesertaDidik, 'file' => $file, 'daftar' => 1]);
             }
         } else {
+            $sekolahs = null;
             if(roleController('admin')){
+                $sekolahs = Sekolah::all();
                  // Untuk admin
-                $siswas = PesertaDidik::all();
+                if($request->sdn){
+                    $siswas = PesertaDidik::whereHas('siswa', function($q) use($request){
+                        $q->where('sekolah_id', $request->sdn);
+                    })->get();
+                   
+                } else {
+                    $siswas = PesertaDidik::all();
+                }
+               
             } else {
                 // Untuk Sekolah
                 $siswas = PesertaDidik::whereHas('siswa', function($q){
@@ -54,7 +65,7 @@ class SiswaController extends Controller
                 })->get();
             }
            
-            return view('peserta-didik.index', compact('siswas'));
+            return view('peserta-didik.index', compact('siswas', 'sekolahs'));
         }
        
     }
