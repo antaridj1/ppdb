@@ -1,7 +1,7 @@
 <footer class="footer mt-auto">
     <div class="copyright bg-white">
         <p>
-        &copy; <span id="copy-year"></span> PPDB - SDN <a class="text-primary" href="http://www.iamabdus.com/" target="_blank" >Abdus</a>.
+        &copy; <span id="copy-year"></span> PPDB - {{ $siswa->sekolah->nama_sekolah }}
         </p>
     </div>
     <script>

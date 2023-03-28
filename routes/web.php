@@ -112,9 +112,7 @@ Route::prefix('ppdb')->group(function () {
 
         Route::middleware('auth:siswa')->group(function(){
             Route::name('siswa.')->group(function(){
-                Route::get('/dashboard', function(){
-                    return view('student.pages.dashboard');
-                })->name('dashboard');
+                Route::get('/dashboard', [SiswaController::class, 'dashboard'])->name('dashboard');
 
                 Route::get('/data-peserta-didik', [SiswaController::class, 'index'])->name('data');
 

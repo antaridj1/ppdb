@@ -1305,7 +1305,7 @@
                         <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                     @enderror
                 </div>
-                {{-- nama beasiswa --}}
+                {{-- keterangan beasiswa --}}
                 <div class="form-group">
                     <label for="beasiswa1{{ $i }}">Nama Beasiswa</label><br>
                     <input type="text" class="form-control rounded-0" id="beasiswa1{{ $i }}" name="beasiswa{{ $i }}keterangan" value="{{ old('beasiswa'.$i.'keterangan') }}">

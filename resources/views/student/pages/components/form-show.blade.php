@@ -280,7 +280,8 @@
     </div>
 
     <!-- Form Data Wali -->
-    <div class="card card-default">
+    @if ($siswa->dataPribadi->dataWali)
+        <div class="card card-default">
         <div class="card-header">
             <h1>Data Wali</h1> <br>
             <span style="color:red">*</span><span>(Optional) Diisi bila memiliki wali</span>
@@ -327,6 +328,8 @@
             </div>
         </div>
     </div>
+    @endif
+
 
     <!-- Data Periodik -->
     <div class="card card-default">
@@ -376,15 +379,16 @@
     </div>
 
     <!-- Prestasi -->
-    <div class="card card-default">
-        <div class="card-header">
-            <h1>Prestasi</h1> <br>
-        </div>
+    @if ($siswa->dataPribadi->prestasi)
+        <div class="card card-default">
+            <div class="card-header">
+                <h1>Prestasi</h1> <br>
+            </div>
         <div class="card-body">
-            @foreach ($siswa->dataPribadi->prestasi as $prestasi)
             @php
                 $i = 1;
             @endphp
+            @foreach ($siswa->dataPribadi->prestasi as $prestasi)
                 {{-- prestasi 1 --}}
                 <h4>Prestasi {{ $i }}</h6> <br>
                 {{-- jenis --}}
@@ -427,63 +431,54 @@
 
         </div>
     </div>
+    @endif
+
 
     <!-- Beasiswa -->
-    <div class="card card-default">
+    @if ($siswa->dataPribadi->beasiswa)
+<div class="card card-default">
         <div class="card-header">
             <h1>Beasiswa</h1> <br>
         </div>
         <div class="card-body">
-            @for($i=0; $i<3; $i++)
+            @php
+                $i = 1;
+            @endphp
+            @foreach($siswa->dataPribadi->beasiswa as $beasiswa)
                  {{-- beasiswa 1 --}}
-                <h4>Beasiswa {{ $i+1 }}</h6> <br>
+                <h4>Beasiswa {{ $i }}</h6> <br>
                 {{-- jenis --}}
                 <div class="form-group">
                     <label>Jenis Beasiswa</label><br>
                     <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                        <input type="radio" id="anak_miskin{{ $i }}" name="beasiswa{{ $i }}jenis_anak_berprestasi" class="custom-control-input" value="anak miskin" @if(old('beasiswa'. $i .'jenis_anak_berprestasi') == 'anak miskin') checked @endif>
-                        <label class="custom-control-label" for="anak_miskin{{ $i }}">Anak miskin</label>
+                        <input type="radio" id="anak_miskin{{ $i }}" name="beasiswa{{ $i }}jenis_anak_berprestasi" checked class="custom-control-input" value="anak miskin" @if(old('beasiswa'. $i .'jenis_anak_berprestasi') == 'anak miskin') checked @endif>
+                        <label class="custom-control-label" for="anak_miskin{{ $i }}">{{ $beasiswa->jenis_anak_berprestasi }}</label>
                     </div>
-                    <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                        <input type="radio" id="pendidikanb{{ $i }}" name="beasiswa{{ $i }}jenis_anak_berprestasi" class="custom-control-input" value="pendidikan" @if(old('beasiswa'. $i .'jenis_anak_berprestasi') == 'pendidikan') checked @endif>
-                        <label class="custom-control-label" for="pendidikanb{{ $i }}">Pendidikan</label>
-                    </div>
-                    <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                        <input type="radio" id="unggulan{{ $i }}" name="beasiswa{{ $i }}jenis_anak_berprestasi" class="custom-control-input" value="unggulan" @if(old('beasiswa'. $i .'jenis_anak_berprestasi') == 'unggulan') checked @endif>
-                        <label class="custom-control-label" for="unggulan{{ $i }}">Unggulan</label>
-                    </div>
-                    @error('beasiswa{{ $i }}jenis_anak_berprestasi')
-                        <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
-                    @enderror
                 </div>
                     {{-- nama beasiswa --}}
                 <div class="form-group">
                     <label for="beasiswa1{{ $i }}">Nama Beasiswa</label><br>
-                    <input type="text" class="form-control rounded-0" id="beasiswa1{{ $i }}" name="beasiswa{{ $i }}keterangan" value="{{ old('beasiswa'.$i.'keterangan') }}">
-                    @error('beasiswa'.$i.'keterangan')
-                        <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
-                    @enderror
+                    <input type="text" class="form-control rounded-0" id="beasiswa1{{ $i }}" name="beasiswa{{ $i }}keterangan" value="{{ $beasiswa->keterangan }}">
                 </div>
                     {{-- tahun mulai --}}
                 <div class="form-group">
                     <label for="tahunm1{{ $i }}">Tahun Mulai</label><br>
-                    <input type="text" class="form-control rounded-0" id="tahunm1{{ $i }}" name="beasiswa{{ $i }}tahun_mulai" value="{{ old('beasiswa'.$i.'tahun_mulai') }}">
-                    @error('beasiswa'.$i.'tahun_mulai')
-                        <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
-                    @enderror
+                    <input type="text" class="form-control rounded-0" id="tahunm1{{ $i }}" name="beasiswa{{ $i }}tahun_mulai" value="{{ $beasiswa->tahun_mulai }}">
                 </div>
                     {{-- tahun berakhir --}}
                 <div class="form-group">
                     <label for="tahuns1{{ $i }}">Tahun Selesai</label><br>
-                    <input type="text" class="form-control rounded-0" id="tahuns1{{ $i }}" name="beasiswa{{ $i }}tahun_selesai" value="{{ old('beasiswa'.$i.'tahun_selesai') }}">
-                    @error('beasiswa'.$i.'tahun_selesai')
-                        <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
-                    @enderror
+                    <input type="text" class="form-control rounded-0" id="tahuns1{{ $i }}" name="beasiswa{{ $i }}tahun_selesai" value="{{ $beasiswa->tahun_selesai }}">
                 </div>
                 <br>
-            @endfor
+                @php
+                $i++;
+            @endphp
+            @endforeach
         </div>
     </div>
+    @endif
+
 
     <!-- kesejahteraan -->
     <div class="card card-default">
@@ -528,22 +523,21 @@
             <div class="form-group">
                 <label for="scan_kk">Scan Kartu Keluarga</label>
                 <a href="{{ asset('public/file/kk/' . $siswa->dataPribadi->file->file_kk) }}" download>Download PDF</a>
-                {{-- <input type="file" class="form-control-file" id="scan_kk" name="file_kk" value="{{ $siswa->dataPribadi->file->file_kk }}"> --}}
             </div>
             {{-- file akta --}}
             <div class="form-group">
                 <label for="scan_akta">Scan Kartu Akta Kelahiran</label>
-                <input type="file" class="form-control-file" id="scan_akta" name="file_akta_kelahiran" value="{{ $siswa->dataPribadi->file->file_akta_kelahiran }}">
+                <a href="{{ asset('public/file/kk/' . $siswa->dataPribadi->file->file_akta_kelahiran) }}" download>Download PDF</a>
             </div>
             {{-- file ktp ortu --}}
             <div class="form-group">
                 <label for="scan_ktp">Scan Kartu Akta Kelahiran</label>
-                <input type="file" class="form-control-file" id="scan_ktp" name="file_ktp_ortu" value="{{ $siswa->dataPribadi->file->file_ktp_ortu }}">
+                <a href="{{ asset('public/file/kk/' . $siswa->dataPribadi->file->file_ktp_ortu) }}" download>Download PDF</a>
             </div>
             {{-- file ijazah tk --}}
             <div class="form-group">
                 <label for="scan_ijazah">Scan Ijazah TK</label>
-                <input type="file" class="form-control-file" id="scan_ijazah" name="file_ijazah_tk" value="{{ $siswa->dataPribadi->file->file_ijazah_tk }}">
+                <a href="{{ asset('public/file/kk/' . $siswa->dataPribadi->file->file_ijazah_tk) }}" download>Download PDF</a>
             </div>
         </div>
     </div>
