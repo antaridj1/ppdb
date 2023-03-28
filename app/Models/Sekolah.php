@@ -27,6 +27,11 @@ class Sekolah extends Model
 
     public function dataPribadi()
     {
-        return $this->hasMany(DataPriba::class, 'sekolah_id', 'id');
+        return $this->hasMany(DataPribadi::class);
+    }
+
+    public function siswa()
+    {
+        return $this->hasMany(Siswa::class);
     }
 }

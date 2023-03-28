@@ -39,12 +39,9 @@ class SiswaController extends Controller
             if( $siswa->daftar == 0) {
                 return view('student.pages.data-ppdb', ['id' => $siswa->sekolah_id, 'daftar' => 0]);
             } else {
-                $pesertaDidik = PesertaDidik::where('siswa_id', $id)->first();
-                $detailPesertaDidik = DetailPesertaDidik::where('siswa_id', $id)->first();
-                $file = File::where('siswa_id', $id)->first();
-
+                $siswa = Siswa::find(auth()->guard('siswa')->id());
                 return view('student.pages.data-ppdb',
-                    ['pesertaDidik' => $pesertaDidik, 'detailPesertaDidik' => $detailPesertaDidik, 'file' => $file, 'daftar' => '1']
+                    ['daftar' => 1, 'siswa' => $siswa]
                 );
             }
         } else {
@@ -192,6 +189,7 @@ class SiswaController extends Controller
 
         try {
             $dataPribadi = DataPribadi::create([
+                'sekolah_id' => $request->input('sekolah_id'),
                 'nama_lengkap' => $request->input('nama_lengkap'),
                 'gender' => $request->input('gender'),
                 'nisn' => $request->input('nisn'),
@@ -227,6 +225,7 @@ class SiswaController extends Controller
              * Data periodik
              */
             $dataPeriodik = DataPeriodik::create([
+                'data_pribadi_id' => $id_datapribadi,
                 'tinggi_badan' => $request->input('tinggi_badan'),
                 'berat_badan' => $request->input('berat_badan'),
                 'lingkar_kepala' => $request->input('lingkar_kepala'),
@@ -236,13 +235,12 @@ class SiswaController extends Controller
                 'jumlah_saudara' => $request->input('jumlah_saudara'),
             ]);
 
-            $id_dataperiodik = $dataPeriodik->id;
-
             /**
              * Data Ayah
              */
 
              $dataAyah = DataAyah::create([
+                'data_pribadi_id' => $id_datapribadi,
                 'nama_ayah' => $request->input('nama_ayah'),
                 'nik_ayah' => $request->input('nik_ayah'),
                 'tahun_ayah' => $request->input('tahun_ayah'),
@@ -252,13 +250,12 @@ class SiswaController extends Controller
                 'berkebutuhan_khusus_ayah' => $request->input('berkebutuhan_khusus_ayah')
             ]);
 
-            $id_dataayah = $dataAyah->id;
-
             /**
              * Data Ibu
              */
 
             $dataIbu= DataIbu::create([
+                'data_pribadi_id' => $id_datapribadi,
                 'nama_ibu' => $request->input('nama_ibu'),
                 'nik_ibu' => $request->input('nik_ibu'),
                 'tahun_ibu' => $request->input('tahun_ibu'),
@@ -268,13 +265,12 @@ class SiswaController extends Controller
                 'berkebutuhan_khusus_ibu' => $request->input('berkebutuhan_khusus_ibu')
             ]);
 
-            $id_dataibu = $dataIbu->id;
-
             /**
              * Data Wali
              */
             if($request->input('nama_wali')){
                 $dataWali= DataWali::create([
+                'data_pribadi_id' => $id_datapribadi,
                 'nama_wali' => $request->input('nama_wali'),
                 'nik_wali' => $request->input('nik_wali'),
                 'tahun_wali' => $request->input('tahun_wali'),
@@ -284,55 +280,50 @@ class SiswaController extends Controller
             ]);
             }
 
-            $id_datawali = $dataWali->id;
 
             /**
              * Beasiswa
              */
-            $id_databeasiswa = null;
-            if($request->input('beasiswa')){
-                $id_databeasiswa = array();
-                foreach($request->input('beasiswa') as $beasiswa){
+            for($i=0; $i<=2; $i++){
+                if($request->input('beasiswa'.$i.'jneis_anak_berprestasi')){
                     $dataBeasiswa = Beasiswa::create([
-                        'jenis_anak_berprestasi' => $beasiswa['jenis_anak_berprestasi'],
-                        'keterangan' => $beasiswa['keterangan'],
-                        'tahun_mulai' => $beasiswa['tahun_mulai'],
-                        'tahun_selesai' => $beasiswa['tahun_selesai']
+                        'data_pribadi_id' => $id_datapribadi,
+                        'jenis_anak_berprestasi' => $request->input('beasiswa'.$i.'jenis_anak_berprestasi'),
+                        'keterangan' => $request->input('beasiswa'.$i.'keterangan'),
+                        'tahun_mulai' => $request->input('beasiswa'.$i.'tahun_mulai'),
+                        'tahun_selesai' => $request->input('beasiswa'.$i.'tahun_selesai')
                     ]);
-                $id_databeasiswa[] = $dataBeasiswa->id;
                 }
             }
+
 
             /**
              * Prestasi
              */
-
-             $id_dataprestasi = null;
-             if($request->input('prestasi')){
-                $id_dataprestasi = array();
-                foreach($request->prestasi as $prestasi){
+             for($i=0; $i<=2; $i++){
+                if($request->input('prestasi'.$i.'nama_prestasi')){
                     $dataPrestasi = Prestasi::create([
-                        'nama_prestasi' => $prestasi['nama_prestasi'],
-                        'tahun' => $prestasi['tahun'],
-                        'penyelenggara' => $prestasi['penyelenggara'],
-                        'jenis_prestasi' => $prestasi['jenis_prestasi'],
-                        'tingkat' => $prestasi['tingkat'],
+                        'data_pribadi_id' => $id_datapribadi,
+                        'nama_prestasi' => $request->input('prestasi'.$i.'nama_prestasi'),
+                        'tahun' => $request->input('prestasi'.$i.'tahun'),
+                        'penyelenggara' => $request->input('prestasi'.$i.'penyelenggara'),
+                        'jenis_prestasi' => $request->input('prestasi'.$i.'jenis_prestasi'),
+                        'tingkat' => $request->input('prestasi'.$i.'tingkat'),
                     ]);
-                    $id_dataprestasi[] = $dataPrestasi->id;
                 }
-            }
+             }
+
 
             /**
              * Kesejahteraan
              */
 
              $dataKesejahteraan = Kesejahteraan::create([
+                'data_pribadi_id' => $id_datapribadi,
                 'jenis_kesejahteraan' => $request->input('jenis_kesejahteraan'),
                 'no_kartu' => $request->input('no_kartu'),
                 'nama_sejahtera' => $request->input('nama_sejahtera'),
             ]);
-
-            $id_datakesejahteraan = $dataKesejahteraan->id;
 
 
             /**
@@ -341,18 +332,22 @@ class SiswaController extends Controller
             if($request->hasFile('file_kk')){
                 $pdf_kk = $request->file('file_kk');
                 $name_kk = uniqid() . '.' . $pdf_kk->getClientOriginalExtension();
+                $pdf_kk->move('file/kk', $name_kk);
             }
             if($request->hasFile('file_akta_kelahiran')){
                 $pdf_akta = $request->file('file_akta_kelahiran');
                 $name_akta = uniqid() . '.' . $pdf_akta->getClientOriginalExtension();
+                $pdf_akta->move('file/akta', $name_akta);
             }
             if($request->hasFile('file_ktp_ortu')){
                 $pdf_ktp = $request->file('file_ktp_ortu');
                 $name_ktp = uniqid() . '.' . $pdf_ktp->getClientOriginalExtension();
+                $pdf_ktp->move('file/ktp', $name_ktp);
             }
             if($request->hasFile('file_ktp_ortu')){
                 $pdf_ijazah = $request->file('file_ijazah_tk');
                 $name_ijazah = uniqid() . '.' . $pdf_ijazah->getClientOriginalExtension();
+                $pdf_ijazah->move('file/ijazah', $name_ijazah);
             }
 
             $file = File::create([
@@ -360,55 +355,18 @@ class SiswaController extends Controller
                 'file_akta_kelahiran' => $name_akta,
                 'file_ktp_ortu' => $name_ktp,
                 'file_ijazah_tk' => $name_ijazah,
-                'siswa_id' => auth()->guard('siswa')->id()
+                'data_pribadi_id' => $id_datapribadi
             ]);
-
-            $pdf_kk->storeAs('public/file/kk', $name_kk);
-            $pdf_akta->storeAs('public/file/akta', $name_akta);
-            $pdf_ktp->storeAs('public/file/ktp', $name_ktp);
-            $pdf_ijazah->storeAs('public/file/ijazah', $name_ijazah);
 
             $id_file = $file->id;
 
             /**
-             * Peserta Didik
+             * Update data siswa
              */
-
-             $dataPesertaDidik = PesertaDidik::create([
-                'data_pribadi_id' => $id_datapribadi,
-                'data_ayah_id' => $id_dataayah,
-                'data_ibu_id' => $id_dataibu,
-                'data_wali' => $id_datawali,
-                'siswa_id' => auth()->guard('siswa')->id()
+            Siswa::where('id', $siswa->id)->update([
+                'daftar' => 1,
+                'data_pribadi_id' => $id_datapribadi
             ]);
-
-            $id_pesertadidik = $dataPesertaDidik;
-
-            /**
-             * Detail Peserta Didik
-             */
-
-             $dataDetailPesertaDidik = DetailPesertaDidik::create([
-                'data_periodik_id'=> $id_dataperiodik,
-                'prestasi_id' => $id_dataprestasi,
-                'beasiswa_id' => $id_databeasiswa,
-                'kesejahteraan_id' => $id_datakesejahteraan,
-                'siswa_id' => auth()->guard('siswa')->id()
-            ]);
-
-            $id_detailpesertadidik = $dataDetailPesertaDidik;
-
-            /**
-             * PPDB
-             */
-            PPDB::create([
-                'sekolah_id' => $request->input('sekolah_id'),
-                'peserta_didik_id' => $id_pesertadidik,
-                'detail_peserta_didik_id' => $id_detailpesertadidik,
-                'file_id' => $id_file,
-            ]);
-
-            Siswa::where('id', $siswa->id)->update(['daftar' => 1]);
 
         return view('student.pages.data-ppdb');
         } catch (\Exception $e) {

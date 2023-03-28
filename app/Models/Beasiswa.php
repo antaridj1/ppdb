@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\DataPribadi;
 
 class Beasiswa extends Model
 {
@@ -21,8 +22,8 @@ class Beasiswa extends Model
         'data_pribadi_id'
     ];
 
-    // public function siswa()
-    // {
-    //     return $this->belongsTo(Siswa::class, 'beasiswa_id');
-    // }
+    public function dataPribadi()
+    {
+        return $this->belongsTo(DataPribadi::class);
+    }
 }

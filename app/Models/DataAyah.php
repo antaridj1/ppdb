@@ -24,13 +24,8 @@ class DataAyah extends Model
         'data_pribadi_id'
     ];
 
-    // public function pesertaDidik()
-    // {
-    //     return $this->belongsTo(PesertaDidik::class, 'data_ayah_id');
-    // }
-
-    // public function siswa()
-    // {
-    //     return $this->belongsTo(Siswa::class);
-    // }
+    public function dataPribadi()
+    {
+        return $this->belongsTo(DataPribadi::class);
+    }
 }

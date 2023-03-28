@@ -21,13 +21,8 @@ class File extends Model
         'data_pribadi_id'
     ];
 
-    // public function ppdb()
-    // {
-    //     return $this->belongsTo(PPDB::class, 'file_id');
-    // }
-
-    // public function siswa()
-    // {
-    //     return $this->belongsTo(Siswa::class, 'file_id');
-    // }
+    public function dataPribadi()
+    {
+        return $this->belongsTo(DataPribadi::class);
+    }
 }

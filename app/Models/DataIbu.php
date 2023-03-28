@@ -24,12 +24,8 @@ class DataIbu extends Model
         'data_pribadi_id'
     ];
 
-    // public function siswa()
-    // {
-    //     return $this->belongsTo(Siswa::class);
-    // }
-    // public function pesertaDidik()
-    // {
-    //     return $this->belongsTo(PesertaDidik::class, 'data_ibu_id');
-    // }
+    public function dataPribadi()
+    {
+        return $this->belongsTo(DataPribadi::class);
+    }
 }

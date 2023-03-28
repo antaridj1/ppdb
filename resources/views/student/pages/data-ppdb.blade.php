@@ -39,7 +39,7 @@
                     @if ($daftar == 0)
                         <div class="card card-default">
                             <div class="px-6 py-4">
-                                <p>Isi formuir Pendaftaran Peserta Didik Baru berikut sesuai dengan data siswa yang akan didaftarkan. Upload berkas-berkas yang diperlukan</p>
+                                <p>Isi formulir Pendaftaran Peserta Didik Baru berikut sesuai dengan data siswa yang akan didaftarkan. Upload berkas-berkas yang diperlukan. <span style="color:orangered">Data yang telah diinput tidak dapat diupdate</span></p>
                             </div>
                         </div>
                     @else
