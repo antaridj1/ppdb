@@ -15,6 +15,7 @@ class CreateDataPribadiTable extends Migration
     {
         Schema::create('data_pribadi', function (Blueprint $table) {
             $table->id();
+            $table->integer('sekolah_id');
             $table->string('nama_lengkap', 100);
             $table->set('gender', ['Laki-laki', 'Perempuan']);
             $table->string('nisn', 10);

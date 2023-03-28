@@ -15,6 +15,7 @@ class CreateKesejahteraanTable extends Migration
     {
         Schema::create('kesejahteraan', function (Blueprint $table) {
             $table->id();
+            $table->integer('data_pribadi_id');
             $table->set('jenis_kesejahteraan', ['PKH', 'PIP', 'Kartu Perlindungan Sosial', 'Kartu Kesehatan']);
             $table->string('no_kartu');
             $table->string('nama_sejahtera');

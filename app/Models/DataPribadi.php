@@ -14,6 +14,8 @@ class DataPribadi extends Model
     protected $table = 'data_pribadi';
 
     protected $fillable = [
+        //additional
+        'sekolah_id',
         'nama_lengkap',
         'gender',
         'nisn',
@@ -43,8 +45,48 @@ class DataPribadi extends Model
         'pip',
     ];
 
-    public function pesertaDidik()
+    // public function pesertaDidik()
+    // {
+    //     return $this->belongsTo(PesertaDidik::class, 'data_pribadi');
+    // }
+
+    public function siswa()
     {
-        return $this->belongsTo(PesertaDidik::class, 'data_pribadi');
+        return $this->hasOne(Siswa::class);
     }
+
+    public function sekolah()
+    {
+        return $this->hasOne(Sekolah::class);
+    }
+    public function dataPeriodik()
+    {
+        return $this->hasOne(DataPeriodik::class);
+    }
+    public function dataAyah()
+    {
+        return $this->hasOne(DataAyah::class);
+    }
+    public function dataIbu()
+    {
+        return $this->hasOne(DataIbu::class);
+    }
+    public function dataWali()
+    {
+        return $this->hasOne(DataWali::class);
+    }
+    public function beasiswa()
+    {
+        return $this->hasOne(Beasiswa::class);
+    }
+
+    public function prestasi()
+    {
+        return $this->hasOne(Prestasi::class);
+    }
+    public function kesejahteraan()
+    {
+        return $this->hasOne(Kesejahteraan::class);
+    }
+
 }

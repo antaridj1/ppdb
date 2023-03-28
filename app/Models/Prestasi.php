@@ -19,10 +19,11 @@ class Prestasi extends Model
         'penyelenggara',
         'jenis_prestasi',
         'tingkat',
+        'data_pribadi_id'
     ];
 
-    public function detailPesertaDidik()
-    {
-        return $this->belongsTo(DetailPesertaDidik::class, 'prestasi_id');
-    }
+    // public function siswa()
+    // {
+    //     return $this->belongsTo(Siswa::class, 'prestasi_id');
+    // }
 }

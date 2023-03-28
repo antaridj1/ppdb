@@ -15,6 +15,7 @@ class CreateDataAyahTable extends Migration
     {
         Schema::create('data_ayah', function (Blueprint $table) {
             $table->id();
+            $table->integer('data_pribadi_id');
             $table->string('nama_ayah');
             $table->string('nik_ayah');
             $table->integer('tahun_ayah');

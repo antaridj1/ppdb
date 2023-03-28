@@ -21,10 +21,11 @@ class DataWali extends Model
         'pekerjaan_wali',
         'penghasilan_wali',
         'berkebutuhan_khusus_wali',
+        'data_pribadi_id'
     ];
 
-    public function pesertaDidik()
-    {
-        return $this->belongsTo(PesertaDidik::class, 'data_wali_id');
-    }
+    // public function siswa()
+    // {
+    //     return $this->belongsTo(Siswa::class, 'data_wali_id');
+    // }
 }

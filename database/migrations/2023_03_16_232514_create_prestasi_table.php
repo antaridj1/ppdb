@@ -15,6 +15,7 @@ class CreatePrestasiTable extends Migration
     {
         Schema::create('prestasi', function (Blueprint $table) {
             $table->id();
+            $table->integer('data_pribadi_id');
             $table->string('nama_prestasi');
             $table->integer('tahun');
             $table->string('penyelenggara');

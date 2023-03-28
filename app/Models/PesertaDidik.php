@@ -17,33 +17,33 @@ class PesertaDidik extends Model
         'data_pribadi_id',
         'data_ayah_id',
         'data_ibu_id',
-        'data_wali',
+        'data_wali_id',
         'siswa_id',
     ];
 
     public function dataAyah()
     {
-        return $this->hasOne(DataAyah::class, 'data_ayah_id');
+        return $this->hasMany(DataAyah::class, 'data_ayah_id');
     }
 
     public function dataIbu()
     {
-        return $this->hasOne(DataIbu::class, 'data_ibu_id');
+        return $this->hasMany(DataIbu::class, 'data_ibu_id');
     }
 
     public function dataWali()
     {
-        return $this->hasOne(DataWali::class, 'data_wali_id');
+        return $this->hasMany(DataWali::class, 'data_wali_id');
     }
 
     public function dataPribadi()
     {
-        return $this->hasOne(DataPribadi::class, 'data_pribadi_id');
+        return $this->hasMany(DataPribadi::class, 'data_pribadi_id');
     }
 
     public function siswa()
     {
-        return $this->belongsTo(Siswa::class, 'siswa_id');
+        return $this->hasMany(Siswa::class, 'siswa_id');
     }
 
     public function ppdb()

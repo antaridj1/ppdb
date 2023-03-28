@@ -17,10 +17,11 @@ class Kesejahteraan extends Model
         'jenis_kesejahteraan',
         'no_kartu',
         'nama_sejahtera',
+        'data_pribadi_id'
     ];
 
-    public function detailPesertaDidik()
-    {
-        return $this->belongsTo(DetailPesertaDidik::class, 'kesejahteraan_id');
-    }
+    // public function siswa()
+    // {
+    //     return $this->belongsTo(Siswa::class, 'kesejahteraan_id');
+    // }
 }

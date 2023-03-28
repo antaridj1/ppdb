@@ -15,6 +15,7 @@ class CreateDataIbuTable extends Migration
     {
         Schema::create('data_ibu', function (Blueprint $table) {
             $table->id();
+            $table->integer('data_pribadi_id');
             $table->string('nama_ibu');
             $table->string('nik_ibu');
             $table->integer('tahun_ibu');

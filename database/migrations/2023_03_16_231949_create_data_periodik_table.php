@@ -15,6 +15,7 @@ class CreateDataPeriodikTable extends Migration
     {
         Schema::create('data_periodik', function (Blueprint $table) {
             $table->id();
+            $table->integer('data_pribadi_id');
             $table->integer('tinggi_badan');
             $table->integer('berat_badan');
             $table->integer('lingkar_kepala');

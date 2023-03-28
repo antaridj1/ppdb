@@ -18,16 +18,16 @@ class File extends Model
         'file_akta_kelahiran',
         'file_ktp_ortu',
         'file_ijazah_tk',
-        'siswa_id'
+        'data_pribadi_id'
     ];
 
-    public function ppdb()
-    {
-        return $this->belongsTo(PPDB::class, 'file_id');
-    }
+    // public function ppdb()
+    // {
+    //     return $this->belongsTo(PPDB::class, 'file_id');
+    // }
 
-    public function siswa()
-    {
-        return $this->belongsTo(Siswa::class, 'file_id');
-    }
+    // public function siswa()
+    // {
+    //     return $this->belongsTo(Siswa::class, 'file_id');
+    // }
 }

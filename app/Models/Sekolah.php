@@ -25,13 +25,8 @@ class Sekolah extends Model
         'password'
     ];
 
-    public function ppdb()
+    public function dataPribadi()
     {
-        return $this->belongsTo(PPDB::class, 'sekolah_id');
-    }
-
-    public function siswa()
-    {
-        return $this->hasMany(Siswa::class, 'sekolah_id');
+        return $this->hasMany(DataPriba::class, 'sekolah_id', 'id');
     }
 }

@@ -21,10 +21,16 @@ class DataAyah extends Model
         'pekerjaan_ayah',
         'penghasilan_ayah',
         'berkebutuhan_khusus_ayah',
+        'data_pribadi_id'
     ];
 
-    public function pesertaDidik()
-    {
-        return $this->belongsTo(PesertaDidik::class, 'data_ayah_id');
-    }
+    // public function pesertaDidik()
+    // {
+    //     return $this->belongsTo(PesertaDidik::class, 'data_ayah_id');
+    // }
+
+    // public function siswa()
+    // {
+    //     return $this->belongsTo(Siswa::class);
+    // }
 }

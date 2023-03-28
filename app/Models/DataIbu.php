@@ -21,10 +21,15 @@ class DataIbu extends Model
         'pekerjaan_ibu',
         'penghasilan_ibu',
         'berkebutuhan_khusus_ibu',
+        'data_pribadi_id'
     ];
 
-    public function pesertaDidik()
-    {
-        return $this->belongsTo(PesertaDidik::class, 'data_ibu_id');
-    }
+    // public function siswa()
+    // {
+    //     return $this->belongsTo(Siswa::class);
+    // }
+    // public function pesertaDidik()
+    // {
+    //     return $this->belongsTo(PesertaDidik::class, 'data_ibu_id');
+    // }
 }

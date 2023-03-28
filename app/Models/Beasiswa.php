@@ -18,10 +18,11 @@ class Beasiswa extends Model
         'keterangan',
         'tahun_mulai',
         'tahun_selesai',
+        'data_pribadi_id'
     ];
 
-    public function detailPesertaDidik()
-    {
-        return $this->belongsTo(DetailPesertaDidik::class, 'beasiswa_id');
-    }
+    // public function siswa()
+    // {
+    //     return $this->belongsTo(Siswa::class, 'beasiswa_id');
+    // }
 }

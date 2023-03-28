@@ -21,10 +21,17 @@ class DataPeriodik extends Model
         'km',
         'waktu_tempuh',
         'jumlah_saudara',
+        'data_pribadi_id'
     ];
 
-    public function detailPesertaDidik()
-    {
-        return $this->belongsTo(DetailPesertaDidik::class, 'data_periodik_id_id');
-    }
+    // public function detailPesertaDidik()
+    // {
+    //     return $this->belongsTo(DetailPesertaDidik::class, 'data_periodik_id_id');
+    // }
+
+    //addition
+    // public function dataPribadi()
+    // {
+    //     return $this->belongsTo(DetailPesertaDidik::class, 'data_periodik_id_id');
+    // }
 }
