@@ -51,13 +51,16 @@ class SekolahController extends Controller
             'password' => 'required|min:6'
         ]);
 
-        // $image_path = $request->file('image')->store('image', 'public');
+        $image_path = $request->file('gambar')->store('image', 'public');
+        $file_path = $request->file('file_pendaftaran')->store('file', 'public');
 
         Sekolah::create([
             'nama_sekolah' => $request->nama_sekolah,
             'tlp_sekolah' => $request->tlp_sekolah,
             'alamat_sekolah' => $request->alamat_sekolah,
             'email' => $request->email,
+            'gambar' => $image_path,
+            'file_pendaftaran' => $file_path,
             'password' => $request->password
             
         ]);
@@ -92,6 +95,9 @@ class SekolahController extends Controller
      */
     public function update(Request $request, Sekolah $sekolah)
     {
+        $image_path = $request->file('gambar')->store('image', 'public');
+        $file_path = $request->file('file_pendaftaran')->store('file', 'public');
+
         if($request->password){
             $request->validate([
                 'nama_sekolah' => 'required',
@@ -106,6 +112,8 @@ class SekolahController extends Controller
                 'tlp_sekolah' => $request->tlp_sekolah,
                 'alamat_sekolah' => $request->alamat_sekolah,
                 'email' => $request->email,
+                'gambar' => $image_path,
+                'file_pendaftaran' => $file_path,
                 'password' => $request->password
             ]);
         } else {
@@ -121,6 +129,8 @@ class SekolahController extends Controller
                 'tlp_sekolah' => $request->tlp_sekolah,
                 'alamat_sekolah' => $request->alamat_sekolah,
                 'email' => $request->email,
+                'gambar' => $image_path,
+                'file_pendaftaran' => $file_path,
             ]);
         }
 

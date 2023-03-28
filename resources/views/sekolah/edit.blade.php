@@ -9,7 +9,7 @@
                 <h2>Edit Sekolah</h2>
             </div>
             <div class="card-body">
-                <form method="post" action="{{route('admin.sekolah.update', $sekolah->id)}}">
+                <form method="post" action="{{route('admin.sekolah.update', $sekolah->id)}}" enctype="multipart/form-data">
                     @csrf
                     @method('patch')
                     <div class="form-group mb-4">
@@ -62,6 +62,15 @@
                         <label for="gambar">Gambar Landing Page</label>
                         <input type="file" class="dropify" data-height="300" name="gambar" data-default-file="{{ asset('storage/'.$sekolah->gambar) }}" data-allowed-file-extensions="png jpg jpeg " />
                         @error('gambar')
+                            <div class="invalid-feedback">
+                                {{$message}}
+                            </div>
+                        @enderror
+                    </div>
+                    <div class="form-group mb-4">
+                        <label for="file_persyaratan">File Persyaratan</label>
+                        <input type="file" class="dropify" data-height="300" name="file_persyaratan" data-default-file="{{ asset('storage/'.$sekolah->file_persyaratan) }}" data-allowed-file-extensions="pdf " />
+                        @error('file_persyaratan')
                             <div class="invalid-feedback">
                                 {{$message}}
                             </div>

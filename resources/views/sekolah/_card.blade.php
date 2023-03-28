@@ -1,6 +1,6 @@
 
 <div class="card card-default card-profile">
-    <div class="card-header-bg" style="background-image:url({{asset('assets/images/user/user-bg-01.jpg')}})"></div>
+    <div class="card-header-bg" style="background-image:url({{ asset('storage/'.$sekolah->gambar) }})"></div>
     <div class="card-body card-profile-body">
         <div class="profile-avata">
             <img class="rounded-circle" src="{{asset('assets/images/gallery/school2.jpg')}}" alt="Avata Image">
