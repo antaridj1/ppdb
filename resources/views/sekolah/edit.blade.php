@@ -58,6 +58,15 @@
                             </div>
                         @enderror
                     </div>
+                    <div class="form-group mb-4">
+                        <label for="gambar">Gambar Landing Page</label>
+                        <input type="file" class="dropify" data-height="300" name="gambar" data-default-file="{{ asset('storage/'.$sekolah->gambar) }}" data-allowed-file-extensions="png jpg jpeg " />
+                        @error('gambar')
+                            <div class="invalid-feedback">
+                                {{$message}}
+                            </div>
+                        @enderror
+                    </div>
                     <div class="text-center">
                         <button type="reset" class="btn btn-secondary">Reset</button>
                         <button type="submit" class="btn btn-primary">Submit</button>
@@ -69,4 +78,5 @@
     @if(session()->has('status'))
         @include('layout.components.alert')
     @endif
+
   @endsection

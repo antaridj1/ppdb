@@ -43,6 +43,8 @@ class CreateDataPribadiTable extends Migration
             $table->enum('kip', ['iya', 'tidak']);
             $table->enum('menerima_kip', ['iya', 'tidak']);
             $table->set('pip', ['Menerima bantuan serupa', 'Menolak', 'Sudah mampu']);
+            $table->boolean('isAccepted')->default(false); // si anak diterima
+            $table->boolean('isVerificated')->default(false); // data lengkap
             $table->timestamps();
             $table->softDeletes();
         });

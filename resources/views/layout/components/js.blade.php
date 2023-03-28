@@ -32,3 +32,9 @@
 <script src="{{asset('assets/js/chart.js')}}"></script>
 <script src="{{asset('assets/js/map.js')}}"></script>
 <script src="{{asset('assets/js/custom.js')}}"></script>
+
+<script type="text/javascript" src="https://jeremyfagis.github.io/dropify/dist/js/dropify.min.js"></script>
+
+<script>
+  $('.dropify').dropify();
+</script>

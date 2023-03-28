@@ -43,6 +43,7 @@ class DataPribadi extends Model
         'kip',
         'menerima_kip',
         'pip',
+        'isVerificated'
     ];
 
     public function siswa()

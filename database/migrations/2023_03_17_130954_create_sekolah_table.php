@@ -20,6 +20,8 @@ class CreateSekolahTable extends Migration
             $table->string('email');
             $table->string('tlp_sekolah');
             $table->string('password');
+            $table->string('gambar')->default('images/default.png');
+            $table->string('file_persyaratan')->nullable();
             $table->boolean('status')->default(true);
             $table->timestamps();
             $table->softDeletes();

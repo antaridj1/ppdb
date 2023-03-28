@@ -19,6 +19,8 @@ class Sekolah extends Model
         'tlp_sekolah',
         'email',
         'password',
+        'gambar',
+        'file_persyaratan',
         'status'
     ];
 
@@ -35,27 +37,17 @@ class Sekolah extends Model
         return $this->hasMany(Siswa::class, 'sekolah_id');
     }
 
-    // public function getTotalPesertaDidikAttribute(){
-    //     return PesertaDidik::whereHas('dataPribadi', function($q){
-    //         $q->where('sekolah_id', $this->id);
-    //     })->count();
-    // }
+    public function getTotalPesertaDidikAttribute(){
+        return $this->dataPribadi->count();
+    }
 
-    // public function getPesertaDidikBelumTervalidasiAttribute(){
-    //     return PesertaDidik::whereHas('siswa', function($q){
-    //         $q->where('sekolah_id', $this->id);
-    //     })
-    //     ->where('status',false)
-    //     ->count();
-    // }
+    public function getPesertaBelumTervalidasiAttribute(){
+        return $this->dataPribadi->where('isVerificated', false)->count();
+    }
 
-    // public function getPesertaDidikTervalidasiAttribute(){
-    //     return PesertaDidik::whereHas('siswa', function($q){
-    //         $q->where('sekolah_id', $this->id);
-    //     })
-    //     ->where('status',true)
-    //     ->count();
-    // }
+    public function getPesertaTervalidasiAttribute(){
+        return $this->dataPribadi->where('isVerificated', true)->count();
+    }
 
     public function getStatusStringAttribute(){
         if($this->status == true){
