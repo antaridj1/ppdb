@@ -3,7 +3,7 @@
         <!-- Aplication Brand -->
         <div class="app-brand">
             <a href="{{ route('siswa.dashboard') }}">
-            <span class="brand-name">PPDB SDN 01 Gianyar</span>
+            <span class="brand-name">{{ $siswa->sekolah->nama_sekolah }}</span>
             </a>
         </div>
         <!-- begin sidebar scrollbar -->

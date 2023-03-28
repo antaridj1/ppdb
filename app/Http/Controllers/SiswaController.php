@@ -71,13 +71,16 @@ class SiswaController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Dashboard
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function dashboard()
     {
-        //
+        $siswa = Siswa::find(auth()->guard('siswa')->id());
+        return view('student.pages.dashboard',
+            ['siswa' => $siswa]
+        );
     }
 
     /**
@@ -285,7 +288,7 @@ class SiswaController extends Controller
              * Beasiswa
              */
             for($i=0; $i<=2; $i++){
-                if($request->input('beasiswa'.$i.'jneis_anak_berprestasi')){
+                if($request->input('beasiswa'.$i.'jenis_anak_berprestasi')){
                     $dataBeasiswa = Beasiswa::create([
                         'data_pribadi_id' => $id_datapribadi,
                         'jenis_anak_berprestasi' => $request->input('beasiswa'.$i.'jenis_anak_berprestasi'),
@@ -368,7 +371,7 @@ class SiswaController extends Controller
                 'data_pribadi_id' => $id_datapribadi
             ]);
 
-        return view('student.pages.data-ppdb');
+            return route('siswa.data');
         } catch (\Exception $e) {
             Log::error('eror message: ' . $e->getMessage() . 'in line: ' . $e->getLine());
         }
@@ -452,7 +455,10 @@ class SiswaController extends Controller
 
                 Siswa::where('id', $request->id)->update($profile);
 
-                return view('student.pages.profile-siswa-ppdb', ['profile' => $profile]);
+                $siswa = Siswa::find(auth()->guard('siswa')->id());
+                return view('student.pages.data-ppdb',
+                    ['daftar' => 1, 'siswa' => $siswa]
+                );
             }
         }
     }
