@@ -28,15 +28,15 @@ class Siswa extends Authenticatable
         'password'
     ];
 
-    // public function sekolah()
-    // {
-    //     return $this->belongsTo(Sekolah::class, 'sekolah_id');
-    // }
+    public function sekolah()
+    {
+        return $this->belongsTo(Sekolah::class, 'sekolah_id');
+    }
 
-    // public function pesertaDidik()
-    // {
-    //     return $this->hasMany(PesertaDidik::class, 'siswa_id');
-    // }
+    public function pesertaDidik()
+    {
+        return $this->hasMany(PesertaDidik::class, 'siswa_id');
+    }
 
     // public function detailPesertaDidik()
     // {
