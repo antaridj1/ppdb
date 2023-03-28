@@ -292,7 +292,7 @@
             <div class="form-group">
                 <label>Tempat Tinggal</label> <br>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                    <input type="radio" id="ortu" name="tempat_tinggal" class="custom-control-input" checked value="ersama orang tua" @if(old('ersama orang tua') == 'Autis') checked @endif>
+                    <input type="radio" id="ortu" name="tempat_tinggal" class="custom-control-input" checked value="Bersama orang tua" @if(old('tempat_tinggal') == 'Bersama orang tua') checked @endif>
                     <label class="custom-control-label" for="ortu">Bersama orang tua</label>
                 </div>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
@@ -1199,22 +1199,22 @@
                 <div class="form-group">
                     <label>Jenis Prestasi</label><br>
                     <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                        <input type="radio" id="sains{{ $i }}" name="prestasi{{ $i }}nama_prestasi" class="custom-control-input" value="sains" @if(old('prestasi'.$i.'nama_prestasi') == 'sains') checked @endif>
+                        <input type="radio" id="sains{{ $i }}" name="prestasi{{ $i }}jenis_prestasi" class="custom-control-input" value="sains" @if(old('prestasi'.$i.'jenis_prestasi') == 'sains') checked @endif>
                         <label class="custom-control-label" for="sains{{ $i }}">Sains</label>
                     </div>
                     <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                        <input type="radio" id="seni{{ $i }}" name="prestasi{{ $i }}nama_prestasi" class="custom-control-input" value="seni" @if(old('prestasi'.$i.'nama_prestasi') == 'seni') checked @endif>
+                        <input type="radio" id="seni{{ $i }}" name="prestasi{{ $i }}jenis_prestasi" class="custom-control-input" value="seni" @if(old('prestasi'.$i.'jenis_prestasi') == 'seni') checked @endif>
                         <label class="custom-control-label" for="seni{{ $i }}">Seni</label>
                     </div>
                     <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                        <input type="radio" id="olah raga{{ $i }}" name="prestasi{{ $i }}nama_prestasi" class="custom-control-input" value="olah raga" @if(old('prestasi'.$i.'nama_prestasi') == 'olah raga') checked @endif>
+                        <input type="radio" id="olah raga{{ $i }}" name="prestasi{{ $i }}jenis_prestasi" class="custom-control-input" value="olah raga" @if(old('prestasi'.$i.'jenis_prestasi') == 'olah raga') checked @endif>
                         <label class="custom-control-label" for="olah raga{{ $i }}">Olah Raga</label>
                     </div>
                     <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                        <input type="radio" id="lain{{ $i }}" name="prestasi{{ $i }}nama_prestasi" class="custom-control-input" value="lain-lain" @if(old('prestasi'.$i.'nama_prestasi') == 'lain-lain') checked @endif>
+                        <input type="radio" id="lain{{ $i }}" name="prestasi{{ $i }}jenis_prestasi" class="custom-control-input" value="lain-lain" @if(old('prestasi'.$i.'jenis_prestasi') == 'lain-lain') checked @endif>
                         <label class="custom-control-label" for="lain{{ $i }}">Lain-lain</label>
                     </div>
-                    @error('prestasi'.$i.'nama_prestasi')
+                    @error('prestasi'.$i.'jenis_prestasi')
                         <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                     @enderror
                 </div>
@@ -1305,7 +1305,7 @@
                         <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                     @enderror
                 </div>
-                    {{-- nama beasiswa --}}
+                {{-- nama beasiswa --}}
                 <div class="form-group">
                     <label for="beasiswa1{{ $i }}">Nama Beasiswa</label><br>
                     <input type="text" class="form-control rounded-0" id="beasiswa1{{ $i }}" name="beasiswa{{ $i }}keterangan" value="{{ old('beasiswa'.$i.'keterangan') }}">
@@ -1313,7 +1313,7 @@
                         <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                     @enderror
                 </div>
-                    {{-- tahun mulai --}}
+                {{-- tahun mulai --}}
                 <div class="form-group">
                     <label for="tahunm1{{ $i }}">Tahun Mulai</label><br>
                     <input type="text" class="form-control rounded-0" id="tahunm1{{ $i }}" name="beasiswa{{ $i }}tahun_mulai" value="{{ old('beasiswa'.$i.'tahun_mulai') }}">

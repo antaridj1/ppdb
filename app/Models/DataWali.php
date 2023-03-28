@@ -24,8 +24,8 @@ class DataWali extends Model
         'data_pribadi_id'
     ];
 
-    // public function siswa()
-    // {
-    //     return $this->belongsTo(Siswa::class, 'data_wali_id');
-    // }
+    public function dataPribadi()
+    {
+        return $this->belongsTo(DataPribadi::class);
+    }
 }

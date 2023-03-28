@@ -49,10 +49,9 @@ class Siswa extends Authenticatable
         return $this->hasMany(Chat::class, 'siswa_id');
     }
 
-    //addition
     public function dataPribadi()
     {
-        return $this->hasOne(DataPribadi::class);
+        return $this->belongsTo(DataPribadi::class);
     }
 
 }

@@ -20,8 +20,8 @@ class Kesejahteraan extends Model
         'data_pribadi_id'
     ];
 
-    // public function siswa()
-    // {
-    //     return $this->belongsTo(Siswa::class, 'kesejahteraan_id');
-    // }
+    public function dataPribadi()
+    {
+        return $this->belongsTo(DataPribadi::class);
+    }
 }

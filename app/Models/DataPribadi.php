@@ -45,19 +45,13 @@ class DataPribadi extends Model
         'pip',
     ];
 
-    // public function pesertaDidik()
-    // {
-    //     return $this->belongsTo(PesertaDidik::class, 'data_pribadi');
-    // }
-
     public function siswa()
     {
         return $this->hasOne(Siswa::class);
     }
-
     public function sekolah()
     {
-        return $this->hasOne(Sekolah::class);
+        return $this->belongsTo(Sekolah::class);
     }
     public function dataPeriodik()
     {
@@ -77,16 +71,19 @@ class DataPribadi extends Model
     }
     public function beasiswa()
     {
-        return $this->hasOne(Beasiswa::class);
+        return $this->hasMany(Beasiswa::class);
     }
-
     public function prestasi()
     {
-        return $this->hasOne(Prestasi::class);
+        return $this->hasMany(Prestasi::class);
     }
     public function kesejahteraan()
     {
         return $this->hasOne(Kesejahteraan::class);
+    }
+    public function file()
+    {
+        return $this->hasOne(File::class);
     }
 
 }

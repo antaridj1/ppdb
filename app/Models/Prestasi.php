@@ -22,8 +22,8 @@ class Prestasi extends Model
         'data_pribadi_id'
     ];
 
-    // public function siswa()
-    // {
-    //     return $this->belongsTo(Siswa::class, 'prestasi_id');
-    // }
+    public function dataPribadi()
+    {
+        return $this->belongsTo(DataPribadi::class);
+    }
 }
