@@ -43,7 +43,7 @@ class PesertaDidik extends Model
 
     public function siswa()
     {
-        return $this->hasMany(Siswa::class, 'siswa_id');
+        return $this->belongsTo(Siswa::class, 'siswa_id');
     }
 
     public function ppdb()

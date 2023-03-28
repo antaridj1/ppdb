@@ -20,6 +20,7 @@ class CreateSekolahTable extends Migration
             $table->string('email');
             $table->string('tlp_sekolah');
             $table->string('password');
+            $table->boolean('status')->default(true);
             $table->timestamps();
             $table->softDeletes();
         });

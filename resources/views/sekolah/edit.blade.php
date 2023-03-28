@@ -62,7 +62,7 @@
                         <button type="reset" class="btn btn-secondary">Reset</button>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
-                    </form><!-- End floating Labels Form -->
+                </form><!-- End floating Labels Form -->
             </div>
         </div>
     </div>
