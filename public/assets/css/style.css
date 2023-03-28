@@ -17456,7 +17456,7 @@ html[dir=rtl] .sidebar li > a .caret:before {
 .chatroom-active {
   background-color: #9ec1ef46;
 }
-.icon-burger-mini:before{
+.chatroom .icon-burger-mini:before{
   color: white;
 }
 
