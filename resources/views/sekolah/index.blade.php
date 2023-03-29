@@ -8,8 +8,9 @@
         <div class="row">
             <div class="col-12">
                 <div class="card card-default">
-                    <div class="card-header">
+                    <div class="card-header d-flex justify-content-between">
                         <h2>Sekolah</h2>
+                        <a href="{{route('admin.sekolah.create')}}" class="btn btn-pill btn-primary">Tambah Sekolah</a>
                     </div>
                     <div class="card-body">
                        @include('sekolah._table')

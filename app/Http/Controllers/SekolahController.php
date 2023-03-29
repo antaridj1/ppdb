@@ -48,11 +48,13 @@ class SekolahController extends Controller
             'tlp_sekolah' => 'required',
             'alamat_sekolah' => 'required',
             'email' => 'required|email|unique:sekolah',
+            'gambar' => 'image|mimes:jpg,png,jpeg',
+            'file_persyaratan' => 'mimes:pdf|max:5120',
             'password' => 'required|min:6'
         ]);
 
         $image_path = $request->file('gambar')->store('image', 'public');
-        $file_path = $request->file('file_pendaftaran')->store('file', 'public');
+        $file_path = $request->file('file_persyaratan')->store('file/persyaratan', 'public');
 
         Sekolah::create([
             'nama_sekolah' => $request->nama_sekolah,
@@ -60,7 +62,7 @@ class SekolahController extends Controller
             'alamat_sekolah' => $request->alamat_sekolah,
             'email' => $request->email,
             'gambar' => $image_path,
-            'file_pendaftaran' => $file_path,
+            'file_persyaratan' => $file_path,
             'password' => $request->password
             
         ]);
