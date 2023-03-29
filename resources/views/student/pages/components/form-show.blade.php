@@ -379,104 +379,104 @@
     </div>
 
     <!-- Prestasi -->
-    @if ($siswa->dataPribadi->prestasi)
+    @if ($siswa->dataPribadi->dataPrestasi)
         <div class="card card-default">
             <div class="card-header">
                 <h1>Prestasi</h1> <br>
             </div>
-        <div class="card-body">
-            @php
-                $i = 1;
-            @endphp
-            @foreach ($siswa->dataPribadi->prestasi as $prestasi)
-                {{-- prestasi 1 --}}
-                <h4>Prestasi {{ $i }}</h6> <br>
-                {{-- jenis --}}
-                <div class="form-group">
-                    <label>Jenis Prestasi</label><br>
-                    <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                        <input type="radio" id="sains{{ $i }}" name="prestasi{{ $i }}nama_prestasi" class="custom-control-input" checked value="sains" @if(old('prestasi'.$i.'nama_prestasi') == 'sains') checked @endif>
-                        <label class="custom-control-label" for="sains{{ $i }}">{{ $prestasi->jenis_prestasi }}</label>
-                    </div>
-                </div>
-                    {{-- tingkat --}}
-                <div class="form-group">
-                    <label for="exampleFormControlPasswor3">Tingkat prestasi</label><br>
-                    <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                        <input type="radio" id="internasional{{ $i }}" name="prestasi{{ $i }}tingkat" class="custom-control-input" checked value="internasional" @if(old('prestasi'.$i.'tingkat') == 'internasional') checked @endif>
-                        <label class="custom-control-label" for="internasional{{ $i }}">{{ $prestasi->tingkat }}</label>
-                    </div>
-                </div>
-                {{-- nama prestasi --}}
-                <div class="form-group">
-                    <label for="namap{{ $i }}">Nama Prestasi</label>
-                    <input type="text" class="form-control rounded-0" id="namap{{ $i }}" name="prestasi{{ $i }}nama_prestasi" value="{{ $prestasi->nama_prestasi }}">
-                </div>
-                {{-- tahun prestasi --}}
-                <div class="form-group">
-                    <label for="tahunp{{ $i }}">Tahun Prestasi</label>
-                    <input type="number" class="form-control rounded-0" id="tahunp{{ $i }}" maxlength="4" name="prestasi{{ $i }}tahun" value="{{ $prestasi->tahun }}">
-                </div>
-                {{-- nama penyelenggara --}}
-                <div class="form-group">
-                    <label for="exampleFormControlPasswor3{{ $i }}">Nama Penyelenggara</label>
-                    <input type="text" class="form-control rounded-0" id="exampleFormControlPasswor3{{ $i }}" name="prestasi{{ $i }}penyelenggara" value="{{ $prestasi->penyelenggara }}">
-                </div>
-                <br>
+            <div class="card-body">
                 @php
-                $i++;
+                    $i = 1;
                 @endphp
-            @endforeach
+                @foreach ($siswa->dataPribadi->dataPrestasi as $prestasi)
+                    {{-- prestasi 1 --}}
+                    <h4>Prestasi {{ $i }}</h6> <br>
+                    {{-- jenis --}}
+                    <div class="form-group">
+                        <label>Jenis Prestasi</label><br>
+                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                            <input type="radio" id="sains{{ $i }}" name="prestasi{{ $i }}nama_prestasi" class="custom-control-input" checked value="sains" @if(old('prestasi'.$i.'nama_prestasi') == 'sains') checked @endif>
+                            <label class="custom-control-label" for="sains{{ $i }}">{{ $prestasi->jenis_prestasi }}</label>
+                        </div>
+                    </div>
+                        {{-- tingkat --}}
+                    <div class="form-group">
+                        <label for="exampleFormControlPasswor3">Tingkat prestasi</label><br>
+                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                            <input type="radio" id="internasional{{ $i }}" name="prestasi{{ $i }}tingkat" class="custom-control-input" checked value="internasional" @if(old('prestasi'.$i.'tingkat') == 'internasional') checked @endif>
+                            <label class="custom-control-label" for="internasional{{ $i }}">{{ $prestasi->tingkat }}</label>
+                        </div>
+                    </div>
+                    {{-- nama prestasi --}}
+                    <div class="form-group">
+                        <label for="namap{{ $i }}">Nama Prestasi</label>
+                        <input type="text" class="form-control rounded-0" id="namap{{ $i }}" name="prestasi{{ $i }}nama_prestasi" value="{{ $prestasi->nama_prestasi }}">
+                    </div>
+                    {{-- tahun prestasi --}}
+                    <div class="form-group">
+                        <label for="tahunp{{ $i }}">Tahun Prestasi</label>
+                        <input type="number" class="form-control rounded-0" id="tahunp{{ $i }}" maxlength="4" name="prestasi{{ $i }}tahun" value="{{ $prestasi->tahun }}">
+                    </div>
+                    {{-- nama penyelenggara --}}
+                    <div class="form-group">
+                        <label for="exampleFormControlPasswor3{{ $i }}">Nama Penyelenggara</label>
+                        <input type="text" class="form-control rounded-0" id="exampleFormControlPasswor3{{ $i }}" name="prestasi{{ $i }}penyelenggara" value="{{ $prestasi->penyelenggara }}">
+                    </div>
+                    <br>
+                    @php
+                    $i++;
+                    @endphp
+                @endforeach
 
 
+            </div>
         </div>
-    </div>
     @endif
 
 
     <!-- Beasiswa -->
-    @if ($siswa->dataPribadi->beasiswa)
-<div class="card card-default">
-        <div class="card-header">
-            <h1>Beasiswa</h1> <br>
-        </div>
-        <div class="card-body">
-            @php
-                $i = 1;
-            @endphp
-            @foreach($siswa->dataPribadi->beasiswa as $beasiswa)
-                 {{-- beasiswa 1 --}}
-                <h4>Beasiswa {{ $i }}</h6> <br>
-                {{-- jenis --}}
-                <div class="form-group">
-                    <label>Jenis Beasiswa</label><br>
-                    <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                        <input type="radio" id="anak_miskin{{ $i }}" name="beasiswa{{ $i }}jenis_anak_berprestasi" checked class="custom-control-input" value="anak miskin" @if(old('beasiswa'. $i .'jenis_anak_berprestasi') == 'anak miskin') checked @endif>
-                        <label class="custom-control-label" for="anak_miskin{{ $i }}">{{ $beasiswa->jenis_anak_berprestasi }}</label>
-                    </div>
-                </div>
-                    {{-- nama beasiswa --}}
-                <div class="form-group">
-                    <label for="beasiswa1{{ $i }}">Nama Beasiswa</label><br>
-                    <input type="text" class="form-control rounded-0" id="beasiswa1{{ $i }}" name="beasiswa{{ $i }}keterangan" value="{{ $beasiswa->keterangan }}">
-                </div>
-                    {{-- tahun mulai --}}
-                <div class="form-group">
-                    <label for="tahunm1{{ $i }}">Tahun Mulai</label><br>
-                    <input type="text" class="form-control rounded-0" id="tahunm1{{ $i }}" name="beasiswa{{ $i }}tahun_mulai" value="{{ $beasiswa->tahun_mulai }}">
-                </div>
-                    {{-- tahun berakhir --}}
-                <div class="form-group">
-                    <label for="tahuns1{{ $i }}">Tahun Selesai</label><br>
-                    <input type="text" class="form-control rounded-0" id="tahuns1{{ $i }}" name="beasiswa{{ $i }}tahun_selesai" value="{{ $beasiswa->tahun_selesai }}">
-                </div>
-                <br>
+    @if ($siswa->dataPribadi->dataBeasiswa)
+        <div class="card card-default">
+            <div class="card-header">
+                <h1>Beasiswa</h1> <br>
+            </div>
+            <div class="card-body">
                 @php
-                $i++;
-            @endphp
-            @endforeach
+                    $i = 1;
+                @endphp
+                @foreach($siswa->dataPribadi->dataBeasiswa as $beasiswa)
+                    {{-- beasiswa 1 --}}
+                    <h4>Beasiswa {{ $i }}</h6> <br>
+                    {{-- jenis --}}
+                    <div class="form-group">
+                        <label>Jenis Beasiswa</label><br>
+                        <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                            <input type="radio" id="anak_miskin{{ $i }}" name="beasiswa{{ $i }}jenis_anak_berprestasi" checked class="custom-control-input" value="anak miskin" @if(old('beasiswa'. $i .'jenis_anak_berprestasi') == 'anak miskin') checked @endif>
+                            <label class="custom-control-label" for="anak_miskin{{ $i }}">{{ $beasiswa->jenis_anak_berprestasi }}</label>
+                        </div>
+                    </div>
+                        {{-- nama beasiswa --}}
+                    <div class="form-group">
+                        <label for="beasiswa1{{ $i }}">Nama Beasiswa</label><br>
+                        <input type="text" class="form-control rounded-0" id="beasiswa1{{ $i }}" name="beasiswa{{ $i }}keterangan" value="{{ $beasiswa->keterangan }}">
+                    </div>
+                        {{-- tahun mulai --}}
+                    <div class="form-group">
+                        <label for="tahunm1{{ $i }}">Tahun Mulai</label><br>
+                        <input type="text" class="form-control rounded-0" id="tahunm1{{ $i }}" name="beasiswa{{ $i }}tahun_mulai" value="{{ $beasiswa->tahun_mulai }}">
+                    </div>
+                        {{-- tahun berakhir --}}
+                    <div class="form-group">
+                        <label for="tahuns1{{ $i }}">Tahun Selesai</label><br>
+                        <input type="text" class="form-control rounded-0" id="tahuns1{{ $i }}" name="beasiswa{{ $i }}tahun_selesai" value="{{ $beasiswa->tahun_selesai }}">
+                    </div>
+                    <br>
+                    @php
+                    $i++;
+                @endphp
+                @endforeach
+            </div>
         </div>
-    </div>
     @endif
 
 

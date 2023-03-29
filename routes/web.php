@@ -18,6 +18,7 @@ use App\Http\Controllers\StyleInteriorController;
 use App\Http\Controllers\TypeInteriorController;
 use App\Http\Controllers\UserController;
 use App\Models\Sekolah;
+use App\Models\Siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -101,6 +102,10 @@ Route::prefix('ppdb')->group(function () {
         });
 
         Route::get('login', function() use ($url_sdn_id) {
+            if(auth()->guard('siswa')->check()){
+                $siswa = Siswa::find(auth()->guard('siswa')->check());
+                return view('student.pages.dashboard', ['siswa' => $siswa]);
+            }
             return view('student.pages.login', ['id'=> $url_sdn_id]);
         })->name('login.form.siswa');
         Route::post('login', [LoginController::class, 'siswaLogin'])->name('login.siswa');
@@ -115,13 +120,10 @@ Route::prefix('ppdb')->group(function () {
                 Route::get('/dashboard', [SiswaController::class, 'dashboard'])->name('dashboard');
 
                 Route::get('/data-peserta-didik', [SiswaController::class, 'index'])->name('data');
-
                 Route::post('/data-peserta-didik', [SiswaController::class, 'store'])->name('store');
 
                 Route::get('/profile', [SiswaController::class, 'show'])->name('profile');
-
                 Route::post('/profile', [SiswaController::class, 'update'])->name('update');
-
 
                 Route::get('/chat', [ChatController::class, 'indexUser'])->name('indexUser');
                 Route::get('/chat/create', [ChatController::class, 'createUser'])->name('createUser');
@@ -130,6 +132,5 @@ Route::prefix('ppdb')->group(function () {
                 Route::post('logout', [LogoutController::class, 'siswaLogout'])->name('logout');
             });
         });
-        // Route::get('/{sd}', [LandingPageSchool::class, 'landingPage']);
     });
 });

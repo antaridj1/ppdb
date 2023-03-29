@@ -1,6 +1,6 @@
 <form method="POST" enctype="multipart/form-data" action={{ route('siswa.store') }}>
     @csrf
-    <input type="hidden" value="{{ $id }}" name="sekolah_id">
+    <input type="hidden" value="{{ $siswa->sekolah_id }}" name="sekolah_id">
     {{-- Data Pribadi Siswa --}}
     <div class="card card-default">
         <div class="card-header">

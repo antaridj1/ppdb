@@ -70,11 +70,11 @@ class DataPribadi extends Model
     {
         return $this->hasOne(DataWali::class);
     }
-    public function beasiswa()
+    public function dataBeasiswa()
     {
         return $this->hasMany(Beasiswa::class);
     }
-    public function prestasi()
+    public function dataPrestasi()
     {
         return $this->hasMany(Prestasi::class);
     }

@@ -37,9 +37,9 @@ class SiswaController extends Controller
             $id = auth()->guard('siswa')->id();
             $siswa = Siswa::find($id);
             if( $siswa->daftar == 0) {
-                return view('student.pages.data-ppdb', ['id' => $siswa->sekolah_id, 'daftar' => 0]);
+                return view('student.pages.data-ppdb', ['siswa' => $siswa, 'daftar' => 0]);
             } else {
-                $siswa = Siswa::find(auth()->guard('siswa')->id());
+                $siswa = Siswa::find($id);
                 return view('student.pages.data-ppdb',
                     ['daftar' => 1, 'siswa' => $siswa]
                 );
@@ -371,7 +371,9 @@ class SiswaController extends Controller
                 'data_pribadi_id' => $id_datapribadi
             ]);
 
-            return route('siswa.data');
+            return view('student.pages.data-ppdb',
+                ['daftar' => 1, 'siswa' => $siswa]
+            );
         } catch (\Exception $e) {
             Log::error('eror message: ' . $e->getMessage() . 'in line: ' . $e->getLine());
         }
@@ -386,11 +388,8 @@ class SiswaController extends Controller
     public function show(Siswa $siswa)
     {
         if(Auth::getDefaultDriver() !== 'admin'){
-            // untuk wali
-            $id = auth()->guard('siswa')->id();
-
-            $profile = Siswa::find($id);
-            return view('student.pages.profile-siswa-ppdb', ['profile' => $profile]);
+            $siswa = Siswa::find(auth()->guard('siswa')->id());
+            return view('student.pages.profile-siswa-ppdb', ['siswa' => $siswa]);
         }else {
             return view('peserta-didik.show', compact('siswa'));
         }

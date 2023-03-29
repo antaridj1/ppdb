@@ -1,4 +1,4 @@
-<div class="col-xl-4">
+<div class="col-xl-12">
                     <!-- Notifications -->
                     <div class="card card-default">
                     <div class="card-header">

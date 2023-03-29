@@ -52,11 +52,11 @@
                                     @endif
                                     <form method="POST" enctype="multipart/form-data" action="">
                                         @csrf
-                                        <input type="hidden" name="id" value="{{ $profile->id }}">
-                                        <input type="hidden" name="sekolah_id" value="{{ $profile->sekolah_id }}">
+                                        <input type="hidden" name="id" value="{{ $siswa->id }}">
+                                        <input type="hidden" name="sekolah_id" value="{{ $siswa->sekolah_id }}">
                                         <div class="form-group">
                                             <label for="email">Email</label>
-                                            <input type="email" class="form-control rounded-0" name="email" id="email" value="{{ $profile->email }}" required>
+                                            <input type="email" class="form-control rounded-0" name="email" id="email" value="{{ $siswa->email }}" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="password">Password</label>
@@ -70,11 +70,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="no_tlp">Tlp. Rumah</label>
-                                            <input type="number" class="form-control rounded-0" name="no_tlp" id="no_tlp" value="{{ $profile->no_tlp }}">
+                                            <input type="number" class="form-control rounded-0" name="no_tlp" id="no_tlp" value="{{ $siswa->no_tlp }}">
                                         </div>
                                         <div class="form-group">
                                             <label for="no_hp">No. HP</label>
-                                            <input type="number" class="form-control rounded-0" name="no_hp" id="no_hp" value="{{ $profile->no_hp }}">
+                                            <input type="number" class="form-control rounded-0" name="no_hp" id="no_hp" value="{{ $siswa->no_hp }}">
                                         </div>
                                         <button type="submit" class="btn btn-square btn-primary">Simpan perubahan</button>
                                     </form>
