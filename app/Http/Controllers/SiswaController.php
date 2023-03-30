@@ -316,7 +316,6 @@ class SiswaController extends Controller
                 }
              }
 
-
             /**
              * Kesejahteraan
              */
@@ -335,22 +334,22 @@ class SiswaController extends Controller
             if($request->hasFile('file_kk')){
                 $pdf_kk = $request->file('file_kk');
                 $name_kk = uniqid() . '.' . $pdf_kk->getClientOriginalExtension();
-                $pdf_kk->move('file/kk', $name_kk);
+                $pdf_kk->storeAs('file/kk', $name_kk);
             }
             if($request->hasFile('file_akta_kelahiran')){
                 $pdf_akta = $request->file('file_akta_kelahiran');
                 $name_akta = uniqid() . '.' . $pdf_akta->getClientOriginalExtension();
-                $pdf_akta->move('file/akta', $name_akta);
+                $pdf_akta->storeAs('file/akta', $name_akta);
             }
             if($request->hasFile('file_ktp_ortu')){
                 $pdf_ktp = $request->file('file_ktp_ortu');
                 $name_ktp = uniqid() . '.' . $pdf_ktp->getClientOriginalExtension();
-                $pdf_ktp->move('file/ktp', $name_ktp);
+                $pdf_ktp->storeAs('file/ktp', $name_ktp);
             }
             if($request->hasFile('file_ktp_ortu')){
                 $pdf_ijazah = $request->file('file_ijazah_tk');
                 $name_ijazah = uniqid() . '.' . $pdf_ijazah->getClientOriginalExtension();
-                $pdf_ijazah->move('file/ijazah', $name_ijazah);
+                $pdf_ijazah->storeAs('file/ijazah', $name_ijazah);
             }
 
             $file = File::create([

@@ -83,31 +83,31 @@
             {{-- agama --}}
             <div class="form-group">
                 <label>Agama dan Kepercayaan</label> <br>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="islam" name="agama" class="custom-control-input" checked value="Islam" @if(old('agama') == 'Islam') checked @endif>
                     <label class="custom-control-label" for="islam">Islam</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="kristen" name="agama" class="custom-control-input" value="Kristen/Protestan" @if(old('agama') == 'Kristen/Protestan') checked @endif>
                     <label class="custom-control-label" for="kristen">Kristen/Protestan</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="khatolik" name="agama" class="custom-control-input" value="Khatolik" @if(old('agama') == 'Khatolik') checked @endif>
                     <label class="custom-control-label" for="khatolik">Khatolik</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="hindu" name="agama" class="custom-control-input" value="Hindu" @if(old('agama') == 'Hindu') checked @endif>
                     <label class="custom-control-label" for="hindu">Hindu</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="budha" name="agama" class="custom-control-input" value="Budha" @if(old('agama') == 'Budha') checked @endif>
                     <label class="custom-control-label" for="budha">Budha</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="konghucu" name="agama" class="custom-control-input" value="Konghucu" @if(old('agama') == 'Konghucu') checked @endif>
                     <label class="custom-control-label" for="konghucu">Konghucu</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="yme" name="agama" class="custom-control-input" value="Percaya kepada Tuhan YME" @if(old('agama') == 'Percaya kepada Tuhan YME') checked @endif>
                     <label class="custom-control-label" for="yme">Percaya kepada Tuhan YME</label>
                 </div>
@@ -138,75 +138,75 @@
             {{-- berkebutuhan khusus --}}
             <div class="form-group">
                 <label for="exampleFormControlInput44">Berkebutuhan Khusus</label> <br>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="tidak" name="berkebutuhan_khusus" class="custom-control-input" checked value="Tidak" @if(old('berkebutuhan_khusus') == 'Tidak') checked @endif>
                     <label class="custom-control-label" for="tidak">Tidak</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="netra" name="berkebutuhan_khusus" class="custom-control-input" value="Netra" @if(old('berkebutuhan_khusus') == 'Netra') checked @endif>
                     <label class="custom-control-label" for="netra">Netra (A)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="rungu" name="berkebutuhan_khusus" class="custom-control-input" value="Rungu" @if(old('berkebutuhan_khusus') == 'WNRunguA') checked @endif>
                     <label class="custom-control-label" for="rungu">Rungu (B)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="grahitar" name="berkebutuhan_khusus" class="custom-control-input" value="Grahita Ringan" @if(old('berkebutuhan_khusus') == 'Grahita Ringan') checked @endif>
                     <label class="custom-control-label" for="grahitar">Grahita Ringan (C)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="grahitas" name="berkebutuhan_khusus" class="custom-control-input" value="Grahita Sedang" @if(old('berkebutuhan_khusus') == 'Grahita Sedang') checked @endif>
                     <label class="custom-control-label" for="grahitas">Grahita Sedang (C1)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="daksar" name="berkebutuhan_khusus" class="custom-control-input" value="Daksa Ringan" @if(old('berkebutuhan_khusus') == 'Daksa Ringan') checked @endif>
                     <label class="custom-control-label" for="daksar">Daksa Ringan (D)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="daksas" name="berkebutuhan_khusus" class="custom-control-input" value="Daksa Sedang" @if(old('berkebutuhan_khusus') == 'Daksa Sedang') checked @endif>
                     <label class="custom-control-label" for="daksas">Daksa Sedang (D1)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="laras" name="berkebutuhan_khusus" class="custom-control-input" value="Laras" @if(old('berkebutuhan_khusus') == 'Laras') checked @endif>
                     <label class="custom-control-label" for="laras">Laras (E)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="wicara" name="berkebutuhan_khusus" class="custom-control-input" value="Wicara" @if(old('berkebutuhan_khusus') == 'Wicara') checked @endif>
                     <label class="custom-control-label" for="wicara">Wicara (F)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="tuna" name="berkebutuhan_khusus" class="custom-control-input" value="Tuna Ganda" @if(old('berkebutuhan_khusus') == 'Tuna Ganda') checked @endif>
                     <label class="custom-control-label" for="tuna">Tuna Ganda (G)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="hiper" name="berkebutuhan_khusus" class="custom-control-input" value="Hiper Aktif" @if(old('berkebutuhan_khusus') == 'Hiper Aktif') checked @endif>
                     <label class="custom-control-label" for="hiper">Hiper Aktif (H)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="cerdas" name="berkebutuhan_khusus" class="custom-control-input" value="Cerdas Istimewa" @if(old('berkebutuhan_khusus') == 'Cerdas Istimewa') checked @endif>
                     <label class="custom-control-label" for="cerdas">Cerdas Istimewa (I)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="bakat" name="berkebutuhan_khusus" class="custom-control-input" value="Bakat Istimewa" @if(old('berkebutuhan_khusus') == 'Bakat Istimewa') checked @endif>
                     <label class="custom-control-label" for="bakat">Bakat Istimewa (J)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="kesulitan" name="berkebutuhan_khusus" class="custom-control-input" value="Kesulitan Belajar" @if(old('berkebutuhan_khusus') == 'Kesulitan Belajar') checked @endif>
                     <label class="custom-control-label" for="kesulitan">Kesulitan Belajar (K)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="narkoba" name="berkebutuhan_khusus" class="custom-control-input" value="Narkoba" @if(old('berkebutuhan_khusus') == 'Narkoba') checked @endif>
                     <label class="custom-control-label" for="narkoba">Narkoba (K)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="indigo" name="berkebutuhan_khusus" class="custom-control-input" value="Indigo" @if(old('berkebutuhan_khusus') == 'Indigo') checked @endif>
                     <label class="custom-control-label" for="indigo">Indigo (O)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="down" name="berkebutuhan_khusus" class="custom-control-input" value="Down Sindrome" @if(old('berkebutuhan_khusus') == 'Down Sindrome') checked @endif>
                     <label class="custom-control-label" for="down">Down Sindrome (P)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="autis" name="berkebutuhan_khusus" class="custom-control-input" value="Autis" @if(old('berkebutuhan_khusus') == 'Autis') checked @endif>
                     <label class="custom-control-label" for="autis">Autis (Q)</label>
                 </div>
@@ -318,39 +318,39 @@
             {{-- moda transport --}}
             <div class="form-group">
                 <label for="exampleFormControlPasswor3">Moda Transportasi</label><br>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="jalan" name="moda_transportasi" class="custom-control-input" checked value="Jalan kaki" @if(old('moda_transportasi') == 'Jalan kaki') checked @endif>
                     <label class="custom-control-label" for="jalan">Jalan kaki</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="kendaraan" name="moda_transportasi" class="custom-control-input" value="Kendaraan pribadi" @if(old('moda_transportasi') == 'Kendaraan pribadi') checked @endif>
                     <label class="custom-control-label" for="kendaraan">Kendaraan pribadi</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="umum" name="moda_transportasi" class="custom-control-input" value="Kendaraan umum" @if(old('moda_transportasi') == 'Kendaraan umum') checked @endif>
                     <label class="custom-control-label" for="umum">Kendaraan umum</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="jemput" name="moda_transportasi" class="custom-control-input" value="Jemputan sekolah" @if(old('moda_transportasi') == 'Jemputan sekolah') checked @endif>
                     <label class="custom-control-label" for="jemput">Jemputan sekolah</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="kereta" name="moda_transportasi" class="custom-control-input" value="Kereta api" @if(old('moda_transportasi') == 'Kereta api') checked @endif>
                     <label class="custom-control-label" for="kereta">Kereta api</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="ojek" name="moda_transportasi" class="custom-control-input" value="Ojek" @if(old('moda_transportasi') == 'Ojek') checked @endif>
                     <label class="custom-control-label" for="ojek">Ojek</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="becak" name="moda_transportasi" class="custom-control-input" value="Becak" @if(old('moda_transportasi') == 'Becak') checked @endif>
                     <label class="custom-control-label" for="becak">Becak</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="penyebrangan" name="moda_transportasi" class="custom-control-input" value="Perahu penyebrangan" @if(old('moda_transportasi') == 'Perahu penyebrangan') checked @endif>
                     <label class="custom-control-label" for="penyebrangan">Perahu penyebrangan</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="lainnya" name="moda_transportasi" class="custom-control-input" value="Lainnya" @if(old('moda_transportasi') == 'Lainnya') checked @endif>
                     <label class="custom-control-label" for="lainnya">lainnya</label>
                 </div>
@@ -451,43 +451,43 @@
             {{-- pendidikan --}}
             <div class="form-group">
                 <label>Pendidikan</label><br>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="tidak_sekolah" name="pendidikan_ayah" class="custom-control-input" checked value="Tidak Sekolah" @if(old('pendidikan_ayah') == 'Tidak Sekolah') checked @endif>
                     <label class="custom-control-label" for="tidak_sekolah">Tidak Sekolah</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="putus-sd" name="pendidikan_ayah" class="custom-control-input" value="Putus SD" @if(old('pendidikan_ayah') == 'Putus SD') checked @endif>
                     <label class="custom-control-label" for="putus-sd">Putus SD</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="sd" name="pendidikan_ayah" class="custom-control-input" value="SD Sederajat" @if(old('pendidikan_ayah') == 'SD Sederajat') checked @endif>
                     <label class="custom-control-label" for="sd">SD Sederajat</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="smp" name="pendidikan_ayah" class="custom-control-input" value="SMP Sederajat" @if(old('pendidikan_ayah') == 'SMP Sederajat') checked @endif>
                     <label class="custom-control-label" for="smp">SMP Sederajat</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="sma" name="pendidikan_ayah" class="custom-control-input" value="SMA Sederajat" @if(old('pendidikan_ayah') == 'SMA Sederajat') checked @endif>
                     <label class="custom-control-label" for="sma">SMA Sederajat</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="d1" name="pendidikan_ayah" class="custom-control-input" value="D1" @if(old('pendidikan_ayah') == 'D1') checked @endif>
                     <label class="custom-control-label" for="d1">D1</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="d2" name="pendidikan_ayah" class="custom-control-input" value="D2" @if(old('pendidikan_ayah') == 'D2') checked @endif>
                     <label class="custom-control-label" for="d2">D2</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="d3" name="pendidikan_ayah" class="custom-control-input" value="D3" @if(old('pendidikan_ayah') == 'D3') checked @endif>
                     <label class="custom-control-label" for="d3">D3</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="s1" name="pendidikan_ayah" class="custom-control-input" value="S1" @if(old('pendidikan_ayah') == 'S1') checked @endif>
                     <label class="custom-control-label" for="s1">S1</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="s2" name="pendidikan_ayah" class="custom-control-input" value="S2" @if(old('pendidikan_ayah') == 'S2') checked @endif>
                     <label class="custom-control-label" for="s2">S2</label>
                 </div>
@@ -498,51 +498,51 @@
             {{-- pekerjaan --}}
             <div class="form-group">
                 <label>Pekerjaan</label><br>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="tidakayah" name="pekerjaan_ayah" class="custom-control-input" checked value="Tidak Bekerja" @if(old('pekerjaan_ayah') == 'Tidak Bekerja') checked @endif>
                     <label class="custom-control-label" for="tidakayah">Tidak Bekerja</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="nelayan" name="pekerjaan_ayah" class="custom-control-input" value="Nelayan" @if(old('pekerjaan_ayah') == 'Nelayan') checked @endif>
                     <label class="custom-control-label" for="nelayan">Nelayan</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="petani" name="pekerjaan_ayah" class="custom-control-input" value="Petani" @if(old('pekerjaan_ayah') == 'Petani') checked @endif>
                     <label class="custom-control-label" for="petani">Petani</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="peternak" name="pekerjaan_ayah" class="custom-control-input" value="Peternak" @if(old('pekerjaan_ayah') == 'Peternak') checked @endif>
                     <label class="custom-control-label" for="peternak">Peternak</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="pns" name="pekerjaan_ayah" class="custom-control-input" value="PNS/TNI/POLRI" @if(old('pekerjaan_ayah') == 'PNS/TNI/POLRI') checked @endif>
                     <label class="custom-control-label" for="pns">PNS/TNI/POLRI</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="karyawan" name="pekerjaan_ayah" class="custom-control-input" value="Karyawan Swasta" @if(old('pekerjaan_ayah') == 'Karyawan Swasta') checked @endif>
                     <label class="custom-control-label" for="karyawan">Karyawan Swasta</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="pedagangk" name="pekerjaan_ayah" class="custom-control-input" value="Pedagang Kecil" @if(old('pekerjaan_ayah') == 'Pedagang Kecil') checked @endif>
                     <label class="custom-control-label" for="pedagangk">Pedagang Kecil</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="pedagangb" name="pekerjaan_ayah" class="custom-control-input" value="Pedagang Besar" @if(old('pekerjaan_ayah') == 'Pedagang Besar') checked @endif>
                     <label class="custom-control-label" for="pedagangb">Pedagang Besar</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="wiraswasta" name="pekerjaan_ayah" class="custom-control-input" value="Wiraswasta" @if(old('pekerjaan_ayah') == 'Wiraswasta') checked @endif>
                     <label class="custom-control-label" for="wiraswasta">Wiraswasta</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="wirausaha" name="pekerjaan_ayah" class="custom-control-input" value="Wirausaha" @if(old('pekerjaan_ayah') == 'Wirausaha') checked @endif>
                     <label class="custom-control-label" for="wirausaha">Wirausaha</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="buruh" name="pekerjaan_ayah" class="custom-control-input" value="Buruh" @if(old('pekerjaan_ayah') == 'Buruh') checked @endif>
                     <label class="custom-control-label" for="buruh">Buruh</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="pensiun" name="pekerjaan_ayah" class="custom-control-input" value="Pensiun" @if(old('pekerjaan_ayah') == 'Pensiun') checked @endif>
                     <label class="custom-control-label" for="pensiun">Pensiun</label>
                 </div>
@@ -553,27 +553,27 @@
             {{-- penghasilan --}}
             <div class="form-group">
                 <label for="exampleFormControlPasswor3">Penghasilan Bulanan</label><br>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="kecil" name="penghasilan_ayah" class="custom-control-input" checked value="< Rp 500.000" @if(old('penghasilan_ayah') == '< Rp 500.000') checked @endif>
                     <label class="custom-control-label" for="kecil">< Rp 500.000</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="sedang" name="penghasilan_ayah" class="custom-control-input" value="Rp 500.000 - Rp 999.999" @if(old('penghasilan_ayah') == 'Rp 500.000 - Rp 999.999') checked @endif>
                     <label class="custom-control-label" for="sedang">Rp 500.000 - Rp 999.999</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="lumayan" name="penghasilan_ayah" class="custom-control-input" value="Rp 1.000.000 - Rp 1.999.999" @if(old('penghasilan_ayah') == 'Rp 1.000.000 - Rp 1.999.999') checked @endif>
                     <label class="custom-control-label" for="lumayan">Rp 1.000.000 - Rp 1.999.999</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="menengah" name="penghasilan_ayah" class="custom-control-input" value="Rp 2.000.000 - Rp 4.999.999" @if(old('penghasilan_ayah') == 'Rp 2.000.000 - Rp 4.999.999') checked @endif>
                     <label class="custom-control-label" for="menengah">Rp 2.000.000 - Rp 4.999.999</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="atas" name="penghasilan_ayah" class="custom-control-input" value="Rp 5.000.000 - Rp 20.000.000" @if(old('penghasilan_ayah') == 'Rp 5.000.000 - Rp 20.000.000') checked @endif>
                     <label class="custom-control-label" for="atas">Rp 5.000.000 - Rp 20.000.000</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="lebih" name="penghasilan_ayah" class="custom-control-input" value="> Rp 20.000.000" @if(old('penghasilan_ayah') == '> Rp 20.000.000') checked @endif>
                     <label class="custom-control-label" for="lebih">> Rp 20.000.000</label>
                 </div>
@@ -584,75 +584,75 @@
             {{-- berkebutuhan khusus --}}
             <div class="form-group">
                 <label for="exampleFormControlInput44">Berkebutuhan Khusus</label> <br>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="tidak_ayah" name="berkebutuhan_khusus_ayah" checked class="custom-control-input" value="Tidak" @if(old('berkebutuhan_khusus_ayah') == 'Tidak') checked @endif>
                     <label class="custom-control-label" for="tidak_ayah">Tidak</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="netraayah" name="berkebutuhan_khusus_ayah" class="custom-control-input" value="Netra" @if(old('berkebutuhan_khusus_ayah') == 'Netra') checked @endif>
                     <label class="custom-control-label" for="netraayah">Netra (A)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="runguayah" name="berkebutuhan_khusus_ayah" class="custom-control-input" value="Rungu" @if(old('berkebutuhan_khusus_ayah') == 'Pensiun') checked @endif>
                     <label class="custom-control-label" for="runguayah">Rungu (B)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="grahitarayah" name="berkebutuhan_khusus_ayah" class="custom-control-input" value="Grahita Ringan" @if(old('berkebutuhan_khusus_ayah') == 'Grahita Ringan') checked @endif>
                     <label class="custom-control-label" for="grahitarayah">Grahita Ringan (C)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="grahitasayah" name="berkebutuhan_khusus_ayah" class="custom-control-input" value="Grahita Sedang" @if(old('berkebutuhan_khusus_ayah') == 'Grahita Sedang') checked @endif>
                     <label class="custom-control-label" for="grahitasayah">Grahita Sedang (C1)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="daksarayah" name="berkebutuhan_khusus_ayah" class="custom-control-input" value="Daksa Ringan" @if(old('berkebutuhan_khusus_ayah') == 'Daksa Ringan') checked @endif>
                     <label class="custom-control-label" for="daksarayah">Daksa Ringan (D)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="daksasayah" name="berkebutuhan_khusus_ayah" class="custom-control-input" value="Daksa Sedang" @if(old('berkebutuhan_khusus_ayah') == 'Daksa Sedang') checked @endif>
                     <label class="custom-control-label" for="daksasayah">Daksa Sedang (D1)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="larasayah" name="berkebutuhan_khusus_ayah" class="custom-control-input" value="Laras" @if(old('berkebutuhan_khusus_ayah') == 'Laras') checked @endif>
                     <label class="custom-control-label" for="larasayah">Laras (E)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="wicaraayah" name="berkebutuhan_khusus_ayah" class="custom-control-input" value="Wicara" @if(old('berkebutuhan_khusus_ayah') == 'Wicara') checked @endif>
                     <label class="custom-control-label" for="wicaraayah">Wicara (F)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="tunaayah" name="berkebutuhan_khusus_ayah" class="custom-control-input" value="Tuna Ganda" @if(old('berkebutuhan_khusus_ayah') == 'Tuna Ganda') checked @endif>
                     <label class="custom-control-label" for="tunaayah">Tuna Ganda (G)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="hiperayah" name="berkebutuhan_khusus_ayah" class="custom-control-input" value="Hiper Aktif" @if(old('berkebutuhan_khusus_ayah') == 'Hiper Aktif') checked @endif>
                     <label class="custom-control-label" for="hiperayah">Hiper Aktif (H)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="cerdasayah" name="berkebutuhan_khusus_ayah" class="custom-control-input" value="Cerdas Istimewa" @if(old('berkebutuhan_khusus_ayah') == 'Cerdas Istimewa') checked @endif>
                     <label class="custom-control-label" for="cerdasayah">Cerdas Istimewa (I)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="bakatayah" name="berkebutuhan_khusus_ayah" class="custom-control-input" value="Bakat Istimewa" @if(old('berkebutuhan_khusus_ayah') == 'Bakat Istimewa') checked @endif>
                     <label class="custom-control-label" for="bakatayah">Bakat Istimewa (J)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="kesulitanayah" name="berkebutuhan_khusus_ayah" class="custom-control-input" value="Kesulitan Belajar" @if(old('berkebutuhan_khusus_ayah') == 'Kesulitan Belajar') checked @endif>
                     <label class="custom-control-label" for="kesulitanayah">Kesulitan Belajar (K)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="narkobaayah" name="berkebutuhan_khusus_ayah" class="custom-control-input" value="Narkoba" @if(old('berkebutuhan_khusus_ayah') == 'Narkoba') checked @endif>
                     <label class="custom-control-label" for="narkobaayah">Narkoba (K)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="indigoayah" name="berkebutuhan_khusus_ayah" class="custom-control-input" value="Indigo" @if(old('berkebutuhan_khusus_ayah') == 'Indigo') checked @endif>
                     <label class="custom-control-label" for="indigoayah">Indigo (O)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="downayah" name="berkebutuhan_khusus_ayah" class="custom-control-input" value="Down Sindrome" @if(old('berkebutuhan_khusus_ayah') == 'Down Sindrome') checked @endif>
                     <label class="custom-control-label" for="downayah">Down Sindrome (P)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="autisayah" name="berkebutuhan_khusus_ayah" class="custom-control-input" value="Autis" @if(old('berkebutuhan_khusus_ayah') == 'Autis') checked @endif>
                     <label class="custom-control-label" for="autisayah">Autis (Q)</label>
                 </div>
@@ -697,43 +697,43 @@
             {{-- pendidikan --}}
             <div class="form-group">
                 <label>Pendidikan</label><br>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="tidak_sekolahibu" name="pendidikan_ibu" class="custom-control-input" checked value="Tidak Sekolah" @if(old('pendidikan_ibu') == 'Tidak Sekolah') checked @endif>
                     <label class="custom-control-label" for="tidak_sekolahibu">Tidak Sekolah</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="putus-sdibu" name="pendidikan_ibu" class="custom-control-input" value="Putus SD" @if(old('pendidikan_ibu') == 'Putus SD') checked @endif>
                     <label class="custom-control-label" for="putus-sdibu">Putus SD</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="sdi" name="pendidikan_ibu" class="custom-control-input" value="SD Sederajat" @if(old('pendidikan_ibu') == 'SD Sederajat') checked @endif>
                     <label class="custom-control-label" for="sdi">SD Sederajat</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="smpi" name="pendidikan_ibu" class="custom-control-input" value="SMP Sederajat" @if(old('pendidikan_ibu') == 'SMP Sederajat') checked @endif>
                     <label class="custom-control-label" for="smpi">SMP Sederajat</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="smai" name="pendidikan_ibu" class="custom-control-input" value="SMA Sederajat" @if(old('pendidikan_ibu') == 'SMA Sederajat') checked @endif>
                     <label class="custom-control-label" for="smai">SMA Sederajat</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="d1i" name="pendidikan_ibu" class="custom-control-input" value="D1" @if(old('pendidikan_ibu') == 'D1') checked @endif>
                     <label class="custom-control-label" for="d1i">D1</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="d2i" name="pendidikan_ibu" class="custom-control-input" value="D2" @if(old('pendidikan_ibu') == 'D2') checked @endif>
                     <label class="custom-control-label" for="d2i">D2</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="d3i" name="pendidikan_ibu" class="custom-control-input" value="D3" @if(old('pendidikan_ibu') == 'D3') checked @endif>
                     <label class="custom-control-label" for="d3i">D3</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="s1i" name="pendidikan_ibu" class="custom-control-input" value="S1" @if(old('pendidikan_ibu') == 'S1') checked @endif>
                     <label class="custom-control-label" for="s1i">S1</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="s2i" name="pendidikan_ibu" class="custom-control-input" value="S2" @if(old('pendidikan_ibu') == 'S2') checked @endif>
                     <label class="custom-control-label" for="s2i">S2</label>
                 </div>
@@ -744,51 +744,51 @@
             {{-- pekerjaan --}}
             <div class="form-group">
                 <label for="exampleFormControlPasswor3">Pekerjaan</label><br>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="tidaki" name="pekerjaan_ibu" class="custom-control-input" checked value="Tidak Bekerja" @if(old('pekerjaan_ibu') == 'Tidak Bekerja') checked @endif>
                     <label class="custom-control-label" for="tidaki">Tidak Bekerja</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="nelayani" name="pekerjaan_ibu" class="custom-control-input" value="Nelayan" @if(old('pekerjaan_ibu') == 'Nelayan') checked @endif>
                     <label class="custom-control-label" for="nelayani">Nelayan</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="petanii" name="pekerjaan_ibu" class="custom-control-input" value="Petani" @if(old('pekerjaan_ibu') == 'Petani') checked @endif>
                     <label class="custom-control-label" for="petanii">Petani</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="peternaki" name="pekerjaan_ibu" class="custom-control-input" value="Peternak" @if(old('pekerjaan_ibu') == 'Peternak') checked @endif>
                     <label class="custom-control-label" for="peternaki">Peternak</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="pnsi" name="pekerjaan_ibu" class="custom-control-input" value="PNS/TNI/POLRI" @if(old('pekerjaan_ibu') == 'PNS/TNI/POLRI') checked @endif>
                     <label class="custom-control-label" for="pnsi">PNS/TNI/POLRI</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="karyawani" name="pekerjaan_ibu" class="custom-control-input" value="Karyawan Swasta" @if(old('pekerjaan_ibu') == 'Karyawan Swasta') checked @endif>
                     <label class="custom-control-label" for="karyawani">Karyawan Swasta</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="pedagangki" name="pekerjaan_ibu" class="custom-control-input" value="Pedagang Kecil" @if(old('pekerjaan_ibu') == 'Pedagang Kecil') checked @endif>
                     <label class="custom-control-label" for="pedagangki">Pedagang Kecil</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="pedagangbi" name="pekerjaan_ibu" class="custom-control-input" value="Pedagang Besar" @if(old('pekerjaan_ibu') == 'Pedagang Besar') checked @endif>
                     <label class="custom-control-label" for="pedagangbi">Pedagang Besar</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="wiraswastai" name="pekerjaan_ibu" class="custom-control-input" value="Wiraswasta" @if(old('pekerjaan_ibu') == 'Wiraswasta') checked @endif>
                     <label class="custom-control-label" for="wiraswastai">Wiraswasta</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="wirausahai" name="pekerjaan_ibu" class="custom-control-input" value="Wirausaha" @if(old('pekerjaan_ibu') == 'Wirausaha') checked @endif>
                     <label class="custom-control-label" for="wirausahai">Wirausaha</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="buruhi" name="pekerjaan_ibu" class="custom-control-input" value="Buruh" @if(old('pekerjaan_ibu') == 'Buruh') checked @endif>
                     <label class="custom-control-label" for="buruhi">Buruh</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="pensiuni" name="pekerjaan_ibu" class="custom-control-input" value="Pensiun" @if(old('pekerjaan_ibu') == 'Pensiun') checked @endif>
                     <label class="custom-control-label" for="pensiuni">Pensiun</label>
                 </div>
@@ -799,27 +799,27 @@
             {{-- penghasilan --}}
             <div class="form-group">
                 <label for="exampleFormControlPasswor3">Penghasilan Bulanan</label><br>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="kecili" name="penghasilan_ibu" class="custom-control-input" checked value="< Rp 500.000"  @if(old('penghasilan_ibu') == 'Pens< Rp 500.000iun') checked @endif>
                     <label class="custom-control-label" for="kecili">< Rp 500.000</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="sedangi" name="penghasilan_ibu" class="custom-control-input" value="Rp 500.000 - Rp 999.999"  @if(old('penghasilan_ibu') == 'Rp 500.000 - Rp 999.999') checked @endif>
                     <label class="custom-control-label" for="sedangi">Rp 500.000 - Rp 999.999</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="lumayani" name="penghasilan_ibu" class="custom-control-input" value="Rp 1.000.000 - Rp 1.999.999"  @if(old('penghasilan_ibu') == 'Rp 1.000.000 - Rp 1.999.999') checked @endif>
                     <label class="custom-control-label" for="lumayani">Rp 1.000.000 - Rp 1.999.999</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="menengah" name="penghasilan_ibu" class="custom-control-input" value="Rp 2.000.000 - Rp 4.999.999"  @if(old('penghasilan_ibu') == 'Rp 2.000.000 - Rp 4.999.999') checked @endif>
                     <label class="custom-control-label" for="menengah">Rp 2.000.000 - Rp 4.999.999</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="atasi" name="penghasilan_ibu" class="custom-control-input" value="Rp 5.000.000 - Rp 20.000.000"  @if(old('penghasilan_ibu') == 'Rp 5.000.000 - Rp 20.000.000') checked @endif>
                     <label class="custom-control-label" for="atasi">Rp 5.000.000 - Rp 20.000.000</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="lebihi" name="penghasilan_ibu" class="custom-control-input" value="> Rp 20.000.000"  @if(old('penghasilan_ibu') == '> Rp 20.000.000') checked @endif>
                     <label class="custom-control-label" for="lebihi">> Rp 20.000.000</label>
                 </div>
@@ -830,75 +830,75 @@
             {{-- berkebutuhan khusus --}}
             <div class="form-group">
                 <label for="exampleFormControlInput44">Berkebutuhan Khusus</label> <br>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="tidakb" name="berkebutuhan_khusus_ibu" class="custom-control-input" checked value="Tidak" @if(old('berkebutuhan_khusus_ibu') == 'Tidak') checked @endif>
                     <label class="custom-control-label" for="tidakb">Tidak</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="netrab" name="berkebutuhan_khusus_ibu" class="custom-control-input" value="Netra" @if(old('berkebutuhan_khusus_ibu') == 'Netra') checked @endif>
                     <label class="custom-control-label" for="netrab">Netra (A)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="rungub" name="berkebutuhan_khusus_ibu" class="custom-control-input" value="Rungu" @if(old('berkebutuhan_khusus_ibu') == 'Rungu') checked @endif>
                     <label class="custom-control-label" for="rungub">Rungu (B)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="grahitarb" name="berkebutuhan_khusus_ibu" class="custom-control-input" value="Grahita Ringan" @if(old('berkebutuhan_khusus_ibu') == 'Grahita Ringan') checked @endif>
                     <label class="custom-control-label" for="grahitarb">Grahita Ringan (C)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="grahitasb" name="berkebutuhan_khusus_ibu" class="custom-control-input" value="Grahita Sedang" @if(old('berkebutuhan_khusus_ibu') == 'Grahita Sedang') checked @endif>
                     <label class="custom-control-label" for="grahitasb">Grahita Sedang (C1)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="daksarb" name="berkebutuhan_khusus_ibu" class="custom-control-input" value="Daksa Ringan" @if(old('berkebutuhan_khusus_ibu') == 'Daksa Ringan') checked @endif>
                     <label class="custom-control-label" for="daksarb">Daksa Ringan (D)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="daksasb" name="berkebutuhan_khusus_ibu" class="custom-control-input" value="Daksa Sedang" @if(old('berkebutuhan_khusus_ibu') == 'Daksa Sedang') checked @endif>
                     <label class="custom-control-label" for="daksasb">Daksa Sedang (D1)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="larasb" name="berkebutuhan_khusus_ibu" class="custom-control-input" value="Laras" @if(old('berkebutuhan_khusus_ibu') == 'Laras') checked @endif>
                     <label class="custom-control-label" for="larasb">Laras (E)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="wicarab" name="berkebutuhan_khusus_ibu" class="custom-control-input" value="Wicara" @if(old('berkebutuhan_khusus_ibu') == 'Wicara') checked @endif>
                     <label class="custom-control-label" for="wicarab">Wicara (F)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="tunab" name="berkebutuhan_khusus_ibu" class="custom-control-input" value="Tuna Ganda" @if(old('berkebutuhan_khusus_ibu') == 'Tuna Ganda') checked @endif>
                     <label class="custom-control-label" for="tunab">Tuna Ganda (G)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="hiperb" name="berkebutuhan_khusus_ibu" class="custom-control-input" value="Hiper Aktif" @if(old('berkebutuhan_khusus_ibu') == 'Hiper Aktif') checked @endif>
                     <label class="custom-control-label" for="hiperb">Hiper Aktif (H)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="cerdasb" name="berkebutuhan_khusus_ibu" class="custom-control-input" value="Cerdas Istimewa" @if(old('berkebutuhan_khusus_ibu') == 'Cerdas Istimewa') checked @endif>
                     <label class="custom-control-label" for="cerdasb">Cerdas Istimewa (I)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="bakatb" name="berkebutuhan_khusus_ibu" class="custom-control-input" value="Bakat Istimewa" @if(old('berkebutuhan_khusus_ibu') == 'Bakat Istimewa') checked @endif>
                     <label class="custom-control-label" for="bakatb">Bakat Istimewa (J)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="kesulitanb" name="berkebutuhan_khusus_ibu" class="custom-control-input" value="Kesulitan Belajar" @if(old('berkebutuhan_khusus_ibu') == 'Kesulitan Belajar') checked @endif>
                     <label class="custom-control-label" for="kesulitanb">Kesulitan Belajar (K)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="narkobab" name="berkebutuhan_khusus_ibu" class="custom-control-input" value="Narkoba" @if(old('berkebutuhan_khusus_ibu') == 'Narkoba') checked @endif>
                     <label class="custom-control-label" for="narkobab">Narkoba (K)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="indigob" name="berkebutuhan_khusus_ibu" class="custom-control-input" value="Indigo" @if(old('berkebutuhan_khusus_ibu') == 'Indigo') checked @endif>
                     <label class="custom-control-label" for="indigob">Indigo (O)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="downb" name="berkebutuhan_khusus_ibu" class="custom-control-input" value="Down Sindrome" @if(old('berkebutuhan_khusus_ibu') == 'Down Sindrome') checked @endif>
                     <label class="custom-control-label" for="downb">Down Sindrome (P)</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="autisb" name="berkebutuhan_khusus_ibu" class="custom-control-input" value="Autis" @if(old('berkebutuhan_khusus_ibu') == 'Autis') checked @endif>
                     <label class="custom-control-label" for="autisb">Autis (Q)</label>
                 </div>
@@ -943,43 +943,43 @@
             {{-- pendidikan --}}
             <div class="form-group">
                 <label>Pendidikan</label><br>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="tidak_sekolahw" name="pendidikan_wali" class="custom-control-input" value="Tidak Sekolah" @if(old('pendidikan_wali') == 'Tidak Sekolah') checked @endif>
                     <label class="custom-control-label" for="tidak_sekolahw">Tidak Sekolah</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="putus-sdw" name="pendidikan_wali" class="custom-control-input" value="Putus SD" @if(old('pendidikan_wali') == 'Putus SD') checked @endif>
                     <label class="custom-control-label" for="putus-sdw">Putus SD</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="sdw" name="pendidikan_wali" class="custom-control-input" value="SD Sederajat" @if(old('pendidikan_wali') == 'SD Sederajat') checked @endif>
                     <label class="custom-control-label" for="sdw">SD Sederajat</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="smpw" name="pendidikan_wali" class="custom-control-input" value="SMP Sederajat" @if(old('pendidikan_wali') == 'SMP Sederajat') checked @endif>
                     <label class="custom-control-label" for="smpw">SMP Sederajat</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="smaw" name="pendidikan_wali" class="custom-control-input" value="SMA Sederajat" @if(old('pendidikan_wali') == 'SMA Sederajat') checked @endif>
                     <label class="custom-control-label" for="smaw">SMA Sederajat</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="d1w" name="pendidikan_wali" class="custom-control-input" value="D1" @if(old('pendidikan_wali') == 'D1') checked @endif>
                     <label class="custom-control-label" for="d1w">D1</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="d2w" name="pendidikan_wali" class="custom-control-input" value="D2" @if(old('pendidikan_wali') == 'D2') checked @endif>
                     <label class="custom-control-label" for="d2w">D2</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="d3w" name="pendidikan_wali" class="custom-control-input" value="D3" @if(old('pendidikan_wali') == 'D3') checked @endif>
                     <label class="custom-control-label" for="d3w">D3</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="s1w" name="pendidikan_wali" class="custom-control-input" value="S1" @if(old('pendidikan_wali') == 'S1') checked @endif>
                     <label class="custom-control-label" for="s1w">S1</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="s2w" name="pendidikan_wali" class="custom-control-input" value="S2" @if(old('pendidikan_wali') == 'S2') checked @endif>
                     <label class="custom-control-label" for="s2w">S2</label>
                 </div>
@@ -990,51 +990,51 @@
             {{-- pekerjaan --}}
             <div class="form-group">
                 <label for="exampleFormControlPasswor3">Pekerjaan</label><br>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="tidakw" name="pekerjaan_wali" class="custom-control-input" value="Tidak Bekerja" @if(old('pekerjaan_wali') == 'Tidak Bekerja') checked @endif>
                     <label class="custom-control-label" for="tidakw">Tidak Bekerja</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="nelayanw" name="pekerjaan_wali" class="custom-control-input" value="Nelayan" @if(old('pekerjaan_wali') == 'Nelayan') checked @endif>
                     <label class="custom-control-label" for="nelayanw">Nelayan</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="petaniw" name="pekerjaan_wali" class="custom-control-input" value="Petani" @if(old('pekerjaan_wali') == 'Petani') checked @endif>
                     <label class="custom-control-label" for="petaniw">Petani</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="peternakw" name="pekerjaan_wali" class="custom-control-input" value="Peternak" @if(old('pekerjaan_wali') == 'Peternak') checked @endif>
                     <label class="custom-control-label" for="peternakw">Peternak</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="pnsw" name="pekerjaan_wali" class="custom-control-input" value="PNS/TNI/POLRI" @if(old('pekerjaan_wali') == 'PNS/TNI/POLRI') checked @endif>
                     <label class="custom-control-label" for="pnsw">PNS/TNI/POLRI</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="karyawanw" name="pekerjaan_wali" class="custom-control-input" value="Karyawan Swasta" @if(old('pekerjaan_wali') == 'Karyawan Swasta') checked @endif>
                     <label class="custom-control-label" for="karyawanw">Karyawan Swasta</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="pedagangkw" name="pekerjaan_wali" class="custom-control-input" value="Pedagang Kecil" @if(old('pekerjaan_wali') == 'Pedagang Kecil') checked @endif>
                     <label class="custom-control-label" for="pedagangkw">Pedagang Kecil</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="pedagangbw" name="pekerjaan_wali" class="custom-control-input" value="Pedagang Besar" @if(old('pekerjaan_wali') == 'Pedagang Besar') checked @endif>
                     <label class="custom-control-label" for="pedagangbw">Pedagang Besar</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="wiraswastaw" name="pekerjaan_wali" class="custom-control-input" value="Wiraswasta" @if(old('pekerjaan_wali') == 'Wiraswasta') checked @endif>
                     <label class="custom-control-label" for="wiraswastaw">Wiraswasta</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="wirausahaw" name="pekerjaan_wali" class="custom-control-input" value="Wirausaha" @if(old('pekerjaan_wali') == 'Wirausaha') checked @endif>
                     <label class="custom-control-label" for="wirausahaw">Wirausaha</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="buruhw" name="pekerjaan_wali" class="custom-control-input" value="Buruh" @if(old('pekerjaan_wali') == 'Buruh') checked @endif>
                     <label class="custom-control-label" for="buruhw">Buruh</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="pensiunw" name="pekerjaan_wali" class="custom-control-input" value="Pensiun" @if(old('pekerjaan_wali') == 'Pensiun') checked @endif>
                     <label class="custom-control-label" for="pensiunw">Pensiun</label>
                 </div>
@@ -1045,27 +1045,27 @@
             {{-- penghasilan --}}
             <div class="form-group">
                 <label for="exampleFormControlPasswor3">Penghasilan Bulanan</label><br>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="kecilw" name="penghasilan_wali" class="custom-control-input" value="< Rp 500.000" @if(old('penghasilan_wali') == '< Rp 500.000') checked @endif>
                     <label class="custom-control-label" for="kecilw">< Rp 500.000</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="sedangw" name="penghasilan_wali" class="custom-control-input" value="Rp 500.000 - Rp 999.999" @if(old('penghasilan_wali') == 'Rp 500.000 - Rp 999.999') checked @endif>
                     <label class="custom-control-label" for="sedangw">Rp 500.000 - Rp 999.999</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="lumayanw" name="penghasilan_wali" class="custom-control-input" value="Rp 1.000.000 - Rp 1.999.999" @if(old('penghasilan_wali') == 'Rp 1.000.000 - Rp 1.999.999') checked @endif>
                     <label class="custom-control-label" for="lumayanw">Rp 1.000.000 - Rp 1.999.999</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="menengahw" name="penghasilan_wali" class="custom-control-input" value="Rp 2.000.000 - Rp 4.999.999" @if(old('penghasilan_wali') == 'Rp 2.000.000 - Rp 4.999.999') checked @endif>
                     <label class="custom-control-label" for="menengahw">Rp 2.000.000 - Rp 4.999.999</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="atasw" name="penghasilan_wali" class="custom-control-input" value="Rp 5.000.000 - Rp 20.000.000" @if(old('penghasilan_wali') == 'Rp 5.000.000 - Rp 20.000.000') checked @endif>
                     <label class="custom-control-label" for="atasw">Rp 5.000.000 - Rp 20.000.000</label>
                 </div>
-                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
+                <div class="col-sm-3 custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="lebihw" name="penghasilan_wali" class="custom-control-input" value="> Rp 20.000.000" @if(old('penghasilan_wali') == '> Rp 20.000.000') checked @endif>
                     <label class="custom-control-label" for="lebihw">> Rp 20.000.000</label>
                 </div>
