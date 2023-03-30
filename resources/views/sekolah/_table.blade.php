@@ -16,7 +16,7 @@
             <td>{{$sekolah->nama_sekolah}}</td>
             <td>{{$sekolah->tlp_sekolah}}</td>
             <td>{{$sekolah->email}}</td>
-            <td> <span class="badge badge-pill {{$sekolah->status_badge}}">{{$sekolah->status_string}}</span></td>
+            <td class="text-center"> <span class="badge badge-pill {{$sekolah->status_badge}}">{{$sekolah->status_string}}</span></td>
             <td class="text-center">
               <div class="dropdown">
                 <a class="dropdown-toggle icon-burger-mini" style="color:black" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"

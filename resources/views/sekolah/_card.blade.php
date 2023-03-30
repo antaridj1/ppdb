@@ -75,6 +75,6 @@
     <div class="card card-default col-12">
         <div class="card-body">
             <h5 class="card-title">Persyaratan</h5>
-           <button type="button" class="btn btn-sm btn-outline-primary"><i class="mdi mdi-download"></i> Download PDF</button>
+           <a href="{{asset('storage/'.$sekolah->file_persyaratan)}}" target="_blank"  class="btn btn-sm btn-outline-primary"><i class="mdi mdi-download"></i> Download PDF</a>
         </div>
     </div>
