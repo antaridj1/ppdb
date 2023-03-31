@@ -427,12 +427,12 @@ class SiswaController extends Controller
 
             Siswa::where('id', $request->id)->update($profile);
 
-            return view('student.pages.profile-siswa-ppdb', ['profile' => $profile]);
+            return view('student.pages.profile-siswa-ppdb', ['profile' => $profile, 'siswa' => $siswa]);
 
         } else {
             $count = Siswa::where('sekolah_id', $request->sekolah_id)->where('email', $request->email)->count();
             if($count > 0) {
-                return redirect()->back()->with('error', 'Terdapat email yang sama. Daftarkan dengan emil lain');
+                return redirect()->back()->with('error', 'Terdapat email yang sama. Daftarkan dengan email lain');
             } else {
                 if($request->no_tlp){
                     $profile['no_tlp'] = $request->no_tlp;
@@ -450,9 +450,7 @@ class SiswaController extends Controller
                 Siswa::where('id', $request->id)->update($profile);
 
                 $siswa = Siswa::find(auth()->guard('siswa')->id());
-                return view('student.pages.data-ppdb',
-                    ['daftar' => 1, 'siswa' => $siswa]
-                );
+                return view('student.pages.profile-siswa-ppdb', ['profile' => $profile, 'siswa' => $siswa]);
             }
         }
     }
