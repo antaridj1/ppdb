@@ -5,8 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 use Illuminate\Support\Facades\DB;
-
-
+use Illuminate\Support\Facades\Hash;
 class SiswaSeeder extends Seeder
 {
     /**
@@ -25,8 +24,8 @@ class SiswaSeeder extends Seeder
                     'sekolah_id' => $i,
                     'email' => $faker->email,
                     'password' => Hash::make('password'),
-                    'no_tlp' => $faker->randomNumber(10, false),
-                    'no_hp' => $faker->randomNumber(12, false),
+                    'no_tlp' => $faker->numberBetween(1000000000, 9999999999),
+                    'no_hp' => $faker->numberBetween(100000000000, 999999999999),
                     'daftar' => 1,
                 ]);
 
