@@ -50,22 +50,18 @@ class SiswaController extends Controller
                 $sekolahs = Sekolah::all();
                  // Untuk admin
                 if($request->sdn){
-                    $siswas = PesertaDidik::whereHas('siswa', function($q) use($request){
-                        $q->where('sekolah_id', $request->sdn);
-                    })->get();
+                    $peserta_didiks = DataPribadi::where('sekolah_id', $request->sdn)->get();
 
                 } else {
-                    $siswas = PesertaDidik::all();
+                    $peserta_didiks = DataPribadi::all();
                 }
 
             } else {
                 // Untuk Sekolah
-                $siswas = PesertaDidik::whereHas('siswa', function($q){
-                    $q->where('sekolah_id', Auth::id());
-                })->get();
+                $peserta_didiks = DataPribadi::where('sekolah_id', Auth::id())->get();
             }
 
-            return view('peserta-didik.index', compact('siswas', 'sekolahs'));
+            return view('peserta-didik.index', compact('peserta_didiks', 'sekolahs'));
         }
 
     }

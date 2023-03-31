@@ -11,16 +11,16 @@
       </tr>
     </thead>
     <tbody>
-      @forelse ($siswas as $siswa)
+      @forelse ($peserta_didiks as $peserta_didik)
         <tr>
             <td class="py-0">
                 <img src="images/products/products-xs-01.jpg" alt="Product Image">
             </td>
-            <td>{{$siswa->dataPribadi->nama_lengkap}}</td>
-            <td>{{$siswa->siswa->sekolah->nama_sekolah}}</td>
-            <td>{{$siswa->created_at->format('dd/m/yyyy')}}</td>
-            <td>{{$siswa->dataWali->nama_wali}}</td>
-            <td>{{$siswa->siswa->no_hp}}</td>
+            <td>{{$peserta_didik->nama_lengkap}}</td>
+            <td>{{$peserta_didik->sekolah->nama_sekolah}}</td>
+            <td>{{$peserta_didik->created_at->format('dd/m/yyyy')}}</td>
+            <td>{{$peserta_didik->dataWali->nama_wali}}</td>
+            <td>{{$peserta_didik->no_hp}}</td>
             <td></td>
         </tr>
       @empty
