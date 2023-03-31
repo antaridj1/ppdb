@@ -98,7 +98,8 @@ Route::prefix('ppdb')->group(function () {
     Route::group(['prefix' => 'sdn/'.$url_sdn_id], function () use ($url_sdn_id) {
         Route::get('/', function() use ($url_sdn_id){
             $data = Sekolah::where('id', $url_sdn_id )->first();
-            return view('student.pages.landing-sdn', ['data' => $data]);
+            $total_daftar = Siswa::where('sekolah_id', $url_sdn_id)->count();
+            return view('student.pages.landing-sdn', ['data' => $data, 'total' => $total_daftar]);
         });
 
         Route::get('login', function() use ($url_sdn_id) {
