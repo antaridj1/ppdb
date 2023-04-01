@@ -20,7 +20,8 @@ class CreateBeasiswaTable extends Migration
             $table->string('keterangan');
             $table->integer('tahun_mulai');
             $table->integer('tahun_selesai');
-            $table->timestamps();
+            $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
             $table->softDeletes();
         });
     }

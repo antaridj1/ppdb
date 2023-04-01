@@ -21,7 +21,8 @@ class CreatePrestasiTable extends Migration
             $table->string('penyelenggara');
             $table->set('jenis_prestasi', ['sains', 'seni', 'olah raga', 'lain-lain']);
             $table->set('tingkat', ['kecamatan', 'kabupaten', 'provinsi', 'nasional','internasional']);
-            $table->timestamps();
+            $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
             $table->softDeletes();
         });
     }

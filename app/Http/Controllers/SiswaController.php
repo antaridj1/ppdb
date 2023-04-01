@@ -32,30 +32,29 @@ class SiswaController extends Controller
      */
     public function index(Request $request)
     {
-        if(Auth::getDefaultDriver() !== 'admin'){
+        if (Auth::getDefaultDriver() !== 'admin') {
             // Untuk Wali
             $id = auth()->guard('siswa')->id();
             $siswa = Siswa::find($id);
-            if( $siswa->daftar == 0) {
+            if ($siswa->daftar == 0) {
                 return view('student.pages.data-ppdb', ['siswa' => $siswa, 'daftar' => 0]);
             } else {
                 $siswa = Siswa::find($id);
-                return view('student.pages.data-ppdb',
+                return view(
+                    'student.pages.data-ppdb',
                     ['daftar' => 1, 'siswa' => $siswa]
                 );
             }
         } else {
             $sekolahs = null;
-            if(roleController('admin')){
+            if (roleController('admin')) {
                 $sekolahs = Sekolah::all();
-                 // Untuk admin
-                if($request->sdn){
+                // Untuk admin
+                if ($request->sdn) {
                     $peserta_didiks = DataPribadi::where('sekolah_id', $request->sdn)->get();
-
                 } else {
                     $peserta_didiks = DataPribadi::all();
                 }
-
             } else {
                 // Untuk Sekolah
                 $peserta_didiks = DataPribadi::where('sekolah_id', Auth::id())->get();
@@ -63,7 +62,6 @@ class SiswaController extends Controller
 
             return view('peserta-didik.index', compact('peserta_didiks', 'sekolahs'));
         }
-
     }
 
     /**
@@ -74,7 +72,8 @@ class SiswaController extends Controller
     public function dashboard()
     {
         $siswa = Siswa::find(auth()->guard('siswa')->id());
-        return view('student.pages.dashboard',
+        return view(
+            'student.pages.dashboard',
             ['siswa' => $siswa]
         );
     }
@@ -160,7 +159,7 @@ class SiswaController extends Controller
                 'beasiswa.*.keterangan' => 'nullable|required_with:beasiswa.*.jenis_anak_berprestasi,beasiswa.*.tahun_mulai,beasiswa.*.tahun_selesai',
                 'beasiswa.*.tahun_mulai' => 'nullable|required_with:beasiswa.*.jenis_anak_berprestasi,beasiswa.*.keterangan,beasiswa.*.tahun_selesai',
                 'beasiswa.*.tahun_selesai' => 'nullable|required_with:beasiswa.*.jenis_anak_berprestasi,beasiswa.*.keterangan,beasiswa.*.tahun_mulai',
-            ],[
+            ], [
                 //data prestasi
                 'prestasi.*.nama_prestasi' => 'nullable|required_with:prestasi.*.tahun,prestasi.*.penyelenggara,prestasi.*.jenis_prestasi,prestasi.*.jenis_prestasi',
                 'prestasi.*.tahun' => 'nullable|required_with:prestasi.*.nama_prestasi,prestasi.*.penyelenggara,prestasi.*.jenis_prestasi,prestasi.*.jenis_prestasi',
@@ -179,8 +178,7 @@ class SiswaController extends Controller
                 'file_ijazah_tk' => 'required|mimes:pdf|max:5120',
             ]);
 
-        $validator = Validator::make($request->all(), $rules);
-
+            $validator = Validator::make($request->all(), $rules);
         } catch (\Exception $e) {
             Log::error('eror message: ' . $e->getMessage() . 'in line: ' . $e->getLine());
         }
@@ -230,7 +228,7 @@ class SiswaController extends Controller
                 'lingkar_kepala' => $request->input('lingkar_kepala'),
                 'jarak' => $request->input('jarak'),
                 'km' => $request->input('km'),
-                'waktu_tempuh' => $request->input('waktu_tempuh_jam') ." jam ". $request->input('waktu_tempuh_menit') . " menit",
+                'waktu_tempuh' => $request->input('waktu_tempuh_jam') . " jam " . $request->input('waktu_tempuh_menit') . " menit",
                 'jumlah_saudara' => $request->input('jumlah_saudara'),
             ]);
 
@@ -238,7 +236,7 @@ class SiswaController extends Controller
              * Data Ayah
              */
 
-             $dataAyah = DataAyah::create([
+            $dataAyah = DataAyah::create([
                 'data_pribadi_id' => $id_datapribadi,
                 'nama_ayah' => $request->input('nama_ayah'),
                 'nik_ayah' => $request->input('nik_ayah'),
@@ -253,7 +251,7 @@ class SiswaController extends Controller
              * Data Ibu
              */
 
-            $dataIbu= DataIbu::create([
+            $dataIbu = DataIbu::create([
                 'data_pribadi_id' => $id_datapribadi,
                 'nama_ibu' => $request->input('nama_ibu'),
                 'nik_ibu' => $request->input('nik_ibu'),
@@ -267,30 +265,30 @@ class SiswaController extends Controller
             /**
              * Data Wali
              */
-            if($request->input('nama_wali')){
-                $dataWali= DataWali::create([
-                'data_pribadi_id' => $id_datapribadi,
-                'nama_wali' => $request->input('nama_wali'),
-                'nik_wali' => $request->input('nik_wali'),
-                'tahun_wali' => $request->input('tahun_wali'),
-                'pendidikan_wali' => $request->input('pendidikan_wali'),
-                'pekerjaan_wali' => $request->input('pekerjaan_wali'),
-                'penghasilan_wali' => $request->input('penghasilan_wali'),
-            ]);
+            if ($request->input('nama_wali')) {
+                $dataWali = DataWali::create([
+                    'data_pribadi_id' => $id_datapribadi,
+                    'nama_wali' => $request->input('nama_wali'),
+                    'nik_wali' => $request->input('nik_wali'),
+                    'tahun_wali' => $request->input('tahun_wali'),
+                    'pendidikan_wali' => $request->input('pendidikan_wali'),
+                    'pekerjaan_wali' => $request->input('pekerjaan_wali'),
+                    'penghasilan_wali' => $request->input('penghasilan_wali'),
+                ]);
             }
 
 
             /**
              * Beasiswa
              */
-            for($i=0; $i<=2; $i++){
-                if($request->input('beasiswa'.$i.'jenis_anak_berprestasi')){
+            for ($i = 0; $i <= 2; $i++) {
+                if ($request->input('beasiswa' . $i . 'jenis_anak_berprestasi')) {
                     $dataBeasiswa = Beasiswa::create([
                         'data_pribadi_id' => $id_datapribadi,
-                        'jenis_anak_berprestasi' => $request->input('beasiswa'.$i.'jenis_anak_berprestasi'),
-                        'keterangan' => $request->input('beasiswa'.$i.'keterangan'),
-                        'tahun_mulai' => $request->input('beasiswa'.$i.'tahun_mulai'),
-                        'tahun_selesai' => $request->input('beasiswa'.$i.'tahun_selesai')
+                        'jenis_anak_berprestasi' => $request->input('beasiswa' . $i . 'jenis_anak_berprestasi'),
+                        'keterangan' => $request->input('beasiswa' . $i . 'keterangan'),
+                        'tahun_mulai' => $request->input('beasiswa' . $i . 'tahun_mulai'),
+                        'tahun_selesai' => $request->input('beasiswa' . $i . 'tahun_selesai')
                     ]);
                 }
             }
@@ -299,24 +297,24 @@ class SiswaController extends Controller
             /**
              * Prestasi
              */
-             for($i=0; $i<=2; $i++){
-                if($request->input('prestasi'.$i.'nama_prestasi')){
+            for ($i = 0; $i <= 2; $i++) {
+                if ($request->input('prestasi' . $i . 'nama_prestasi')) {
                     $dataPrestasi = Prestasi::create([
                         'data_pribadi_id' => $id_datapribadi,
-                        'nama_prestasi' => $request->input('prestasi'.$i.'nama_prestasi'),
-                        'tahun' => $request->input('prestasi'.$i.'tahun'),
-                        'penyelenggara' => $request->input('prestasi'.$i.'penyelenggara'),
-                        'jenis_prestasi' => $request->input('prestasi'.$i.'jenis_prestasi'),
-                        'tingkat' => $request->input('prestasi'.$i.'tingkat'),
+                        'nama_prestasi' => $request->input('prestasi' . $i . 'nama_prestasi'),
+                        'tahun' => $request->input('prestasi' . $i . 'tahun'),
+                        'penyelenggara' => $request->input('prestasi' . $i . 'penyelenggara'),
+                        'jenis_prestasi' => $request->input('prestasi' . $i . 'jenis_prestasi'),
+                        'tingkat' => $request->input('prestasi' . $i . 'tingkat'),
                     ]);
                 }
-             }
+            }
 
             /**
              * Kesejahteraan
              */
 
-             $dataKesejahteraan = Kesejahteraan::create([
+            $dataKesejahteraan = Kesejahteraan::create([
                 'data_pribadi_id' => $id_datapribadi,
                 'jenis_kesejahteraan' => $request->input('jenis_kesejahteraan'),
                 'no_kartu' => $request->input('no_kartu'),
@@ -327,36 +325,34 @@ class SiswaController extends Controller
             /**
              * File
              */
-            if($request->hasFile('file_kk')){
+            if ($request->hasFile('file_kk')) {
                 $pdf_kk = $request->file('file_kk');
                 $name_kk = uniqid() . '.' . $pdf_kk->getClientOriginalExtension();
-                $pdf_kk->storeAs('file/kk', $name_kk);
+                $pdf_kk->storeAs('file/kk/', $name_kk);
             }
-            if($request->hasFile('file_akta_kelahiran')){
+            if ($request->hasFile('file_akta_kelahiran')) {
                 $pdf_akta = $request->file('file_akta_kelahiran');
                 $name_akta = uniqid() . '.' . $pdf_akta->getClientOriginalExtension();
-                $pdf_akta->storeAs('file/akta', $name_akta);
+                $pdf_akta->storeAs('file/akta/', $name_akta);
             }
-            if($request->hasFile('file_ktp_ortu')){
+            if ($request->hasFile('file_ktp_ortu')) {
                 $pdf_ktp = $request->file('file_ktp_ortu');
                 $name_ktp = uniqid() . '.' . $pdf_ktp->getClientOriginalExtension();
-                $pdf_ktp->storeAs('file/ktp', $name_ktp);
+                $pdf_ktp->storeAs('file/ktp/', $name_ktp);
             }
-            if($request->hasFile('file_ktp_ortu')){
+            if ($request->hasFile('file_ktp_ortu')) {
                 $pdf_ijazah = $request->file('file_ijazah_tk');
                 $name_ijazah = uniqid() . '.' . $pdf_ijazah->getClientOriginalExtension();
-                $pdf_ijazah->storeAs('file/ijazah', $name_ijazah);
+                $pdf_ijazah->storeAs('file/ijazah/', $name_ijazah);
             }
 
             $file = File::create([
-                'file_kk' => $name_kk,
-                'file_akta_kelahiran' => $name_akta,
-                'file_ktp_ortu' => $name_ktp,
-                'file_ijazah_tk' => $name_ijazah,
+                'file_kk' => 'storage/file/kk/' . $name_kk,
+                'file_akta_kelahiran' => 'storage/file/akta/' . $name_akta,
+                'file_ktp_ortu' => 'storage/file/ktp/' . $name_ktp,
+                'file_ijazah_tk' => 'storage/file/ijazah/' . $name_ijazah,
                 'data_pribadi_id' => $id_datapribadi
             ]);
-
-            $id_file = $file->id;
 
             /**
              * Update data siswa
@@ -366,7 +362,8 @@ class SiswaController extends Controller
                 'data_pribadi_id' => $id_datapribadi
             ]);
 
-            return view('student.pages.data-ppdb',
+            return view(
+                'student.pages.data-ppdb',
                 ['daftar' => 1, 'siswa' => $siswa]
             );
         } catch (\Exception $e) {
@@ -382,10 +379,10 @@ class SiswaController extends Controller
      */
     public function show(Siswa $siswa)
     {
-        if(Auth::getDefaultDriver() !== 'admin'){
+        if (Auth::getDefaultDriver() !== 'admin') {
             $siswa = Siswa::find(auth()->guard('siswa')->id());
             return view('student.pages.profile-siswa-ppdb', ['siswa' => $siswa]);
-        }else {
+        } else {
             return view('peserta-didik.show', compact('siswa'));
         }
     }
@@ -415,35 +412,34 @@ class SiswaController extends Controller
 
         // Check if the email has been updated
         if ($request->email === $siswa->email) {
-            if($request->no_tlp){
+            if ($request->no_tlp) {
                 $profile['no_tlp'] = $request->no_tlp;
             }
-            if($request->no_hp){
+            if ($request->no_hp) {
                 $profile['no_hp'] = $request->no_hp;
             }
-            if($request->password){
+            if ($request->password) {
                 $profile['password'] = Hash::make($request->password);
             }
 
             Siswa::where('id', $request->id)->update($profile);
 
             return view('student.pages.profile-siswa-ppdb', ['profile' => $profile, 'siswa' => $siswa]);
-
         } else {
             $count = Siswa::where('sekolah_id', $request->sekolah_id)->where('email', $request->email)->count();
-            if($count > 0) {
+            if ($count > 0) {
                 return redirect()->back()->with('error', 'Terdapat email yang sama. Daftarkan dengan email lain');
             } else {
-                if($request->no_tlp){
+                if ($request->no_tlp) {
                     $profile['no_tlp'] = $request->no_tlp;
                 }
-                if($request->no_hp){
+                if ($request->no_hp) {
                     $profile['no_hp'] = $request->no_hp;
                 }
-                if($request->email){
+                if ($request->email) {
                     $profile['email'] = $request->email;
                 }
-                if($request->password){
+                if ($request->password) {
                     $profile['password'] = Hash::make($request->password);
                 }
 
@@ -464,5 +460,10 @@ class SiswaController extends Controller
     public function destroy(Siswa $siswa)
     {
         //
+    }
+
+    public function calinPesertaDidik()
+    {
+        
     }
 }
