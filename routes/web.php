@@ -47,7 +47,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('login', [LoginController::class, 'showAdminLoginForm'])->name('getLogin');
     Route::post('login', [LoginController::class, 'adminLogin'])->name('login');
 
-    Route::middleware(['auth:admin','auth:sekolah'])->group(function(){
+    Route::middleware('auth:admin')->middleware('auth:sekolah')->group(function(){
         Route::get('home', [HomeController::class, 'index'])->name('home');
         Route::get('profile', [ProfileController::class, 'editAdmin'])->name('profile.editAdmin');
         Route::patch('profile', [ProfileController::class, 'updateAdmin'])->name('profile.updateAdmin');

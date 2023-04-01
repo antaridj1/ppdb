@@ -10,7 +10,12 @@
         <!-- User Account -->
         <li class="dropdown user-menu">
           <button class="dropdown-toggle nav-link" data-toggle="dropdown">
-            <span class="d-none d-lg-inline-block">John Doe</span>
+            @auth('admin')
+              <span class="d-none d-lg-inline-block">{{auth()->guard('admin')->user()->name}}</span>
+            @endauth
+            @auth('sekolah')
+              <span class="d-none d-lg-inline-block">Operator</span>
+            @endauth
           </button>
           <ul class="dropdown-menu dropdown-menu-right">
             <li>

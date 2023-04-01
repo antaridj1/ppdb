@@ -40,7 +40,11 @@ class HomeController extends Controller
             $peserta_didiks = DataPribadi::whereDate('created_at', Carbon::today())->get();
             return view('home', compact('jumlah_peserta', 'jumlah_wali','jumlah_sekolah', 'peserta_didiks'));
         } else {
-            return view('home');
+            $belum_terverifikasi = DataPribadi::where('sekolah_id', Auth::id())->where('isVerificated', null)->count();
+            $sudah_terverifikasi = DataPribadi::where('sekolah_id', Auth::id())->where('isVerificated', true)->count();
+            $total_peserta = DataPribadi::where('sekolah_id', Auth::id())->count();
+            $peserta_didiks = DataPribadi::where('sekolah_id', Auth::id())->whereDate('created_at',Carbon::today())->get();
+            return view('home', compact('belum_terverifikasi','sudah_terverifikasi','total_peserta','peserta_didiks'));
         }
     }
 

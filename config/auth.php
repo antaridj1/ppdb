@@ -151,6 +151,6 @@ return [
     |
     */
 
-    'password_timeout' => 108000,
+    'password_timeout' => 10800,
 
 ];
