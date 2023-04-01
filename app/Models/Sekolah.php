@@ -4,13 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class Sekolah extends Model
+class Sekolah extends Authenticatable
 {
-    use HasFactory;
     use SoftDeletes;
+    use HasFactory, Notifiable;
 
+    protected $guard = 'sekolah';
     protected $table = 'sekolah';
 
     protected $fillable = [
