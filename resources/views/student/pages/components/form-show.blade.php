@@ -522,22 +522,23 @@
             {{-- file kk --}}
             <div class="form-group">
                 <label for="scan_kk">Scan Kartu Keluarga</label>
-                <a href="{{ asset('public/file/kk/' . $siswa->dataPribadi->file->file_kk) }}" download>Download PDF</a>
+                {{-- <a href="{{ storage_path($siswa->dataPribadi->file->file_kk) }}" download>Download PDF</a> --}}
+                <a href="{{ asset($siswa->dataPribadi->file->file_kk) }}" target="_blank">Lihat file</a>
             </div>
             {{-- file akta --}}
             <div class="form-group">
                 <label for="scan_akta">Scan Kartu Akta Kelahiran</label>
-                <a href="{{ asset('public/file/kk/' . $siswa->dataPribadi->file->file_akta_kelahiran) }}" download>Download PDF</a>
+                <a href="{{ asset($siswa->dataPribadi->file->file_akta_kelahiran) }}" target="_blank">Lihat file</a>
             </div>
             {{-- file ktp ortu --}}
             <div class="form-group">
                 <label for="scan_ktp">Scan Kartu Akta Kelahiran</label>
-                <a href="{{ asset('public/file/kk/' . $siswa->dataPribadi->file->file_ktp_ortu) }}" download>Download PDF</a>
+                <a href="{{ asset($siswa->dataPribadi->file->file_ktp_ortu) }}" target="_blank">Lihat file</a>
             </div>
             {{-- file ijazah tk --}}
             <div class="form-group">
                 <label for="scan_ijazah">Scan Ijazah TK</label>
-                <a href="{{ asset('public/file/kk/' . $siswa->dataPribadi->file->file_ijazah_tk) }}" download>Download PDF</a>
+                <a href="{{ asset($siswa->dataPribadi->file->file_ijazah_tk) }}" target="_blank">Lihat file</a>
             </div>
         </div>
     </div>
