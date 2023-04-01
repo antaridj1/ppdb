@@ -68,7 +68,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::resource('/', SiswaController::class)->parameters([
                 '' => 'siswa'
             ]);
-            
+
             Route::patch('/{siswa}/update-status', [SiswaController::class, 'update_status'])->name('updateStatus');
         });
 
@@ -96,6 +96,7 @@ Route::prefix('ppdb')->group(function () {
             return view('student.pages.landing-sdn', ['data' => $data, 'total' => $total_daftar]);
         });
 
+
         Route::get('login', function() use ($url_sdn_id) {
             if(auth()->guard('siswa')->check()){
                 $siswa = Siswa::find(auth()->guard('siswa')->check());
@@ -104,6 +105,7 @@ Route::prefix('ppdb')->group(function () {
             return view('student.pages.login', ['id'=> $url_sdn_id]);
         })->name('login.form.siswa');
         Route::post('login', [LoginController::class, 'siswaLogin'])->name('login.siswa');
+
 
         Route::get('/register', function() use ($url_sdn_id) {
             return view('student.pages.register', ['id'=> $url_sdn_id]);

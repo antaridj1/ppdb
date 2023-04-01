@@ -11,6 +11,7 @@ use Database\Seeders\DataPeriodikSeeder;
 use Database\Seeders\KesejahteraanSeeder;
 use Database\Seeders\PrestasiSeeder;
 use Database\Seeders\FileSeeder;
+use Database\Seeders\PengumumanSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -34,6 +35,7 @@ class DatabaseSeeder extends Seeder
             KesejahteraanSeeder::class,
             PrestasiSeeder::class,
             FileSeeder::class,
+            PengumumanSeeder::class,
         ]);
     }
 }
