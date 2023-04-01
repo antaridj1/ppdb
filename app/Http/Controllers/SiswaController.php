@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Beasiswa;
 use App\Models\Siswa;
+use App\Models\Pengumuman;
 use App\Models\DataIbu;
 use App\Models\DataAyah;
 use App\Models\DataWali;
@@ -72,9 +73,10 @@ class SiswaController extends Controller
     public function dashboard()
     {
         $siswa = Siswa::find(auth()->guard('siswa')->id());
+        $pengumuman = Pengumuman::all();
         return view(
             'student.pages.dashboard',
-            ['siswa' => $siswa]
+            ['siswa' => $siswa, 'pengumumans' => $pengumuman]
         );
     }
 
@@ -464,6 +466,6 @@ class SiswaController extends Controller
 
     public function calinPesertaDidik()
     {
-        
+
     }
 }
