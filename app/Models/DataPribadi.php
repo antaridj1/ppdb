@@ -87,4 +87,25 @@ class DataPribadi extends Model
         return $this->hasOne(File::class);
     }
 
+    public function getVerificationStatusStringAttribute(){
+        if($this->isVerificated == null){
+            return 'Belum Terverifikasi';
+        } elseif($this->isVerificated == true) {
+            return 'Sudah Terverifikasi';
+        } else {
+            return 'Perlu Perbaikan';
+        }
+    }
+
+    public function getVerificationStatusBadgeAttribute(){
+        if($this->isVerificated == null){
+            return 'badge-dark';
+        }
+        elseif($this->isVerificated == true){
+            return 'badge-success';
+        } else {
+            return 'badge-danger';
+        }
+    }
+
 }

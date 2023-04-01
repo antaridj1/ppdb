@@ -33,7 +33,7 @@ class SiswaController extends Controller
      */
     public function index(Request $request)
     {
-        if (Auth::getDefaultDriver() !== 'admin') {
+        if (roleController('web')) {
             // Untuk Wali
             $id = auth()->guard('siswa')->id();
             $siswa = Siswa::find($id);
@@ -46,22 +46,20 @@ class SiswaController extends Controller
                     ['daftar' => 1, 'siswa' => $siswa]
                 );
             }
-        } else {
-            $sekolahs = null;
-            if (roleController('admin')) {
-                $sekolahs = Sekolah::all();
-                // Untuk admin
-                if ($request->sdn) {
-                    $peserta_didiks = DataPribadi::where('sekolah_id', $request->sdn)->get();
-                } else {
-                    $peserta_didiks = DataPribadi::all();
-                }
+        } elseif (roleController('admin')) {
+            // Untuk admin
+            $sekolahs = Sekolah::all();
+            
+            if ($request->sdn) {
+                $peserta_didiks = DataPribadi::where('sekolah_id', $request->sdn)->get();
             } else {
-                // Untuk Sekolah
-                $peserta_didiks = DataPribadi::where('sekolah_id', Auth::id())->get();
+                $peserta_didiks = DataPribadi::all();
             }
-
             return view('peserta-didik.index', compact('peserta_didiks', 'sekolahs'));
+        } else {
+            // Untuk Sekolah
+            $peserta_didiks = DataPribadi::where('sekolah_id', Auth::id())->get();
+            return view('peserta-didik.index', compact('peserta_didiks'));
         }
     }
 
@@ -381,7 +379,8 @@ class SiswaController extends Controller
      */
     public function show(Siswa $siswa)
     {
-        if (Auth::getDefaultDriver() !== 'admin') {
+        if (roleController('web')) {
+            // untuk Wali
             $siswa = Siswa::find(auth()->guard('siswa')->id());
             return view('student.pages.profile-siswa-ppdb', ['siswa' => $siswa]);
         } else {
