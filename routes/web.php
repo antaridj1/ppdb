@@ -18,6 +18,7 @@ use App\Http\Controllers\StyleInteriorController;
 use App\Http\Controllers\TypeInteriorController;
 use App\Http\Controllers\UserController;
 use App\Models\Sekolah;
+use App\Models\Pengumuman;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -93,7 +94,8 @@ Route::prefix('ppdb')->group(function () {
         Route::get('/', function() use ($url_sdn_id){
             $data = Sekolah::where('id', $url_sdn_id )->first();
             $total_daftar = Siswa::where('sekolah_id', $url_sdn_id)->count();
-            return view('student.pages.landing-sdn', ['data' => $data, 'total' => $total_daftar]);
+            $pengumuman = Pengumuman::all();
+            return view('student.pages.landing-sdn', ['data' => $data, 'total' => $total_daftar, 'pengumumans' => $pengumuman]);
         });
 
 

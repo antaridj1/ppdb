@@ -16,6 +16,12 @@ class PengumumanSeeder extends Seeder
     {
         DB::table('pengumuman')->insert([
             [
+                'judul' => 'Alur Pendaftaran',
+                'pengumuman' => 'Proses pendaftaran peserta didik baru dimulai dengan membuat akun sesuai dengan sekolah yang dituju, kemudian lakukan login.
+                Setelah berhasil login, pendaftar memasuki menu Data Peserta Didik untuk melakukan registrasi. Isi data diri yang diperlukan dan upload data.
+                Informasi mengenai progres pendaftaran dapat dilihat di halaman Dashboard.'
+            ],
+            [
                 'judul' => 'Waktu Pendaftaran',
                 'pengumuman' => 'Waktu pendaftaran dibuka pada tanggal 12 Agustus 2023 hingga 29 Oktober 2023'
             ],
