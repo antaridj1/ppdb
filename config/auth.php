@@ -80,6 +80,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Siswa::class,
         ],
+        'sekolahs' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Sekolah::class,
+        ],
 
         // 'users' => [
         //     'driver' => 'database',
@@ -123,6 +127,13 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+
+        'sekolahs' => [
+            'provider' => 'sekolahs',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
     ],
 
     /*
@@ -136,6 +147,6 @@ return [
     |
     */
 
-    'password_timeout' => 10800,
+    'password_timeout' => 108000,
 
 ];

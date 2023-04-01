@@ -46,7 +46,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('login', [LoginController::class, 'showAdminLoginForm'])->name('getLogin');
     Route::post('login', [LoginController::class, 'adminLogin'])->name('login');
 
-    Route::middleware('auth:admin')->group(function(){
+    Route::middleware(['auth:admin','auth:sekolah'])->group(function(){
         Route::get('home', [HomeController::class, 'index'])->name('home');
         Route::get('profile', [ProfileController::class, 'editAdmin'])->name('profile.editAdmin');
         Route::patch('profile', [ProfileController::class, 'updateAdmin'])->name('profile.updateAdmin');
@@ -56,13 +56,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
                 '' => 'sekolah'
             ]);
             Route::patch('/{sekolah}/update-status', [SekolahController::class, 'update_status'])->name('updateStatus');
-        });
-
-        Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
-            Route::resource('/', UserController::class)->parameters([
-                '' => 'user'
-            ]);
-            Route::patch('/{user}/update-status', [UserController::class, 'update_status'])->name('updateStatus');
         });
 
         Route::group(['prefix' => 'chat', 'as' => 'chat.'], function () {
