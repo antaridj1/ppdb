@@ -45,7 +45,8 @@ class CreateDataPribadiTable extends Migration
             $table->set('pip', ['Menerima bantuan serupa', 'Menolak', 'Sudah mampu']);
             $table->boolean('isAccepted')->default(false); // si anak diterima
             $table->boolean('isVerificated')->default(false); // data lengkap
-            $table->timestamps();
+            $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
             $table->softDeletes();
         });
     }

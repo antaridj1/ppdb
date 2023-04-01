@@ -19,13 +19,13 @@
             <td>{{$peserta_didik->nama_lengkap}}</td>
             <td>{{$peserta_didik->sekolah->nama_sekolah}}</td>
             <td>{{$peserta_didik->created_at->format('dd/m/yyyy')}}</td>
-            <td>{{$peserta_didik->dataWali->nama_wali}}</td>
+            <td>{{$peserta_didik->dataAyah->nama_ayah}}</td>
             <td>{{$peserta_didik->no_hp}}</td>
             <td></td>
         </tr>
       @empty
-          
+
       @endforelse
-  
+
     </tbody>
   </table>

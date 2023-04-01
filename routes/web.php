@@ -75,6 +75,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::resource('/', SiswaController::class)->parameters([
                 '' => 'siswa'
             ]);
+            
             Route::patch('/{siswa}/update-status', [SiswaController::class, 'update_status'])->name('updateStatus');
         });
 
