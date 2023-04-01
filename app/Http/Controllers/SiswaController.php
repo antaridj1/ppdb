@@ -335,33 +335,35 @@ class SiswaController extends Controller
             if($request->hasFile('file_kk')){
                 $pdf_kk = $request->file('file_kk');
                 $name_kk = uniqid() . '.' . $pdf_kk->getClientOriginalExtension();
-                $pdf_kk->move('file/kk', $name_kk);
+                $pdf_kk->storeAs('public/file/kk', $name_kk);
+                $loc_kk = "public/storage/file/kk/" . $name_kk;
             }
             if($request->hasFile('file_akta_kelahiran')){
                 $pdf_akta = $request->file('file_akta_kelahiran');
                 $name_akta = uniqid() . '.' . $pdf_akta->getClientOriginalExtension();
-                $pdf_akta->move('file/akta', $name_akta);
+                $pdf_akta->storeAs('public/file/akta', $name_akta);
+                $loc_akta = "public/storage/file/akta/" . $name_akta;
             }
             if($request->hasFile('file_ktp_ortu')){
                 $pdf_ktp = $request->file('file_ktp_ortu');
                 $name_ktp = uniqid() . '.' . $pdf_ktp->getClientOriginalExtension();
-                $pdf_ktp->move('file/ktp', $name_ktp);
+                $pdf_ktp->storeAs('public/file/ktp', $name_ktp);
+                $loc_ktp = "public/storage/file/ktp/" . $name_ktp;
             }
             if($request->hasFile('file_ktp_ortu')){
                 $pdf_ijazah = $request->file('file_ijazah_tk');
                 $name_ijazah = uniqid() . '.' . $pdf_ijazah->getClientOriginalExtension();
-                $pdf_ijazah->move('file/ijazah', $name_ijazah);
+                $pdf_ijazah->storeAs('public/file/ijazah', $name_ijazah);
+                $loc_ijazah = "public/storage/file/ijazah/" . $name_ijazah;
             }
 
             $file = File::create([
-                'file_kk' => $name_kk,
-                'file_akta_kelahiran' => $name_akta,
-                'file_ktp_ortu' => $name_ktp,
-                'file_ijazah_tk' => $name_ijazah,
+                'file_kk' => $loc_kk,
+                'file_akta_kelahiran' => $loc_akta,
+                'file_ktp_ortu' => $loc_ktp,
+                'file_ijazah_tk' => $loc_ijazah,
                 'data_pribadi_id' => $id_datapribadi
             ]);
-
-            $id_file = $file->id;
 
             /**
              * Update data siswa
