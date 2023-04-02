@@ -385,7 +385,8 @@ class SiswaController extends Controller
             $siswa = Siswa::find(auth()->guard('siswa')->id());
             return view('student.pages.profile-siswa-ppdb', ['siswa' => $siswa]);
         } else {
-            return view('peserta-didik.show', compact('siswa'));
+            $peserta_didik = $siswa;
+            return view('peserta-didik.show', compact('peserta_didik'));
         }
     }
 
@@ -450,6 +451,36 @@ class SiswaController extends Controller
                 $siswa = Siswa::find(auth()->guard('siswa')->id());
                 return view('student.pages.profile-siswa-ppdb', ['profile' => $profile, 'siswa' => $siswa]);
             }
+        }
+    }
+
+    public function updateVerificated(Request $request, DataPribadi $siswa){
+        if($request->isVerificated == 'true'){
+            $siswa->update([
+                'isVerificated' => true
+            ]);
+            return back()
+                ->with('status', 'success')
+                ->with('message', 'Peserta Didik Telah Terverifikasi');
+
+        } elseif($request->isVerificated == 'false') {
+
+            $request->validate([
+                'saran_perbaikan' => 'required'
+            ]);
+
+            $siswa->update([
+                'isVerificated' => false,
+                'saran_perbaikan' => $request->saran_perbaikan
+            ]);
+
+            return back()
+                ->with('status', 'success')
+                ->with('message', 'Saran Perbaikan Telah Terkirim');
+        } else {
+            return back()
+                ->with('status', 'error')
+                ->with('message', 'Gagal memverifikasi');
         }
     }
 

@@ -70,7 +70,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
                 '' => 'siswa'
             ]);
 
-            Route::patch('/{siswa}/update-status', [SiswaController::class, 'update_status'])->name('updateStatus');
+            Route::patch('/{siswa}/update-verificated', [SiswaController::class, 'updateVerificated'])->name('updateVerificated');
+            Route::patch('/{siswa}/update-accepted', [SiswaController::class, 'updateAccepted'])->name('updateAccepted');
         });
 
         Route::post('logout', [LogoutController::class, 'adminLogout'])->name('logout');

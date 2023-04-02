@@ -43,7 +43,9 @@ class DataPribadi extends Model
         'kip',
         'menerima_kip',
         'pip',
-        'isVerificated'
+        'isVerificated',
+        'isAccepted',
+        'saran_perbaikan'
     ];
 
     public function siswa()
@@ -88,9 +90,9 @@ class DataPribadi extends Model
     }
 
     public function getVerificationStatusStringAttribute(){
-        if($this->isVerificated == null){
+        if($this->isVerificated === null){
             return 'Belum Terverifikasi';
-        } elseif($this->isVerificated == true) {
+        } elseif($this->isVerificated == 1) {
             return 'Sudah Terverifikasi';
         } else {
             return 'Perlu Perbaikan';
@@ -98,10 +100,10 @@ class DataPribadi extends Model
     }
 
     public function getVerificationStatusBadgeAttribute(){
-        if($this->isVerificated == null){
+        if($this->isVerificated === null){
             return 'badge-dark';
         }
-        elseif($this->isVerificated == true){
+        elseif($this->isVerificated == 1){
             return 'badge-success';
         } else {
             return 'badge-danger';
