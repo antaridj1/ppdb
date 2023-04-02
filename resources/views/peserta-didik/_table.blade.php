@@ -31,17 +31,12 @@
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
                   <a class="dropdown-item" href="{{route('admin.siswa.show',$peserta_didik->id)}}">Detail</a>
-                  {{-- <a class="dropdown-item" href="{{route('admin.peserta_didik.edit',$peserta_didik->id)}}">Edit</a>
-                  <a class="dropdown-item" data-toggle="modal" data-target="#exampleModal_{{$peserta_didik->id}}">
-
-                    Hapus
-
-                  </a> --}}
+                 
                  
                 </div>
               </div>
             </td>
-            @include('peserta-didik._modal')
+
         </tr>
       @empty
 

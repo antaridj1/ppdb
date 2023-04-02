@@ -1,4 +1,4 @@
-<div class="modal fade" id="exampleModal_{{$peserta_didik->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="exampleModal_{{$peserta_didik->dataPribadi->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -8,7 +8,7 @@
                         <span aria-hidden="true">×</span>
                     </button>
             </div> 
-            <form method="post" action="{{route('admin.siswa.destroy',$peserta_didik->id)}}">
+            <form method="post" action="{{route('admin.siswa.destroy',$peserta_didik->dataPribadi->id)}}">
                 @method('delete')
                 @csrf
                 <div class="modal-body">
