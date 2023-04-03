@@ -33,7 +33,7 @@ class SiswaController extends Controller
      */
     public function index(Request $request)
     {
-        if (roleController('web')) {
+        if (roleController('siswa')) {
             // Untuk Wali
             $id = auth()->guard('siswa')->id();
             $siswa = Siswa::find($id);
@@ -41,15 +41,16 @@ class SiswaController extends Controller
                 return view('student.pages.data-ppdb', ['siswa' => $siswa, 'daftar' => 0]);
             } else {
                 $siswa = Siswa::find($id);
-                return view(
-                    'student.pages.data-ppdb',
-                    ['daftar' => 1, 'siswa' => $siswa]
-                );
+                $waktu = DataPeriodik::find($siswa->data_pribadi_id);
+                $data = explode(" ", $waktu->waktu_tempuh);
+                $jam = $data[0];
+                $menit = $data[2];
+                return view('student.pages.data-ppdb', ['daftar' => 1, 'siswa' => $siswa, 'jam' => $jam, 'menit' => $menit]);
             }
         } elseif (roleController('admin')) {
             // Untuk admin
             $sekolahs = Sekolah::all();
-            
+
             if ($request->sdn) {
                 $peserta_didiks = DataPribadi::where('sekolah_id', $request->sdn)->get();
             } else {
@@ -379,7 +380,7 @@ class SiswaController extends Controller
      */
     public function show(Siswa $siswa)
     {
-        if (roleController('web')) {
+        if (roleController('siswa')) {
             // untuk Wali
             $siswa = Siswa::find(auth()->guard('siswa')->id());
             return view('student.pages.profile-siswa-ppdb', ['siswa' => $siswa]);
@@ -465,6 +466,5 @@ class SiswaController extends Controller
 
     public function calinPesertaDidik()
     {
-
     }
 }

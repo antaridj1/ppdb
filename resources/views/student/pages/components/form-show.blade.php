@@ -1,5 +1,5 @@
 <form method="POST" enctype="multipart/form-data">
-    <fieldset disabled>
+<fieldset disabled>
     {{-- Data Pribadi Siswa --}}
     <div class="card card-default">
         <div class="card-header">
