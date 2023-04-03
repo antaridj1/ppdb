@@ -14,18 +14,20 @@
                         </div>
                         <div class="text-left">
                             <span class="h2 d-block">
-                                @if (role('admin'))
+                               @auth('admin')
                                     {{$jumlah_peserta}}
-                                @else 
+                               @endauth
+                               @auth('sekolah') 
                                     {{$belum_terverifikasi}}
-                                @endif
+                                @endauth
                             </span>
                             <p>
-                                @if (role('admin'))
+                               @auth('admin')
                                     Calon Peserta Didik
-                                @else 
-                                    Peserta Belum Terverifikasi
-                                @endif
+                               @endauth
+                               @auth('sekolah') 
+                                    Belum Terverifikasi
+                                @endauth
                             </p>
                         </div>
                     </div>
@@ -39,18 +41,20 @@
                         </div>
                         <div class="text-left">
                             <span class="h2 d-block">
-                                @if (role('admin'))
+                               @auth('admin')
                                     {{$jumlah_wali}}
-                                @else 
+                               @endauth
+                               @auth('sekolah') 
                                     {{$sudah_terverifikasi}}
-                                    @endif
+                                    @endauth
                             </span>
                             <p>
-                                @if (role('admin'))
+                               @auth('admin')
                                     Wali Peserta Didik
-                                @else 
-                                    Peserta Sudah Terverifikasi
-                                @endif
+                               @endauth
+                               @auth('sekolah') 
+                                    Sudah Terverifikasi
+                                @endauth
                             </p>
                         </div>
                     </div>
@@ -64,18 +68,20 @@
                         </div>
                         <div class="text-left">
                             <span class="h2 d-block">
-                                @if (role('admin'))
+                               @auth('admin')
                                     {{$jumlah_sekolah}}
-                                @else 
+                               @endauth
+                               @auth('sekolah') 
                                     {{$total_peserta}}
-                                @endif
+                                @endauth
                             </span>
                             <p>
-                                @if (role('admin'))
+                               @auth('admin')
                                     Sekolah
-                                @else 
+                               @endauth
+                               @auth('sekolah') 
                                     Total Peserta
-                                @endif
+                                @endauth
                             </p>
                         </div>
                     </div>

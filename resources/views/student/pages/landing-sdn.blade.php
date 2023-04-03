@@ -130,41 +130,23 @@
 
         <div class="section-title">
           <h2>PPDB</h2>
-          <h3>Pertanyaan Umum Seputar <span>PPDB</span></h3>
-          <p>Berikut adalah daftar pertanyaan yang dapat membantu dalam melakukan PPDB Online</p>
+          <h3>Pengumuman Seputar <span>PPDB</span></h3>
+          <p>Berikut adalah pengumuman mengenai Penerimaan Peserta Didik Baru</p>
         </div>
 
         <div class="row justify-content-center">
           <div class="col-xl-10">
             <ul class="faq-list">
-
+                @foreach ($pengumumans as $index => $pengumuman)
               <li>
-                <div data-bs-toggle="collapse" class="collapsed question" href="#faq1">Berkas apa saja yang harus saya siapkan untuk mendaftar PPDB? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-                <div id="faq1" class="collapse" data-bs-parent=".faq-list">
+                <div data-bs-toggle="collapse" class="collapsed question" href="#faq{{$index+1}}">{{$pengumuman->judul}}<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+                <div id="faq{{$index+1}}" class="collapse" data-bs-parent=".faq-list">
                   <p>
-                    Perkas yang perlu diupload adalhan Ijazah TK, KTP orang tua, Kartu Keluarga, dan Akta Kelahiran. Beras diupload dalam format PDF
+                    {{$pengumuman->pengumuman}}
                   </p>
                 </div>
               </li>
-
-              <li>
-                <div data-bs-toggle="collapse" href="#faq2" class="collapsed question">Dimana saya dapat melihat pengumuman PPDB? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-                <div id="faq2" class="collapse" data-bs-parent=".faq-list">
-                  <p>
-                    Anda bisa mengakses pengumuman melalui website PPDB atau di website sekolah sesuai tempat peserta didik mendaftar
-                  </p>
-                </div>
-              </li>
-
-              <li>
-                <div data-bs-toggle="collapse" href="#faq3" class="collapsed question">Bagaimana cara melihat informasi form pendaftaran telah diterima?<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-                <div id="faq3" class="collapse" data-bs-parent=".faq-list">
-                  <p>
-                    Anda bisa login terlebih dahulu di website sekolah tellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
-                  </p>
-                </div>
-              </li>
-
+              @endforeach
             </ul>
           </div>
         </div>

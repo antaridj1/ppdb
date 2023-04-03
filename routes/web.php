@@ -18,6 +18,7 @@ use App\Http\Controllers\StyleInteriorController;
 use App\Http\Controllers\TypeInteriorController;
 use App\Http\Controllers\UserController;
 use App\Models\Sekolah;
+use App\Models\Pengumuman;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -46,7 +47,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('login', [LoginController::class, 'showAdminLoginForm'])->name('getLogin');
     Route::post('login', [LoginController::class, 'adminLogin'])->name('login');
 
-    Route::middleware('auth:admin')->group(function(){
+    Route::middleware('auth:admin')->middleware('auth:sekolah')->group(function(){
         Route::get('home', [HomeController::class, 'index'])->name('home');
         Route::get('profile', [ProfileController::class, 'editAdmin'])->name('profile.editAdmin');
         Route::patch('profile', [ProfileController::class, 'updateAdmin'])->name('profile.updateAdmin');
@@ -56,13 +57,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
                 '' => 'sekolah'
             ]);
             Route::patch('/{sekolah}/update-status', [SekolahController::class, 'update_status'])->name('updateStatus');
-        });
-
-        Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
-            Route::resource('/', UserController::class)->parameters([
-                '' => 'user'
-            ]);
-            Route::patch('/{user}/update-status', [UserController::class, 'update_status'])->name('updateStatus');
         });
 
         Route::group(['prefix' => 'chat', 'as' => 'chat.'], function () {
@@ -75,6 +69,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::resource('/', SiswaController::class)->parameters([
                 '' => 'siswa'
             ]);
+
             Route::patch('/{siswa}/update-status', [SiswaController::class, 'update_status'])->name('updateStatus');
         });
 
@@ -99,8 +94,10 @@ Route::prefix('ppdb')->group(function () {
         Route::get('/', function() use ($url_sdn_id){
             $data = Sekolah::where('id', $url_sdn_id )->first();
             $total_daftar = Siswa::where('sekolah_id', $url_sdn_id)->count();
-            return view('student.pages.landing-sdn', ['data' => $data, 'total' => $total_daftar]);
+            $pengumuman = Pengumuman::all();
+            return view('student.pages.landing-sdn', ['data' => $data, 'total' => $total_daftar, 'pengumumans' => $pengumuman]);
         });
+
 
         Route::get('login', function() use ($url_sdn_id) {
             if(auth()->guard('siswa')->check()){
@@ -110,6 +107,7 @@ Route::prefix('ppdb')->group(function () {
             return view('student.pages.login', ['id'=> $url_sdn_id]);
         })->name('login.form.siswa');
         Route::post('login', [LoginController::class, 'siswaLogin'])->name('login.siswa');
+
 
         Route::get('/register', function() use ($url_sdn_id) {
             return view('student.pages.register', ['id'=> $url_sdn_id]);

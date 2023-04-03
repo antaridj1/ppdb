@@ -19,7 +19,8 @@ class CreateKesejahteraanTable extends Migration
             $table->set('jenis_kesejahteraan', ['PKH', 'PIP', 'Kartu Perlindungan Sosial', 'Kartu Kesehatan']);
             $table->string('no_kartu');
             $table->string('nama_sejahtera');
-            $table->timestamps();
+            $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
             $table->softDeletes();
         });
     }

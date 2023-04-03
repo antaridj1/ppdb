@@ -57,8 +57,6 @@ class DataPribadiSeeder extends Seeder
                     'kip' => $kip[array_rand($kip)],
                     'menerima_kip' => $kip[array_rand($kip)],
                     'pip' => $pip[array_rand($pip)],
-                    'isAccepted' => false,
-                    'isVerificated' => false,
                 ]);
             }
         }

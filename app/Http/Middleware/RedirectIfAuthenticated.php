@@ -23,8 +23,11 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
 
-            if ($guard == "employee" && Auth::guard($guard)->check()) {
-                return redirect('employee/home');
+            if ($guard == "admin" && Auth::guard($guard)->check()) {
+                return redirect('admin/home');
+            } 
+            if ($guard == "sekolah" && Auth::guard($guard)->check()) {
+                return redirect('admin/home');
             }
 
             if ($guard == "web" && Auth::guard($guard)->check()) {

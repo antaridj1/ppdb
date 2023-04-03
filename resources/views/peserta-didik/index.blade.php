@@ -10,7 +10,7 @@
                 <div class="card card-default">
                     <div class="card-header">
                         <h2>Calon Peserta Didik</h2>
-                        @if(role('admin'))
+                       @auth('admin')
                             <div class="dropdown">
                                 @if(request('sdn'))
                                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
@@ -28,7 +28,7 @@
                                     @endforeach
                                 </div>
                             </div>
-                        @endif
+                        @endauth
                     </div>
                     <div class="card-body">
                        @include('peserta-didik._table')

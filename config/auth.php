@@ -48,6 +48,10 @@ return [
             'driver' => 'session',
             'provider' => 'siswas',
         ],
+        'sekolah' => [
+            'driver' => 'session',
+            'provider' => 'sekolahs',
+        ],
     ],
 
     /*
@@ -79,6 +83,10 @@ return [
         'siswas' => [
             'driver' => 'eloquent',
             'model' => App\Models\Siswa::class,
+        ],
+        'sekolahs' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Sekolah::class,
         ],
 
         // 'users' => [
@@ -119,6 +127,13 @@ return [
 
         'siswas' => [
             'provider' => 'siswas',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
+        'sekolahs' => [
+            'provider' => 'sekolahs',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
