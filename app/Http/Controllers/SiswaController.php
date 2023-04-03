@@ -221,7 +221,7 @@ class SiswaController extends Controller
             /**
              * Data periodik
              */
-            $dataPeriodik = DataPeriodik::create([
+            DataPeriodik::create([
                 'data_pribadi_id' => $id_datapribadi,
                 'tinggi_badan' => $request->input('tinggi_badan'),
                 'berat_badan' => $request->input('berat_badan'),
@@ -236,7 +236,7 @@ class SiswaController extends Controller
              * Data Ayah
              */
 
-            $dataAyah = DataAyah::create([
+            DataAyah::create([
                 'data_pribadi_id' => $id_datapribadi,
                 'nama_ayah' => $request->input('nama_ayah'),
                 'nik_ayah' => $request->input('nik_ayah'),
@@ -251,7 +251,7 @@ class SiswaController extends Controller
              * Data Ibu
              */
 
-            $dataIbu = DataIbu::create([
+            DataIbu::create([
                 'data_pribadi_id' => $id_datapribadi,
                 'nama_ibu' => $request->input('nama_ibu'),
                 'nik_ibu' => $request->input('nik_ibu'),
@@ -266,7 +266,7 @@ class SiswaController extends Controller
              * Data Wali
              */
             if ($request->input('nama_wali')) {
-                $dataWali = DataWali::create([
+                DataWali::create([
                     'data_pribadi_id' => $id_datapribadi,
                     'nama_wali' => $request->input('nama_wali'),
                     'nik_wali' => $request->input('nik_wali'),
@@ -283,7 +283,7 @@ class SiswaController extends Controller
              */
             for ($i = 0; $i <= 2; $i++) {
                 if ($request->input('beasiswa' . $i . 'jenis_anak_berprestasi')) {
-                    $dataBeasiswa = Beasiswa::create([
+                    Beasiswa::create([
                         'data_pribadi_id' => $id_datapribadi,
                         'jenis_anak_berprestasi' => $request->input('beasiswa' . $i . 'jenis_anak_berprestasi'),
                         'keterangan' => $request->input('beasiswa' . $i . 'keterangan'),
@@ -299,7 +299,7 @@ class SiswaController extends Controller
              */
             for ($i = 0; $i <= 2; $i++) {
                 if ($request->input('prestasi' . $i . 'nama_prestasi')) {
-                    $dataPrestasi = Prestasi::create([
+                    Prestasi::create([
                         'data_pribadi_id' => $id_datapribadi,
                         'nama_prestasi' => $request->input('prestasi' . $i . 'nama_prestasi'),
                         'tahun' => $request->input('prestasi' . $i . 'tahun'),
@@ -314,7 +314,7 @@ class SiswaController extends Controller
              * Kesejahteraan
              */
 
-            $dataKesejahteraan = Kesejahteraan::create([
+            Kesejahteraan::create([
                 'data_pribadi_id' => $id_datapribadi,
                 'jenis_kesejahteraan' => $request->input('jenis_kesejahteraan'),
                 'no_kartu' => $request->input('no_kartu'),
@@ -346,7 +346,7 @@ class SiswaController extends Controller
                 $pdf_ijazah->storeAs('file/ijazah/', $name_ijazah);
             }
 
-            $file = File::create([
+            File::create([
                 'file_kk' => 'storage/file/kk/' . $name_kk,
                 'file_akta_kelahiran' => 'storage/file/akta/' . $name_akta,
                 'file_ktp_ortu' => 'storage/file/ktp/' . $name_ktp,
