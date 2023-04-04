@@ -12,13 +12,23 @@
       <!-- sidebar menu -->
       <ul class="nav sidebar-inner" id="sidebar-menu">
           <li  class="{{Route::is('admin.home') || Route::is('sekolah.home')? 'active' : ''}}">
-            <a class="sidenav-item-link" href="{{route('admin.home')}}">
+            @auth('admin')
+              <a class="sidenav-item-link" href="{{route('admin.home')}}">
+            @endauth
+            @auth('sekolah')
+              <a class="sidenav-item-link" href="{{route('sekolah.home')}}">
+            @endauth
               <i class="mdi mdi-home-outline"></i>
               <span class="nav-text">Beranda</span>
             </a>
           </li>
           <li class="{{Route::is('admin.siswa.*') || Route::is('sekolah.siswa.*')? 'active' : ''}}">
-            <a class="sidenav-item-link" href="{{route('admin.siswa.index')}}">
+            @auth('admin')
+              <a class="sidenav-item-link" href="{{route('admin.siswa.index')}}">
+            @endauth
+            @auth('sekolah')
+              <a class="sidenav-item-link" href="{{route('sekolah.siswa.index')}}">
+            @endauth
               <i class="mdi mdi-briefcase-account-outline"></i>
               <span class="nav-text">Calon Peserta Didik</span>
             </a>
@@ -28,13 +38,6 @@
             <a class="sidenav-item-link"  href="{{route('admin.sekolah.index')}}">
               <i class="mdi mdi-school"></i>
               <span class="nav-text">Sekolah</span>
-            </a>
-          </li>
-        
-          <li class="{{Route::is('admin.landing-page.*')? 'active' : ''}}">
-            <a class="sidenav-item-link"  href="{{route('admin.landing-page.edit')}}">
-              <i class="mdi mdi-image-filter"></i>
-              <span class="nav-text">Landing Page</span>
             </a>
           </li>
           @endauth

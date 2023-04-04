@@ -47,7 +47,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('login', [LoginController::class, 'showAdminLoginForm'])->name('getLogin');
     Route::post('login', [LoginController::class, 'adminLogin'])->name('login');
 
-    Route::middleware('auth:admin')->middleware('auth:sekolah')->group(function(){
+    Route::middleware('auth:admin')->group(function(){
         Route::get('home', [HomeController::class, 'index'])->name('home');
         Route::get('profile', [ProfileController::class, 'editAdmin'])->name('profile.editAdmin');
         Route::patch('profile', [ProfileController::class, 'updateAdmin'])->name('profile.updateAdmin');
@@ -69,14 +69,34 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::resource('/', SiswaController::class)->parameters([
                 '' => 'siswa'
             ]);
-
-            Route::patch('/{siswa}/update-verificated', [SiswaController::class, 'updateVerificated'])->name('updateVerificated');
-            Route::patch('/{siswa}/update-accepted', [SiswaController::class, 'updateAccepted'])->name('updateAccepted');
         });
 
         Route::post('logout', [LogoutController::class, 'adminLogout'])->name('logout');
     });
 });
+
+Route::prefix('sekolah')->name('sekolah.')->group(function () {
+    Route::get('login', [LoginController::class, 'showSekolahLoginForm'])->name('getLogin');
+    Route::post('login', [LoginController::class, 'sekolahLogin'])->name('login');
+
+    Route::middleware('auth:sekolah')->group(function(){
+        Route::get('home', [HomeController::class, 'index'])->name('home');
+        Route::get('profile', [ProfileController::class, 'editSekolah'])->name('profile.editSekolah');
+        Route::patch('profile', [ProfileController::class, 'updateSekolah'])->name('profile.updateSekolah');
+
+        Route::group(['prefix' => 'siswa', 'as' => 'siswa.'], function () {
+            Route::resource('/', SiswaController::class)->parameters([
+                '' => 'siswa'
+            ]);
+
+            Route::patch('/{siswa}/update-verificated', [SiswaController::class, 'updateVerificated'])->name('updateVerificated');
+            Route::patch('/{siswa}/update-accepted', [SiswaController::class, 'updateAccepted'])->name('updateAccepted');
+        });
+
+        Route::post('logout', [LogoutController::class, 'sekolahLogout'])->name('logout');
+    });
+});
+
 
 Route::prefix('ppdb')->group(function () {
     Route::get('/', function () {

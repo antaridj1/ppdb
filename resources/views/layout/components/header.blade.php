@@ -32,6 +32,7 @@
             </li>
 
             <li class="dropdown-footer">
+              @auth('admin')
                 <a class="dropdown-link-item" href="{{route('admin.logout')}}"
                     onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
@@ -42,7 +43,19 @@
                 <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" class="d-none">
                     @csrf
                 </form>
-        
+              @endauth
+              @auth('sekolah')
+              <a class="dropdown-link-item" href="{{route('sekolah.logout')}}"
+                  onclick="event.preventDefault();
+                  document.getElementById('logout-form').submit();">
+
+                <i class="mdi mdi-logout"></i> 
+                <span class="nav-text">Log Out</span>
+              </a>
+              <form id="logout-form" action="{{ route('sekolah.logout') }}" method="POST" class="d-none">
+                  @csrf
+              </form>
+            @endauth
             </li>
           </ul>
         </li>
