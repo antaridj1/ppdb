@@ -484,12 +484,11 @@ class SiswaController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Siswa  $siswa
-     * @return \Illuminate\Http\Response
-     */
+    public function penerimaan(){
+        $peserta_didiks = DataPribadi::where('isAccepted', null)->get();
+        return view('peserta-didik.penerimaaan', compact('peserta_didiks'));
+    }
+
     public function destroy(Siswa $siswa)
     {
         //

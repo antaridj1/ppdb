@@ -33,6 +33,14 @@
               <span class="nav-text">Calon Peserta Didik</span>
             </a>
           </li>
+          @auth('sekolah')
+          <li class="{{Route::is('sekolah.siswa.penerimaan')? 'active' : ''}}">
+            <a class="sidenav-item-link"  href="{{route('sekolah.siswa.penerimaan')}}">
+              <i class="mdi mdi-school"></i>
+              <span class="nav-text">Penerimaan Peserta</span>
+            </a>
+          </li>
+          @endauth
           @auth('admin')
           <li class="{{Route::is('admin.sekolah.*')? 'active' : ''}}">
             <a class="sidenav-item-link"  href="{{route('admin.sekolah.index')}}">

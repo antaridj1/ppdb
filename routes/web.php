@@ -90,6 +90,7 @@ Route::prefix('sekolah')->name('sekolah.')->group(function () {
             ]);
 
             Route::patch('/{siswa}/update-verificated', [SiswaController::class, 'updateVerificated'])->name('updateVerificated');
+            Route::get('penerimaan', [SiswaController::class, 'penerimaan'])->name('penerimaan');
             Route::patch('/{siswa}/update-accepted', [SiswaController::class, 'updateAccepted'])->name('updateAccepted');
         });
 

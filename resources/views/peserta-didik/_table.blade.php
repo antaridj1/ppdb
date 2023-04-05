@@ -1,14 +1,14 @@
-<table id="productsTable" class="table table-bordered table-product" style="width:100%">
+<table id="productsTable" class="table table-product" style="width:100%">
     <thead>
         <tr class="text-center">
-            @auth('sekolah')
+            @if(Route::is('sekolah.siswa.penerimaan'))
                 <th>
                     <div class="custom-control custom-checkbox checkbox-success d-inline-block">
                     <input type="checkbox" class="custom-control-input" id="checkAll">
                     <label class="custom-control-label" for="checkAll">All</label>
                     </div>
                 </th>
-            @endauth
+            @endif
             <th>No.</th>
             <th>Nama</th>
             @auth('admin')
@@ -23,14 +23,14 @@
     <tbody>
         @forelse ($peserta_didiks as $peserta_didik)
             <tr>
-                @auth('sekolah')
+                @if(Route::is('sekolah.siswa.penerimaan'))
                     <td>
                         <div class="custom-control custom-checkbox checkbox-success d-inline-block mr-3 mb-3">
                             <input type="checkbox" class="custom-control-input check" id="check{{$peserta_didik->id}}">
                             <label class="custom-control-label" for="check{{$peserta_didik->id}}"></label>
                         </div>
                     </td>
-                @endauth
+                @endif
                 <td class="py-0">{{$loop->iteration}}</td>
                 <td>{{$peserta_didik->nama_lengkap}}</td>
                 @auth('admin')
