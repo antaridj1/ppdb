@@ -1,6 +1,7 @@
 <table id="productsTable" class="table table-product" style="width:100%">
     <thead>
       <tr>
+        <th></th>
         <th>No.</th>
         <th>Nama</th>
         <th>Telp</th>
@@ -11,7 +12,7 @@
     </thead>
     <tbody>
       @forelse ($sekolahs as $sekolah)
-        <tr>
+        <tr><td class="py-0"></td>
             <td>{{$loop->iteration}}</td>
             <td>{{$sekolah->nama_sekolah}}</td>
             <td>{{$sekolah->tlp_sekolah}}</td>

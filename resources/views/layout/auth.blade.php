@@ -17,7 +17,7 @@
 
     <body class="bg-light-gray" id="body">
         <div class="container d-flex align-items-center justify-content-center" style="min-height: 100vh">
-            <div class="{{ Route::is('getLogin','admin.getLogin') ? 'col-6' : 'col-12'}}">
+            <div class="{{ Route::is('getLogin','admin.getLogin','sekolah.getLogin') ? 'col-6' : 'col-12'}}">
                 <div class="card card-default mb-0">
                     <div class="card-header pb-0">
                         <div class="app-brand w-100 d-flex justify-content-center border-bottom-0">

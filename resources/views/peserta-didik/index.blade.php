@@ -10,7 +10,10 @@
                 <div class="card card-default">
                     <div class="card-header">
                         <h2>Calon Peserta Didik</h2>
-                       @auth('admin')
+                        @auth('sekolah')
+                            <button href="{{route('admin.sekolah.create')}}" class="btn btn-pill btn-primary" disabled>Terima Calon Peserta Didik</button>
+                        @endauth
+                        @auth('admin')
                             <div class="dropdown">
                                 @if(request('sdn'))
                                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"

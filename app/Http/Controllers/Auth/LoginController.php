@@ -68,8 +68,6 @@ class LoginController extends Controller
 
         if (Auth::guard('admin')->attempt($request->only(['email','password']), $request->get('remember'))){
             return redirect()->intended('/admin/home');
-        }elseif(Auth::guard('sekolah')->attempt($request->only(['email','password']), $request->get('remember'))) {
-            return redirect()->intended('/admin/home');
         } else {
             return back()
                 ->with('status', 'error')
@@ -85,7 +83,7 @@ class LoginController extends Controller
         ]);
 
         if (Auth::guard('sekolah')->attempt($request->only(['email','password']), $request->get('remember'))){
-            return redirect()->intended('/admin/home');
+            return redirect()->intended('/sekolah/home');
         } else {
             return back()
                 ->with('status', 'error')
