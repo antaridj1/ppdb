@@ -9,12 +9,12 @@
         <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">{{$data['email']}}</a></i>
         <i class="bi bi-telephone d-flex align-items-center ms-4"><span>{{$data['tlp_sekolah']}}</span></i>
       </div>
-      <div class="social-links d-none d-md-flex align-items-center">
-        {{-- <a href="#" class="twitter"><i class="bi bi-twitter"></i></a> --}}
+      {{-- <div class="social-links d-none d-md-flex align-items-center">
+        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
         <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
         <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
         <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
-      </div>
+      </div> --}}
     </div>
   </section>
 
@@ -193,18 +193,6 @@
               <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
             </ul>
           </div> --}}
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Sosial Media</h4>
-            <p>Mengenal lebih dekat melalui sosial media</p>
-            <div class="social-links mt-3">
-              {{-- <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a> --}}
-              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-              {{-- <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a> --}}
-              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-            </div>
-          </div>
 
         </div>
       </div>
