@@ -1287,7 +1287,7 @@
         </div>
         <div class="card-body">
             @php
-                $prestasiCount = $siswa->dataBeasiswa;
+                $beasiswaCount = $siswa->dataPribadi->dataBeasiswa;
             @endphp
             @for($i=0; $i<3; $i++)
                  {{-- beasiswa 1 --}}
@@ -1296,15 +1296,15 @@
                 <div class="form-group">
                     <label>Jenis Beasiswa</label><br>
                     <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                        <input type="radio" id="anak_miskin{{ $i }}" name="beasiswa{{ $i }}jenis_anak_berprestasi" class="custom-control-input" value="anak miskin" {{ old('beasiswa'. $i .'jenis_anak_berprestasi', !empty($prestasiCount) && ($prestasiCount[$i]->jenis_anak_berprestasi == 'anak miskin') ? 'checked' : '') }}>
+                        <input type="radio" id="anak_miskin{{ $i }}" name="beasiswa{{ $i }}jenis_anak_berprestasi" class="custom-control-input" value="anak miskin" {{ old('beasiswa'. $i .'jenis_anak_berprestasi', !empty($beasiswaCount) && ($beasiswaCount[$i]->jenis_anak_berprestasi == 'anak miskin') ? 'checked' : '') }}>
                         <label class="custom-control-label" for="anak_miskin{{ $i }}">Anak miskin</label>
                     </div>
                     <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                        <input type="radio" id="pendidikanb{{ $i }}" name="beasiswa{{ $i }}jenis_anak_berprestasi" class="custom-control-input" value="pendidikan" {{ old('beasiswa'. $i .'jenis_anak_berprestasi', !empty($prestasiCount) && ($prestasiCount[$i]->jenis_anak_berprestasi == 'pendidikan') ? 'checked' : '') }}>
+                        <input type="radio" id="pendidikanb{{ $i }}" name="beasiswa{{ $i }}jenis_anak_berprestasi" class="custom-control-input" value="pendidikan" {{ old('beasiswa'. $i .'jenis_anak_berprestasi', !empty($beasiswaCount) && ($beasiswaCount[$i]->jenis_anak_berprestasi == 'pendidikan') ? 'checked' : '') }}>
                         <label class="custom-control-label" for="pendidikanb{{ $i }}">Pendidikan</label>
                     </div>
                     <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                        <input type="radio" id="unggulan{{ $i }}" name="beasiswa{{ $i }}jenis_anak_berprestasi" class="custom-control-input" value="unggulan" {{ old('beasiswa'. $i .'jenis_anak_berprestasi', !empty($prestasiCount) && ($prestasiCount[$i]->jenis_anak_berprestasi == 'unggulan') ? 'checked' : '') }}>
+                        <input type="radio" id="unggulan{{ $i }}" name="beasiswa{{ $i }}jenis_anak_berprestasi" class="custom-control-input" value="unggulan" {{ old('beasiswa'. $i .'jenis_anak_berprestasi', !empty($beasiswaCount) && ($beasiswaCount[$i]->jenis_anak_berprestasi == 'unggulan') ? 'checked' : '') }}>
                         <label class="custom-control-label" for="unggulan{{ $i }}">Unggulan</label>
                     </div>
                     @error('beasiswa{{ $i }}jenis_anak_berprestasi')
@@ -1313,24 +1313,24 @@
                 </div>
                 {{-- keterangan beasiswa --}}
                 <div class="form-group">
-                    <label for="beasiswa1{{ $i }}">Nama Beasiswa</label><br>
-                    <input type="text" class="form-control rounded-0" id="beasiswa1{{ $i }}" name="beasiswa{{ $i }}keterangan" value="{{ old('beasiswa'.$i.'keterangan', $prestasiCount > $i ? $siswa->dataPribadi->dataBeasiswa[$i]->keterangan : '') }}">
+                    <label for="beasiswa{{ $i }}">Nama Beasiswa</label><br>
+                    <input type="text" class="form-control rounded-0" id="beasiswa{{ $i }}" name="beasiswa{{ $i }}keterangan" value="{{ old('beasiswa'.$i.'keterangan', !empty($beasiswaCount[$i]) ? $beasiswaCount[$i]->keterangan : '') }}">
                     @error('beasiswa'.$i.'keterangan')
                         <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                     @enderror
                 </div>
                 {{-- tahun mulai --}}
                 <div class="form-group">
-                    <label for="tahunm1{{ $i }}">Tahun Mulai</label><br>
-                    <input type="text" class="form-control rounded-0" id="tahunm1{{ $i }}" name="beasiswa{{ $i }}tahun_mulai" value="{{ old('beasiswa'.$i.'tahun_mulai', $prestasiCount > $i ? $siswa->dataPribadi->dataBeasiswa[$i]->tahun_mulai : '') }}">
+                    <label for="tahunm{{ $i }}">Tahun Mulai</label><br>
+                    <input type="text" class="form-control rounded-0" id="tahunm{{ $i }}" name="beasiswa{{ $i }}tahun_mulai" value="{{ old('beasiswa'.$i.'tahun_mulai', !empty($beasiswaCount[$i]) ? $beasiswaCount[$i]->tahun_mulai : '') }}">
                     @error('beasiswa'.$i.'tahun_mulai')
                         <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                     @enderror
                 </div>
                     {{-- tahun berakhir --}}
                 <div class="form-group">
-                    <label for="tahuns1{{ $i }}">Tahun Selesai</label><br>
-                    <input type="text" class="form-control rounded-0" id="tahuns1{{ $i }}" name="beasiswa{{ $i }}tahun_selesai" value="{{ old('beasiswa'.$i.'tahun_selesai', $prestasiCount > $i ? $siswa->dataPribadi->dataBeasiswa[$i]->tahun_selesai : '') }}">
+                    <label for="tahuns{{ $i }}">Tahun Selesai</label><br>
+                    <input type="text" class="form-control rounded-0" id="tahuns{{ $i }}" name="beasiswa{{ $i }}tahun_selesai" value="{{ old('beasiswa'.$i.'tahun_selesai', !empty($beasiswaCount[$i]) ? $beasiswaCount[$i]->tahun_selesai : '') }}">
                     @error('beasiswa'.$i.'tahun_selesai')
                         <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                     @enderror

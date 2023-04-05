@@ -47,7 +47,7 @@
       <h1>{{ $data['nama_sekolah'] }}</h1>
       <h2>Pendaftaran Peserta Didik Baru secara Online</h2>
       <div class="d-flex">
-        <a href="http://127.0.0.1:8000/ppdb/login" class="btn-get-started scrollto">Daftar Sekolah</a>
+        <a href="{{route('login.form.siswa')}}" class="btn-get-started scrollto">Daftar Sekolah</a>
         {{-- <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a> --}}
       </div>
     </div>
