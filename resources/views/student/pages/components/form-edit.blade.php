@@ -1,6 +1,7 @@
-<form method="POST" enctype="multipart/form-data" action={{ route('siswa.store') }}>
+<form method="POST" enctype="multipart/form-data" action={{ route('siswa.edit') }}>
     @csrf
     <input type="hidden" value="{{ $siswa->sekolah_id }}" name="sekolah_id">
+    <input type="hidden" value="edit" name="action">
     {{-- Data Pribadi Siswa --}}
     <div class="card card-default">
         <div class="card-header">
@@ -217,7 +218,7 @@
             {{-- alamat --}}
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Alamat</label>
-                <textarea class="form-control" name="alamat" id="exampleFormControlTextarea1" rows="3" value="{{ old('alamat', $siswa->dataPribadi->alamat) }}" required></textarea>
+                <textarea class="form-control" name="alamat" id="exampleFormControlTextarea1" rows="3" required>{{ old('alamat', $siswa->dataPribadi->alamat) }}</textarea>
                 @error('alamat')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -1198,6 +1199,7 @@
             @for ($i=0; $i<3; $i++)
                 {{-- prestasi 1 --}}
                 <h4>Prestasi {{ $i+1 }}</h6> <br>
+                <input type="hidden" name='id_pres{{ $i }}' value="{{ $prestasiCount[$i]->id }}">
                 {{-- jenis --}}
                 <div class="form-group">
                     <label>Jenis Prestasi</label><br>
@@ -1293,6 +1295,7 @@
                  {{-- beasiswa 1 --}}
                 <h4>Beasiswa {{ $i+1 }}</h6> <br>
                 {{-- jenis --}}
+                <input name="id_bea{{ $i }}" value="{{ $beasiswaCount[$i]->id }}">
                 <div class="form-group">
                     <label>Jenis Beasiswa</label><br>
                     <div class="custom-control custom-radio d-inline-block mr-3 mb-3">

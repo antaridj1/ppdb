@@ -47,7 +47,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('login', [LoginController::class, 'showAdminLoginForm'])->name('getLogin');
     Route::post('login', [LoginController::class, 'adminLogin'])->name('login');
 
-    Route::middleware('auth:admin')->group(function(){
+    Route::middleware('auth:admin')->group(function () {
         Route::get('home', [HomeController::class, 'index'])->name('home');
         Route::get('profile', [ProfileController::class, 'editAdmin'])->name('profile.editAdmin');
         Route::patch('profile', [ProfileController::class, 'updateAdmin'])->name('profile.updateAdmin');
@@ -79,7 +79,7 @@ Route::prefix('sekolah')->name('sekolah.')->group(function () {
     Route::get('login', [LoginController::class, 'showSekolahLoginForm'])->name('getLogin');
     Route::post('login', [LoginController::class, 'sekolahLogin'])->name('login');
 
-    Route::middleware('auth:sekolah')->group(function(){
+    Route::middleware('auth:sekolah')->group(function () {
         Route::get('home', [HomeController::class, 'index'])->name('home');
         Route::get('profile', [ProfileController::class, 'editSekolah'])->name('profile.editSekolah');
         Route::patch('profile', [ProfileController::class, 'updateSekolah'])->name('profile.updateSekolah');
@@ -108,40 +108,43 @@ Route::prefix('ppdb')->group(function () {
     $url_sdn_id = null;
     $current_url = URL::current();
     $path_segments = explode('/', parse_url($current_url, PHP_URL_PATH));
-    if(count($path_segments) > 3) {
+    if (count($path_segments) > 3) {
         $url_sdn_id = $path_segments[3];
     }
 
-    Route::group(['prefix' => 'sdn/'.$url_sdn_id], function () use ($url_sdn_id) {
-        Route::get('/', function() use ($url_sdn_id){
-            $data = Sekolah::where('id', $url_sdn_id )->first();
+    Route::group(['prefix' => 'sdn/' . $url_sdn_id], function () use ($url_sdn_id) {
+        Route::get('/', function () use ($url_sdn_id) {
+            $data = Sekolah::where('id', $url_sdn_id)->first();
             $total_daftar = Siswa::where('sekolah_id', $url_sdn_id)->count();
             $pengumuman = Pengumuman::all();
             return view('student.pages.landing-sdn', ['data' => $data, 'total' => $total_daftar, 'pengumumans' => $pengumuman]);
         });
 
 
-        Route::get('login', function() use ($url_sdn_id) {
-            if(auth()->guard('siswa')->check()){
+        Route::get('login', function () use ($url_sdn_id) {
+            if (auth()->guard('siswa')->check()) {
                 $siswa = Siswa::find(auth()->guard('siswa')->check());
                 return view('student.pages.dashboard', ['siswa' => $siswa]);
             }
-            return view('student.pages.login', ['id'=> $url_sdn_id]);
+            return view('student.pages.login', ['id' => $url_sdn_id]);
         })->name('login.form.siswa');
         Route::post('login', [LoginController::class, 'siswaLogin'])->name('login.siswa');
 
 
-        Route::get('/register', function() use ($url_sdn_id) {
-            return view('student.pages.register', ['id'=> $url_sdn_id]);
+        Route::get('/register', function () use ($url_sdn_id) {
+            return view('student.pages.register', ['id' => $url_sdn_id]);
         })->name("register.form.siswa");
         Route::post('/register', [RegisterController::class, 'registerSiswa'])->name('register.siswa');
 
-        Route::middleware('auth:siswa')->group(function(){
-            Route::name('siswa.')->group(function(){
+        Route::middleware('auth:siswa')->group(function () {
+            Route::name('siswa.')->group(function () {
                 Route::get('/dashboard', [SiswaController::class, 'dashboard'])->name('dashboard');
+
+                Route::get('/siswa-lolos-seleksi', [SiswaController::class, 'datatableSiswaLolos'])->name('datatable');
 
                 Route::get('/data-peserta-didik', [SiswaController::class, 'index'])->name('data');
                 Route::post('/data-peserta-didik', [SiswaController::class, 'store'])->name('store');
+                Route::post('/data-peserta-didik-update', [SiswaController::class, 'editData'])->name('edit');
 
                 Route::get('/profile', [SiswaController::class, 'show'])->name('profile');
                 Route::post('/profile', [SiswaController::class, 'update'])->name('update');
