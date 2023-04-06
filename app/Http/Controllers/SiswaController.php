@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
 class SiswaController extends Controller
@@ -792,11 +793,39 @@ class SiswaController extends Controller
 
     public function penerimaan()
     {
-        $peserta_didiks = DataPribadi::where('isAccepted', null)->get();
-        return view('peserta-didik.penerimaaan', compact('peserta_didiks'));
+        $peserta_didiks = DataPribadi::where('sekolah_id', Auth::id())->where('isAccepted', 0)->get();
+        return view('peserta-didik.penerimaan', compact('peserta_didiks'));
     }
 
+    public function updateAccepted(Request $request)
+    {
+        $checkedIds = $request->input('checked');
 
+        if (is_array($checkedIds) && count($checkedIds) > 0) {
+            DataPribadi::where('sekolah_id', Auth::id())->whereIn('id', $checkedIds)->update(['isAccepted' => true]);
+
+            // Kirim email ke siswa yang diperbarui
+            foreach ($checkedIds as $id) {
+                $siswa = Siswa::find($id); // Ganti 'Siswa' dengan nama model Anda jika berbeda
+                $sekolah = $siswa->sekolah->nama_sekolah;
+                if ($siswa && $siswa->email) {
+                    $details = [
+                        'title' => 'Selamat, Anda Telah Diterima Menjadi Peserta Didik'.$sekolah,
+                        'body' => 'Selamat kepada'.$siswa->dataPribadi->nama.'telah diterima menempuh pendidikan di'.$sekolah.'. Informasi lebih lanjut dapat dilihat pada'
+                    ];
+                    Mail::to('antari.appkey@gmail.com')->send(new \App\Mail\SendEmail($details));
+                }
+            }
+            return response()->json([
+                'status' => 'success',
+            ], 200);
+        } else {
+            return response()->json([
+                'status' => 'failed',
+            ], 200);
+        }
+    }
+    
 
     public function destroy(Siswa $siswa)
     {

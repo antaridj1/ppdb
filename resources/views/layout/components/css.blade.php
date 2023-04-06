@@ -8,6 +8,7 @@
 <link href="{{asset('assets/plugins/daterangepicker/daterangepicker.css')}}" rel="stylesheet" />
 <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 <link href="{{asset('assets/plugins/toaster/toastr.min.css')}}" rel="stylesheet" />
+<link href="{{asset('assets/plugins/ladda/ladda.min.css')}}" rel="stylesheet" />
 <!-- MONO CSS -->
 <link id="main-css-href" rel="stylesheet" href="{{asset('assets/css/style.css')}}" />
 <!-- FAVICON -->

@@ -1,3 +1,4 @@
+@auth('sekolah')
 <div class="modal fade" id="exampleModal_{{$peserta_didik->dataPribadi->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -8,7 +9,7 @@
                         <span aria-hidden="true">×</span>
                     </button>
             </div> 
-            <form method="post" action="{{route('admin.siswa.destroy',$peserta_didik->dataPribadi->id)}}">
+            <form method="post" action="{{route('sekolah.siswa.destroy',$peserta_didik->dataPribadi->id)}}">
                 @method('delete')
                 @csrf
                 <div class="modal-body">
@@ -24,7 +25,6 @@
         </div>
     </div>
 </div>
-
 <div class="modal fade" id="verifikasiModal_{{$peserta_didik->dataPribadi->id}}" tabindex="-1" role="dialog" aria-labelledby="verifikasiModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -58,7 +58,7 @@
                         <span aria-hidden="true">×</span>
                     </button>
             </div> 
-            <form method="post" action="{{route('admin.siswa.updateVerificated',$peserta_didik->dataPribadi->id)}}">
+            <form method="post" action="{{route('sekolah.siswa.updateVerificated',$peserta_didik->dataPribadi->id)}}">
                 @method('patch')
                 @csrf
                 <div class="modal-body">
@@ -86,7 +86,7 @@
                         <span aria-hidden="true">×</span>
                     </button>
             </div> 
-            <form method="post" action="{{route('admin.siswa.updateVerificated',$peserta_didik->dataPribadi->id)}}">
+            <form method="post" action="{{route('sekolah.siswa.updateVerificated',$peserta_didik->dataPribadi->id)}}">
                 @method('patch')
                 @csrf
                 <div class="modal-body">
@@ -111,3 +111,4 @@
         </div>
     </div>
 </div>
+@endauth

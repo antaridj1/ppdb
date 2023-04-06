@@ -21,11 +21,18 @@
   <div class="card-footer card-profile-footer">
       <ul class="nav nav-border-top justify-content-center">
           <li class="nav-item">
-              <a class="nav-link active" href="{{route('admin.siswa.show', $peserta_didik->dataPribadi->id)}}">Profile</a>
-          </li>
+            @auth('admin')
+                <a class="nav-link active" href="{{route('admin.siswa.show', $peserta_didik->dataPribadi->id)}}">Profile</a>
+            @endauth
+            @auth('sekolah')
+                <a class="nav-link active" href="{{route('sekolah.siswa.show', $peserta_didik->dataPribadi->id)}}">Profile</a>
+            @endauth
+            </li>
+          @auth('sekolah')
           <li class="nav-item">
-              <a class="nav-link" href="{{route('admin.siswa.edit', $peserta_didik->dataPribadi->id)}}">Edit</a>
+              <a class="nav-link" href="{{route('sekolah.siswa.edit', $peserta_didik->dataPribadi->id)}}">Edit</a>
           </li>
+          @endauth
 
       </ul>
   </div>

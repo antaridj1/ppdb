@@ -28,7 +28,7 @@ class SendEmail extends Mailable
      * @return $this
      */    public function build()
     {
-        return $this->subject('SEMARA STUDIO INTERIOR')
-                    ->view('order.email');
+        return $this->subject('PENERIMAAN PESERTA DIDIK BARU')
+                    ->view('peserta-didik.email');
     }
 }

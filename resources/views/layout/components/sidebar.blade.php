@@ -22,7 +22,7 @@
               <span class="nav-text">Beranda</span>
             </a>
           </li>
-          <li class="{{Route::is('admin.siswa.*') || Route::is('sekolah.siswa.*')? 'active' : ''}}">
+          <li class="{{Route::is('admin.siswa.*') || Route::is('sekolah.siswa.index')? 'active' : ''}}">
             @auth('admin')
               <a class="sidenav-item-link" href="{{route('admin.siswa.index')}}">
             @endauth

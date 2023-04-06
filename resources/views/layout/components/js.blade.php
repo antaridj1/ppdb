@@ -9,6 +9,9 @@
 <script src="{{asset('assets/plugins/jvectormap/jquery-jvectormap-us-aea.js')}}"></script>
 <script src="{{asset('assets/plugins/daterangepicker/moment.min.js')}}"></script>
 <script src="{{asset('assets/plugins/daterangepicker/daterangepicker.js')}}"></script>
+                    
+<script src="{{asset('assets/plugins/ladda/spin.min.js')}}"></script>
+<script src="{{asset('assets/plugins/ladda/ladda.min.js')}}"></script>
 <script>
     jQuery(document).ready(function() {
     jQuery('input[name="dateRange"]').daterangepicker({
