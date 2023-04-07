@@ -1,14 +1,14 @@
-<table id="productsTable" class="table table-bordered table-product" style="width:100%">
+<table id="productsTable" class="table table-product" style="width:100%">
     <thead>
         <tr class="text-center">
-            @auth('sekolah')
+            @if(Route::is('sekolah.siswa.penerimaan'))
                 <th>
                     <div class="custom-control custom-checkbox checkbox-success d-inline-block">
                     <input type="checkbox" class="custom-control-input" id="checkAll">
                     <label class="custom-control-label" for="checkAll">All</label>
                     </div>
                 </th>
-            @endauth
+            @endif
             <th>No.</th>
             <th>Nama</th>
             @auth('admin')
@@ -23,14 +23,14 @@
     <tbody>
         @forelse ($peserta_didiks as $peserta_didik)
             <tr>
-                @auth('sekolah')
+                @if(Route::is('sekolah.siswa.penerimaan'))
                     <td>
                         <div class="custom-control custom-checkbox checkbox-success d-inline-block mr-3 mb-3">
-                            <input type="checkbox" class="custom-control-input check" id="check{{$peserta_didik->id}}">
-                            <label class="custom-control-label" for="check{{$peserta_didik->id}}"></label>
+                            <input type="checkbox" name="checked" class="custom-control-input check" id="{{$peserta_didik->id}}" value="{{$peserta_didik->id}}">
+                            <label class="custom-control-label" for="{{$peserta_didik->id}}"></label>
                         </div>
                     </td>
-                @endauth
+                @endif
                 <td class="py-0">{{$loop->iteration}}</td>
                 <td>{{$peserta_didik->nama_lengkap}}</td>
                 @auth('admin')
@@ -46,8 +46,12 @@
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="{{route('admin.siswa.show',$peserta_didik->id)}}">Detail</a>
-                        
+                        @auth('admin')
+                            <a class="dropdown-item" href="{{route('admin.siswa.show',$peserta_didik->id)}}">Detail</a>
+                        @endauth
+                        @auth('sekolah')
+                            <a class="dropdown-item" href="{{route('sekolah.siswa.show',$peserta_didik->id)}}">Detail</a>
+                        @endauth
                         
                     </div>
                     </div>
@@ -62,17 +66,4 @@
 
     </tbody>
   </table>
-  <script src="{{asset('assets/plugins/jquery/jquery.min.js')}}"></script>
-  <script>
-    const tableSiswa = $('#productsTable');
-    const checkAll = tableSiswa.find('#checkAll'); 
-    checkAll.on('click', function(){
-        if(checkAll.attr('checked') !== undefined){
-            tableSiswa.find('td').find('.check').attr('checked')
-        } else {
-            tableSiswa.find('td').find('.check').removeAttr('checked')
-        }
-    })
-   
-</script>
 

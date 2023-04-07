@@ -27,7 +27,7 @@ class RedirectIfAuthenticated
                 return redirect('admin/home');
             } 
             if ($guard == "sekolah" && Auth::guard($guard)->check()) {
-                return redirect('admin/home');
+                return redirect('sekolah/home');
             }
 
             if ($guard == "web" && Auth::guard($guard)->check()) {

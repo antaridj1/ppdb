@@ -27,6 +27,14 @@
                 </a>
                 </li>
                 <li
+                class="{{ request()->routeIs('siswa.datatable') ? 'active' : '' }}"
+                >
+                <a class="sidenav-item-link" href="{{ route('siswa.datatable') }}">
+                    <i class="mdi mdi-account-multiple-check"></i>
+                    <span class="nav-text">Daftar Siswa Diterima</span>
+                </a>
+                </li>
+                <li
                 class="{{ request()->routeIs('siswa.profile') ? 'active' : '' }}"
                 >
                 <a class="sidenav-item-link" href="{{ route('siswa.profile') }}">

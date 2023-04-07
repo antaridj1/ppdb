@@ -17,6 +17,16 @@ class LogoutController extends Controller
         return redirect('/admin/login');
     }
 
+    public function sekolahLogout(Request $request){
+
+        Auth::guard('sekolah')->logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/sekolah/login');
+    }
+
     public function siswaLogout(Request $request){
 
         Auth::guard('siswa')->logout();
