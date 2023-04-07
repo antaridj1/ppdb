@@ -1399,6 +1399,7 @@
             <div class="form-group">
                 <label for="scan_kk">Scan Kartu Keluarga</label>
                 <input type="file" class="form-control-file" id="scan_kk" name="file_kk" value="{{ old('file_kk', $siswa->dataPribadi->file->file_kk) }}">
+                <p>{{$siswa->dataPribadi->file->file_kk}}</p>
                 @error('file_kk')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
