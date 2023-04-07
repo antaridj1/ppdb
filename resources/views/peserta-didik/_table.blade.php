@@ -52,7 +52,7 @@
                         @auth('sekolah')
                             <a class="dropdown-item" href="{{route('sekolah.siswa.show',$peserta_didik->id)}}">Detail</a>
                         @endauth
-                        
+
                     </div>
                     </div>
                 </td>

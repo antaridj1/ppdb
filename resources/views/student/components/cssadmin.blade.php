@@ -10,7 +10,8 @@
   <link href="{{ asset('assets-ppdb/plugins/daterangepicker/daterangepicker.css') }}" rel="stylesheet" />
   <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
   <link href="{{ asset('assets-ppdb/plugins/toaster/toastr.min.css') }}" rel="stylesheet" />
+  <link href="{{asset('assets-ppdb/plugins/ladda/ladda.min.css')}}" rel="stylesheet" />
   <!-- MONO CSS -->
   <link id="main-css-href" rel="stylesheet" href="{{ asset('assets-ppdb/css/style.css') }}" />
   <link href="{{ asset('assets-ppdb/images/favicon.png') }}" rel="shortcut icon" />
-    <script src="{{ asset('assets-ppdb/plugins/nprogress/nprogress.js') }}"></script>
+<script src="{{ asset('assets-ppdb/plugins/nprogress/nprogress.js') }}"></script>

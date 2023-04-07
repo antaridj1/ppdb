@@ -825,7 +825,7 @@ class SiswaController extends Controller
             ], 200);
         }
     }
-    
+
 
     public function destroy(Siswa $siswa)
     {

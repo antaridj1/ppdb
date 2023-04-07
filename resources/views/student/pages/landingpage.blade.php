@@ -6,8 +6,8 @@
     <section id="topbar" class="d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
-        <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">contact@example.com</a></i>
-        <i class="bi bi-phone d-flex align-items-center ms-4"><span>+1 5589 55488 55</span></i>
+        <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">{{$admin->email}}</a></i>
+        <i class="bi bi-phone d-flex align-items-center ms-4"><span>{{$admin->phone_number}}</span></i>
       </div>
       <div class="social-links d-none d-md-flex align-items-center">
         <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
@@ -35,13 +35,9 @@
           <li><a class="nav-link scrollto" href="#team">Team</a></li> --}}
           <li class="dropdown"><a href="#"><span>Pendaftaran Peserta Didik</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="{{ url('ppdb/sdn/1') }}">SDN 1 Gianyar</a></li>
-              <li><a href="{{ url('ppdb/sdn/2') }}">SDN 2 Gianyar</a></li>
-              <li><a href="{{ url('ppdb/sdn/3') }}">SDN 3 Gianyar</a></li>
-              <li><a href="{{ url('ppdb/sdn/4') }}">SDN 4 Gianyar</a></li>
-              <li><a href="{{ url('ppdb/sdn/5') }}">SDN 5 Gianyar</a></li>
-              <li><a href="{{ url('ppdb/sdn/6') }}">SDN 6 Gianyar</a></li>
-              <li><a href="{{ url('ppdb/sdn/7') }}">SDN 7 Gianyar</a></li>
+                @foreach ($sekolah as $item)
+                <li><a href="{{ url('ppdb/sdn/'.$item->id) }}">{{$item->nama_sekolah}}</a></li>
+                @endforeach
             </ul>
           </li>
 
@@ -109,7 +105,7 @@
           <div class="col-lg-6 col-md-6">
             <div class="count-box">
               <i class="bi bi-emoji-smile"></i>
-              <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
+              <span data-purecounter-start="0" data-purecounter-end="{{ $count_sekolah }}" data-purecounter-duration="1" class="purecounter"></span>
               <p>SDN Kabupaten Gianyar</p>
             </div>
           </div>
@@ -117,7 +113,7 @@
           <div class="col-lg-6 col-md-6 mt-5 mt-md-0">
             <div class="count-box">
               <i class="bi bi-journal-richtext"></i>
-              <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
+              <span data-purecounter-start="0" data-purecounter-end="{{ $count_siswa }}" data-purecounter-duration="1" class="purecounter"></span>
               <p>Peserta Didik Baru</p>
             </div>
           </div>
@@ -149,33 +145,13 @@
 
         <div class="row">
 
-          <div class="col-lg-1 col-md-1 col-1 d-flex align-items-center justify-content-center">
-            <img src="{{ asset('asset/img/clients/client-1.png') }}" class="img-fluid" alt="">
-          </div>
+            <div class="col-lg-6 col-md-6 col-6 d-flex align-items-center justify-content-center">
+                <img src="{{ asset('logo/gianyar.png') }}" class="img-fluid" alt="">
+              </div>
 
-          <div class="col-lg-1 col-md-1 col-1 d-flex align-items-center justify-content-center">
-            <img src="{{ asset('asset/img/clients/client-1.png') }}" class="img-fluid" alt="">
-          </div>
-
-          <div class="col-lg-1 col-md-1 col-1 d-flex align-items-center justify-content-center">
-            <img src="{{ asset('asset/img/clients/client-1.png') }}" class="img-fluid" alt="">
-          </div>
-
-          <div class="col-lg-1 col-md-1 col-1 d-flex align-items-center justify-content-center">
-            <img src="{{ asset('asset/img/clients/client-1.png') }}" class="img-fluid" alt="">
-          </div>
-
-          <div class="col-lg-1 col-md-1 col-1 d-flex align-items-center justify-content-center">
-            <img src="{{ asset('asset/img/clients/client-1.png') }}" class="img-fluid" alt="">
-          </div>
-
-          <div class="col-lg-1 col-md-1 col-1 d-flex align-items-center justify-content-center">
-            <img src="{{ asset('asset/img/clients/client-1.png') }}" class="img-fluid" alt="">
-          </div>
-
-          <div class="col-lg-1 col-md-1 col-1 d-flex align-items-center justify-content-center">
-            <img src="{{ asset('asset/img/clients/client-1.png') }}" class="img-fluid" alt="">
-          </div>
+              <div class="col-lg-6 col-md-6 col-6 d-flex align-items-center justify-content-center">
+                <img src="{{ asset('logo/tut-wuri-handayani1.png') }}" class="img-fluid" alt="">
+              </div>
 
         </div>
 
@@ -192,63 +168,19 @@
           <p>Akses PPDB SDN Gianyar untuk melakukan Pendaftaran Peserta Didik Baru secara Online</p>
         </div>
 
-        <div class="row">
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bxl-dribbble"></i></div>
-              <h4><a href="">SDN 1 Gianyar</a></h4>
-              <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+        <div class="row justify-content-center">
+            @foreach ($sekolah as $sekolah)
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100" style="margin-top:30px;">
+                <div class="icon-box">
+                    @php
+                        $siswa_count = \App\Models\Siswa::where('sekolah_id', $sekolah->id)->count();
+                    @endphp
+                    <div class="icon"><i class="bi bi-mortarboard"></i></div>
+                    <h4><a href="{{url('ppdb/sdn/'.$sekolah->id)}}">{{$sekolah->nama_sekolah}}</a></h4>
+                    <p>Sebanyak {{$siswa_count}} calon peserta didik telah mendaftar di sekolah ini. Daftar segera untuk menjadi bagian dari siswa {{$sekolah->nama_sekolah}}</p>
+              </div>
             </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-file"></i></div>
-              <h4><a href="">SDN 2 Gianyar</a></h4>
-              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-tachometer"></i></div>
-              <h4><a href="">SDN 3 Gianyar</a></h4>
-              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-world"></i></div>
-              <h4><a href="">SDN 4 Gianyar</a></h4>
-              <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="200">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-slideshow"></i></div>
-              <h4><a href="">SDN 5 Gianyar</a></h4>
-              <p>Quis consequatur saepe eligendi voluptatem consequatur dolor consequuntur</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-arch"></i></div>
-              <h4><a href="">SDN 6 Gianyar</a></h4>
-              <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-arch"></i></div>
-              <h4><a href="">SDN 7 Gianyar</a></h4>
-              <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
-            </div>
-          </div>
-
+            @endforeach
         </div>
 
       </div>
@@ -260,67 +192,24 @@
 
         <div class="section-title">
           <h2>PPDB</h2>
-          <h3>Pertanyaan Umum Seputar <span>PPDB</span></h3>
-          <p>Berikut adalah daftar pertanyaan yang dapat membantu dalam melakukan PPDB Online</p>
+          <h3>Pengumuman Seputar <span>PPDB</span></h3>
+          <p>Berikut adalah pengumuman mengenai Penerimaan Peserta Didik Baru</p>
         </div>
 
         <div class="row justify-content-center">
           <div class="col-xl-10">
             <ul class="faq-list">
 
-              <li>
-                <div data-bs-toggle="collapse" class="collapsed question" href="#faq1">Non consectetur a erat nam at lectus urna duis? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-                <div id="faq1" class="collapse" data-bs-parent=".faq-list">
-                  <p>
-                    Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
-                  </p>
-                </div>
-              </li>
-
-              <li>
-                <div data-bs-toggle="collapse" href="#faq2" class="collapsed question">Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-                <div id="faq2" class="collapse" data-bs-parent=".faq-list">
-                  <p>
-                    Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
-                  </p>
-                </div>
-              </li>
-
-              <li>
-                <div data-bs-toggle="collapse" href="#faq3" class="collapsed question">Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-                <div id="faq3" class="collapse" data-bs-parent=".faq-list">
-                  <p>
-                    Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
-                  </p>
-                </div>
-              </li>
-
-              <li>
-                <div data-bs-toggle="collapse" href="#faq4" class="collapsed question">Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-                <div id="faq4" class="collapse" data-bs-parent=".faq-list">
-                  <p>
-                    Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
-                  </p>
-                </div>
-              </li>
-
-              <li>
-                <div data-bs-toggle="collapse" href="#faq5" class="collapsed question">Tempus quam pellentesque nec nam aliquam sem et tortor consequat? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-                <div id="faq5" class="collapse" data-bs-parent=".faq-list">
-                  <p>
-                    Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in
-                  </p>
-                </div>
-              </li>
-
-              <li>
-                <div data-bs-toggle="collapse" href="#faq6" class="collapsed question">Tortor vitae purus faucibus ornare. Varius vel pharetra vel turpis nunc eget lorem dolor? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-                <div id="faq6" class="collapse" data-bs-parent=".faq-list">
-                  <p>
-                    Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies leo integer malesuada nunc vel. Tincidunt eget nullam non nisi est sit amet. Turpis nunc eget lorem dolor sed. Ut venenatis tellus in metus vulputate eu scelerisque. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus. Nibh tellus molestie nunc non blandit massa enim nec.
-                  </p>
-                </div>
-              </li>
+                @foreach ($pengumumans as $index => $pengumuman)
+                <li>
+                  <div data-bs-toggle="collapse" class="collapsed question" href="#faq{{$index+1}}">{{$pengumuman->judul}}<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+                  <div id="faq{{$index+1}}" class="collapse" data-bs-parent=".faq-list">
+                    <p>
+                      {{$pengumuman->pengumuman}}
+                    </p>
+                  </div>
+                </li>
+                @endforeach
 
             </ul>
           </div>

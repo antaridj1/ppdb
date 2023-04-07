@@ -13,8 +13,9 @@ use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SiswaController;
-use App\Http\Controllers\SekolahController;
 use App\Http\Controllers\StyleInteriorController;
+use App\Http\Controllers\LandingpageController;
+use App\Http\Controllers\SekolahController;
 use App\Http\Controllers\TypeInteriorController;
 use App\Http\Controllers\UserController;
 use App\Models\Sekolah;
@@ -93,7 +94,7 @@ Route::prefix('sekolah')->name('sekolah.')->group(function () {
             Route::post('update-accepted', [SiswaController::class, 'updateAccepted'])->name('updateAccepted');
         });
 
-       
+
 
         Route::post('logout', [LogoutController::class, 'sekolahLogout'])->name('logout');
     });
@@ -101,9 +102,7 @@ Route::prefix('sekolah')->name('sekolah.')->group(function () {
 
 
 Route::prefix('ppdb')->group(function () {
-    Route::get('/', function () {
-        return view('student.pages.landingpage');
-    })->name('ppdb');
+    Route::get('/', [LandingpageController::class, 'landingpage'])->name('ppdb');
 
     // Get the SDN id
     $url_sdn_id = null;

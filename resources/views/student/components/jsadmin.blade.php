@@ -1,7 +1,7 @@
 <script src="{{ asset('assets-ppdb/plugins/jquery/jquery.min.js') }}"></script>
 <script src="{{ asset('assets-ppdb/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('assets-ppdb/plugins/simplebar/simplebar.min.js') }}"></script>
-<script src="{{ asset('assets-ppdb/https://unpkg.com/hotkeys-js/dist/hotkeys.min.js') }}"></script>
+<script src="https://unpkg.com/hotkeys-js/dist/hotkeys.min.js'"></script>
 <script src="{{ asset('assets-ppdb/plugins/apexcharts/apexcharts.js') }}"></script>
 <script src="{{ asset('assets-ppdb/plugins/DataTables/DataTables-1.10.18/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('assets-ppdb/plugins/jvectormap/jquery-jvectormap-2.0.3.min.js') }}"></script>
@@ -26,9 +26,21 @@
     });
     });
 </script>
-<script src="{{ asset('assets-ppdb/https://cdn.quilljs.com/1.3.6/quill.js') }}"></script>
+<script src="https://cdn.quilljs.com/1.3.6/quill.js'"></script>
 <script src="{{ asset('assets-ppdb/plugins/toaster/toastr.min.js') }}"></script>
 <script src="{{ asset('assets-ppdb/js/mono.js') }}"></script>
 <script src="{{ asset('assets-ppdb/js/chart.js') }}"></script>
 <script src="{{ asset('assets-ppdb/js/map.js') }}"></script>
 <script src="{{ asset('assets-ppdb/js/custom.js') }}"></script>
+
+
+
+
+<script src="{{asset('assets/plugins/prism/prism.js')}}"></script>
+
+
+
+<script src="js/mono.js"></script>
+<script src="js/chart.js"></script>
+<script src="js/map.js"></script>
+<script src="js/custom.js"></script>

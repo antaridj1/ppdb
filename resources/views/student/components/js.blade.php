@@ -7,6 +7,7 @@
   <script src="{{ asset('asset/vendor/swiper/swiper-bundle.min.js') }}"></script>
   <script src="{{ asset('asset/vendor/waypoints/noframework.waypoints.js') }}"></script>
   <script src="{{ asset('asset/vendor/php-email-form/validate.js') }}"></script>
+  <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 
   <!-- Template Main JS File -->
   <script src="{{ asset('asset/js/main.js') }}"></script>
