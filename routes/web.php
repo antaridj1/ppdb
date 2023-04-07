@@ -16,6 +16,7 @@ use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\StyleInteriorController;
 use App\Http\Controllers\LandingpageController;
 use App\Http\Controllers\SekolahController;
+use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\TypeInteriorController;
 use App\Http\Controllers\UserController;
 use App\Models\Sekolah;
@@ -58,6 +59,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
                 '' => 'sekolah'
             ]);
             Route::patch('/{sekolah}/update-status', [SekolahController::class, 'update_status'])->name('updateStatus');
+        });
+
+        Route::group(['prefix' => 'pengumuman', 'as' => 'pengumuman.'], function () {
+            Route::resource('/', PengumumanController::class)->parameters([
+                '' => 'pengumuman'
+            ]);
+            Route::patch('/{pengumuman}/update-status', [PengumumanController::class, 'update_status'])->name('updateStatus');
         });
 
         Route::group(['prefix' => 'chat', 'as' => 'chat.'], function () {

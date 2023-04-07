@@ -49,6 +49,14 @@
             </a>
           </li>
           @endauth
+          @auth('admin')
+          <li class="{{Route::is('admin.pengumuman.*')? 'active' : ''}}">
+            <a class="sidenav-item-link"  href="{{route('admin.pengumuman.index')}}">
+              <i class="mdi mdi-playlist-edit"></i>
+              <span class="nav-text">Pengumuman</span>
+            </a>
+          </li>
+          @endauth
       </ul>
 
     </div>
