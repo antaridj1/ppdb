@@ -93,7 +93,7 @@
 
           <div class="col-lg-12 col-md-12 mt-5 mt-md-0">
             <div class="count-box">
-              <i class="bi bi-person"></i>
+              <i class="bi bi-mortarboard"></i>
               <span data-purecounter-start="0" data-purecounter-end="{{ $total }}" data-purecounter-duration="1" class="purecounter"></span>
               <p>Peserta Didik Baru</p>
             </div>

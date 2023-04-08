@@ -6,8 +6,8 @@
     <section id="topbar" class="d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
-        <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">{{$admin->email}}</a></i>
-        <i class="bi bi-phone d-flex align-items-center ms-4"><span>{{$admin->phone_number}}</span></i>
+        <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">{{ $admin->email }}</a></i>
+        <i class="bi bi-phone d-flex align-items-center ms-4"><span>{{ $admin->phone_number }}</span></i>
       </div>
       <div class="social-links d-none d-md-flex align-items-center">
         <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
@@ -71,25 +71,25 @@
         <div class="row">
             <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-                <div class="icon"><i class="bx bxl-dribbble"></i></div>
-                <h4 class="title"><a href="">Daftar</a></h4>
-                <p class="description">Pendaftaran siswa baru secara online melalui berbagai perangkat atau device</p>
+                <div class="icon"><i class="bi bi-search"></i></div>
+                <h4 class="title"><a href="">Lihat Pengumuman</a></h4>
+                <p class="description">Pantau informasi terbaru tentang PPDB dari website PPDB sekolah</p>
             </div>
             </div>
 
             <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
-                <div class="icon"><i class="bx bx-file"></i></div>
-                <h4 class="title"><a href="">Informasi</a></h4>
-                <p class="description">Akses informasi mengenai pendaftaran peserta didik baru dengan akses website PPDB sekolah</p>
+                <div class="icon"><i class="bi bi-file-earmark-check"></i></div>
+                <h4 class="title"><a href="">Formulir Pendaftaran</a></h4>
+                <p class="description">Isi dan upload dokumen PPDB secara online</p>
             </div>
             </div>
 
             <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
-                <div class="icon"><i class="bx bx-tachometer"></i></div>
-                <h4 class="title"><a href="">Data</a></h4>
-                <p class="description">Data pendaftaran peserta didik diakses dan disimpan secara digital</p>
+                <div class="icon"><i class="bi bi-chat-left-quote"></i></div>
+                <h4 class="title"><a href="">Informasi Seleksi</a></h4>
+                <p class="description">Info lolos seleksi PPDB dapat dilihat melalui website PPDB sekolah</p>
             </div>
             </div>
         </div>
@@ -104,7 +104,7 @@
 
           <div class="col-lg-6 col-md-6">
             <div class="count-box">
-              <i class="bi bi-emoji-smile"></i>
+              <i class="bi bi-buildings"></i>
               <span data-purecounter-start="0" data-purecounter-end="{{ $count_sekolah }}" data-purecounter-duration="1" class="purecounter"></span>
               <p>SDN Kabupaten Gianyar</p>
             </div>
@@ -112,7 +112,7 @@
 
           <div class="col-lg-6 col-md-6 mt-5 mt-md-0">
             <div class="count-box">
-              <i class="bi bi-journal-richtext"></i>
+              <i class="bi bi-mortarboard"></i>
               <span data-purecounter-start="0" data-purecounter-end="{{ $count_siswa }}" data-purecounter-duration="1" class="purecounter"></span>
               <p>Peserta Didik Baru</p>
             </div>
