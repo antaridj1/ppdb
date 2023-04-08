@@ -51,8 +51,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     Route::middleware('auth:admin')->group(function () {
         Route::get('home', [HomeController::class, 'index'])->name('home');
-        Route::get('profile', [ProfileController::class, 'editAdmin'])->name('profile.editAdmin');
-        Route::patch('profile', [ProfileController::class, 'updateAdmin'])->name('profile.updateAdmin');
+        Route::get('profile', [ProfileController::class, 'editAdmin'])->name('profile.edit');
+        Route::patch('profile', [ProfileController::class, 'updateAdmin'])->name('profile.update');
 
         Route::group(['prefix' => 'sekolah', 'as' => 'sekolah.'], function () {
             Route::resource('/', SekolahController::class)->parameters([
@@ -90,8 +90,8 @@ Route::prefix('sekolah')->name('sekolah.')->group(function () {
 
     Route::middleware('auth:sekolah')->group(function () {
         Route::get('home', [HomeController::class, 'index'])->name('home');
-        Route::get('profile', [ProfileController::class, 'editSekolah'])->name('profile.editSekolah');
-        Route::patch('profile', [ProfileController::class, 'updateSekolah'])->name('profile.updateSekolah');
+        Route::get('profile', [ProfileController::class, 'editSekolah'])->name('profile.edit');
+        Route::patch('profile', [ProfileController::class, 'updateSekolah'])->name('profile.update');
 
         Route::group(['prefix' => 'siswa', 'as' => 'siswa.'], function () {
             Route::resource('/', SiswaController::class)->parameters([

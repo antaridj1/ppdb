@@ -793,7 +793,7 @@ class SiswaController extends Controller
 
     public function penerimaan()
     {
-        $peserta_didiks = DataPribadi::where('sekolah_id', Auth::id())->where('isAccepted', 0)->get();
+        $peserta_didiks = DataPribadi::where('sekolah_id', Auth::id())->where('isVerificated',1)->where('isAccepted', 0)->get();
         return view('peserta-didik.penerimaan', compact('peserta_didiks'));
     }
 
@@ -811,9 +811,9 @@ class SiswaController extends Controller
                 if ($siswa && $siswa->email) {
                     $details = [
                         'title' => 'Selamat, Anda Telah Diterima Menjadi Peserta Didik'.$sekolah,
-                        'body' => 'Selamat kepada'.$siswa->dataPribadi->nama.'telah diterima menempuh pendidikan di'.$sekolah.'. Informasi lebih lanjut dapat dilihat pada'
+                        'body' => 'Selamat kepada'.$siswa->dataPribadi->nama.'telah diterima untuk menempuh pendidikan di'.$sekolah.'. Informasi lebih lanjut dapat dilihat pada'
                     ];
-                    Mail::to('antari.appkey@gmail.com')->send(new \App\Mail\SendEmail($details));
+                    Mail::to($siswa->email)->send(new \App\Mail\SendEmail($details));
                 }
             }
             return response()->json([

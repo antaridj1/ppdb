@@ -9,7 +9,7 @@
   <tbody>
     @foreach ($data as $siswa)
     <tr>
-      <td>{{$loop->iteration}}</td>
+      <td class="py-0">{{$loop->iteration}}</td>
       <td>{{$siswa->nama_lengkap}}</td>
       <td>{{$siswa->nisn}}</td>
     </tr>

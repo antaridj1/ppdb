@@ -11,7 +11,7 @@
         <li class="dropdown user-menu">
           <button class="dropdown-toggle nav-link" data-toggle="dropdown">
             @auth('admin')
-              <span class="d-none d-lg-inline-block">{{auth()->guard('admin')->user()->name}}</span>
+              <span class="d-none d-lg-inline-block">{{auth()->guard('admin')->user()->nama_admin}}</span>
             @endauth
             @auth('sekolah')
               <span class="d-none d-lg-inline-block">Operator</span>
@@ -19,13 +19,12 @@
           </button>
           <ul class="dropdown-menu dropdown-menu-right">
             <li>
-              <a class="dropdown-link-item" href="user-profile.html">
-                <i class="mdi mdi-account-outline"></i>
-                <span class="nav-text">Profil</span>
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-link-item" href="user-account-settings.html">
+              @auth('admin')
+                <a class="dropdown-link-item" href="{{route('admin.profile.edit')}}">
+              @endauth
+              @auth('sekolah')
+                <a class="dropdown-link-item" href="{{route('sekolah.profile.edit')}}">
+              @endauth
                 <i class="mdi mdi-settings"></i>
                 <span class="nav-text">Edit Akun</span>
               </a>
