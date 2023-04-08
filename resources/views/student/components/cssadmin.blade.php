@@ -13,5 +13,5 @@
   <link href="{{asset('assets-ppdb/plugins/ladda/ladda.min.css')}}" rel="stylesheet" />
   <!-- MONO CSS -->
   <link id="main-css-href" rel="stylesheet" href="{{ asset('assets-ppdb/css/style.css') }}" />
-  <link href="{{ asset('assets-ppdb/images/favicon.png') }}" rel="shortcut icon" />
+  <link href="#" rel="shortcut icon" />
 <script src="{{ asset('assets-ppdb/plugins/nprogress/nprogress.js') }}"></script>

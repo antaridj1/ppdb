@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
 use App\Models\Company;
 use App\Models\DataPribadi;
 use App\Models\Laporan;
 use App\Models\Order;
+use App\Models\Pengumuman;
 use App\Models\Portfolio;
 use App\Models\Sekolah;
 use App\Models\Siswa;
@@ -49,6 +51,18 @@ class HomeController extends Controller
     }
 
     public function landingPage(){
-        return view('student.pages.landingpage');
+        
+        $sekolah = Sekolah::all();
+        $siswa = Siswa::all();
+        $pengumuman = Pengumuman::all();
+        $admin = Admin::where('id', 1)->first();
+        return view('student.pages.landingpage', [
+            'sekolah' => $sekolah,
+            'siswa' => 'siswa',
+            'count_sekolah' => $sekolah->count(),
+            'count_siswa' => $siswa->count(),
+            'pengumumans' => $pengumuman,
+            'admin' => $admin
+        ]);;
     }
 }

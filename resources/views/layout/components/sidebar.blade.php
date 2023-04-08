@@ -4,7 +4,7 @@
     <div class="app-brand">
       <a href="{{route('admin.home')}}">
         <img src="images/logo.png" alt="Mono">
-        <span class="brand-name">MONO</span>
+        <span class="brand-name">PPDB</span>
       </a>
     </div>
     <!-- begin sidebar scrollbar -->
@@ -68,7 +68,7 @@
             <li>
               <a href="{{route('admin.logout')}}" data-toggle="tooltip" title="Logout"><i class="mdi mdi-logout"></i></a></li>
             <li>
-              <a href="{{route('admin.chat.index')}}" data-toggle="tooltip" title="No chat messages"><i class="mdi mdi-chat-processing"></i></a>
+              <a href="{{route('admin.chat.index')}}" data-toggle="tooltip" title="Messages"><i class="mdi mdi-chat-processing"></i></a>
             </li>
           </ul>
         </div>

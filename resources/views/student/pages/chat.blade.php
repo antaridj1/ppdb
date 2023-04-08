@@ -46,12 +46,12 @@
 
                                 <div class="card-body pb-0" data-simplebar style="height: 545px;">
                                     <div id="chatroom" style="overflow-y: auto ">
-    
+                                        
                                     </div>
                                 </div>
 
                                 <div class="chat-footer">
-                                    <form method="post" id="send_messages" data-url-store="{{route('siswa.storeUser')}}" data-url-create="{{route('siswa.createUser')}}">
+                                    <form method="post" id="send_messages" data-url-store="{{route('siswa.storeSiswa')}}" data-url-create="{{route('siswa.createSiswa')}}">
                                         @csrf
                                         <div class="input-group input-group-chat">
                                             <input type="text" class="form-control" placeholder="Tuliskan pesan" id="chat" name="chat" aria-label="Recipient's username" aria-describedby="basic-addon2">
@@ -75,6 +75,8 @@
     
     <script src="{{asset('assets/plugins/jquery/jquery.min.js')}}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
     <script>
             var urlPost = $('#send_messages').data('url-store');
             var urlCreate = $('#send_messages').data('url-create');
@@ -93,7 +95,7 @@
                                     <div class="media-body">
                                         <div class="text-content">
                                             <span class="message">${chat.messages}</span>
-                                            <time class="time">5 mins ago</time>
+                                            <time class="time">${moment(chat.created_at).fromNow()}</time>
                                         </div>
                                     </div>
                                 </div>`;
@@ -103,14 +105,21 @@
                                     <div class="media-body">
                                         <div class="text-content">
                                             <span class="message">${chat.messages}</span>
-                                            <time class="time">4 mins ago</time>
+                                            <time class="time">${moment(chat.created_at).fromNow()}</time>
                                         </div>
                                     </div>
                                 </div>`;
                             }
                         });
-    
-                        $('#chatroom').html(results);
+                        if(results === ''){
+                            $('#chatroom').html(`<div class="d-flex justify-content-center align-items-center">
+                                                 <h5><span class="badge badge-light badge-pill">Tidak Ada Pesan</span></h5>
+                                                </div>`);
+
+                        } else {
+                             $('#chatroom').html(results);
+                        }
+                       
                     }
                 })
             }

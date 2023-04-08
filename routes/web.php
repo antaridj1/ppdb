@@ -157,9 +157,9 @@ Route::prefix('ppdb')->group(function () {
                 Route::get('/profile', [SiswaController::class, 'show'])->name('profile');
                 Route::post('/profile', [SiswaController::class, 'update'])->name('update');
 
-                Route::get('/chat', [ChatController::class, 'indexUser'])->name('indexUser');
-                Route::get('/chat/create', [ChatController::class, 'createUser'])->name('createUser');
-                Route::post('/chat/create', [ChatController::class, 'storeUser'])->name('storeUser');
+                Route::get('/chat', [ChatController::class, 'indexSiswa'])->name('indexSiswa');
+                Route::get('/chat/create', [ChatController::class, 'createSiswa'])->name('createSiswa');
+                Route::post('/chat/create', [ChatController::class, 'storeSiswa'])->name('storeSiswa');
 
                 Route::post('logout', [LogoutController::class, 'siswaLogout'])->name('logout');
             });

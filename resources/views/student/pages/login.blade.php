@@ -61,9 +61,9 @@
                                 @enderror
                             </div>
                             <div class="col-md-12">
-                            <div class="d-flex justify-content-end mb-5">
+                            {{-- <div class="d-flex justify-content-end mb-5">
                                 <a class="text-color" href="#"> Forgot password? </a>
-                            </div>
+                            </div> --}}
                             <button type="submit" class="btn btn-primary btn-pill mt-3 mb-4 btn-block">Login</button>
                             <p class="text-center">Belum punya akun ?
                                 <a class="text-blue" href="{{ route('register.form.siswa') }}">Buat Akun</a>
