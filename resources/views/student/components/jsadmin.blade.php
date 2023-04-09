@@ -38,7 +38,11 @@
 
 <script src="{{asset('assets/plugins/prism/prism.js')}}"></script>
 
+<script type="text/javascript" src="https://jeremyfagis.github.io/dropify/dist/js/dropify.min.js"></script>
 
+<script>
+  $('.dropify').dropify();
+</script>
 
 <script src="js/mono.js"></script>
 <script src="js/chart.js"></script>

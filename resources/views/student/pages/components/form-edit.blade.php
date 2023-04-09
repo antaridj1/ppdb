@@ -11,7 +11,7 @@
             {{-- nama lengkap ppdb --}}
             <div class="form-group">
                 <label for="nama_lengkap">Nama Lengkap</label>
-                <input type="text" name="nama_lengkap" class="form-control rounded-0" id="nama_lengkap" value="{{ old('nama_lengkap', $siswa->dataPribadi->nama_lengkap) }}" required>
+                <input type="text" name="nama_lengkap" class="form-control rounded-0 @error('nama_lengkap') is-invalid @enderror" id="nama_lengkap" value="{{ old('nama_lengkap', $siswa->dataPribadi->nama_lengkap) }}" required>
                 @error('nama_lengkap')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -34,7 +34,7 @@
             {{-- nisn --}}
             <div class="form-group">
                 <label for="nisn">NISN</label>
-                <input type="text" name="nisn" class="form-control rounded-0" id="nisn" maxlength="10" value="{{ old('nisn', $siswa->dataPribadi->nisn) }}" required>
+                <input type="text" name="nisn" class="form-control rounded-0 @error('nisin') is-invalid @enderror" id="nisn" maxlength="10" value="{{ old('nisn', $siswa->dataPribadi->nisn) }}" required>
                 <span class="mt-2 d-block"><span style="color:red;">*</span>masukan 10 digit NISN</span>
                 @error('nisn')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
@@ -43,7 +43,7 @@
             {{-- nik --}}
             <div class="form-group">
                 <label for="nik">NIK/No. KITAS (Untuk WNA)</label>
-                <input type="text" name="nik" class="form-control rounded-0" id="nik" maxlength="16" value="{{ old('nik', $siswa->dataPribadi->nik) }}" required>
+                <input type="text" name="nik" class="form-control rounded-0 @error('nik') is-invalid @enderror" id="nik" maxlength="16" value="{{ old('nik', $siswa->dataPribadi->nik) }}" required>
                 <span class="mt-2 d-block"><span style="color:red;">*</span>masukan 16 digit NIK</span>
                 @error('nik')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
@@ -52,7 +52,7 @@
             {{-- kk --}}
             <div class="form-group">
                 <label for="kk">No. KK</label>
-                <input type="text" name="kk" class="form-control rounded-0" id="kk" value="{{ old('kk', $siswa->dataPribadi->kk) }}" required>
+                <input type="text" name="kk" class="form-control rounded-0 @error('kk') is-invalid @enderror" id="kk" value="{{ old('kk', $siswa->dataPribadi->kk) }}" required>
                 @error('kk')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -60,7 +60,7 @@
             {{-- tempat lahir --}}
             <div class="form-group">
                 <label for="tempat_lahir">Tempat Lahir</label>
-                <input type="text" name="tempat_lahir" class="form-control rounded-0" id="tempat_lahir" value="{{ old('tempat_lahir', $siswa->dataPribadi->tempat_lahir) }}" required>
+                <input type="text" name="tempat_lahir" class="form-control rounded-0 @error('tempat_lahir') is-invalid @enderror" id="tempat_lahir" value="{{ old('tempat_lahir', $siswa->dataPribadi->tempat_lahir) }}" required>
                 @error('tempat_lahir')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -275,7 +275,7 @@
             </div>
             {{-- lintang --}}
             <div class="form-group">
-                <label for="lintang">lintan</label>
+                <label for="lintang">Lintang</label>
                 <input type="text" class="form-control rounded-0" name="lintang" id="lintang" value="{{ old('lintang', $siswa->dataPribadi->lintang) }}" required>
                 @error('lintang')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
@@ -1253,7 +1253,7 @@
                 {{-- nama prestasi --}}
                 <div class="form-group">
                     <label for="namap{{ $i }}">Nama Prestasi</label>
-                    <input type="text" class="form-control rounded-0" id="namap{{ $i }}" name="prestasi{{ $i }}nama_prestasi" value="{{ old('prestasi'.$i.'nama_prestasi', !empty($prestasiCount[$i]) ? $prestasiCount[$i]->nama_prestasi : '') }}">
+                    <input type="text" class="form-control rounded-0 @error('prestasi'.$i.'nama_prestasi') is-invalid @enderror" id="namap{{ $i }}" name="prestasi{{ $i }}nama_prestasi" value="{{ old('prestasi'.$i.'nama_prestasi', !empty($prestasiCount[$i]) ? $prestasiCount[$i]->nama_prestasi : '') }}">
                     @error('prestasi'.$i.'nama_prestasi')
                         <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                     @enderror
@@ -1261,7 +1261,7 @@
                 {{-- tahun prestasi --}}
                 <div class="form-group">
                     <label for="tahunp{{ $i }}">Tahun Prestasi</label>
-                    <input type="number" class="form-control rounded-0" id="tahunp{{ $i }}" maxlength="4" name="prestasi{{ $i }}tahun" value="{{ old('prestasi'.$i.'tahun', !empty($prestasiCount[$i]) ? $prestasiCount[$i]->tahun : '') }}">
+                    <input type="number" class="form-control rounded-0 @error('prestasi'.$i.'tahun') is-invalid @enderror" id="tahunp{{ $i }}" maxlength="4" name="prestasi{{ $i }}tahun" value="{{ old('prestasi'.$i.'tahun', !empty($prestasiCount[$i]) ? $prestasiCount[$i]->tahun : '') }}">
                     @error('prestasi'.$i.'tahun')
                         <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                     @enderror
@@ -1295,7 +1295,7 @@
                  {{-- beasiswa 1 --}}
                 <h4>Beasiswa {{ $i+1 }}</h6> <br>
                 {{-- jenis --}}
-                <input name="id_bea{{ $i }}" value="{{ $beasiswaCount[$i]->id }}">
+                <input type="hidden" name="id_bea{{ $i }}" value="{{ $beasiswaCount[$i]->id }}">
                 <div class="form-group">
                     <label>Jenis Beasiswa</label><br>
                     <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
@@ -1317,7 +1317,7 @@
                 {{-- keterangan beasiswa --}}
                 <div class="form-group">
                     <label for="beasiswa{{ $i }}">Nama Beasiswa</label><br>
-                    <input type="text" class="form-control rounded-0" id="beasiswa{{ $i }}" name="beasiswa{{ $i }}keterangan" value="{{ old('beasiswa'.$i.'keterangan', !empty($beasiswaCount[$i]) ? $beasiswaCount[$i]->keterangan : '') }}">
+                    <input type="text" class="form-control rounded-0 @error('beasiswa'.$i.'keterangan') is-invalid @enderror" id="beasiswa{{ $i }}" name="beasiswa{{ $i }}keterangan" value="{{ old('beasiswa'.$i.'keterangan', !empty($beasiswaCount[$i]) ? $beasiswaCount[$i]->keterangan : '') }}">
                     @error('beasiswa'.$i.'keterangan')
                         <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                     @enderror
@@ -1325,7 +1325,7 @@
                 {{-- tahun mulai --}}
                 <div class="form-group">
                     <label for="tahunm{{ $i }}">Tahun Mulai</label><br>
-                    <input type="text" class="form-control rounded-0" id="tahunm{{ $i }}" name="beasiswa{{ $i }}tahun_mulai" value="{{ old('beasiswa'.$i.'tahun_mulai', !empty($beasiswaCount[$i]) ? $beasiswaCount[$i]->tahun_mulai : '') }}">
+                    <input type="text" class="form-control rounded-0 @error('beasiswa'.$i.'tahun_mulai') is-invalid @enderror" id="tahunm{{ $i }}" name="beasiswa{{ $i }}tahun_mulai" value="{{ old('beasiswa'.$i.'tahun_mulai', !empty($beasiswaCount[$i]) ? $beasiswaCount[$i]->tahun_mulai : '') }}">
                     @error('beasiswa'.$i.'tahun_mulai')
                         <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                     @enderror
@@ -1333,7 +1333,7 @@
                     {{-- tahun berakhir --}}
                 <div class="form-group">
                     <label for="tahuns{{ $i }}">Tahun Selesai</label><br>
-                    <input type="text" class="form-control rounded-0" id="tahuns{{ $i }}" name="beasiswa{{ $i }}tahun_selesai" value="{{ old('beasiswa'.$i.'tahun_selesai', !empty($beasiswaCount[$i]) ? $beasiswaCount[$i]->tahun_selesai : '') }}">
+                    <input type="text" class="form-control rounded-0 @error('beasiswa'.$i.'tahun_selesai') is-invalid @enderror" id="tahuns{{ $i }}" name="beasiswa{{ $i }}tahun_selesai" value="{{ old('beasiswa'.$i.'tahun_selesai', !empty($beasiswaCount[$i]) ? $beasiswaCount[$i]->tahun_selesai : '') }}">
                     @error('beasiswa'.$i.'tahun_selesai')
                         <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                     @enderror
@@ -1401,8 +1401,9 @@
             {{-- file kk --}}
             <div class="form-group">
                 <label for="scan_kk">Scan Kartu Keluarga</label>
-                <input type="file" class="form-control-file" id="scan_kk" name="file_kk" value="{{ old('file_kk', $siswa->dataPribadi->file->file_kk) }}">
-                <p>{{$siswa->dataPribadi->file->file_kk}}</p>
+                {{-- <input type="file" class="form-control-file" id="scan_kk" name="file_kk" value="{{ old('file_kk', $siswa->dataPribadi->file->file_kk) }}">
+                <p>{{$siswa->dataPribadi->file->file_kk}}</p> --}}
+                <input type="file" id="scan_kk" class="dropify" data-height="300" name="file_kk" data-default-file="{{ old('file_kk', asset('storage/'.$siswa->dataPribadi->file->file_kk)) }}" data-allowed-file-extensions="pdf" value="{{ old('file_kk', asset('storage/'.$siswa->dataPribadi->file->file_kk)) }}" />
                 @error('file_kk')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -1410,7 +1411,8 @@
             {{-- file akta --}}
             <div class="form-group">
                 <label for="scan_akta">Scan Kartu Akta Kelahiran</label>
-                <input type="file" class="form-control-file" id="scan_akta" name="file_akta_kelahiran" value="{{ old('file_akta_kelahiran', $siswa->dataPribadi->file->file_akta_kelahiran) }}">
+                {{-- <input type="file" class="form-control-file" id="scan_akta" name="file_akta_kelahiran" value="{{ old('file_akta_kelahiran', $siswa->dataPribadi->file->file_akta_kelahiran) }}"> --}}
+                <input type="file" id="scan_akta" class="dropify" data-height="300" name="file_akta_kelahiran" data-default-file="{{ old('file_akta_kelahiran', asset('storage/'.$siswa->dataPribadi->file->file_akta_kelahiran)) }}" data-allowed-file-extensions="pdf" value="{{ old('file_akta_kelahiran', asset('storage/'.$siswa->dataPribadi->file->file_akta_kelahiran)) }}" />
                 @error('file_akta_kelahiran')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -1418,7 +1420,8 @@
             {{-- file ktp ortu --}}
             <div class="form-group">
                 <label for="scan_ktp">Scan Kartu Akta Kelahiran</label>
-                <input type="file" class="form-control-file" id="scan_ktp" name="file_ktp_ortu" value="{{ old('file_ktp_ortu', $siswa->dataPribadi->file->file_ktp_ortu) }}">
+                {{-- <input type="file" class="form-control-file" id="scan_ktp" name="file_ktp_ortu" value="{{ old('file_ktp_ortu', $siswa->dataPribadi->file->file_ktp_ortu) }}"> --}}
+                <input type="file" id="scan_ktp" class="dropify" data-height="300" name="file_ktp_ortu" data-default-file="{{ old('file_ktp_ortu', asset('storage/'.$siswa->dataPribadi->file->file_ktp_ortu)) }}" data-allowed-file-extensions="pdf" {{ old('file_kk', asset('storage/'.$siswa->dataPribadi->file->file_ktp_ortu)) }} />
                 @error('file_ktp_ortu')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -1426,7 +1429,8 @@
             {{-- file ijazah tk --}}
             <div class="form-group">
                 <label for="scan_ijazah">Scan Ijazah TK</label>
-                <input type="file" class="form-control-file" id="scan_ijazah" name="file_ijazah_tk" value="{{ old('file_ijazah_tk', $siswa->dataPribadi->file->file_ijazah_tk) }}">
+                {{-- <input type="file" class="form-control-file" id="scan_ijazah" name="file_ijazah_tk" value="{{ old('file_ijazah_tk', $siswa->dataPribadi->file->file_ijazah_tk) }}"> --}}
+                <input type="file" id="scan_ijazah" class="dropify" data-height="300" name="file_ijazah_tk" data-default-file="{{ old('file_ijazah_tk', asset('storage/'.$siswa->dataPribadi->file->file_ijazah_tk)) }}" data-allowed-file-extensions="pdf" {{ old('file_kk', asset('storage/'.$siswa->dataPribadi->file->file_ijazah_tk)) }} />
                 @error('file_ijazah_tk')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror

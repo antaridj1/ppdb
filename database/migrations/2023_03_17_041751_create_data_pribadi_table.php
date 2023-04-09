@@ -43,7 +43,7 @@ class CreateDataPribadiTable extends Migration
             $table->enum('kip', ['iya', 'tidak']);
             $table->enum('menerima_kip', ['iya', 'tidak']);
             $table->set('pip', ['Menerima bantuan serupa', 'Menolak', 'Sudah mampu']);
-            $table->boolean('isAccepted')->default(false); // si anak diterima
+            $table->boolean('isAccepted')->nullable(); // si anak diterima
             $table->boolean('isVerificated')->nullable(); // data lengkap
             $table->text('saran_perbaikan')->nullable();
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));

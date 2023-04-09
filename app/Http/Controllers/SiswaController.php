@@ -189,15 +189,16 @@ class SiswaController extends Controller
             ]);
 
             $validator = Validator::make($request->all(), $rules);
+
+            if ($validator->fails()) {
+                return back()->withErrors($validator)->withInput();
+            }
         } catch (\Exception $e) {
             Log::error('eror message: ' . $e->getMessage() . 'in line: ' . $e->getLine());
         }
 
 
         try {
-
-
-
             $dataPribadi = DataPribadi::create([
                 'sekolah_id' => $request->input('sekolah_id'),
                 'nama_lengkap' => $request->input('nama_lengkap'),
@@ -251,8 +252,6 @@ class SiswaController extends Controller
             /**
              * Data Ayah
              */
-
-
             DataAyah::create([
                 'data_pribadi_id' => $id_datapribadi,
                 'nama_ayah' => $request->input('nama_ayah'),
@@ -268,7 +267,6 @@ class SiswaController extends Controller
             /**
              * Data Ibu
              */
-
             DataIbu::create([
                 'data_pribadi_id' => $id_datapribadi,
                 'nama_ibu' => $request->input('nama_ibu'),
@@ -279,8 +277,6 @@ class SiswaController extends Controller
                 'penghasilan_ibu' => $request->input('penghasilan_ibu'),
                 'berkebutuhan_khusus_ibu' => $request->input('berkebutuhan_khusus_ibu')
             ]);
-
-
 
             /**
              * Data Wali
@@ -312,8 +308,6 @@ class SiswaController extends Controller
                     ]);
                 }
             }
-
-
 
             /**
              * Prestasi
@@ -449,7 +443,7 @@ class SiswaController extends Controller
                 'lintang' => 'required',
                 'bujur' => 'required',
                 'tempat_tinggal' => 'required',
-                'moda_tranportasi' => 'required',
+                'moda_transportasi' => 'required',
                 'anak_ke' => 'required',
                 'kip' => 'required',
                 'menerima_kip' => 'required',
@@ -516,6 +510,10 @@ class SiswaController extends Controller
             ]);
 
             $validator = Validator::make($request->all(), $rules);
+            // dd($request->all(), $validator->messages());
+            if ($validator->fails()) {
+                return back()->withErrors($validator)->withInput();
+            }
         } catch (\Exception $e) {
             Log::error('eror message: ' . $e->getMessage() . 'in line: ' . $e->getLine());
         }
@@ -699,10 +697,7 @@ class SiswaController extends Controller
                 'isVerificated' => null
             ]);
 
-            return view(
-                'student.pages.data-ppdb',
-                ['daftar' => 1, 'siswa' => $siswa]
-            );
+            return back();
         } catch (\Exception $e) {
             Log::error('eror message: ' . $e->getMessage() . 'in line: ' . $e->getLine());
         }

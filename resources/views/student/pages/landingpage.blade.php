@@ -53,7 +53,7 @@
 @section('content')
 
 <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex align-items-center">
+  <section id="hero" class="d-flex align-items-center" style="background-image: url('{{asset('storage/'.$admin->gambar)}}')">
     <div class="container" data-aos="zoom-out" data-aos-delay="100">
       <h1>Selamat datang di <span>PPDB</span></h1>
       <h2>Pendaftaran Peserta Didik Baru secara Online</h2>

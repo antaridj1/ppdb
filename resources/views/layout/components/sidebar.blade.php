@@ -66,7 +66,13 @@
         <div class="sidebar-footer-content">
           <ul class="d-flex">
             <li>
-              <a href="{{route('admin.logout')}}" data-toggle="tooltip" title="Logout"><i class="mdi mdi-logout"></i></a></li>
+              <form action="{{ route('admin.logout') }}" method="POST">
+                  @csrf
+                  <button type="submit" class="btn btn-link btn-block" data-toggle="tooltip" title="Logout" style="color:white">
+                      <i class="mdi mdi-logout" style="font-size: 24px;"></i>
+                  </button>
+              </form>
+            </li>
             <li>
               <a href="{{route('admin.chat.index')}}" data-toggle="tooltip" title="Messages"><i class="mdi mdi-chat-processing"></i></a>
             </li>

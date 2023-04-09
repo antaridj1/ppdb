@@ -11,6 +11,8 @@
   <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
   <link href="{{ asset('assets-ppdb/plugins/toaster/toastr.min.css') }}" rel="stylesheet" />
   <link href="{{asset('assets-ppdb/plugins/ladda/ladda.min.css')}}" rel="stylesheet" />
+
+  <link rel="stylesheet" type="text/css" href="https://jeremyfagis.github.io/dropify/dist/css/dropify.min.css">
   <!-- MONO CSS -->
   <link id="main-css-href" rel="stylesheet" href="{{ asset('assets-ppdb/css/style.css') }}" />
   <link href="#" rel="shortcut icon" />
