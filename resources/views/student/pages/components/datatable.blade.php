@@ -39,7 +39,9 @@
             <td>{{$siswa->nisn}}</td>
         </tr>
       @empty
-        <tr>Data Tidak Ditemukan</tr>
+        <tr>
+            <td colspan="3" style="text-align: center;">Data Tidak Ditemukan</td>
+        </tr>
       @endforelse
 
     </tbody>

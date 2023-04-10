@@ -1196,6 +1196,7 @@
             @php
                 $prestasiCount = $siswa->dataPribadi->dataPrestasi;
             @endphp
+            @if($prestasiCount->count() > 0)
             @for ($i=0; $i<3; $i++)
                 {{-- prestasi 1 --}}
                 <h4>Prestasi {{ $i+1 }}</h6> <br>
@@ -1276,8 +1277,7 @@
                 </div>
                 <br>
             @endfor
-
-
+            @endif
         </div>
     </div>
 
@@ -1291,6 +1291,7 @@
             @php
                 $beasiswaCount = $siswa->dataPribadi->dataBeasiswa;
             @endphp
+            @if($beasiswaCount->count() > 0)
             @for($i=0; $i<3; $i++)
                  {{-- beasiswa 1 --}}
                 <h4>Beasiswa {{ $i+1 }}</h6> <br>
@@ -1340,6 +1341,8 @@
                 </div>
                 <br>
             @endfor
+            @endif
+
         </div>
     </div>
 

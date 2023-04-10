@@ -39,7 +39,7 @@ class SiswaController extends Controller
             // Untuk Wali
             $id = auth()->guard('siswa')->id();
             $siswa = Siswa::find($id);
-            if ($siswa->daftar == 0) {
+            if ($siswa->daftar === 0) {
                 return view('student.pages.data-ppdb', ['siswa' => $siswa, 'daftar' => 0]);
             } else {
                 $siswa = Siswa::find($id);
@@ -122,7 +122,7 @@ class SiswaController extends Controller
                 'lintang' => 'required',
                 'bujur' => 'required',
                 'tempat_tinggal' => 'required',
-                'moda_tranportasi' => 'required',
+                'moda_transportasi' => 'required',
                 'anak_ke' => 'required',
                 'kip' => 'required',
                 'menerima_kip' => 'required',
@@ -381,6 +381,8 @@ class SiswaController extends Controller
                 'daftar' => 1,
                 'data_pribadi_id' => $id_datapribadi
             ]);
+
+            DataPribadi::where('id', $id_datapribadi)->update(['isisVerificated' => 0]);
 
             return view(
                 'student.pages.data-ppdb',
@@ -663,25 +665,25 @@ class SiswaController extends Controller
             if ($request->hasFile('file_kk')) {
                 $pdf_kk = $request->file('file_kk');
                 $name_kk = uniqid() . '.' . $pdf_kk->getClientOriginalExtension();
-                $pdf_kk->storeAs('file/kk/', $name_kk);
+                $pdf_kk->store('file/kk/' . $name_kk, 'public');
                 $file_update['file_kk'] = 'storage/file/kk/' . $name_kk;
             }
             if ($request->hasFile('file_akta_kelahiran')) {
                 $pdf_akta = $request->file('file_akta_kelahiran');
                 $name_akta = uniqid() . '.' . $pdf_akta->getClientOriginalExtension();
-                $pdf_akta->storeAs('file/akta/', $name_akta);
+                $pdf_akta->store('file/akta/' . $name_akta, 'public');
                 $file_update['file_akta_kelahiran'] = 'storage/file/akta/' . $name_akta;
             }
             if ($request->hasFile('file_ktp_ortu')) {
                 $pdf_ktp = $request->file('file_ktp_ortu');
                 $name_ktp = uniqid() . '.' . $pdf_ktp->getClientOriginalExtension();
-                $pdf_ktp->storeAs('file/ktp/', $name_ktp);
+                $pdf_ktp->store('file/ktp/' . $name_ktp, 'public');
                 $file_update['file_ktp_ortu'] = 'storage/file/ktp/' . $name_ktp;
             }
             if ($request->hasFile('file_ijazah_tk')) {
                 $pdf_ijazah = $request->file('file_ijazah_tk');
                 $name_ijazah = uniqid() . '.' . $pdf_ijazah->getClientOriginalExtension();
-                $pdf_ijazah->storeAs('file/ijazah/', $name_ijazah);
+                $pdf_ijazah->store('file/ijazah/' . $name_ijazah, 'public');
                 $file_update['file_ijazah_tk'] = 'storage/file/ijazah/' . $name_ijazah;
             }
 
@@ -694,7 +696,7 @@ class SiswaController extends Controller
              */
             DataPribadi::where('id', $siswa->data_pribadi_id)->update([
                 'isAccepted' => null,
-                'isVerificated' => null
+                'isVerificated' => 0
             ]);
 
             return back();
@@ -788,7 +790,7 @@ class SiswaController extends Controller
 
     public function penerimaan()
     {
-        $peserta_didiks = DataPribadi::where('sekolah_id', Auth::id())->where('isVerificated',1)->where('isAccepted', 0)->get();
+        $peserta_didiks = DataPribadi::where('sekolah_id', Auth::id())->where('isVerificated', 1)->where('isAccepted', 0)->get();
         return view('peserta-didik.penerimaan', compact('peserta_didiks'));
     }
 
@@ -805,8 +807,8 @@ class SiswaController extends Controller
                 $sekolah = $siswa->sekolah->nama_sekolah;
                 if ($siswa && $siswa->email) {
                     $details = [
-                        'title' => 'Selamat, Anda Telah Diterima Menjadi Peserta Didik'.$sekolah,
-                        'body' => 'Selamat kepada'.$siswa->dataPribadi->nama.'telah diterima untuk menempuh pendidikan di'.$sekolah.'. Informasi lebih lanjut dapat dilihat pada'
+                        'title' => 'Selamat, Anda Telah Diterima Menjadi Peserta Didik' . $sekolah,
+                        'body' => 'Selamat kepada' . $siswa->dataPribadi->nama . 'telah diterima untuk menempuh pendidikan di' . $sekolah . '. Informasi lebih lanjut dapat dilihat pada'
                     ];
                     Mail::to($siswa->email)->send(new \App\Mail\SendEmail($details));
                 }

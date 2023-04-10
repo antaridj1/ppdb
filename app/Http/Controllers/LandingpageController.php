@@ -16,7 +16,7 @@ class LandingpageController extends Controller
         $sekolah = Sekolah::all();
         $siswa = Siswa::all();
         $pengumuman = Pengumuman::all();
-        $admin = Admin::where('isAdmin', 1)->first();
+        $admin = Admin::where('id', 1)->first();
         return view('student.pages.landingpage', [
             'sekolah' => $sekolah,
             'siswa' => $siswa,

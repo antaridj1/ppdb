@@ -1354,8 +1354,8 @@
                     <label class="custom-control-label" for="kps">Kartu Perlindungan Sosial</label>
                 </div>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                    <input type="radio" id="kks" name="jenis_kesejahteraan" class="custom-control-input" value="Kartu Keluarg Sehat" @if(old('jenis_kesejahteraan') == 'Kartu Keluarg Sehat') checked @endif>
-                    <label class="custom-control-label" for="kks">Kartu Keluarg Sehat</label>
+                    <input type="radio" id="kks" name="jenis_kesejahteraan" class="custom-control-input" value="Kartu Keluarga Sehat" @if(old('jenis_kesejahteraan') == 'Kartu Keluarga Sehat') checked @endif>
+                    <label class="custom-control-label" for="kks">Kartu Keluarga Sehat</label>
                 </div>
                 <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
                     <input type="radio" id="kkes" name="jenis_kesejahteraan" class="custom-control-input" value="Kartu Kesehatan" @if(old('jenis_kesejahteraan') == 'Kartu Kesehatan') checked @endif>
@@ -1393,7 +1393,9 @@
             {{-- file kk --}}
             <div class="form-group">
                 <label for="scan_kk">Scan Kartu Keluarga</label>
-                <input type="file" class="form-control-file @error('file_kk') is-invalid @enderror" id="scan_kk" name="file_kk" value="{{ old('file_kk') }}" required>
+                {{-- <input type="file" class="form-control-file @error('file_kk') is-invalid @enderror" id="scan_kk" name="file_kk" value="{{ old('file_kk') }}" required> --}}
+                <input type="file" id="scan_kk" class="dropify" data-height="300" name="file_kk" data-default-file="{{ old('file_kk') }}" data-allowed-file-extensions="pdf" value="{{ old('file_kk') }}" />
+
                 @error('file_kk')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -1401,7 +1403,9 @@
             {{-- file akta --}}
             <div class="form-group">
                 <label for="scan_akta">Scan Kartu Akta Kelahiran</label>
-                <input type="file" class="form-control-file @error('file_akta_kelahiran') is-invalid @enderror" id="scan_akta" name="file_akta_kelahiran" value="{{ old('file_akta_kelahiran') }}" required>
+                {{-- <input type="file" class="form-control-file @error('file_akta_kelahiran') is-invalid @enderror" id="scan_akta" name="file_akta_kelahiran" value="{{ old('file_akta_kelahiran') }}" required> --}}
+                <input type="file" id="scan_akta" class="dropify" data-height="300" name="file_akta_kelahiran" data-default-file="{{ old('file_akta_kelahiran',) }}" data-allowed-file-extensions="pdf" value="{{ old('file_akta_kelahiran') }}" />
+
                 @error('file_akta_kelahiran')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -1409,7 +1413,9 @@
             {{-- file ktp ortu --}}
             <div class="form-group">
                 <label for="scan_ktp">Scan Kartu Akta Kelahiran</label>
-                <input type="file" class="form-control-file @error('file_ktp_ortu') is-invalid @enderror" id="scan_ktp" name="file_ktp_ortu" value="{{ old('file_ktp_ortu') }}" required>
+                {{-- <input type="file" class="form-control-file @error('file_ktp_ortu') is-invalid @enderror" id="scan_ktp" name="file_ktp_ortu" value="{{ old('file_ktp_ortu') }}" required> --}}
+                <input type="file" id="scan_ktp" class="dropify" data-height="300" name="file_ktp_ortu" data-default-file="{{ old('file_ktp_ortu') }}" data-allowed-file-extensions="pdf" value="{{ old('file_ktp_ortu') }}" />
+
                 @error('file_ktp_ortu')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -1417,7 +1423,9 @@
             {{-- file ijazah tk --}}
             <div class="form-group">
                 <label for="scan_ijazah">Scan Ijazah TK</label>
-                <input type="file" class="form-control-file @error('file_ijazah_tk') is-invalid @enderror" id="scan_ijazah" name="file_ijazah_tk" value="{{ old('file_ijazah_tk') }}" required>
+                {{-- <input type="file" class="form-control-file @error('file_ijazah_tk') is-invalid @enderror" id="scan_ijazah" name="file_ijazah_tk" value="{{ old('file_ijazah_tk') }}" required> --}}
+                <input type="file" id="scan_ijazah" class="dropify" data-height="300" name="file_ijazah_tk" data-default-file="{{ old('file_ijazah_tk') }}" data-allowed-file-extensions="pdf" value="{{ old('file_ijazah_tk') }}" />
+
                 @error('file_ijazah_tk')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
