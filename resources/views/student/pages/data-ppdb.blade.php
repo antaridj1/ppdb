@@ -86,5 +86,6 @@
             });
         });
     </script>
+    @stack('js-plus')
   </body>
 </html>

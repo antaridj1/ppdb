@@ -1442,3 +1442,11 @@
     </div>
     <button class="btn btn-primary btn-lg btn-block" type="submit">Kirim Data Siswa</button>
 </form>
+
+{{-- @push('js-plus')
+<script>
+    $('#scan_kk.dropify').dropify({
+        defaultFile: '{{ old('file_kk', asset('storage/'.$siswa->dataPribadi->file->file_kk)) }}' ,
+    });
+</script>
+@endpush --}}

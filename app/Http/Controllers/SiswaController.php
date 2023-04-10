@@ -505,10 +505,10 @@ class SiswaController extends Controller
                 'nama_sejahtera' => 'required',
             ], [
                 //file
-                'file_kk' => 'required|mimes:pdf|max:5120',
-                'file_akta_kelahiran' => 'required|mimes:pdf|max:5120',
-                'file_ktp_ortu' => 'required|mimes:pdf|max:5120',
-                'file_ijazah_tk' => 'required|mimes:pdf|max:5120',
+                'file_kk' => 'nullable|mimes:pdf|max:5120',
+                'file_akta_kelahiran' => 'nullable|mimes:pdf|max:5120',
+                'file_ktp_ortu' => 'nullable|mimes:pdf|max:5120',
+                'file_ijazah_tk' => 'nullable|mimes:pdf|max:5120',
             ]);
 
             $validator = Validator::make($request->all(), $rules);
@@ -664,27 +664,19 @@ class SiswaController extends Controller
             $file_update = [];
             if ($request->hasFile('file_kk')) {
                 $pdf_kk = $request->file('file_kk');
-                $name_kk = uniqid() . '.' . $pdf_kk->getClientOriginalExtension();
-                $pdf_kk->store('file/kk/' . $name_kk, 'public');
-                $file_update['file_kk'] = 'storage/file/kk/' . $name_kk;
+                $file_update['file_kk'] = $pdf_kk->store('file/kk', 'public');
             }
             if ($request->hasFile('file_akta_kelahiran')) {
                 $pdf_akta = $request->file('file_akta_kelahiran');
-                $name_akta = uniqid() . '.' . $pdf_akta->getClientOriginalExtension();
-                $pdf_akta->store('file/akta/' . $name_akta, 'public');
-                $file_update['file_akta_kelahiran'] = 'storage/file/akta/' . $name_akta;
+                $file_update['file_akta_kelahiran'] = $pdf_akta->store('file/akta', 'public');
             }
             if ($request->hasFile('file_ktp_ortu')) {
                 $pdf_ktp = $request->file('file_ktp_ortu');
-                $name_ktp = uniqid() . '.' . $pdf_ktp->getClientOriginalExtension();
-                $pdf_ktp->store('file/ktp/' . $name_ktp, 'public');
-                $file_update['file_ktp_ortu'] = 'storage/file/ktp/' . $name_ktp;
+                $file_update['file_ktp_ortu'] = $pdf_ktp->store('file/ktp', 'public');
             }
             if ($request->hasFile('file_ijazah_tk')) {
                 $pdf_ijazah = $request->file('file_ijazah_tk');
-                $name_ijazah = uniqid() . '.' . $pdf_ijazah->getClientOriginalExtension();
-                $pdf_ijazah->store('file/ijazah/' . $name_ijazah, 'public');
-                $file_update['file_ijazah_tk'] = 'storage/file/ijazah/' . $name_ijazah;
+                $file_update['file_ijazah_tk'] = $pdf_ijazah->store('file/ijazah', 'public');
             }
 
             File::where('data_pribadi_id', $siswa->data_pribadi_id)->update($file_update);
