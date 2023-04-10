@@ -24,7 +24,7 @@
                                 <div class="media-body">
                                 <div class="message-contents">
                                     <span class="d-flex justify-content-between align-items-center mb-1">
-                                    <span class="username text-dark">{{$chatroom->siswa->name}}</span>
+                                    <span class="username text-dark">{{$chatroom->siswa->email}}</span>
                                     <span class="">
                                         <span class="state text-smoke"><em>{{$chatroom->created_at->diffForHumans()}}</em></span>
                                         @if($chatroom->unread_count > 0)
@@ -87,6 +87,8 @@
 
 <script src="{{asset('assets/plugins/jquery/jquery.min.js')}}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
 <script>
     $('.chatroom').on('click', function(){
         var user_id = $(this).data('user-id');
@@ -109,7 +111,7 @@
                                 <div class="media-body">
                                     <div class="text-content">
                                         <span class="message">${chat.messages}</span>
-                                        <time class="time">5 mins ago</time>
+                                        <time class="time">${moment(chat.created_at).fromNow()}</time>
                                     </div>
                                 </div>
                             </div>`;
@@ -119,7 +121,7 @@
                                 <div class="media-body">
                                     <div class="text-content">
                                         <span class="message">${chat.messages}</span>
-                                        <time class="time">4 mins ago</time>
+                                        <time class="time">${moment(chat.created_at).fromNow()}</time>
                                     </div>
                                 </div>
                             </div>`;

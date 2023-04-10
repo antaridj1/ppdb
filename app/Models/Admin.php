@@ -22,12 +22,11 @@ class Admin extends Authenticatable
     protected $dates = ['deleted_at'];
     
     protected $fillable = [
-        'name',
+        'nama_admin',
         'email',
         'password',
-        'phone_number',
-        'isAdmin',
-        'status',
+        'tlp_admin',
+        'gambar',
         'deleted_at'
     ];
 

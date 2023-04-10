@@ -11,7 +11,7 @@
             {{-- nama lengkap ppdb --}}
             <div class="form-group">
                 <label for="nama_lengkap">Nama Lengkap</label>
-                <input type="text" name="nama_lengkap" class="form-control rounded-0" id="nama_lengkap" value="{{ old('nama_lengkap') }}" required>
+                <input type="text" name="nama_lengkap" class="form-control rounded-0 @error('nama_lengkap') is-invalid @enderror" id="nama_lengkap" value="{{ old('nama_lengkap') }}" required>
                 @error('nama_lengkap')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -34,7 +34,7 @@
             {{-- nisn --}}
             <div class="form-group">
                 <label for="nisn">NISN</label>
-                <input type="text" name="nisn" class="form-control rounded-0" id="nisn" maxlength="10" value="{{ old('nisn') }}" required>
+                <input type="text" name="nisn" class="form-control rounded-0 @error('nisn') is-invalid @enderror" id="nisn" maxlength="10" value="{{ old('nisn') }}" required>
                 <span class="mt-2 d-block"><span style="color:red;">*</span>masukan 10 digit NISN</span>
                 @error('nisn')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
@@ -43,7 +43,7 @@
             {{-- nik --}}
             <div class="form-group">
                 <label for="nik">NIK/No. KITAS (Untuk WNA)</label>
-                <input type="text" name="nik" class="form-control rounded-0" id="nik" maxlength="16" value="{{ old('nik') }}" required>
+                <input type="text" name="nik" class="form-control rounded-0 @error('nik') is-invalid @enderror" id="nik" maxlength="16" value="{{ old('nik') }}" required>
                 <span class="mt-2 d-block"><span style="color:red;">*</span>masukan 16 digit NIK</span>
                 @error('nik')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
@@ -52,7 +52,7 @@
             {{-- kk --}}
             <div class="form-group">
                 <label for="kk">No. KK</label>
-                <input type="text" name="kk" class="form-control rounded-0" id="kk" value="{{ old('kk') }}" required>
+                <input type="text" name="kk" class="form-control rounded-0 @error('kk') is-invalid @enderror" id="kk" value="{{ old('kk') }}" required>
                 @error('kk')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -60,7 +60,7 @@
             {{-- tempat lahir --}}
             <div class="form-group">
                 <label for="tempat_lahir">Tempat Lahir</label>
-                <input type="text" name="tempat_lahir" class="form-control rounded-0" id="tempat_lahir" value="{{ old('tempat_lahir') }}" required>
+                <input type="text" name="tempat_lahir" class="form-control rounded-0 @error('tempat_lahir') is-invalid @enderror" id="tempat_lahir" value="{{ old('tempat_lahir') }}" required>
                 @error('tempat_lahir')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -68,7 +68,7 @@
             {{-- tgl. lahir --}}
             <div class="form-group">
                 <label for="tgl_lahir">Tgl. Lahir</label>
-                <input type="date" name="tgl_lahir" class="form-control rounded-0" id="tgl_lahir" value="{{ old('tgl_lahir') }}" required>
+                <input type="date" name="tgl_lahir" class="form-control rounded-0 @error('tgl_lahir') is-invalid @enderror" id="tgl_lahir" value="{{ old('tgl_lahir') }}" required>
                 @error('tgl_lahir')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -76,7 +76,7 @@
             {{-- akta kelahiran --}}
             <div class="form-group">
                 <label for="akta_kelahiran">No. Registrasi Akta Kelahiran</label>
-                <input type="string" name="akta_kelahiran" class="form-control rounded-0" id="akta_kelahiran" value="{{ old('akta_kelahiran') }}" required>
+                <input type="string" name="akta_kelahiran" class="form-control rounded-0 @error('akta_kelahiran') is-invalid @enderror" id="akta_kelahiran" value="{{ old('akta_kelahiran') }}" required>
                 @error('akta_kelahiran')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -130,7 +130,7 @@
                 @error('kewarganegaraan')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
-                <input type="text" class="form-control rounded-0" name="negara" id="exampleFormControlInput4" value="@if(old('kewarganegaraan') == 'WNA') {{ old('negara') }} @endif">
+                <input type="text" class="form-control rounded-0 @error('negara') is-invalid @enderror" name="negara" id="exampleFormControlInput4" value="@if(old('kewarganegaraan') == 'WNA') {{ old('negara') }} @endif" required>
                 <span class="mt-2 d-block"><span style="color:red;">*</span>Isi apabila WNA</span>
                 @error('negara')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
@@ -218,7 +218,7 @@
             {{-- alamat --}}
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Alamat</label>
-                <textarea class="form-control" name="alamat" id="exampleFormControlTextarea1" rows="3" value="{{ old('alamat') }}" required></textarea>
+                <textarea class="form-control @error('alamat') is-invalid @enderror" name="alamat" id="exampleFormControlTextarea1" rows="3" value="{{ old('alamat') }}" required></textarea>
                 @error('alamat')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -226,7 +226,7 @@
             {{-- RT --}}
             <div class="form-group">
                 <label for="rt">RT</label>
-                <input type="text" class="form-control rounded-0" name="rt" maxlength="3" id="rt" value="{{ old('rt') }}" required>
+                <input type="text" class="form-control rounded-0 @error('rt') is-invalid @enderror" name="rt" maxlength="3" id="rt" value="{{ old('rt') }}" required>
                 <span class="mt-2 d-block"><span style="color:red;">*</span>masukan 3 digit angka, misal 001</span>
                 @error('rt')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
@@ -235,7 +235,7 @@
             {{-- RW --}}
             <div class="form-group">
                 <label for="rw">RW</label>
-                <input type="text" class="form-control rounded-0" name="rw" maxlength="3" id="rw" value="{{ old('rw') }}" required>
+                <input type="text" class="form-control rounded-0 @error('rw') is-invalid @enderror" name="rw" maxlength="3" id="rw" value="{{ old('rw') }}" required>
                 <span class="mt-2 d-block"><span style="color:red;">*</span>masukan 3 digit angka, misal 001</span>
                 @error('rw')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
@@ -244,7 +244,7 @@
             {{-- dusun --}}
             <div class="form-group">
                 <label for="dusun">Dusun</label>
-                <input type="text" class="form-control rounded-0" name="dusun" id="dusun" value="{{ old('dusun') }}" required>
+                <input type="text" class="form-control rounded-0 @error('dusun') is-invalid @enderror" name="dusun" id="dusun" value="{{ old('dusun') }}" required>
                 @error('dusun')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -252,7 +252,7 @@
             {{-- kelurahan --}}
             <div class="form-group">
                 <label for="kelurahan">Kelurahan/Desa</label>
-                <input type="text" class="form-control rounded-0" name="kelurahan" id="kelurahan" value="{{ old('kelurahan') }}" required>
+                <input type="text" class="form-control rounded-0 @error('kelurahan') is-invalid @enderror" name="kelurahan" id="kelurahan" value="{{ old('kelurahan') }}" required>
                 @error('kelurahan')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -260,7 +260,7 @@
             {{-- kecamatan --}}
             <div class="form-group">
                 <label for="kecamatan">Kecamatan</label>
-                <input type="text" class="form-control rounded-0" name="kecamatan" id="kecamatan" value="{{ old('kecamatan') }}" required>
+                <input type="text" class="form-control rounded-0 @error('kecamatan') is-invalid @enderror" name="kecamatan" id="kecamatan" value="{{ old('kecamatan') }}" required>
                 @error('kecamatan')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -268,7 +268,7 @@
             {{-- kode pos --}}
             <div class="form-group">
                 <label for="kode_pos">Kode Pos</label>
-                <input type="number" class="form-control rounded-0" name="kode_pos" id="kode_pos" value="{{ old('kode_pos') }}" required>
+                <input type="number" class="form-control rounded-0 @error('kode_pos') is-invalid @enderror" name="kode_pos" id="kode_pos" value="{{ old('kode_pos') }}" required>
                 @error('kode_pos')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -276,7 +276,7 @@
             {{-- lintang --}}
             <div class="form-group">
                 <label for="lintang">lintan</label>
-                <input type="text" class="form-control rounded-0" name="lintang" id="lintang" value="{{ old('lintang') }}" required>
+                <input type="text" class="form-control rounded-0 @error('lintang') is-invalid @enderror" name="lintang" id="lintang" value="{{ old('lintang') }}" required>
                 @error('lintang')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -284,7 +284,7 @@
             {{-- bujur --}}
             <div class="form-group">
                 <label for="bujur">Bujur</label>
-                <input type="text" class="form-control rounded-0" name="bujur" id="bujur" value="{{ old('bujur') }}" required>
+                <input type="text" class="form-control rounded-0 @error('bujur') is-invalid @enderror" name="bujur" id="bujur" value="{{ old('bujur') }}" required>
                 @error('bujur')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -362,7 +362,7 @@
             {{-- anak ke --}}
             <div class="form-group">
                 <label for="anak-ke">Anak keberapa</label>
-                <input type="number" class="form-control rounded-0" id="anak-ke" name="anak_ke" value="{{ old('anak_ke') }}" required>
+                <input type="number" class="form-control rounded-0 @error('anak_ke') is-invalid @enderror" id="anak-ke" name="anak_ke" value="{{ old('anak_ke') }}" required>
                 @error('anak_ke')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -428,7 +428,7 @@
             {{-- nama --}}
             <div class="form-group">
                 <label for="nama_ayah">Nama Ayah</label>
-                <input type="text" class="form-control rounded-0" id="nama_ayah" name="nama_ayah" value="{{ old('nama_ayah') }}" required>
+                <input type="text" class="form-control rounded-0 @error('nama_ayah') is-invalid @enderror" id="nama_ayah" name="nama_ayah" value="{{ old('nama_ayah') }}" required>
                 @error('nama_ayah')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -436,7 +436,7 @@
             {{-- nik ayah --}}
             <div class="form-group">
                 <label for="nik_ayah">NIK</label>
-                <input type="text" class="form-control rounded-0" id="nik_ayah" name="nik_ayah" maxlength="16" value="{{ old('nik_ayah') }}" required>
+                <input type="text" class="form-control rounded-0 @error('nik_ayah') is-invalid @enderror" id="nik_ayah" name="nik_ayah" maxlength="16" value="{{ old('nik_ayah') }}" required>
                 @error('nik_ayah')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -444,7 +444,7 @@
             {{-- tahun lahir --}}
             <div class="form-group">
                 <label for="tahun_ayah">Tahun Lahir</label>
-                <input type="text" class="form-control rounded-0" id="tahun_ayah" maxlength="4" name="tahun_ayah" value="{{ old('tahun_ayah') }}" required>
+                <input type="text" class="form-control rounded-0 @error('tahun_ayah') is-invalid @enderror" id="tahun_ayah" maxlength="4" name="tahun_ayah" value="{{ old('tahun_ayah') }}" required>
                 @error('tahun_ayah')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -674,7 +674,7 @@
             {{-- nama ibu --}}
             <div class="form-group">
                 <label for="nama_ibu">Nama Ibu</label>
-                <input type="text" class="form-control rounded-0" id="nama_ibu" name="nama_ibu" value="{{ old('nama_ibu') }}" required>
+                <input type="text" class="form-control rounded-0 @error('nama_ibu') is-invalid @enderror" id="nama_ibu" name="nama_ibu" value="{{ old('nama_ibu') }}" required>
                 @error('nama_ibu')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -682,7 +682,7 @@
             {{-- nik --}}
             <div class="form-group">
                 <label for="nik-ibu">NIK</label>
-                <input type="text" class="form-control rounded-0" id="nik-ibu" maxlength="16" name="nik_ibu" value="{{ old('nik_ibu') }}" required>
+                <input type="text" class="form-control rounded-0 @error('nik_ibu') is-invalid @enderror" id="nik-ibu" maxlength="16" name="nik_ibu" value="{{ old('nik_ibu') }}" required>
                 @error('nik_ibu')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -690,7 +690,7 @@
             {{-- tahun lahir --}}
             <div class="form-group">
                 <label for="tahun-ibu">Tahun Lahir</label>
-                <input type="text" class="form-control rounded-0" id="tahun-ibu" maxlength="4" name="tahun_ibu" value="{{ old('tahun_ibu') }}" required>
+                <input type="text" class="form-control rounded-0 @error('tahun_ibu') is-invalid @enderror" id="tahun-ibu" maxlength="4" name="tahun_ibu" value="{{ old('tahun_ibu') }}" required>
                 @error('tahun_ibu')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -920,7 +920,7 @@
             {{-- nama wali --}}
             <div class="form-group">
                 <label for="nama-wali">Nama Wali</label>
-                <input type="text" class="form-control rounded-0" id="nama-wali" name="nama_wali" value="{{ old('nama_wali') }}">
+                <input type="text" class="form-control rounded-0 @error('nama_wali') is-invalid @enderror" id="nama-wali" name="nama_wali" value="{{ old('nama_wali') }}">
                 @error('nama_wali')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -928,7 +928,7 @@
             {{-- nik --}}
             <div class="form-group">
                 <label for="nik-wali">NIK</label>
-                <input type="text" class="form-control rounded-0" id="nik-wali" maxlength="16" name="nik_wali" value="{{ old('nik_wali') }}">
+                <input type="text" class="form-control rounded-0 @error('nik_wali') is-invalid @enderror" id="nik-wali" maxlength="16" name="nik_wali" value="{{ old('nik_wali') }}">
                 @error('nik_wali')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -936,7 +936,7 @@
             {{-- tahun lahir --}}
             <div class="form-group">
                 <label for="tahun-wali">Tahun Lahir</label>
-                <input type="text" class="form-control rounded-0" id="tahun-wali" maxlength="4" name="tahun_wali" value="{{ old('tahun_wali') }}">
+                <input type="text" class="form-control rounded-0 @error('tahun_wali') is-invalid @enderror" id="tahun-wali" maxlength="4" name="tahun_wali" value="{{ old('tahun_wali') }}">
                 @error('tahun_wali')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -1087,12 +1087,12 @@
             <div class="form-group">
                 <label for="tinggibdn">Tinggi Badan</label>
                 <div class="input-group" style="width: 20%;">
-                    <input type="number" class="form-control rounded-0 custom-input" id="tinggibdn" name="tinggi_badan" value="{{ old('tinggi_badan') }}" required>
+                    <input type="number" class="form-control rounded-0 custom-input @error('tinggi_badan') is-invalid @enderror" id="tinggibdn" name="tinggi_badan" value="{{ old('tinggi_badan') }}" required>
                     <div class="input-group-append">
                         <span class="input-group-text">Cm</span>
                     </div>
                 </div>
-                @error('pendidikan_wali')
+                @error('tinggi_badan')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
             </div>
@@ -1100,12 +1100,12 @@
             <div class="form-group">
                 <label for="bb">Berat Badan</label>
                 <div class="input-group" style="width: 20%;">
-                    <input type="number" class="form-control rounded-0 custom-input" id="bb" name="berat_badan" value="{{ old('berat_badan') }}" required>
+                    <input type="number" class="form-control rounded-0 custom-input @error('berat_badan') is-invalid @enderror" id="bb" name="berat_badan" value="{{ old('berat_badan') }}" required>
                     <div class="input-group-append">
                         <span class="input-group-text">Kg</span>
                     </div>
                 </div>
-                @error('pendidikan_wali')
+                @error('berat_badan')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
             </div>
@@ -1113,12 +1113,12 @@
             <div class="form-group">
                 <label for="lingkar">Lingkar Kepala</label>
                 <div class="input-group" style="width: 20%;">
-                    <input type="number" class="form-control rounded-0 custom-input" id="lingkar" maxlength="4" name="lingkar_kepala" value="{{ old('lingkar_kepala') }}" required>
+                    <input type="number" class="form-control rounded-0 custom-input @error('lingkar_kepala') is-invalid @enderror" id="lingkar" maxlength="4" name="lingkar_kepala" value="{{ old('lingkar_kepala') }}" required>
                     <div class="input-group-append">
                         <span class="input-group-text">Cm</span>
                     </div>
                 </div>
-                @error('pendidikan_wali')
+                @error('lingkar_kepala')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
             </div>
@@ -1141,7 +1141,7 @@
             <div class="form-group">
                 <label for="km">Jarak</label><br>
                 <div class="input-group" style="width: 20%;">
-                    <input type="text" class="form-control rounded-0" id="km" name="km" value="{{ old('km') }}" required>
+                    <input type="text" class="form-control rounded-0 @error('km') is-invalid @enderror" id="km" name="km" value="{{ old('km') }}" required>
                     <div class="input-group-append">
                         <span class="input-group-text">Km</span>
                     </div>
@@ -1156,13 +1156,13 @@
                 <label for="waktu">Waktu Tempuh</label><br>
                 <div class="input-group">
                     <div class="input-group" style="width: 20%; margin-right:5%;">
-                        <input type="number" class="form-control rounded-0 w-25" id="waktu" name="waktu_tempuh_jam" value="{{ old('waktu_tempuh_jam') }}" required>
+                        <input type="number" class="form-control rounded-0 w-25" @error('waktu_tempuh_jam') is-invalid @enderror id="waktu" name="waktu_tempuh_jam" value="{{ old('waktu_tempuh_jam') }}" required>
                         <div class="input-group-append">
                             <span class="input-group-text">Jam</span>
                         </div>
                     </div>
                     <div class="input-group" style="width: 20%;">
-                        <input type="number" class="form-control rounded-0 w-25" id="waktu" name="waktu_tempuh_menit" value="{{ old('waktu_tempuh_menit') }}" required>
+                        <input type="number" class="form-control rounded-0 w-25 @error('waktu_tempuh_menit') is-invalid @enderror" id="waktu" name="waktu_tempuh_menit" value="{{ old('waktu_tempuh_menit') }}" required>
                         <div class="input-group-append">
                             <span class="input-group-text">Menit</span>
                         </div>
@@ -1178,7 +1178,7 @@
             {{-- jumlah saudara --}}
             <div class="form-group">
                 <label for="saudara">Jumlah Saudara Kandung</label><br>
-                <input type="number" class="form-control rounded-0" id="saudara" name="jumlah_saudara" value="{{ old('jumlah_saudara') }}" required>
+                <input type="number" class="form-control rounded-0 @error('jumlah_saudara') is-invalid @enderror" id="saudara" name="jumlah_saudara" value="{{ old('jumlah_saudara') }}" required>
                 @error('jumlah_saudara')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -1249,7 +1249,7 @@
                 {{-- nama prestasi --}}
                 <div class="form-group">
                     <label for="namap{{ $i }}">Nama Prestasi</label>
-                    <input type="text" class="form-control rounded-0" id="namap{{ $i }}" name="prestasi{{ $i }}nama_prestasi" value="{{ old('prestasi'.$i.'nama_prestasi') }}">
+                    <input type="text" class="form-control rounded-0 @error('prestasi'.$i.'nama_prestasi') is-invalid @enderror" id="namap{{ $i }}" name="prestasi{{ $i }}nama_prestasi" value="{{ old('prestasi'.$i.'nama_prestasi') }}">
                     @error('prestasi'.$i.'nama_prestasi')
                         <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                     @enderror
@@ -1257,7 +1257,7 @@
                 {{-- tahun prestasi --}}
                 <div class="form-group">
                     <label for="tahunp{{ $i }}">Tahun Prestasi</label>
-                    <input type="number" class="form-control rounded-0" id="tahunp{{ $i }}" maxlength="4" name="prestasi{{ $i }}tahun" value="{{ old('prestasi'.$i.'tahun') }}">
+                    <input type="number" class="form-control rounded-0 @error('prestasi'.$i.'tahun') is-invalid @enderror" id="tahunp{{ $i }}" maxlength="4" name="prestasi{{ $i }}tahun" value="{{ old('prestasi'.$i.'tahun') }}">
                     @error('prestasi'.$i.'tahun')
                         <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                     @enderror
@@ -1265,7 +1265,7 @@
                 {{-- nama penyelenggara --}}
                 <div class="form-group">
                     <label for="exampleFormControlPasswor3{{ $i }}">Nama Penyelenggara</label>
-                    <input type="text" class="form-control rounded-0" id="exampleFormControlPasswor3{{ $i }}" name="prestasi{{ $i }}penyelenggara" value="{{ old('prestasi'.$i.'penyelenggara') }}">
+                    <input type="text" class="form-control rounded-0 @error('prestasi'.$i.'penyelenggara') is-invalid @enderror" id="exampleFormControlPasswor3{{ $i }}" name="prestasi{{ $i }}penyelenggara" value="{{ old('prestasi'.$i.'penyelenggara') }}">
                     @error('prestasi'.$i.'penyelenggara')
                         <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                     @enderror
@@ -1309,7 +1309,7 @@
                 {{-- keterangan beasiswa --}}
                 <div class="form-group">
                     <label for="beasiswa1{{ $i }}">Nama Beasiswa</label><br>
-                    <input type="text" class="form-control rounded-0" id="beasiswa1{{ $i }}" name="beasiswa{{ $i }}keterangan" value="{{ old('beasiswa'.$i.'keterangan') }}">
+                    <input type="text" class="form-control rounded-0 @error('prestasi'.$i.'keterangan') is-invalid @enderror" id="beasiswa1{{ $i }}" name="beasiswa{{ $i }}keterangan" value="{{ old('beasiswa'.$i.'keterangan') }}">
                     @error('beasiswa'.$i.'keterangan')
                         <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                     @enderror
@@ -1317,7 +1317,7 @@
                 {{-- tahun mulai --}}
                 <div class="form-group">
                     <label for="tahunm1{{ $i }}">Tahun Mulai</label><br>
-                    <input type="text" class="form-control rounded-0" id="tahunm1{{ $i }}" name="beasiswa{{ $i }}tahun_mulai" value="{{ old('beasiswa'.$i.'tahun_mulai') }}">
+                    <input type="text" class="form-control rounded-0 @error('prestasi'.$i.'tahun_mulai') is-invalid @enderror" id="tahunm1{{ $i }}" name="beasiswa{{ $i }}tahun_mulai" value="{{ old('beasiswa'.$i.'tahun_mulai') }}">
                     @error('beasiswa'.$i.'tahun_mulai')
                         <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                     @enderror
@@ -1325,7 +1325,7 @@
                     {{-- tahun berakhir --}}
                 <div class="form-group">
                     <label for="tahuns1{{ $i }}">Tahun Selesai</label><br>
-                    <input type="text" class="form-control rounded-0" id="tahuns1{{ $i }}" name="beasiswa{{ $i }}tahun_selesai" value="{{ old('beasiswa'.$i.'tahun_selesai') }}">
+                    <input type="text" class="form-control rounded-0 @error('prestasi'.$i.'tahun_selesai') is-invalid @enderror" id="tahuns1{{ $i }}" name="beasiswa{{ $i }}tahun_selesai" value="{{ old('beasiswa'.$i.'tahun_selesai') }}">
                     @error('beasiswa'.$i.'tahun_selesai')
                         <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                     @enderror
@@ -1368,7 +1368,7 @@
             {{-- No Kartu --}}
             <div class="form-group">
                 <label for="no_kartuKkes">No. Kartu</label>
-                <input type="number" class="form-control rounded-0" id="no_kartuKkes" name="no_kartu" value="{{ old('no_kartu') }}" required>
+                <input type="number" class="form-control rounded-0 @error('no_kartu') is-invalid @enderror" id="no_kartuKkes" name="no_kartu" value="{{ old('no_kartu') }}" required>
                 @error('no_kartu')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -1376,7 +1376,7 @@
             {{-- Nama kartu --}}
             <div class="form-group">
                 <label for="nama_kartuKes">Nama Kartu</label>
-                <input type="text" class="form-control rounded-0" id="nama_kartuKes" name="nama_sejahtera" value="{{ old('nama_sejahtera') }}" required>
+                <input type="text" class="form-control rounded-0 @error('nama_kartu') is-invalid @enderror" id="nama_kartuKes" name="nama_sejahtera" value="{{ old('nama_sejahtera') }}" required>
                 @error('nama_kartu')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -1393,7 +1393,7 @@
             {{-- file kk --}}
             <div class="form-group">
                 <label for="scan_kk">Scan Kartu Keluarga</label>
-                <input type="file" class="form-control-file" id="scan_kk" name="file_kk" value="{{ old('file_kk') }}">
+                <input type="file" class="form-control-file @error('file_kk') is-invalid @enderror" id="scan_kk" name="file_kk" value="{{ old('file_kk') }}" required>
                 @error('file_kk')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -1401,7 +1401,7 @@
             {{-- file akta --}}
             <div class="form-group">
                 <label for="scan_akta">Scan Kartu Akta Kelahiran</label>
-                <input type="file" class="form-control-file" id="scan_akta" name="file_akta_kelahiran" value="{{ old('file_akta_kelahiran') }}">
+                <input type="file" class="form-control-file @error('file_akta_kelahiran') is-invalid @enderror" id="scan_akta" name="file_akta_kelahiran" value="{{ old('file_akta_kelahiran') }}" required>
                 @error('file_akta_kelahiran')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -1409,7 +1409,7 @@
             {{-- file ktp ortu --}}
             <div class="form-group">
                 <label for="scan_ktp">Scan Kartu Akta Kelahiran</label>
-                <input type="file" class="form-control-file" id="scan_ktp" name="file_ktp_ortu" value="{{ old('file_ktp_ortu') }}">
+                <input type="file" class="form-control-file @error('file_ktp_ortu') is-invalid @enderror" id="scan_ktp" name="file_ktp_ortu" value="{{ old('file_ktp_ortu') }}" required>
                 @error('file_ktp_ortu')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror
@@ -1417,7 +1417,7 @@
             {{-- file ijazah tk --}}
             <div class="form-group">
                 <label for="scan_ijazah">Scan Ijazah TK</label>
-                <input type="file" class="form-control-file" id="scan_ijazah" name="file_ijazah_tk" value="{{ old('file_ijazah_tk') }}">
+                <input type="file" class="form-control-file @error('file_ijazah_tk') is-invalid @enderror" id="scan_ijazah" name="file_ijazah_tk" value="{{ old('file_ijazah_tk') }}" required>
                 @error('file_ijazah_tk')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
                 @enderror

@@ -6,8 +6,8 @@
     <section id="topbar" class="d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
-        <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">{{ $admin->email }}</a></i>
-        <i class="bi bi-phone d-flex align-items-center ms-4"><span>{{ $admin->phone_number }}</span></i>
+        <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">{{$admin->email}}</a></i>
+        <i class="bi bi-phone d-flex align-items-center ms-4"><span>{{$admin->tlp_admin}}</span></i>
       </div>
       <div class="social-links d-none d-md-flex align-items-center">
         <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
@@ -53,7 +53,7 @@
 @section('content')
 
 <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex align-items-center">
+  <section id="hero" class="d-flex align-items-center" style="background-image: url('{{asset('storage/'.$admin->gambar)}}')">
     <div class="container" data-aos="zoom-out" data-aos-delay="100">
       <h1>Selamat datang di <span>PPDB</span></h1>
       <h2>Pendaftaran Peserta Didik Baru secara Online</h2>

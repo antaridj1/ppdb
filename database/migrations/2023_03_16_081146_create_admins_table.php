@@ -15,12 +15,11 @@ class CreateAdminsTable extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('nama_admin');
             $table->string('email')->unique();
-            $table->string('phone_number');
-            $table->boolean('isAdmin');
+            $table->string('tlp_admin');
             $table->string('password');
-            $table->boolean('status')->default(true);
+            $table->string('gambar')->default('images/default.png');
             $table->rememberToken();
             $table->timestamps();
         });

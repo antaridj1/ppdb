@@ -85,7 +85,9 @@ class RegisterController extends Controller
             'sekolah_id' => $request->sekolah_id,
         ]);
 
-        return redirect()->route('login.siswa');
+        return redirect()->route('login.siswa')
+            ->with('status', 'success')
+            ->with('message', 'Registrasi berhasil, silahkan melakukan login');
     }
 
 

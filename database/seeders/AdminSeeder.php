@@ -16,18 +16,10 @@ class AdminSeeder extends Seeder
     {
        $admins =  [
             [
-                'name' => 'Operator',
-                'email' => 'operator@gmail.com',
-                'password' => bcrypt('12345678'),
-                'phone_number'  => '089765456765',
-                'isAdmin' => false
-            ],
-            [
-                'name' => 'Admin',
-                'email' => 'superadmin@gmail.com',
-                'password' => bcrypt('12345678'),
-                'phone_number'  => '089765456765',
-                'isAdmin' => true
+                'nama_admin' => 'Admin',
+                'email' => 'ppdb@gmail.com',
+                'password' => bcrypt('password'),
+                'tlp_admin'  => '089765456765',
             ],
            
         ];

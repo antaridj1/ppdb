@@ -4,7 +4,7 @@
     <div class="app-brand">
       <a href="{{route('admin.home')}}">
         <img src="images/logo.png" alt="Mono">
-        <span class="brand-name">MONO</span>
+        <span class="brand-name">PPDB</span>
       </a>
     </div>
     <!-- begin sidebar scrollbar -->
@@ -22,7 +22,7 @@
               <span class="nav-text">Beranda</span>
             </a>
           </li>
-          <li class="{{Route::is('admin.siswa.*') || Route::is('sekolah.siswa.index')? 'active' : ''}}">
+          <li class="{{Route::is('admin.siswa.*') || Route::is('sekolah.siswa.index', 'sekolah.siswa.show')? 'active' : ''}}">
             @auth('admin')
               <a class="sidenav-item-link" href="{{route('admin.siswa.index')}}">
             @endauth
@@ -66,9 +66,15 @@
         <div class="sidebar-footer-content">
           <ul class="d-flex">
             <li>
-              <a href="{{route('admin.logout')}}" data-toggle="tooltip" title="Logout"><i class="mdi mdi-logout"></i></a></li>
+              <form action="{{ route('admin.logout') }}" method="POST">
+                  @csrf
+                  <button type="submit" class="btn btn-link btn-block" data-toggle="tooltip" title="Logout" style="color:white">
+                      <i class="mdi mdi-logout" style="font-size: 24px;"></i>
+                  </button>
+              </form>
+            </li>
             <li>
-              <a href="{{route('admin.chat.index')}}" data-toggle="tooltip" title="No chat messages"><i class="mdi mdi-chat-processing"></i></a>
+              <a href="{{route('admin.chat.index')}}" data-toggle="tooltip" title="Messages"><i class="mdi mdi-chat-processing"></i></a>
             </li>
           </ul>
         </div>

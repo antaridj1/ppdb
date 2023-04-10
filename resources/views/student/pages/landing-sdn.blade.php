@@ -1,8 +1,4 @@
-@extends('student.layouts.app')
-
-@section('title', 'PPDB - Online')
-
-@section('header')
+ 
     <section id="topbar" class="d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
@@ -42,7 +38,7 @@
 @section('content')
 
 <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex align-items-center">
+  <section id="hero" class="d-flex align-items-center" style="background-image: url('{{asset('storage/'.$data->gambar)}}')">
     <div class="container" data-aos="zoom-out" data-aos-delay="100">
       <h1>{{ $data['nama_sekolah'] }}</h1>
       <h2>Pendaftaran Peserta Didik Baru secara Online</h2>

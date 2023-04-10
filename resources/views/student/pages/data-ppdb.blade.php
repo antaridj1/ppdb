@@ -50,7 +50,7 @@
                             @if ($daftar == 0)
                                 @include('student.pages.components.form-input')
                             @else
-                                @if($siswa->dataPribadi->isAccepted == false)
+                                @if($siswa->dataPribadi->isAccepted === 0)
                                     @include('student.pages.components.form-edit')
                                 @else
                                     @include('student.pages.components.form-show')

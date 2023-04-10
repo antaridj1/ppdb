@@ -12,6 +12,6 @@
 <!-- MONO CSS -->
 <link id="main-css-href" rel="stylesheet" href="{{asset('assets/css/style.css')}}" />
 <!-- FAVICON -->
-<link href="{{asset('assets/images/favicon.png')}}" rel="shortcut icon" />
+<link href="#" rel="shortcut icon" />
 <script src="{{asset('assets/plugins/nprogress/nprogress.js')}}"></script>
 <link rel="stylesheet" type="text/css" href="https://jeremyfagis.github.io/dropify/dist/css/dropify.min.css">

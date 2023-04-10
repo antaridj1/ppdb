@@ -379,12 +379,12 @@ $(document).ready(function () {
         [5, 10, 15, "All"],
       ],
       scrollX: true,
-      order: [[2, "asc"]],
+      order: [[0, "asc"]],
       columnDefs: [
-        {
-          orderable: false,
-          targets: [, 0, 6, -1],
-        },
+        // {
+        //   orderable: false,
+        //   targets: [, 0, 6, -1],
+        // },
       ],
       language: {
         search: "_INPUT_",

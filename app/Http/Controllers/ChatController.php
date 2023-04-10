@@ -17,7 +17,6 @@ class ChatController extends Controller
         $chatrooms = Chat::selectRaw('siswa_id, admin_id, messages, created_at, COUNT(CASE WHEN isViewed = false AND dari = "siswa" THEN 1 ELSE NULL END) as unread_count')
             ->groupBy('siswa_id')
             ->get();
-        
         return view('chat.index', compact('chatrooms'));
     }
 
@@ -45,7 +44,7 @@ class ChatController extends Controller
             $response['status'] = 'success';
             $response['data'] = $chats;
             $response['siswa_id'] = $siswa->id;
-            $response['siswa_name'] = $siswa->name;
+            $response['siswa_name'] = $siswa->email;
             $response['unread'] = $unread;
 
             return response()->json($response, 200);
@@ -81,11 +80,12 @@ class ChatController extends Controller
         }
     }
 
-    public function indexsiswa(){
-        return view('student.pages.chat');
+    public function indexSiswa(){
+        $siswa = Siswa::find(Auth::id());
+        return view('student.pages.chat',compact('siswa'));
     }
 
-    public function createsiswa(){
+    public function createSiswa(){
         try {
             $chats = Chat::where('siswa_id', Auth::id())->get();
             return response()->json($chats, 200);
@@ -97,9 +97,9 @@ class ChatController extends Controller
         }
     }
 
-    public function storesiswa(Request $request)
+    public function storeSiswa(Request $request)
     {
-        $admin_id = Admin::where('isAdmin',true)->value('id');
+        $admin_id = Admin::where('id',1)->value('id');
 
         try {
             $data = Chat::create([
