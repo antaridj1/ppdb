@@ -782,7 +782,7 @@ class SiswaController extends Controller
 
     public function penerimaan()
     {
-        $peserta_didiks = DataPribadi::where('sekolah_id', Auth::id())->where('isVerificated', 1)->where('isAccepted', 0)->get();
+        $peserta_didiks = DataPribadi::where('sekolah_id', Auth::id())->where('isVerificated', 1)->where('isAccepted', null)->get();
         return view('peserta-didik.penerimaan', compact('peserta_didiks'));
     }
 

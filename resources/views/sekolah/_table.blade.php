@@ -1,19 +1,19 @@
 <table id="productsTable" class="table table-product" style="width:100%">
     <thead>
       <tr>
-        <th></th>
         <th>No.</th>
         <th>Nama</th>
         <th>Telp</th>
         <th>Email</th>
         <th class="text-center">Status</th>
         <th class="text-center">Aksi</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
       @forelse ($sekolahs as $sekolah)
-        <tr><td class="py-0"></td>
-            <td>{{$loop->iteration}}</td>
+        <tr><td >{{$loop->iteration}}</td>
+            
             <td>{{$sekolah->nama_sekolah}}</td>
             <td>{{$sekolah->tlp_sekolah}}</td>
             <td>{{$sekolah->email}}</td>
@@ -36,6 +36,7 @@
                 </div>
               </div>
             </td>
+            <td class="py-0"></td>
             @include('sekolah._modal')
             {{-- <td class="text-center">
                 <a href="{{route('admin.sekolah.show',$sekolah->id)}}" class="btn btn-sm btn-outline-info">
