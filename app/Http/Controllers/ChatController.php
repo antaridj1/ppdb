@@ -27,9 +27,9 @@ class ChatController extends Controller
             // $chatroom = Chat::selectRaw('siswa_id, admin_id, messages, created_at')->groupBy('siswa_id')->get();
 
             $chat = Chat::where('siswa_id', $siswa->id);
-
             if($chat){
                 $chats = $chat->get();
+                
             } else {
                 $chats = null;
             }

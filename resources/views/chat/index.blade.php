@@ -18,7 +18,7 @@
                         <li class="mb-4 px-5 py-2 chatroom" data-url-create="{{url('admin/chat/create')}}/{{$chatroom->siswa_id}}" data-user-id="{{$chatroom->siswa_id}}">
                             <a class="media media-message">
                                 <div class="position-relative mr-3">
-                                <img class="rounded-circle" src="{{asset('assets/images/user/user-sm-02.jpg')}}" alt="User Image">
+                                <img class="rounded-circle" src="{{asset('assets/images/user.png')}}" width="40px" alt="User Image">
                                 </div>
                                 
                                 <div class="media-body">
@@ -98,14 +98,14 @@
         $(this).addClass('chatroom-active');
         function renderChat(urlCreate){
             $.ajax({
-                url: `${urlCreate}?`+ new Date().getTime(),
+                url: `${urlCreate}`,
                 method: "GET",
                 success: function(response){
                     chats = response.data;
                     $('.chat-right-sidebar').find('h2').text(response.siswa_name)
                     results = '';
                     chats.forEach(chat => {
-                        if(chat.dari == 'admin'){
+                        if(chat.dari !== 'admin'){
                             results += 
                             `<div class="media media-chat">
                                 <div class="media-body">

@@ -3,8 +3,8 @@
     <!-- Aplication Brand -->
     <div class="app-brand">
       <a href="{{route('admin.home')}}">
-        <img src="images/logo.png" alt="Mono">
-        <span class="brand-name">PPDB</span>
+        <img src="{{ asset('logo/tut-wuri-handayani1.png') }}" width="40px" alt="">
+        <span class="brand-name"><b>PPDB</b></span>
       </a>
     </div>
     <!-- begin sidebar scrollbar -->

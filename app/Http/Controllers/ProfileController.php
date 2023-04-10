@@ -25,12 +25,6 @@ class ProfileController extends Controller
             $image_path = $sekolah->gambar;
         }
 
-        if($request->file('file_persyaratan')){
-            $file_path = $request->file('file_persyaratan')->store('file', 'public');
-        } else {
-            $file_path = $sekolah->file_persyaratan;
-        }
-
         if($request->password){
             $request->validate([
                 'nama_sekolah' => 'required',
@@ -46,7 +40,6 @@ class ProfileController extends Controller
                 'alamat_sekolah' => $request->alamat_sekolah,
                 'email' => $request->email,
                 'gambar' => $image_path,
-                'file_pendaftaran' => $file_path,
                 'password' => $request->password
             ]);
         } else {
@@ -63,7 +56,6 @@ class ProfileController extends Controller
                 'alamat_sekolah' => $request->alamat_sekolah,
                 'email' => $request->email,
                 'gambar' => $image_path,
-                'file_pendaftaran' => $file_path,
             ]);
         }
 

@@ -22,7 +22,6 @@ class Sekolah extends Authenticatable
         'email',
         'password',
         'gambar',
-        'file_persyaratan',
         'status'
     ];
 

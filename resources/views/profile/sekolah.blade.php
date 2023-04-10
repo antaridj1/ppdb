@@ -66,15 +66,6 @@
                             </div>
                         @enderror
                     </div>
-                    <div class="form-group mb-4">
-                        <label for="file_persyaratan">File Persyaratan</label>
-                        <input type="file" class="dropify" data-height="300" name="file_persyaratan" data-default-file="{{ asset('storage/'.$sekolah->file_persyaratan) }}" data-allowed-file-extensions="pdf " />
-                        @error('file_persyaratan')
-                            <div class="invalid-feedback">
-                                {{$message}}
-                            </div>
-                        @enderror
-                    </div>
                     <div class="text-center">
                         <button type="reset" class="btn btn-secondary">Reset</button>
                         <button type="submit" class="btn btn-primary">Submit</button>

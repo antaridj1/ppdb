@@ -70,8 +70,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         Route::group(['prefix' => 'chat', 'as' => 'chat.'], function () {
             Route::get('/', [ChatController::class, 'index'])->name('index');
-            Route::get('create/{user}', [ChatController::class, 'create'])->name('create');
-            Route::post('store/{user}', [ChatController::class, 'store'])->name('store');
+            Route::get('create/{siswa}', [ChatController::class, 'create'])->name('create');
+            Route::post('store/{siswa}', [ChatController::class, 'store'])->name('store');
         });
 
         Route::group(['prefix' => 'siswa', 'as' => 'siswa.'], function () {
