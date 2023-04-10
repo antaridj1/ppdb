@@ -32,7 +32,7 @@
                     Hapus
 
                   </a>
-                 
+
                 </div>
               </div>
             </td>
@@ -47,12 +47,12 @@
                 <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deletesekolahModal_{{$sekolah->id}}">
                     <i class="mdi mdi-trash-can"></i>
                 </button>
-               
+
             </td> --}}
         </tr>
       @empty
-          
+
       @endforelse
-  
+
     </tbody>
   </table>

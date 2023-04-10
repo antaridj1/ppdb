@@ -1,8 +1,10 @@
 @if ($siswa->dataPribadi)
     @if ($siswa->dataPribadi->isAccepted == true)
-        <div class="alert alert-primary alert-icon" role="alert" style="margin-left:16px; margin-right:16px;">
-            <i class="mdi mdi-bell-outline"></i> Peserta didik telah diterima! Silahkan menunggu informasi registrasi ulang.
-        </div>
+        <a href="{{ route('siswa.data') }}">
+            <div class="alert alert-primary alert-icon" role="alert" style="margin-left:16px; margin-right:16px;">
+                <i class="mdi mdi-bell-outline"></i> Peserta didik telah diterima! Silahkan menunggu informasi registrasi ulang.
+            </div>
+        </a>
     @elseif ($siswa->dataPribadi->isAccepted == false)
         <a href="{{ route('siswa.data') }}">
             <div class="alert alert-danger alert-icon" role="alert" style="margin-left:16px; margin-right:16px;">
