@@ -403,10 +403,7 @@ class SiswaController extends Controller
 
             DataPribadi::where('id', $id_datapribadi)->update(['isVerificated' => 0]);
 
-            return view(
-                'student.pages.data-ppdb',
-                ['daftar' => 1, 'siswa' => $siswa]
-            );
+            return redirect()->route('siswa.data');
         } catch (\Exception $e) {
             Log::error('eror message: ' . $e->getMessage() . 'in line: ' . $e->getLine());
         }

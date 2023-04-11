@@ -52,7 +52,7 @@
                             @else
                                 @if($siswa->dataPribadi->isAccepted === 0)
                                     @include('student.pages.components.form-edit')
-                                @elseif($siswa->dataPribadi->isAccepted === null)
+                                @elseif($siswa->dataPribadi->isAccepted == "" || $siswa->dataPribadi->isAccepted == null || $siswa->dataPribadi->isAccepted == "undefined")
                                     @include('student.pages.components.form-show')
                                 @else
                                 @endif
