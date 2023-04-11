@@ -24,4 +24,6 @@
         @include('layout.components.alert')
     @endif
 
+    @stack('js-textarea')
+
   @endsection

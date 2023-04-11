@@ -19,7 +19,6 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                  <a class="dropdown-item" href="{{route('admin.pengumuman.show',$pengumuman->id)}}">Detail</a>
                   <a class="dropdown-item" href="{{route('admin.pengumuman.edit',$pengumuman->id)}}">Edit</a>
                   <a class="dropdown-item" data-toggle="modal" data-target="#exampleModal_{{$pengumuman->id}}">
 

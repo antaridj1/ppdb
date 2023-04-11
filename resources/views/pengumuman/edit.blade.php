@@ -44,4 +44,16 @@
         @include('layout.components.alert')
     @endif
 
+    @push('js-textarea')
+        <script>
+            var textArea = document.getElementById('pengumuman');
+
+            // Get the text from the text area and remove whitespace
+            var text = textArea.value.replace(/\t/g, '');
+
+            // Set the text in the text area to the cleaned up text
+            textArea.value = text;
+        </script>
+    @endpush
+
   @endsection
