@@ -340,17 +340,32 @@
             {{-- tinggi badan --}}
             <div class="form-group">
                 <label for="tinggibdn">Tinggi Badan</label>
-                <input type="number" class="form-control rounded-0" id="tinggibdn" name="tinggi_badan" value="{{ $siswa->dataPribadi->dataPeriodik->tinggi_badan }}"><span>Cm</span>
+                <div class="input-group" style="width: 20%;">
+                    <input type="number" class="form-control rounded-0" id="tinggibdn" name="tinggi_badan" value="{{ $siswa->dataPribadi->dataPeriodik->tinggi_badan }}">
+                    <div class="input-group-append">
+                        <span class="input-group-text">Cm</span>
+                    </div>
+                </div>
             </div>
             {{-- Berat Badan --}}
             <div class="form-group">
                 <label for="bb">Berat Badan</label>
-                <input type="number" class="form-control rounded-0" id="bb" name="berat_badan" value="{{$siswa->dataPribadi->dataPeriodik->berat_badan }}"><span>Kg</span>
+                <div class="input-group" style="width: 20%;">
+                    <input type="number" class="form-control rounded-0" id="bb" name="berat_badan" value="{{$siswa->dataPribadi->dataPeriodik->berat_badan }}">
+                    <div class="input-group-append">
+                        <span class="input-group-text">Kg</span>
+                    </div>
+                </div>
             </div>
             {{-- Lingkar Kepala --}}
             <div class="form-group">
                 <label for="lingkar">Lingkar Kepala</label>
-                <input type="number" class="form-control rounded-0" id="lingkar" maxlength="4" name="lingkar_kepala" value="{{$siswa->dataPribadi->dataPeriodik->lingkar_kepala }}"><span>Cm</span>
+                <div class="input-group" style="width: 20%;">
+                    <input type="number" class="form-control rounded-0" id="lingkar" maxlength="4" name="lingkar_kepala" value="{{$siswa->dataPribadi->dataPeriodik->lingkar_kepala }}">
+                    <div class="input-group-append">
+                        <span class="input-group-text">Cm</span>
+                    </div>
+                </div>
             </div>
             {{-- jarak tempat tingal --}}
             <div class="form-group">
@@ -363,23 +378,28 @@
             {{-- jarak dalam Km --}}
             <div class="form-group">
                 <label for="km">Jarak</label><br>
-                <input type="number" class="form-control rounded-0" id="km" name="km" value="{{$siswa->dataPribadi->dataPeriodik->km }}"><span>Km</span>
+                <div class="input-group" style="width: 20%;">
+                    <input type="number" class="form-control rounded-0" id="km" name="km" value="{{$siswa->dataPribadi->dataPeriodik->km }}">
+                    <div class="input-group-append">
+                        <span class="input-group-text">Km</span>
+                    </div>
+                </div>
             </div>
             {{-- waktu tempuh --}}
             <div class="form-group">
                 <label for="waktu">Waktu Tempuh</label><br>
-                <input type="text" class="form-control rounded-0 w-25" id="waktu" name="waktu_tempuh_jam" value="{{$siswa->dataPribadi->dataPeriodik->waktu_tempuh }}">
+                <input type="text" class="form-control rounded-0" style="width:20%;" id="waktu" name="waktu_tempuh_jam" value="{{$siswa->dataPribadi->dataPeriodik->waktu_tempuh }}">
             </div>
             {{-- jumlah saudara --}}
             <div class="form-group">
                 <label for="saudara">Jumlah Saudara Kandung</label><br>
-                <input type="number" class="form-control rounded-0" id="saudara" name="jumlah_saudara" value="{{$siswa->dataPribadi->dataPeriodik->jumlah_saudara }}">
+                <input type="number" class="form-control rounded-0" style="width:20%;" id="saudara" name="jumlah_saudara" value="{{$siswa->dataPribadi->dataPeriodik->jumlah_saudara }}">
             </div>
         </div>
     </div>
 
     <!-- Prestasi -->
-    @if ($siswa->dataPribadi->dataPrestasi)
+    @if (count($siswa->dataPribadi->dataPrestasi) > 0)
         <div class="card card-default">
             <div class="card-header">
                 <h1>Prestasi</h1> <br>
@@ -435,7 +455,7 @@
 
 
     <!-- Beasiswa -->
-    @if ($siswa->dataPribadi->dataBeasiswa)
+    @if (count($siswa->dataPribadi->dataBeasiswa) > 0)
         <div class="card card-default">
             <div class="card-header">
                 <h1>Beasiswa</h1> <br>

@@ -341,35 +341,54 @@ class SiswaController extends Controller
             /**
              * File
              */
+            $file_store = [];
+            $file_store['data_pribadi_id'] = $id_datapribadi;
             if ($request->hasFile('file_kk')) {
                 $pdf_kk = $request->file('file_kk');
-                $name_kk = uniqid() . '.' . $pdf_kk->getClientOriginalExtension();
-                $pdf_kk->storeAs('file/kk/', $name_kk);
+                $file_store['file_kk'] = $pdf_kk->store('file/kk', 'public');
             }
             if ($request->hasFile('file_akta_kelahiran')) {
                 $pdf_akta = $request->file('file_akta_kelahiran');
-                $name_akta = uniqid() . '.' . $pdf_akta->getClientOriginalExtension();
-                $pdf_akta->storeAs('file/akta/', $name_akta);
+                $file_store['file_akta_kelahiran'] = $pdf_akta->store('file/akta', 'public');
             }
             if ($request->hasFile('file_ktp_ortu')) {
                 $pdf_ktp = $request->file('file_ktp_ortu');
-                $name_ktp = uniqid() . '.' . $pdf_ktp->getClientOriginalExtension();
-                $pdf_ktp->storeAs('file/ktp/', $name_ktp);
+                $file_store['file_ktp_ortu'] = $pdf_ktp->store('file/ktp', 'public');
             }
             if ($request->hasFile('file_ijazah_tk')) {
                 $pdf_ijazah = $request->file('file_ijazah_tk');
-                $name_ijazah = uniqid() . '.' . $pdf_ijazah->getClientOriginalExtension();
-                $pdf_ijazah->storeAs('file/ijazah/', $name_ijazah);
+                $file_store['file_ijazah_tk'] = $pdf_ijazah->store('file/ijazah', 'public');
             }
+            // if ($request->hasFile('file_kk')) {
+            //     $pdf_kk = $request->file('file_kk');
+            //     $name_kk = uniqid() . '.' . $pdf_kk->getClientOriginalExtension();
+            //     $pdf_kk->storeAs('file/kk/', $name_kk);
+            // }
+            // if ($request->hasFile('file_akta_kelahiran')) {
+            //     $pdf_akta = $request->file('file_akta_kelahiran');
+            //     $name_akta = uniqid() . '.' . $pdf_akta->getClientOriginalExtension();
+            //     $pdf_akta->storeAs('file/akta/', $name_akta);
+            // }
+            // if ($request->hasFile('file_ktp_ortu')) {
+            //     $pdf_ktp = $request->file('file_ktp_ortu');
+            //     $name_ktp = uniqid() . '.' . $pdf_ktp->getClientOriginalExtension();
+            //     $pdf_ktp->storeAs('file/ktp/', $name_ktp);
+            // }
+            // if ($request->hasFile('file_ijazah_tk')) {
+            //     $pdf_ijazah = $request->file('file_ijazah_tk');
+            //     $name_ijazah = uniqid() . '.' . $pdf_ijazah->getClientOriginalExtension();
+            //     $pdf_ijazah->storeAs('file/ijazah/', $name_ijazah);
+            // }
 
 
-            File::create([
-                'file_kk' => 'storage/file/kk/' . $name_kk,
-                'file_akta_kelahiran' => 'storage/file/akta/' . $name_akta,
-                'file_ktp_ortu' => 'storage/file/ktp/' . $name_ktp,
-                'file_ijazah_tk' => 'storage/file/ijazah/' . $name_ijazah,
-                'data_pribadi_id' => $id_datapribadi
-            ]);
+            File::create(
+                $file_store
+                // 'file_kk' => 'file/kk' . $name_kk,
+                // 'file_akta_kelahiran' => 'storage/file/akta/' . $name_akta,
+                // 'file_ktp_ortu' => 'storage/file/ktp/' . $name_ktp,
+                // 'file_ijazah_tk' => 'storage/file/ijazah/' . $name_ijazah,
+                // 'data_pribadi_id' => $id_datapribadi
+            );
 
 
 
@@ -382,7 +401,7 @@ class SiswaController extends Controller
                 'data_pribadi_id' => $id_datapribadi
             ]);
 
-            DataPribadi::where('id', $id_datapribadi)->update(['isisVerificated' => 0]);
+            DataPribadi::where('id', $id_datapribadi)->update(['isVerificated' => 0]);
 
             return view(
                 'student.pages.data-ppdb',
@@ -619,13 +638,24 @@ class SiswaController extends Controller
              */
             for ($i = 0; $i <= 2; $i++) {
                 if ($request->input('beasiswa' . $i . 'jenis_anak_berprestasi')) {
-
-                    Beasiswa::where('id', $request->id_bea . '' . $i)->update([
-                        'jenis_anak_berprestasi' => $request->input('beasiswa' . $i . 'jenis_anak_berprestasi'),
-                        'keterangan' => $request->input('beasiswa' . $i . 'keterangan'),
-                        'tahun_mulai' => $request->input('beasiswa' . $i . 'tahun_mulai'),
-                        'tahun_selesai' => $request->input('beasiswa' . $i . 'tahun_selesai')
-                    ]);
+                    //jika dia beasiswa baru
+                    if ($request->id_bea . '' . $i == 'new-bea') {
+                        Beasiswa::create([
+                            'jenis_anak_berprestasi' => $request->input('beasiswa' . $i . 'jenis_anak_berprestasi'),
+                            'keterangan' => $request->input('beasiswa' . $i . 'keterangan'),
+                            'tahun_mulai' => $request->input('beasiswa' . $i . 'tahun_mulai'),
+                            'tahun_selesai' => $request->input('beasiswa' . $i . 'tahun_selesai'),
+                            'data_pribadi_id' => $siswa->data_pribadi_id
+                        ]);
+                    } else {
+                        //jika dia update data
+                        Beasiswa::where('id', $request->id_bea . '' . $i)->update([
+                            'jenis_anak_berprestasi' => $request->input('beasiswa' . $i . 'jenis_anak_berprestasi'),
+                            'keterangan' => $request->input('beasiswa' . $i . 'keterangan'),
+                            'tahun_mulai' => $request->input('beasiswa' . $i . 'tahun_mulai'),
+                            'tahun_selesai' => $request->input('beasiswa' . $i . 'tahun_selesai')
+                        ]);
+                    }
                 }
             }
 
@@ -636,13 +666,24 @@ class SiswaController extends Controller
              */
             for ($i = 0; $i <= 2; $i++) {
                 if ($request->input('prestasi' . $i . 'nama_prestasi')) {
-                    Prestasi::where('id', $request->id_pres . '' . $i)->update([
-                        'nama_prestasi' => $request->input('prestasi' . $i . 'nama_prestasi'),
-                        'tahun' => $request->input('prestasi' . $i . 'tahun'),
-                        'penyelenggara' => $request->input('prestasi' . $i . 'penyelenggara'),
-                        'jenis_prestasi' => $request->input('prestasi' . $i . 'jenis_prestasi'),
-                        'tingkat' => $request->input('prestasi' . $i . 'tingkat'),
-                    ]);
+                    if ($request->id_pres . '' . $i == 'new-pres') {
+                        Prestasi::create([
+                            'nama_prestasi' => $request->input('prestasi' . $i . 'nama_prestasi'),
+                            'tahun' => $request->input('prestasi' . $i . 'tahun'),
+                            'penyelenggara' => $request->input('prestasi' . $i . 'penyelenggara'),
+                            'jenis_prestasi' => $request->input('prestasi' . $i . 'jenis_prestasi'),
+                            'tingkat' => $request->input('prestasi' . $i . 'tingkat'),
+                            'data_pribadi_id' => $siswa->data_pribadi_id
+                        ]);
+                    } else {
+                        Prestasi::where('id', $request->id_pres . '' . $i)->update([
+                            'nama_prestasi' => $request->input('prestasi' . $i . 'nama_prestasi'),
+                            'tahun' => $request->input('prestasi' . $i . 'tahun'),
+                            'penyelenggara' => $request->input('prestasi' . $i . 'penyelenggara'),
+                            'jenis_prestasi' => $request->input('prestasi' . $i . 'jenis_prestasi'),
+                            'tingkat' => $request->input('prestasi' . $i . 'tingkat'),
+                        ]);
+                    }
                 }
             }
 
@@ -688,7 +729,8 @@ class SiswaController extends Controller
              */
             DataPribadi::where('id', $siswa->data_pribadi_id)->update([
                 'isAccepted' => null,
-                'isVerificated' => 0
+                'isVerificated' => 0,
+                'saran_perbaikan' => null
             ]);
 
             return back();
