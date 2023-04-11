@@ -8,7 +8,7 @@
             @csrf
             <div class="row">
                 <div class="form-group col-md-12 mb-4">
-                    <label for="yourEmail" class="form-label">Emails</label>
+                    <label for="yourEmail" class="form-label">Email</label>
                     <input type="email" class="form-control input-lg @error('email') is-invalid @enderror" name="email" id="email" aria-describedby="emailHelp">
                     @error('email')
                         <span class="invalid-feedback" role="alert">
