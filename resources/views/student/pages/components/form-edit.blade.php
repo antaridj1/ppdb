@@ -1202,12 +1202,12 @@
             @for ($i=0; $i<3; $i++)
                 {{-- prestasi 1 --}}
                 <h4>Prestasi {{ $i+1 }}</h6> <br>
-                <input type="hidden" name='id_pres{{ $i }}' value="{{ !empty($prestasiCount[$i]->id) ? $prestasiCount[$i]->id : "new-pres" }}">
+                <input type="hidden" name='id_pres{{ $i }}' value="{{ !empty($prestasiCount[$i]->id) ? $prestasiCount[$i]->id : null }}">
                 {{-- jenis --}}
                 <div class="form-group">
                     <label>Jenis Prestasi</label><br>
                     <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                        <input type="radio" id="sains{{ $i }}" name="prestasi{{ $i }}jenis_prestasi" class="custom-control-input" value="sains" {{ old('prestasi'.$i.'jenis_prestasi', !empty($prestasiCount[$i]) ? ($prestasiCount[$i]->jenis_prestasi == 'sains' ? 'checked' : '') : 'checked') }}>
+                        <input type="radio" id="sains{{ $i }}" name="prestasi{{ $i }}jenis_prestasi" class="custom-control-input" value="sains" {{ old('prestasi'.$i.'jenis_prestasi', !empty($prestasiCount[$i]) ? ($prestasiCount[$i]->jenis_prestasi == 'sains' ? 'checked' : '') : '') }}>
                         <label class="custom-control-label" for="sains{{ $i }}">Sains</label>
                     </div>
                     <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
@@ -1230,7 +1230,7 @@
                 <div class="form-group">
                     <label for="exampleFormControlPasswor3">Tingkat prestasi</label><br>
                     <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                        <input type="radio" id="kecamatan{{ $i }}" name="prestasi{{ $i }}tingkat" class="custom-control-input" value="kecamatan" {{ old('prestasi'.$i.'tingkat', !empty($prestasiCount[$i]) ? ($prestasiCount[$i]->tingkat == 'kecamatan' ? 'checked' : '') : 'checked') }}>
+                        <input type="radio" id="kecamatan{{ $i }}" name="prestasi{{ $i }}tingkat" class="custom-control-input" value="kecamatan" {{ old('prestasi'.$i.'tingkat', !empty($prestasiCount[$i]) ? ($prestasiCount[$i]->tingkat == 'kecamatan' ? 'checked' : '') : '') }}>
                         <label class="custom-control-label" for="kecamatan{{ $i }}">Kecamatan</label>
                     </div>
                     <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
@@ -1301,19 +1301,19 @@
                  {{-- beasiswa 1 --}}
                 <h4>Beasiswa {{ $i+1 }}</h6> <br>
                 {{-- jenis --}}
-                <input type="hidden" name="id_bea{{ $i }}" value="{{ !empty($beasiswaCount[$i]->id) ? $beasiswaCount[$i]->id : "new-bea" }}">
+                <input type="hidden" name="id_bea{{ $i }}" value="{{ !empty($beasiswaCount[$i]->id) ? $beasiswaCount[$i]->id : null }}">
                 <div class="form-group">
                     <label>Jenis Beasiswa</label><br>
                     <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                        <input type="radio" id="anak_miskin{{ $i }}" name="beasiswa{{ $i }}jenis_anak_berprestasi" class="custom-control-input" value="anak miskin" {{ old('beasiswa'. $i .'jenis_anak_berprestasi', !empty($beasiswaCount) ? ($beasiswaCount[$i]->jenis_anak_berprestasi == 'anak miskin' ? 'checked' : '') : '') }}>
+                        <input type="radio" id="anak_miskin{{ $i }}" name="beasiswa{{ $i }}jenis_anak_berprestasi" class="custom-control-input" value="anak miskin" {{ old('beasiswa'. $i .'jenis_anak_berprestasi', !empty($beasiswaCount[$i]) ? ($beasiswaCount[$i]->jenis_anak_berprestasi == 'anak miskin' ? 'checked' : '') : '') }}>
                         <label class="custom-control-label" for="anak_miskin{{ $i }}">Anak miskin</label>
                     </div>
                     <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                        <input type="radio" id="pendidikanb{{ $i }}" name="beasiswa{{ $i }}jenis_anak_berprestasi" class="custom-control-input" value="pendidikan" {{ old('beasiswa'. $i .'jenis_anak_berprestasi', !empty($beasiswaCount) ? ($beasiswaCount[$i]->jenis_anak_berprestasi == 'pendidikan' ? 'checked' : '') : '') }}>
+                        <input type="radio" id="pendidikanb{{ $i }}" name="beasiswa{{ $i }}jenis_anak_berprestasi" class="custom-control-input" value="pendidikan" {{ old('beasiswa'. $i .'jenis_anak_berprestasi', !empty($beasiswaCount[$i]) ? ($beasiswaCount[$i]->jenis_anak_berprestasi == 'pendidikan' ? 'checked' : '') : '') }}>
                         <label class="custom-control-label" for="pendidikanb{{ $i }}">Pendidikan</label>
                     </div>
                     <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                        <input type="radio" id="unggulan{{ $i }}" name="beasiswa{{ $i }}jenis_anak_berprestasi" class="custom-control-input" value="unggulan" {{ old('beasiswa'. $i .'jenis_anak_berprestasi', !empty($beasiswaCount) ? ($beasiswaCount[$i]->jenis_anak_berprestasi == 'unggulan' ? 'checked' : '') : '') }}>
+                        <input type="radio" id="unggulan{{ $i }}" name="beasiswa{{ $i }}jenis_anak_berprestasi" class="custom-control-input" value="unggulan" {{ old('beasiswa'. $i .'jenis_anak_berprestasi', !empty($beasiswaCount[$i]) ? ($beasiswaCount[$i]->jenis_anak_berprestasi == 'unggulan' ? 'checked' : '') : '') }}>
                         <label class="custom-control-label" for="unggulan{{ $i }}">Unggulan</label>
                     </div>
                     @error('beasiswa{{ $i }}jenis_anak_berprestasi')

@@ -583,7 +583,6 @@ class SiswaController extends Controller
                 'jumlah_saudara' => $request->input('jumlah_saudara'),
             ]);
 
-
             /**
              * Data Ayah
              */
@@ -596,7 +595,6 @@ class SiswaController extends Controller
                 'penghasilan_ayah' => $request->input('penghasilan_ayah'),
                 'berkebutuhan_khusus_ayah' => $request->input('berkebutuhan_khusus_ayah')
             ]);
-
 
             /**
              * Data Ibu
@@ -612,8 +610,6 @@ class SiswaController extends Controller
                 'berkebutuhan_khusus_ibu' => $request->input('berkebutuhan_khusus_ibu')
             ]);
 
-
-
             /**
              * Data Wali
              */
@@ -628,15 +624,15 @@ class SiswaController extends Controller
                 ]);
             }
 
-
-
             /**
              * Beasiswa
              */
             for ($i = 0; $i <= 2; $i++) {
                 if ($request->input('beasiswa' . $i . 'jenis_anak_berprestasi')) {
+                    Log::info('masuk');
                     //jika dia beasiswa baru
-                    if ($request->id_bea . '' . $i == 'new-bea') {
+                    if ($request->input('id_bea' . $i) == null) {
+                        Log::info('create');
                         Beasiswa::create([
                             'jenis_anak_berprestasi' => $request->input('beasiswa' . $i . 'jenis_anak_berprestasi'),
                             'keterangan' => $request->input('beasiswa' . $i . 'keterangan'),
@@ -645,8 +641,9 @@ class SiswaController extends Controller
                             'data_pribadi_id' => $siswa->data_pribadi_id
                         ]);
                     } else {
+                        Log::info('update');
                         //jika dia update data
-                        Beasiswa::where('id', $request->id_bea . '' . $i)->update([
+                        Beasiswa::where('id', $request->input('id_bea'. $i))->update([
                             'jenis_anak_berprestasi' => $request->input('beasiswa' . $i . 'jenis_anak_berprestasi'),
                             'keterangan' => $request->input('beasiswa' . $i . 'keterangan'),
                             'tahun_mulai' => $request->input('beasiswa' . $i . 'tahun_mulai'),
@@ -663,7 +660,7 @@ class SiswaController extends Controller
              */
             for ($i = 0; $i <= 2; $i++) {
                 if ($request->input('prestasi' . $i . 'nama_prestasi')) {
-                    if ($request->id_pres . '' . $i == 'new-pres') {
+                    if ($request->input('id_pres' . $i) == null) {
                         Prestasi::create([
                             'nama_prestasi' => $request->input('prestasi' . $i . 'nama_prestasi'),
                             'tahun' => $request->input('prestasi' . $i . 'tahun'),
@@ -673,7 +670,7 @@ class SiswaController extends Controller
                             'data_pribadi_id' => $siswa->data_pribadi_id
                         ]);
                     } else {
-                        Prestasi::where('id', $request->id_pres . '' . $i)->update([
+                        Prestasi::where('id', $request->input('id_pres' . $i))->update([
                             'nama_prestasi' => $request->input('prestasi' . $i . 'nama_prestasi'),
                             'tahun' => $request->input('prestasi' . $i . 'tahun'),
                             'penyelenggara' => $request->input('prestasi' . $i . 'penyelenggara'),
