@@ -228,6 +228,7 @@ class SiswaController extends Controller
                 'kip' => $request->input('kip'),
                 'menerima_kip' => $request->input('menerima_kip'),
                 'pip' => $request->input('pip'),
+                'isVerificated' => null
             ]);
 
             $id_datapribadi = $dataPribadi->id;
@@ -359,35 +360,9 @@ class SiswaController extends Controller
                 $pdf_ijazah = $request->file('file_ijazah_tk');
                 $file_store['file_ijazah_tk'] = $pdf_ijazah->store('file/ijazah', 'public');
             }
-            // if ($request->hasFile('file_kk')) {
-            //     $pdf_kk = $request->file('file_kk');
-            //     $name_kk = uniqid() . '.' . $pdf_kk->getClientOriginalExtension();
-            //     $pdf_kk->storeAs('file/kk/', $name_kk);
-            // }
-            // if ($request->hasFile('file_akta_kelahiran')) {
-            //     $pdf_akta = $request->file('file_akta_kelahiran');
-            //     $name_akta = uniqid() . '.' . $pdf_akta->getClientOriginalExtension();
-            //     $pdf_akta->storeAs('file/akta/', $name_akta);
-            // }
-            // if ($request->hasFile('file_ktp_ortu')) {
-            //     $pdf_ktp = $request->file('file_ktp_ortu');
-            //     $name_ktp = uniqid() . '.' . $pdf_ktp->getClientOriginalExtension();
-            //     $pdf_ktp->storeAs('file/ktp/', $name_ktp);
-            // }
-            // if ($request->hasFile('file_ijazah_tk')) {
-            //     $pdf_ijazah = $request->file('file_ijazah_tk');
-            //     $name_ijazah = uniqid() . '.' . $pdf_ijazah->getClientOriginalExtension();
-            //     $pdf_ijazah->storeAs('file/ijazah/', $name_ijazah);
-            // }
-
 
             File::create(
                 $file_store
-                // 'file_kk' => 'file/kk' . $name_kk,
-                // 'file_akta_kelahiran' => 'storage/file/akta/' . $name_akta,
-                // 'file_ktp_ortu' => 'storage/file/ktp/' . $name_ktp,
-                // 'file_ijazah_tk' => 'storage/file/ijazah/' . $name_ijazah,
-                // 'data_pribadi_id' => $id_datapribadi
             );
 
 
@@ -400,8 +375,6 @@ class SiswaController extends Controller
                 'daftar' => 1,
                 'data_pribadi_id' => $id_datapribadi
             ]);
-
-            DataPribadi::where('id', $id_datapribadi)->update(['isVerificated' => 0]);
 
             return redirect()->route('siswa.data');
         } catch (\Exception $e) {
@@ -538,6 +511,9 @@ class SiswaController extends Controller
 
 
         try {
+            /**
+             * Update data siswa
+             */
             DataPribadi::where('id', $siswa->data_pribadi_id)->update([
                 'sekolah_id' => $request->input('sekolah_id'),
                 'nama_lengkap' => $request->input('nama_lengkap'),
@@ -567,6 +543,9 @@ class SiswaController extends Controller
                 'kip' => $request->input('kip'),
                 'menerima_kip' => $request->input('menerima_kip'),
                 'pip' => $request->input('pip'),
+                'isAccepted' => null,
+                'isVerificated' => null,
+                'saran_perbaikan' => null
             ]);
 
             /**
@@ -716,16 +695,6 @@ class SiswaController extends Controller
 
             File::where('data_pribadi_id', $siswa->data_pribadi_id)->update($file_update);
 
-
-
-            /**
-             * Update data siswa
-             */
-            DataPribadi::where('id', $siswa->data_pribadi_id)->update([
-                'isAccepted' => null,
-                'isVerificated' => 0,
-                'saran_perbaikan' => null
-            ]);
 
             return back();
         } catch (\Exception $e) {
