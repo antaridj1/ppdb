@@ -228,7 +228,6 @@ class SiswaController extends Controller
                 'kip' => $request->input('kip'),
                 'menerima_kip' => $request->input('menerima_kip'),
                 'pip' => $request->input('pip'),
-                'isVerificated' => null
             ]);
 
             $id_datapribadi = $dataPribadi->id;
@@ -364,8 +363,6 @@ class SiswaController extends Controller
             File::create(
                 $file_store
             );
-
-
 
             /**
              * Update data siswa

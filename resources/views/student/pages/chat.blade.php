@@ -13,7 +13,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Mono - Responsive Admin & Dashboard Template</title>
+  <title>Chat Admin</title>
 
   <!-- GOOGLE FONTS -->
   <link href="https://fonts.googleapis.com/css?family=Karla:400,700|Roboto" rel="stylesheet">
@@ -46,7 +46,7 @@
 
                                 <div class="card-body pb-0" data-simplebar style="height: 545px;">
                                     <div id="chatroom" style="overflow-y: auto ">
-                                        
+
                                     </div>
                                 </div>
 
@@ -72,7 +72,7 @@
         </div>
     </div>
     @include('student.components.jsadmin')
-    
+
     <script src="{{asset('assets/plugins/jquery/jquery.min.js')}}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
@@ -90,7 +90,7 @@
                         results = '';
                         response.forEach(chat => {
                             if(chat.dari !== 'admin'){
-                                results += 
+                                results +=
                                 `<div class="media media-chat media-chat-right">
                                     <div class="media-body">
                                         <div class="text-content">
@@ -100,7 +100,7 @@
                                     </div>
                                 </div>`;
                             } else {
-                                results += 
+                                results +=
                                 `<div class="media media-chat">
                                     <div class="media-body">
                                         <div class="text-content">
@@ -119,19 +119,19 @@
                         } else {
                              $('#chatroom').html(results);
                         }
-                       
+
                     }
                 })
             }
-    
+
             renderChat(urlCreate);
-    
+
             $('#send').on('click', function(){
                 $.ajax({
                     url: urlPost,
                     method: "POST",
-                
-                    data: { 
+
+                    data: {
                         "_token": "{{ csrf_token() }}",
                         chat : $('#chat').val()
                     }

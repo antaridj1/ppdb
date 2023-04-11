@@ -1,6 +1,6 @@
 @extends('student.layouts.app')
 
-@section('title', 'PPDB - Online')
+@section('title', 'PPDB - ' . $data['nama_sekolah'])
 
 @section('header')
     <section id="topbar" class="d-flex align-items-center">
