@@ -8,7 +8,9 @@
             <span class="text-color d-block">{{$peserta_didik->email}}</span>
             <div class="d-flex justify-content-center mt-3">
                 @if($peserta_didik->dataPribadi->isVerificated === null)
-                    <button data-toggle="modal" data-target="#verifikasiModal_{{$peserta_didik->dataPribadi->id}}" class="btn btn-primary btn-pill">Verifikasi</button>
+                    @auth('sekolah')
+                        <button data-toggle="modal" data-target="#verifikasiModal_{{$peserta_didik->dataPribadi->id}}" class="btn btn-primary btn-pill">Verifikasi</button>
+                    @endauth
                 @else
                     <span class="badge {{$peserta_didik->dataPribadi->verification_status_badge}} badge-pill">{{$peserta_didik->dataPribadi->verification_status_string}}</span>
                 @endif
