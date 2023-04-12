@@ -8,7 +8,6 @@
 -->
 
 <html lang="en">
-<head>
   <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -19,18 +18,25 @@
   <!-- GOOGLE FONTS -->
   <link href="https://fonts.googleapis.com/css?family=Karla:400,700|Roboto" rel="stylesheet">
     @include('student.components.cssadmin')
-</head>
-
+    @php
+        $sekolah = App\Models\Sekolah::find($id);
+    @endphp
+    <style>
+            .bg-light-gray {
+            background-image: url("{{ asset('storage/' . $sekolah->gambar) }}");
+            background-size: cover;
+        }
+    </style>
 </head>
   <body class="bg-light-gray" id="body">
-          <div class="container d-flex align-items-center justify-content-center" style="min-height: 100vh">
+        <div class="container d-flex align-items-center justify-content-center" style="min-height: 100vh">
           <div class="d-flex flex-column justify-content-between">
             <div class="row justify-content-center">
               <div class="col-lg-6 col-md-10">
                 <div class="card card-default mb-0">
                   <div class="card-header pb-0">
-                    <div class="w-100 d-flex justify-content-center border-bottom-0">
-                        <h3 class="brand-name text-dark font-weight-bold">Login</h3>
+                    <div class="w-100 d-flex justify-content-center border-bottom-0" style="margin-bottom: 30px;">
+                        <h3 class="brand-name text-dark font-weight-bold" style="text-align: center;">Login<br />Peserta Didik</h3>
                     </div>
                   </div>
                   <div class="card-body px-5 pb-5 pt-0 mt-3">
@@ -60,7 +66,7 @@
                                     <strong>{{ $message }}</strong>
                                 @enderror
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-12" style="margin-top: 20px;">
                             {{-- <div class="d-flex justify-content-end mb-5">
                                 <a class="text-color" href="#"> Forgot password? </a>
                             </div> --}}
