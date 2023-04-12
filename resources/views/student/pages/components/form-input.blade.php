@@ -275,7 +275,7 @@
             </div>
             {{-- lintang --}}
             <div class="form-group">
-                <label for="lintang">lintan</label>
+                <label for="lintang">Lintang</label>
                 <input type="text" class="form-control rounded-0 @error('lintang') is-invalid @enderror" name="lintang" id="lintang" value="{{ old('lintang') }}" required>
                 @error('lintang')
                     <span class="mt-2 d-block" style="color:red;">{{ $message }}</span>
