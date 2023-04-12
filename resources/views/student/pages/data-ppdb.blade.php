@@ -51,7 +51,7 @@
                                 @include('student.pages.components.form-input')
                             @else
                             {{-- bisa edit kalau acc nya salah dan verifikasi gak sukses --}}
-                                @if($siswa->dataPribadi->isAccepted === 0 || $siswa->dataPribadi->isVerificated === 0 ||)
+                                @if($siswa->dataPribadi->isAccepted === 0 || $siswa->dataPribadi->isVerificated === 0)
                                     @include('student.pages.components.form-edit')
                                 @elseif($siswa->dataPribadi->isAccepted == 1 || $siswa->dataPribadi->isVerificated === 1 || $siswa->dataPribadi->isVerificated === null)
                                     @include('student.pages.components.form-show')
