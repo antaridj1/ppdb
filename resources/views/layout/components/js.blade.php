@@ -9,7 +9,7 @@
 <script src="{{asset('assets/plugins/jvectormap/jquery-jvectormap-us-aea.js')}}"></script>
 <script src="{{asset('assets/plugins/daterangepicker/moment.min.js')}}"></script>
 <script src="{{asset('assets/plugins/daterangepicker/daterangepicker.js')}}"></script>
-                    
+
 <script src="{{asset('assets/plugins/ladda/spin.min.js')}}"></script>
 <script src="{{asset('assets/plugins/ladda/ladda.min.js')}}"></script>
 <script>
@@ -41,3 +41,26 @@
 <script>
   $('.dropify').dropify();
 </script>
+@php
+    $sekolah = App\Models\Sekolah::all();
+@endphp
+{{-- addition --}}
+<script>
+    const images = [];
+
+    @foreach($sekolah as $item)
+        images.push('{{ asset('storage/' . $item->gambar) }}');
+    @endforeach
+
+    let currentImageIndex = 0;
+
+    function updateBackgroundImage() {
+        const body = document.querySelector('body:has(#bg-login-sekolah)');
+        body.style.backgroundImage = `url(${images[currentImageIndex]})`;
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+    }
+
+    updateBackgroundImage();
+    setInterval(updateBackgroundImage, 5000);
+</script>
+

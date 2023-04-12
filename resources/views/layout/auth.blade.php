@@ -10,6 +10,24 @@
 
         <!-- theme meta -->
         <meta name="theme-name" content="mono" />
+        @php
+            $admin = App\Models\Admin::find(1);
+            $sekolah = App\Models\Sekolah::all();
+        @endphp
+        <style>
+            body:has(#bg-login-admin){
+                background-image: url('{{asset('storage/'.$admin->gambar)}}');
+                ackground-size: cover;
+                background-position: center;
+                height: 100vh;
+            }
+            body:has(#bg-login-sekolah){
+                background-image: url('gambar');
+                ackground-size: cover;
+                background-position: center;
+                height: 100vh;
+            }
+        </style>
 
         <!-- GOOGLE FONTS -->
         @include('layout.components.css')
