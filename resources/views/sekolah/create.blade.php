@@ -58,7 +58,7 @@
                     </div>
                     <div class="form-group mb-4">
                         <label for="gambar">Gambar Landing Page</label>
-                        <input type="file" class="dropify @error('gambar') is-invalid @enderror" data-height="300" name="gambar" data-allowed-file-extensions="png jpg jpeg " />
+                        <input type="file" class="dropify @error('gambar') is-invalid @enderror" data-height="300" name="gambar" data-allowed-file-extensions="png jpg jpeg " data-default-file="{{asset('assets/images/default.png')}}" />
                         @error('gambar')
                             <div class="invalid-feedback">
                                 {{$message}}
