@@ -7,7 +7,7 @@
 
                     <div class="card-body">
                         <ul class="list-group">
-                            @foreach ($pengumumans as $pengumuman)
+                            @forelse ($pengumumans as $pengumuman)
                             <li class="list-group-item list-group-item-action">
                                 <div class="media media-sm mb-0">
                                 <div class="media-sm-wrapper bg-primary">
@@ -20,7 +20,9 @@
                                 </div>
                                 </div>
                             </li>
-                            @endforeach
+                            @empty
+                            
+                            @endforelse
                         </ul>
                     </div>
                     </div>
