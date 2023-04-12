@@ -297,7 +297,7 @@
                 <table class="table table-borderless text-start">
                     <tr>
                         <th>Scan Kartu Keluarga</th>
-                        <td>: <a href="{{asset('storage/'.$peserta_didik->dataPribadi->file->file_kk)}}" target="_blank"  class="btn btn-sm btn-outline-primary"><i class="mdi mdi-download"></i> Lihat Dokumen</a></td>
+                        <td>: <a href="{{ asset('storage/'.$peserta_didik->dataPribadi->file->file_kk) }}" target="_blank"  class="btn btn-sm btn-outline-primary"><i class="mdi mdi-download"></i> Lihat Dokumen</a></td>
                     </tr>
                     <tr>
                         <th>Scan Akta Kelahiran</th>
