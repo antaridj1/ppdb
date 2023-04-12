@@ -48,11 +48,14 @@ class SekolahController extends Controller
             'tlp_sekolah' => 'required',
             'alamat_sekolah' => 'required',
             'email' => 'required|email|unique:sekolah',
-            'gambar' => 'image|mimes:jpg,png,jpeg',
             'password' => 'required|min:6'
         ]);
-
-        $image_path = $request->file('gambar')->store('image', 'public');
+        if($request->file('gambar')){
+            $image_path = $request->file('gambar')->store('image', 'public');
+        } else {
+            $image_path = null;
+        }
+        
 
         Sekolah::create([
             'nama_sekolah' => $request->nama_sekolah,
