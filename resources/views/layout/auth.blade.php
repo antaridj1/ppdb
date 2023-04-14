@@ -16,16 +16,19 @@
         @endphp
         <style>
             body:has(#bg-login-admin){
-                background-image: url('{{asset('storage/'.$admin->gambar)}}');
-                ackground-size: cover;
+                background: url('{{asset('storage/'.$admin->gambar)}}');
+                /* background-image: url('{{asset('storage/'.$admin->gambar)}}') no-repeat; */
+                background-size: cover;
                 background-position: center;
-                height: 100vh;
+                height: 100%;
+                background-repeat: no-repeat;
             }
             body:has(#bg-login-sekolah){
                 background-image: url('gambar');
-                ackground-size: cover;
+                background-size: cover;
                 background-position: center;
-                height: 100vh;
+                height: 100%;
+                background-repeat: no-repeat;
             }
         </style>
 

@@ -25,6 +25,9 @@
             .bg-light-gray {
             background-image: url("{{ asset('storage/' . $sekolah->gambar) }}");
             background-size: cover;
+            background-position: center;
+            height: 100%;
+            background-repeat: no-repeat;
         }
     </style>
 </head>
