@@ -22,7 +22,7 @@
                 height: 100vh;
             }
             body:has(#bg-login-sekolah){
-                background-image: url('gambar');
+                background-image: url('{{asset('image/bg-login-sekolah.jpg')}}');
                 ackground-size: cover;
                 background-position: center;
                 height: 100vh;
