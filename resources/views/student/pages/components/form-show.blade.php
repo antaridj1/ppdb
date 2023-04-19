@@ -552,7 +552,7 @@
             </div>
             {{-- file ktp ortu --}}
             <div class="form-group">
-                <label for="scan_ktp">Scan Kartu Akta Kelahiran</label>
+                <label for="scan_ktp">Scan KTP Orang Tua</label>
                 <a href="{{ asset('storage/'.$siswa->dataPribadi->file->file_ktp_ortu) }}" target="_blank">Lihat file</a>
             </div>
             {{-- file ijazah tk --}}
