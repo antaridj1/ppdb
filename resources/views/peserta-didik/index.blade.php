@@ -38,6 +38,8 @@
         </div>
     </div>
 
-  
+    @if(session()->has('status'))
+        @include('layout.components.alert')
+    @endif
 
   @endsection

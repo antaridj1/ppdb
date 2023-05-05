@@ -1,6 +1,6 @@
 <table id="productsTable" class="table table-product" style="width:100%">
     <thead>
-        <tr class="text-center">
+        <tr>
             @if(Route::is('sekolah.siswa.penerimaan'))
                 <th>
                     <div class="custom-control custom-checkbox checkbox-success d-inline-block">
@@ -16,7 +16,7 @@
             @endauth
             <th>Tgl Daftar</th>
             <th>Wali</th>
-            <th>Status</th>
+            <th class="text-center">Status</th>
             <th></th>
         </tr>
     </thead>
@@ -48,16 +48,19 @@
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
                         @auth('admin')
                             <a class="dropdown-item" href="{{route('admin.siswa.show',$peserta_didik->id)}}">Detail</a>
+                            <a class="dropdown-item" data-toggle="modal" data-target="#exampleModal_{{$peserta_didik->id}}">Hapus</a>
                         @endauth
                         @auth('sekolah')
                             <a class="dropdown-item" href="{{route('sekolah.siswa.show',$peserta_didik->id)}}">Detail</a>
                         @endauth
 
                     </div>
+                    
                     </div>
                 </td>
 
             </tr>
+            @include('peserta-didik._modal')
         @empty
         <tr>
             <td>Tidak Ada Data</td>
