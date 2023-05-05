@@ -1427,7 +1427,7 @@
             </div>
             {{-- file ktp ortu --}}
             <div class="form-group">
-                <label for="scan_ktp">Scan Kartu Akta Kelahiran</label>
+                <label for="scan_ktp">Scan KTP Orang Tua</label>
                 {{-- <input type="file" class="form-control-file" id="scan_ktp" name="file_ktp_ortu" value="{{ old('file_ktp_ortu', $siswa->dataPribadi->file->file_ktp_ortu) }}"> --}}
                 <input type="file" id="scan_ktp" class="dropify" data-height="300" name="file_ktp_ortu" data-default-file="{{ old('file_ktp_ortu', asset('storage/'.$siswa->dataPribadi->file->file_ktp_ortu)) }}" data-allowed-file-extensions="pdf" {{ old('file_kk', asset('storage/'.$siswa->dataPribadi->file->file_ktp_ortu)) }} />
                 @error('file_ktp_ortu')

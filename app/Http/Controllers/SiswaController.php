@@ -818,9 +818,22 @@ class SiswaController extends Controller
     }
 
 
-    public function destroy(Siswa $siswa)
+    public function destroy(DataPribadi $siswa)
     {
-        //
+        $siswa->dataAyah()->delete();
+        $siswa->dataIbu()->delete();
+        $siswa->dataPeriodik()->delete();
+        $siswa->dataWali()->delete();
+        $siswa->dataIbu()->delete();
+        $siswa->dataBeasiswa()->delete();
+        $siswa->dataPrestasi()->delete();
+        $siswa->kesejahteraan()->delete();
+        $siswa->file()->delete();
+        $siswa->delete();
+
+        return back()
+            ->with('status', 'success')
+            ->with('message', 'Data telah dihapus');
     }
 
     public function calinPesertaDidik()

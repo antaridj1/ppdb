@@ -28,7 +28,7 @@
       <tr>
         <th>No.</th>
         <th>Nama</th>
-        <th>NIM</th>
+        <th>NISN</th>
       </tr>
     </thead>
     <tbody>

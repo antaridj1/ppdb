@@ -41,11 +41,11 @@
 <script>
   $('.dropify').dropify();
 </script>
-@php
+{{-- @php
     $sekolah = App\Models\Sekolah::all();
-@endphp
+@endphp --}}
 {{-- addition --}}
-<script>
+{{-- <script>
     const images = [];
 
     @foreach($sekolah as $item)
@@ -62,5 +62,5 @@
 
     updateBackgroundImage();
     setInterval(updateBackgroundImage, 5000);
-</script>
+</script> --}}
 
