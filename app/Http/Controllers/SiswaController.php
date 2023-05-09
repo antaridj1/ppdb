@@ -392,7 +392,7 @@ class SiswaController extends Controller
             $siswa = Siswa::find(auth()->guard('siswa')->id());
             return view('student.pages.profile-siswa-ppdb', ['siswa' => $siswa]);
         } else {
-            $peserta_didik = $siswa;
+            $peserta_didik = $siswa->dataPribadi;
             return view('peserta-didik.show', compact('peserta_didik'));
         }
     }
