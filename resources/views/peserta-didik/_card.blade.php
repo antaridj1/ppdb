@@ -1,6 +1,6 @@
 
 <div class="card card-default card-profile">
-    <div class="card-header-bg" style="background-image:url({{ asset('storage/'.$peserta_didik->sekolah->gambar) }})"></div>
+    <div class="card-header-bg"></div>
     {{-- <div class="card-header-bg" style="background-image:url({{ asset('storage/'.$peserta_didik->sekolah->gambar) }})"></div> --}}
     <div class="card-body card-profile-body">
         <div class="profile-avata">
