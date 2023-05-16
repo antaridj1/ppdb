@@ -23,9 +23,7 @@
                     </div>
                     <div class="form-group mb-4">
                         <label for="pengumuman">Pengumuman</label>
-                        <textarea class="form-control @error('pengumuman') is-invalid @enderror" rows="3" name="pengumuman" id="pengumuman" value="" required>
-                            {{ $pengumuman->pengumuman }}
-                        </textarea>
+                        <textarea class="form-control @error('pengumuman') is-invalid @enderror" rows="3" name="pengumuman" id="pengumuman" required>{{ $pengumuman->pengumuman }}</textarea>
                         @error('pengumuman')
                             <div class="invalid-feedback">
                                 {{$message}}
