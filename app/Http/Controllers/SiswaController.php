@@ -802,7 +802,7 @@ class SiswaController extends Controller
                 if ($siswa && $siswa->email) {
                     $details = [
                         'title' => 'Selamat, Anda Telah Diterima Menjadi Peserta Didik' . $sekolah,
-                        'body' => 'Selamat kepada' . $siswa->dataPribadi->nama . 'telah diterima untuk menempuh pendidikan di' . $sekolah . '. Informasi lebih lanjut dapat dilihat pada'
+                        'body' => 'Selamat kepada ' . $siswa->dataPribadi->nama_lengkap . 'telah diterima untuk menempuh pendidikan di ' . $sekolah . '. Informasi lebih lanjut dapat dilihat pada http://127.0.0.1:8000/ppdb/sdn/'.$siswa->dataPribadi->sekolah_id.'/siswa-lolos-seleksi'
                     ];
                     Mail::to($siswa->email)->send(new \App\Mail\SendEmail($details));
                 }
