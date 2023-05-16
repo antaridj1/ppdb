@@ -7,8 +7,7 @@
 
                     <div class="card-body">
                         <ul class="list-group">
-                            @if($pengumumans)
-                                @forelse ($pengumumans as $pengumuman)
+                                @forelse($pengumumans as $pengumuman)
                                 <li class="list-group-item list-group-item-action">
                                     <div class="media media-sm mb-0">
                                     <div class="media-sm-wrapper bg-primary">
@@ -22,8 +21,11 @@
                                     </div>
                                 </li>
                                 @empty
+                                <li class="list-group-item list-group-item-action">
+                                    Tidak ada pengumuman
+                                </li>
                                 @endforelse
-                            @endif
+
                         </ul>
                     </div>
                     </div>
