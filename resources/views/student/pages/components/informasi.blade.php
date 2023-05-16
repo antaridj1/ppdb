@@ -7,22 +7,23 @@
 
                     <div class="card-body">
                         <ul class="list-group">
-                            @forelse ($pengumumans as $pengumuman)
-                            <li class="list-group-item list-group-item-action">
-                                <div class="media media-sm mb-0">
-                                <div class="media-sm-wrapper bg-primary">
-                                    <i class="mdi mdi-star-outline"></i>
-                                </div>
-                                <div class="media-body">
-                                    <span class="title">{{$pengumuman->judul}}</span>
-                                    <p>{{$pengumuman->pengumuman}}
-                                    </p>
-                                </div>
-                                </div>
-                            </li>
-                            @empty
-                            
-                            @endforelse
+                            @if($pengumumans)
+                                @forelse ($pengumumans as $pengumuman)
+                                <li class="list-group-item list-group-item-action">
+                                    <div class="media media-sm mb-0">
+                                    <div class="media-sm-wrapper bg-primary">
+                                        <i class="mdi mdi-star-outline"></i>
+                                    </div>
+                                    <div class="media-body">
+                                        <span class="title">{{$pengumuman->judul}}</span>
+                                        <p>{{$pengumuman->pengumuman}}
+                                        </p>
+                                    </div>
+                                    </div>
+                                </li>
+                                @empty
+                                @endforelse
+                            @endif
                         </ul>
                     </div>
                     </div>
