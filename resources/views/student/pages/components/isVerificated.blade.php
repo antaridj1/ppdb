@@ -2,7 +2,7 @@
     @if ($siswa->dataPribadi->isAccepted === 1)
     <a href="{{ route('siswa.datatable') }}">
         <div class="alert alert-success alert-icon" role="alert" style="margin-left:16px; margin-right:16px;">
-            <i class="mdi mdi-bell-outline"></i> Peserta didik telah diterima! Silahkan menunggu informasi registrasi ulang.
+            <i class="mdi mdi-bell-outline"></i> Peserta didik telah diterima!
         </div>
     </a>
     @endif
