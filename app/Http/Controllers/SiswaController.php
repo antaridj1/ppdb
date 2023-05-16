@@ -830,6 +830,7 @@ class SiswaController extends Controller
         $siswa->kesejahteraan()->delete();
         $siswa->file()->delete();
         $siswa->delete();
+        Siswa::where('id', $siswa->siswa->id)->update(['daftar' => 0]);
 
         return back()
             ->with('status', 'success')
