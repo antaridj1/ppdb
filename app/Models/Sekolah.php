@@ -22,6 +22,7 @@ class Sekolah extends Authenticatable
         'email',
         'password',
         'gambar',
+        'kuota',
         'status'
     ];
 

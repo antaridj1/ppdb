@@ -5,6 +5,7 @@
         <th>Nama</th>
         <th>Telp</th>
         <th>Email</th>
+        <th>Kuota</th>
         <th class="text-center">Status</th>
         <th class="text-center">Aksi</th>
         <th></th>
@@ -17,6 +18,7 @@
             <td>{{$sekolah->nama_sekolah}}</td>
             <td>{{$sekolah->tlp_sekolah}}</td>
             <td>{{$sekolah->email}}</td>
+            <td>{{$sekolah->kuota}}</td>
             <td class="text-center"> <span class="badge badge-pill {{$sekolah->status_badge}}">{{$sekolah->status_string}}</span></td>
             <td class="text-center">
               <div class="dropdown">

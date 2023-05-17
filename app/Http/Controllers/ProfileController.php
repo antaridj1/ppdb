@@ -30,6 +30,7 @@ class ProfileController extends Controller
                 'nama_sekolah' => 'required',
                 'tlp_sekolah' => 'required',
                 'alamat_sekolah' => 'required',
+                'kuota' => 'required|numeric|min:0',
                 'email' => 'required|email',
                 'password' => 'min:6'
             ]);
@@ -40,6 +41,7 @@ class ProfileController extends Controller
                 'alamat_sekolah' => $request->alamat_sekolah,
                 'email' => $request->email,
                 'gambar' => $image_path,
+                'kuota' => $request->kuota,
                 'password' => $request->password
             ]);
         } else {
@@ -48,6 +50,7 @@ class ProfileController extends Controller
                 'tlp_sekolah' => 'required',
                 'alamat_sekolah' => 'required',
                 'email' => 'required|email',
+                'kuota' => 'required|numeric|min:0',
             ]);
     
             $sekolah->update([
@@ -55,6 +58,7 @@ class ProfileController extends Controller
                 'tlp_sekolah' => $request->tlp_sekolah,
                 'alamat_sekolah' => $request->alamat_sekolah,
                 'email' => $request->email,
+                'kuota' => $request->kuota,
                 'gambar' => $image_path,
             ]);
         }

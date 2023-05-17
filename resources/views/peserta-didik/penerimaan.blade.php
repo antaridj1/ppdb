@@ -13,7 +13,7 @@
                         @auth('sekolah')
                         <div class="d-flex justify-content-end">
                             <div id="updateCounter" class="mr-2 d-none">0/0</div>
-                            <button class="ladda-button btn btn-primary btn-ladda" id="updateButton" data-style="expand-left">
+                            <button class="ladda-button btn btn-primary btn-ladda" id="updateButton" data-kuota="{{auth()->guard('sekolah')->user()->kuota}}" data-style="expand-left">
                                 <span class="ladda-label">Terima Calon Peserta Didik</span>
                                 <span class="ladda-spinner"></span>
                             </button>
@@ -53,13 +53,21 @@
                 var checkedValues = $("#productsTable input[name='checked']:checked").map(function() {
                     return this.id;
                 }).get();
-
+                var kuota = $(this).data('kuota');
                 var totalItems = checkedValues.length;
         
                 if (totalItems === 0) {
                     Swal.fire({        
                         icon: 'error',
                         title: `Tidak Ada Data yang Dipilih`,
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+                    return;
+                } else if (totalItems > kuota) {
+                    Swal.fire({        
+                        icon: 'error',
+                        title: `Peserta yang Anda Pilih Melebihi Kuota. Kuota yang tersisa sebanyak ${kuota} siswa)`,
                         showConfirmButton: false,
                         timer: 3000
                     })

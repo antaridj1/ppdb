@@ -40,6 +40,15 @@
                         @enderror
                     </div>
                     <div class="form-group mb-4">
+                        <label for="kuota">Kuota</label>
+                        <input type="number" class="form-control @error('kuota') is-invalid @enderror" name="kuota" id="kuota" value="{{ $sekolah->kuota }}" required>
+                        @error('kuota')
+                            <div class="invalid-feedback">
+                                {{$message}}
+                            </div>
+                        @enderror
+                    </div>
+                    <div class="form-group mb-4">
                         <label for="email">Email</label>
                         <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" id="email" value="{{ $sekolah->email }}" required>
                         @error('email')

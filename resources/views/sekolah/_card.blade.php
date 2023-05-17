@@ -25,6 +25,12 @@
                         <span class="text-color d-block">Tervalidasi</span>
                     </a>
                 </div>
+                <div class="nav-item">
+                    <a class="nav-link" href="#">
+                        <span class="h5 text-center d-block">{{$sekolah->kuota}}</span>
+                        <span class="text-color d-block">Kuota</span>
+                    </a>
+                </div>
             </div>
         
             <div class="d-flex justify-content-center">

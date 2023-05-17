@@ -30,6 +30,15 @@
                         @enderror
                     </div>
                     <div class="form-group mb-4">
+                        <label for="kuota">Kuota</label>
+                        <input type="number" class="form-control @error('kuota') is-invalid @enderror" name="kuota" id="kuota" value="{{ @old('kuota') }}" required>
+                        @error('kuota')
+                            <div class="invalid-feedback">
+                                {{$message}}
+                            </div>
+                        @enderror
+                    </div>
+                    <div class="form-group mb-4">
                         <label for="tlp_sekolah">Telp</label>
                         <input type="text" class="form-control @error('tlp_sekolah') is-invalid @enderror" name="tlp_sekolah" id="tlp_sekolah" value="{{ @old('tlp_sekolah') }}" required>
                         @error('tlp_sekolah')
