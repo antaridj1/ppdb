@@ -91,11 +91,19 @@
 
         <div class="row">
 
-          <div class="col-lg-12 col-md-12 mt-5 mt-md-0">
+          <div class="col-lg-6 col-md-6 mt-5 mt-md-0">
             <div class="count-box">
-              <i class="bi bi-mortarboard"></i>
+              <i class="bi bi-mortarboard-fill"></i>
               <span data-purecounter-start="0" data-purecounter-end="{{ $total }}" data-purecounter-duration="1" class="purecounter"></span>
               <p>Peserta Didik Baru</p>
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-md-6 mt-5 mt-md-0">
+            <div class="count-box">
+              <i class="bi bi-people-fill"></i>
+              <span data-purecounter-start="0" data-purecounter-end="{{ $data->kuota }}" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Kuota Peserta Didik</p>
             </div>
           </div>
 

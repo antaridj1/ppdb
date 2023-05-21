@@ -22,6 +22,7 @@ class SekolahSeeder extends Seeder
             'email' => 'sdn01@gmail.com',
             'tlp_sekolah' => '098762635261',
             'password' => Hash::make('password'),
+            'kuota' => '200',
             // 'created_at' => Carbon\Carbon::now(),
         ]);
         DB::table('sekolah')->insert([
@@ -30,6 +31,7 @@ class SekolahSeeder extends Seeder
             'email' => 'sdn02@gmail.com',
             'tlp_sekolah' => '098762635262',
             'password' => Hash::make('password'),
+            'kuota' => '200',
             // 'created_at' => Carbon\Carbon::now(),
         ]);
         DB::table('sekolah')->insert([
@@ -38,6 +40,7 @@ class SekolahSeeder extends Seeder
             'email' => 'sdn03@gmail.com',
             'tlp_sekolah' => '098762635263',
             'password' => Hash::make('password'),
+            'kuota' => '200',
             // 'created_at' => Carbon\Carbon::now(),
         ]);
         DB::table('sekolah')->insert([
@@ -46,6 +49,7 @@ class SekolahSeeder extends Seeder
             'email' => 'sdn04@gmail.com',
             'tlp_sekolah' => '098762635263',
             'password' => Hash::make('password'),
+            'kuota' => '200',
             // 'created_at' => Carbon\Carbon::now(),
         ]);
         DB::table('sekolah')->insert([
@@ -54,6 +58,7 @@ class SekolahSeeder extends Seeder
             'email' => 'sdn05@gmail.com',
             'tlp_sekolah' => '098762635263',
             'password' => Hash::make('password'),
+            'kuota' => '200',
             // 'created_at' => Carbon\Carbon::now(),
         ]);
         DB::table('sekolah')->insert([
@@ -62,6 +67,7 @@ class SekolahSeeder extends Seeder
             'email' => 'sdn06@gmail.com',
             'tlp_sekolah' => '098762635263',
             'password' => Hash::make('password'),
+            'kuota' => '200',
             // 'created_at' => Carbon\Carbon::now(),
         ]);
         DB::table('sekolah')->insert([
@@ -70,6 +76,7 @@ class SekolahSeeder extends Seeder
             'email' => 'sdn07@gmail.com',
             'tlp_sekolah' => '098762635263',
             'password' => Hash::make('password'),
+            'kuota' => '200',
             // 'created_at' => Carbon\Carbon::now(),
         ]);
     }
